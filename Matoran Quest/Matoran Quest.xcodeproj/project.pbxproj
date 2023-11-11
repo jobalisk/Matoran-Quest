@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B82C348A2B000F8600625735 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B82C34882B000F8600625735 /* LaunchScreen.storyboard */; };
+		B82C348D2B00110F00625735 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82C348C2B00110F00625735 /* MenuController.m */; };
+		B82C34902B00111D00625735 /* PlayerDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82C348F2B00111D00625735 /* PlayerDetailsController.m */; };
 		B8DC7DC12AFFFE69003BF68C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */; };
 		B8DC7DC32AFFFE69003BF68C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DC22AFFFE69003BF68C /* GameScene.sks */; };
 		B8DC7DC52AFFFE69003BF68C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DC42AFFFE69003BF68C /* Actions.sks */; };
@@ -14,7 +17,6 @@
 		B8DC7DCB2AFFFE69003BF68C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DCA2AFFFE69003BF68C /* GameViewController.m */; };
 		B8DC7DCE2AFFFE69003BF68C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DCC2AFFFE69003BF68C /* Main.storyboard */; };
 		B8DC7DD02AFFFE6C003BF68C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DCF2AFFFE6C003BF68C /* Assets.xcassets */; };
-		B8DC7DD32AFFFE6C003BF68C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DD12AFFFE6C003BF68C /* LaunchScreen.storyboard */; };
 		B8DC7DD52AFFFE6C003BF68C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DD42AFFFE6C003BF68C /* main.m */; };
 		B8DC7DDF2AFFFE6C003BF68C /* Matoran_QuestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DDE2AFFFE6C003BF68C /* Matoran_QuestTests.m */; };
 		B8DC7DE92AFFFE6C003BF68C /* Matoran_QuestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DE82AFFFE6C003BF68C /* Matoran_QuestUITests.m */; };
@@ -39,6 +41,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B82C34892B000F8600625735 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B82C348B2B00110F00625735 /* MenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuController.h; sourceTree = "<group>"; };
+		B82C348C2B00110F00625735 /* MenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuController.m; sourceTree = "<group>"; };
+		B82C348E2B00111D00625735 /* PlayerDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerDetailsController.h; sourceTree = "<group>"; };
+		B82C348F2B00111D00625735 /* PlayerDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerDetailsController.m; sourceTree = "<group>"; };
+		B82C34952B0017B500625735 /* Matoran-Quest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Matoran-Quest-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B82C34962B0018AC00625735 /* Mata Nui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mata Nui.ttf"; path = "assets/Mata Nui.ttf"; sourceTree = "<group>"; };
+		B82C34972B0018AC00625735 /* GoudyTrajan-Regular-trial.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GoudyTrajan-Regular-trial.otf"; path = "assets/GoudyTrajan-Regular-trial.otf"; sourceTree = "<group>"; };
+		B82C34982B00193000625735 /* BIONRG__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = BIONRG__.TTF; path = assets/BIONRG__.TTF; sourceTree = "<group>"; };
 		B8DC7DBC2AFFFE69003BF68C /* Matoran Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Matoran Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DC7DBF2AFFFE69003BF68C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -50,14 +61,12 @@
 		B8DC7DCA2AFFFE69003BF68C /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		B8DC7DCD2AFFFE69003BF68C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8DC7DCF2AFFFE6C003BF68C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B8DC7DD22AFFFE6C003BF68C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8DC7DD42AFFFE6C003BF68C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B8DC7DDA2AFFFE6C003BF68C /* Matoran QuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Matoran QuestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DC7DDE2AFFFE6C003BF68C /* Matoran_QuestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Matoran_QuestTests.m; sourceTree = "<group>"; };
 		B8DC7DE42AFFFE6C003BF68C /* Matoran QuestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Matoran QuestUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DC7DE82AFFFE6C003BF68C /* Matoran_QuestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Matoran_QuestUITests.m; sourceTree = "<group>"; };
 		B8DC7DEA2AFFFE6C003BF68C /* Matoran_QuestUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Matoran_QuestUITestsLaunchTests.m; sourceTree = "<group>"; };
-		B8DC7DF72AFFFEB0003BF68C /* Mata Nui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mata Nui.ttf"; path = "Matoran Quest/Mata Nui.ttf"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +117,7 @@
 		B8DC7DBE2AFFFE69003BF68C /* Matoran Quest */ = {
 			isa = PBXGroup;
 			children = (
+				B82C34952B0017B500625735 /* Matoran-Quest-Info.plist */,
 				B8DC7DBF2AFFFE69003BF68C /* AppDelegate.h */,
 				B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */,
 				B8DC7DC22AFFFE69003BF68C /* GameScene.sks */,
@@ -116,11 +126,17 @@
 				B8DC7DC72AFFFE69003BF68C /* GameScene.m */,
 				B8DC7DC92AFFFE69003BF68C /* GameViewController.h */,
 				B8DC7DCA2AFFFE69003BF68C /* GameViewController.m */,
+				B82C348B2B00110F00625735 /* MenuController.h */,
+				B82C348C2B00110F00625735 /* MenuController.m */,
+				B82C348E2B00111D00625735 /* PlayerDetailsController.h */,
+				B82C348F2B00111D00625735 /* PlayerDetailsController.m */,
 				B8DC7DCC2AFFFE69003BF68C /* Main.storyboard */,
+				B82C34882B000F8600625735 /* LaunchScreen.storyboard */,
 				B8DC7DCF2AFFFE6C003BF68C /* Assets.xcassets */,
-				B8DC7DD12AFFFE6C003BF68C /* LaunchScreen.storyboard */,
 				B8DC7DD42AFFFE6C003BF68C /* main.m */,
-				B8DC7DF72AFFFEB0003BF68C /* Mata Nui.ttf */,
+				B82C34972B0018AC00625735 /* GoudyTrajan-Regular-trial.otf */,
+				B82C34962B0018AC00625735 /* Mata Nui.ttf */,
+				B82C34982B00193000625735 /* BIONRG__.TTF */,
 			);
 			path = "Matoran Quest";
 			sourceTree = "<group>";
@@ -248,7 +264,7 @@
 				B8DC7DCE2AFFFE69003BF68C /* Main.storyboard in Resources */,
 				B8DC7DC32AFFFE69003BF68C /* GameScene.sks in Resources */,
 				B8DC7DD02AFFFE6C003BF68C /* Assets.xcassets in Resources */,
-				B8DC7DD32AFFFE6C003BF68C /* LaunchScreen.storyboard in Resources */,
+				B82C348A2B000F8600625735 /* LaunchScreen.storyboard in Resources */,
 				B8DC7DC52AFFFE69003BF68C /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,7 +291,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8DC7DC82AFFFE69003BF68C /* GameScene.m in Sources */,
+				B82C34902B00111D00625735 /* PlayerDetailsController.m in Sources */,
 				B8DC7DCB2AFFFE69003BF68C /* GameViewController.m in Sources */,
+				B82C348D2B00110F00625735 /* MenuController.m in Sources */,
 				B8DC7DD52AFFFE6C003BF68C /* main.m in Sources */,
 				B8DC7DC12AFFFE69003BF68C /* AppDelegate.m in Sources */,
 			);
@@ -314,20 +332,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B82C34882B000F8600625735 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B82C34892B000F8600625735 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		B8DC7DCC2AFFFE69003BF68C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B8DC7DCD2AFFFE69003BF68C /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B8DC7DD12AFFFE6C003BF68C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8DC7DD22AFFFE6C003BF68C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -385,7 +403,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -440,7 +458,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -458,21 +476,25 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M2GX896VLW;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Matoran-Quest-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.0.1;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "EternityWareStudios.JobDyer.Matoran-Quest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST = "";
 			};
 			name = Debug;
 		};
@@ -485,21 +507,25 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M2GX896VLW;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Matoran-Quest-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.0.1;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "EternityWareStudios.JobDyer.Matoran-Quest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST = "";
 			};
 			name = Release;
 		};
