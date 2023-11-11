@@ -10,6 +10,8 @@
 		B82C348A2B000F8600625735 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B82C34882B000F8600625735 /* LaunchScreen.storyboard */; };
 		B82C348D2B00110F00625735 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82C348C2B00110F00625735 /* MenuController.m */; };
 		B82C34902B00111D00625735 /* PlayerDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82C348F2B00111D00625735 /* PlayerDetailsController.m */; };
+		B86BCBC52B0021F70015B2FB /* Mata Nui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */; };
+		B86BCBC62B0021FA0015B2FB /* Goudy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B86BCBC32B0020B60015B2FB /* Goudy.otf */; };
 		B8DC7DC12AFFFE69003BF68C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */; };
 		B8DC7DC32AFFFE69003BF68C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DC22AFFFE69003BF68C /* GameScene.sks */; };
 		B8DC7DC52AFFFE69003BF68C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DC42AFFFE69003BF68C /* Actions.sks */; };
@@ -47,6 +49,8 @@
 		B82C348E2B00111D00625735 /* PlayerDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerDetailsController.h; sourceTree = "<group>"; };
 		B82C348F2B00111D00625735 /* PlayerDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerDetailsController.m; sourceTree = "<group>"; };
 		B82C34952B0017B500625735 /* Matoran-Quest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Matoran-Quest-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B86BCBC32B0020B60015B2FB /* Goudy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Goudy.otf; path = "Matoran Quest/Goudy.otf"; sourceTree = SOURCE_ROOT; };
+		B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mata Nui.ttf"; path = "Matoran Quest/Mata Nui.ttf"; sourceTree = SOURCE_ROOT; };
 		B8DC7DBC2AFFFE69003BF68C /* Matoran Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Matoran Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DC7DBF2AFFFE69003BF68C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -64,9 +68,6 @@
 		B8DC7DE42AFFFE6C003BF68C /* Matoran QuestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Matoran QuestUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DC7DE82AFFFE6C003BF68C /* Matoran_QuestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Matoran_QuestUITests.m; sourceTree = "<group>"; };
 		B8DC7DEA2AFFFE6C003BF68C /* Matoran_QuestUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Matoran_QuestUITestsLaunchTests.m; sourceTree = "<group>"; };
-		B8F92F502B001B4B004F8A35 /* MN.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MN.ttf; path = assets/MN.ttf; sourceTree = "<group>"; };
-		B8F92F512B001B4B004F8A35 /* BIO.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = BIO.TTF; path = assets/BIO.TTF; sourceTree = "<group>"; };
-		B8F92F522B001B4B004F8A35 /* Goudy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Goudy.otf; path = assets/Goudy.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,10 +134,9 @@
 				B8DC7DCC2AFFFE69003BF68C /* Main.storyboard */,
 				B82C34882B000F8600625735 /* LaunchScreen.storyboard */,
 				B8DC7DCF2AFFFE6C003BF68C /* Assets.xcassets */,
-				B8F92F512B001B4B004F8A35 /* BIO.TTF */,
-				B8F92F522B001B4B004F8A35 /* Goudy.otf */,
-				B8F92F502B001B4B004F8A35 /* MN.ttf */,
 				B8DC7DD42AFFFE6C003BF68C /* main.m */,
+				B86BCBC32B0020B60015B2FB /* Goudy.otf */,
+				B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */,
 			);
 			path = "Matoran Quest";
 			sourceTree = "<group>";
@@ -261,6 +261,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B86BCBC62B0021FA0015B2FB /* Goudy.otf in Resources */,
+				B86BCBC52B0021F70015B2FB /* Mata Nui.ttf in Resources */,
 				B8DC7DCE2AFFFE69003BF68C /* Main.storyboard in Resources */,
 				B8DC7DC32AFFFE69003BF68C /* GameScene.sks in Resources */,
 				B8DC7DD02AFFFE6C003BF68C /* Assets.xcassets in Resources */,
