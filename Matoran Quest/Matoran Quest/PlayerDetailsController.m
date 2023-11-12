@@ -13,11 +13,15 @@
 
 @implementation PlayerDetailsController
 
-NSString *playerName; //store the players name
+NSUserDefaults *playerDetails;
+
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    playerDetails = [NSUserDefaults standardUserDefaults];
+    _playerNameField.delegate = self;
+    _playerNameField.returnKeyType = UIReturnKeyDone;
     // Do any additional setup after loading the view.
 }
 
@@ -32,7 +36,8 @@ NSString *playerName; //store the players name
 
 -(IBAction) playerNameFieldCatcher: (id) sender
 {
-    playerName = _playerNameField.text;
+    [playerDetails setObject: _playerNameField.text forKey:@"PlayerName"];
+    //NSLog([[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]);
 }
 
 /*
