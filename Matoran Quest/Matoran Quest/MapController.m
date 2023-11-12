@@ -18,6 +18,11 @@
 CLLocationManager *locationManager;
 CGPoint userLocation;
 int playerWalkingSprite = 0; //the sprite number we're on
+float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
+float playerOldLat = 0.0;
+int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
+int playerUpdateTimerMax = 60;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 30 seconds
+int walkingTimer = 0; //this is for working out walking intervals
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,7 +68,7 @@ int playerWalkingSprite = 0; //the sprite number we're on
  MKAnnotationView  *userannotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
         //get the players sprite to "walk"
         [self playerWalker: userannotationView];
-
+        
         userannotationView.draggable = YES;
         userannotationView.canShowCallout = YES;
 
@@ -104,8 +109,8 @@ int playerWalkingSprite = 0; //the sprite number we're on
 //    [_theMap setRegion:region animated: false];
     
     //set user location image
-    MKAnnotationView *playerSprite;
-    [playerSprite setImage:[UIImage imageNamed:@"MatoranStandingStill.png"]];
+    //MKAnnotationView *playerSprite;
+    //[playerSprite setImage:[UIImage imageNamed:@"MatoranStandingStill.png"]];
     /*
     MKPointAnnotation *playerLocation;
     [playerLocation setCoordinate:_theMap.userLocation.location.coordinate];
@@ -121,6 +126,17 @@ int playerWalkingSprite = 0; //the sprite number we're on
 
 //update player location
 - (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation {
+    //first, work out timer
+    if(playerUpdateTimer != playerUpdateTimerMax){
+        playerUpdateTimer += 1;
+    }
+    else{
+        playerUpdateTimer = 0;
+        
+    }
+    NSLog(@"Timer: %d", playerUpdateTimer);
+    
+    
     MKCoordinateRegion region;
     MKCoordinateSpan span;
     span.latitudeDelta = 0.0008; //zoom level (the smaller the number the bigger the zoom
@@ -128,24 +144,34 @@ int playerWalkingSprite = 0; //the sprite number we're on
     CLLocationCoordinate2D location;
     location.latitude = aUserLocation.coordinate.latitude;
     location.longitude = aUserLocation.coordinate.longitude;
-    NSLog(@"Lat: %f", aUserLocation.coordinate.latitude);
-    NSLog(@"Long: %f", aUserLocation.coordinate.longitude );
+    //NSLog(@"Lat: %f", aUserLocation.coordinate.latitude);
+    //NSLog(@"Long: %f", aUserLocation.coordinate.longitude );
     region.span = span;
     region.center = location;
     [aMapView setRegion:region animated:NO];
     
     [_theMap userLocation];
     
-    if([_theLabel.text isEqualToString: @"Updated2"]){
+    if(walkingTimer == 0){
         _theMap.showsUserLocation = false;
-        [_theLabel setText:@"Updated3"];
+        walkingTimer = 1;
+        
     }
     else{
-        [_theLabel setText:@"Updated2"];
+        walkingTimer = 0;
+        [_theTimer setText: [NSString stringWithFormat:@"T: %d", playerUpdateTimer]];
+        if ([_theLabel.text rangeOfString:@"Long"].location == NSNotFound) {
+            [_theLabel setText:[NSString stringWithFormat:@"Long: %f", aUserLocation.coordinate.longitude]];
+        }
+        else{
+            [_theLabel setText:[NSString stringWithFormat:@"Lat: %f", aUserLocation.coordinate.latitude]];
+        }
+        
     }
     [self add1Annotation];
     _theMap.showsUserLocation = true;
     //NSLog(@"Updated!");
+    
     
     
     
@@ -172,32 +198,67 @@ int playerWalkingSprite = 0; //the sprite number we're on
 }
 
 -(void)playerWalker: (MKAnnotationView *) theView{
+    UIImage *playerSprite;
+    
     if(playerWalkingSprite == 0){
-        theView.image = [UIImage imageNamed:@"matoran0.png"];
+        playerSprite = [UIImage imageNamed:@"matoran0.png"];
+        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        theView.image = playerSprite;
         playerWalkingSprite = 1;
     }
     else if(playerWalkingSprite == 1){
-        theView.image = [UIImage imageNamed:@"matoran1.png"];
+        playerSprite = [UIImage imageNamed:@"matoran1.png"];
+        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        theView.image = playerSprite;
         playerWalkingSprite = 2;
     }
     else if(playerWalkingSprite == 2){
-        theView.image = [UIImage imageNamed:@"matoran2.png"];
+        playerSprite = [UIImage imageNamed:@"matoran2.png"];
+        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        theView.image = playerSprite;
         playerWalkingSprite = 3;
     }
     else if(playerWalkingSprite == 3){
-        theView.image = [UIImage imageNamed:@"matoran3.png"];
+        playerSprite = [UIImage imageNamed:@"matoran3.png"];
+        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        theView.image = playerSprite;
         playerWalkingSprite = 0;
     }
     else{
-        theView.image = [UIImage imageNamed:@"matoran0.png"];
+        playerSprite = [UIImage imageNamed:@"matoran0.png"];
+        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        theView.image = playerSprite;
         playerWalkingSprite = 0;
     }
+    
 }
 
 -(void)zoomInOnLocation:(CLLocationCoordinate2D)location //go to where a pin has been dropped
 {
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 200, 200);
     [_theMap setRegion:[_theMap regionThatFits:region] animated:YES];
+}
+
+
+//change the colour of the input image
+-(UIImage *)colorizeImage:(UIImage *)baseImage color:(UIColor *)theColor {
+    UIGraphicsBeginImageContext(baseImage.size);
+
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGRect area = CGRectMake(0, 0, baseImage.size.width, baseImage.size.height);
+
+    CGContextScaleCTM(ctx, 1, -1);
+    CGContextTranslateCTM(ctx, 0, -area.size.height);
+    CGContextSaveGState(ctx);
+    CGContextClipToMask(ctx, area, baseImage.CGImage);
+    [theColor set];
+    CGContextFillRect(ctx, area);
+    CGContextRestoreGState(ctx);
+    CGContextSetBlendMode(ctx, kCGBlendModeMultiply);
+    CGContextDrawImage(ctx, area, baseImage.CGImage);
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 

@@ -7,16 +7,47 @@
 
 #import "PlayerEditController.h"
 
-@interface PlayerEditController ()
+@interface PlayerEditController () <UITextFieldDelegate>
 
 @end
 
 @implementation PlayerEditController
 
+NSUserDefaults *playerDetails;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    playerDetails = [NSUserDefaults standardUserDefaults];
+    _playerNameField.delegate = self;
+    _playerNameField.returnKeyType = UIReturnKeyDone;
+    
+    @try {
+        [_playerNameField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]];
+    }
+    @catch (NSException *exception) {
+        [_playerNameField setText:@"Player Name"];
+    }
+    @finally {
+      //Display Alternative
+    }
+    
+    
     // Do any additional setup after loading the view.
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+
+-(IBAction) playerNameFieldCatcher: (id) sender
+{
+    [playerDetails setObject: _playerNameField.text forKey:@"PlayerName"];
+    //NSLog([[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]);
 }
 
 

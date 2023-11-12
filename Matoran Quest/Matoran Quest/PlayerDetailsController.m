@@ -13,31 +13,45 @@
 
 @implementation PlayerDetailsController
 
-NSUserDefaults *playerDetails;
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    playerDetails = [NSUserDefaults standardUserDefaults];
-    _playerNameField.delegate = self;
-    _playerNameField.returnKeyType = UIReturnKeyDone;
-    // Do any additional setup after loading the view.
+    @try {
+        
+        [_playerNameLabel setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]]; //set up the player name and image
+        UIImage *playerSprite;
+        playerSprite = [UIImage imageNamed:@"matoran0.png"];
+        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        [_playerPortrait setImage:playerSprite];
+        [_playerPortrait setContentScaleFactor: UIViewContentModeScaleAspectFit];
+    }
+    @catch (NSException *exception) {
+        [_playerNameLabel setText:@"Player Name"];
+    }
+    @finally {
+      //Display Alternative
+    }
+    
 }
 
+-(UIImage *)colorizeImage:(UIImage *)baseImage color:(UIColor *)theColor {
+    UIGraphicsBeginImageContext(baseImage.size);
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGRect area = CGRectMake(0, 0, baseImage.size.width, baseImage.size.height);
 
-
-
--(IBAction) playerNameFieldCatcher: (id) sender
-{
-    [playerDetails setObject: _playerNameField.text forKey:@"PlayerName"];
-    //NSLog([[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]);
+    CGContextScaleCTM(ctx, 1, -1);
+    CGContextTranslateCTM(ctx, 0, -area.size.height);
+    CGContextSaveGState(ctx);
+    CGContextClipToMask(ctx, area, baseImage.CGImage);
+    [theColor set];
+    CGContextFillRect(ctx, area);
+    CGContextRestoreGState(ctx);
+    CGContextSetBlendMode(ctx, kCGBlendModeMultiply);
+    CGContextDrawImage(ctx, area, baseImage.CGImage);
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 /*

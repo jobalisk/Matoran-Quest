@@ -6,14 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import <SpriteKit/SpriteKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PlayerDetailsController : UIViewController
 
--(IBAction) playerNameFieldCatcher: (id) sender; //the getter for the players name text feild
-@property (nonatomic, weak) IBOutlet UITextField *playerNameField; //the players name feild setter
-
+@property (nonatomic, weak) IBOutlet UILabel *playerNameLabel; //the players name in a label
+@property (nonatomic, weak) IBOutlet UIImageView *playerPortrait; //the players picture
 
 @end
 
