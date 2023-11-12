@@ -7,6 +7,7 @@
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -79,6 +80,9 @@
                                 <state key="normal" title="View Inventory">
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <segue destination="oFE-TB-Cg7" kind="show" id="HFv-lk-sD5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pur-nd-iCb">
                                 <rect key="frame" x="17" y="679" width="360" height="41"/>
@@ -90,6 +94,9 @@
                                 <state key="normal" title="View Kanohi">
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <segue destination="UfZ-YR-8qW" kind="show" id="mxv-5u-YSP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t38-an-rm3">
                                 <rect key="frame" x="17" y="762" width="360" height="25"/>
@@ -158,6 +165,174 @@
             </objects>
             <point key="canvasLocation" x="55.725190839694655" y="821.83098591549299"/>
         </scene>
+        <!--Wall Of Masks Controller-->
+        <scene sceneID="KYq-LO-1Bi">
+            <objects>
+                <viewController id="UfZ-YR-8qW" customClass="wallOfMasksController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NWY-br-8CJ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nku-fi-bKj">
+                                <rect key="frame" x="16" y="20" width="361" height="755"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ayI-ia-VF1">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <searchBar key="backgroundView" contentMode="redraw" id="3na-4Z-Do0">
+                                    <rect key="frame" x="0.0" y="0.0" width="361" height="755"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="UfZ-YR-8qW" id="O2D-er-IG6"/>
+                                    </connections>
+                                </searchBar>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="WAB-2a-i4b">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tX5-I1-gPI">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKo-2x-9Pv">
+                                <rect key="frame" x="16" y="797" width="361" height="25"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Return">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="q8n-sj-w8s" kind="show" id="a6Z-om-Vhp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6LB-wW-A6A"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nku-fi-bKj" firstAttribute="leading" secondItem="NWY-br-8CJ" secondAttribute="leadingMargin" id="E1q-ih-uvV"/>
+                            <constraint firstItem="nku-fi-bKj" firstAttribute="top" secondItem="6LB-wW-A6A" secondAttribute="top" constant="20" id="Hc5-Ia-8jD"/>
+                            <constraint firstItem="TKo-2x-9Pv" firstAttribute="top" secondItem="nku-fi-bKj" secondAttribute="bottom" constant="22" id="LlP-bu-oWi"/>
+                            <constraint firstItem="nku-fi-bKj" firstAttribute="leading" secondItem="TKo-2x-9Pv" secondAttribute="leading" id="MwI-oA-FZT"/>
+                            <constraint firstItem="nku-fi-bKj" firstAttribute="trailing" secondItem="TKo-2x-9Pv" secondAttribute="trailing" id="NPv-vH-gKG"/>
+                            <constraint firstItem="6LB-wW-A6A" firstAttribute="bottom" secondItem="TKo-2x-9Pv" secondAttribute="bottom" constant="20" id="dC5-fZ-dwH"/>
+                            <constraint firstItem="nku-fi-bKj" firstAttribute="trailing" secondItem="NWY-br-8CJ" secondAttribute="trailingMargin" id="q8H-lK-HLn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HeL-sb-myi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XBp-gP-Xex" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-564.12213740458014" y="1543.661971830986"/>
+        </scene>
+        <!--Individual Mask Controller-->
+        <scene sceneID="Jyw-Ii-yF7">
+            <objects>
+                <viewController id="KWH-bJ-xPJ" customClass="individualMaskController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nEf-zP-hr8">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2B-KA-qB5">
+                                <rect key="frame" x="16" y="793" width="361" height="25"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Return">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="UfZ-YR-8qW" kind="show" id="CTH-WT-H8A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cff-G6-nZu"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="T2B-KA-qB5" firstAttribute="leading" secondItem="nEf-zP-hr8" secondAttribute="leadingMargin" id="3QH-1X-A2A"/>
+                            <constraint firstItem="T2B-KA-qB5" firstAttribute="trailing" secondItem="nEf-zP-hr8" secondAttribute="trailingMargin" id="S3X-QL-u65"/>
+                            <constraint firstItem="T2B-KA-qB5" firstAttribute="bottom" secondItem="cff-G6-nZu" secondAttribute="bottom" id="TEA-zp-2Sg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A4J-ef-98s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="276" y="1544"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="H7i-QZ-2C0">
+            <objects>
+                <viewController id="oFE-TB-Cg7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KC5-jr-onj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ixV-Ht-Kco">
+                                <rect key="frame" x="16" y="-43" width="361" height="828"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ya6-pv-ror">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <searchBar key="backgroundView" contentMode="redraw" id="uL7-iw-P3K">
+                                    <rect key="frame" x="0.0" y="0.0" width="361" height="828"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="UfZ-YR-8qW" id="egT-iK-7BA"/>
+                                    </connections>
+                                </searchBar>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Hfu-7n-SkE">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DGu-VO-Zf9">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2i8-XJ-xbU">
+                                <rect key="frame" x="16" y="793" width="361" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="6Fe-hU-aOC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Return">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="q8n-sj-w8s" kind="show" id="Ldq-Rd-rdy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="AyB-jC-anb"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstItem="ixV-Ht-Kco" firstAttribute="leading" secondItem="2i8-XJ-xbU" secondAttribute="leading" id="06U-2d-wSD"/>
+                            <constraint firstItem="2i8-XJ-xbU" firstAttribute="top" secondItem="ixV-Ht-Kco" secondAttribute="bottom" constant="8" symbolic="YES" id="2sL-s2-ppE"/>
+                            <constraint firstItem="2i8-XJ-xbU" firstAttribute="trailing" secondItem="KC5-jr-onj" secondAttribute="trailingMargin" id="MGF-yh-3U9"/>
+                            <constraint firstItem="ixV-Ht-Kco" firstAttribute="trailing" secondItem="2i8-XJ-xbU" secondAttribute="trailing" id="SKC-2o-xCI"/>
+                            <constraint firstItem="2i8-XJ-xbU" firstAttribute="leading" secondItem="KC5-jr-onj" secondAttribute="leadingMargin" id="bS6-pR-Rul"/>
+                            <constraint firstItem="ixV-Ht-Kco" firstAttribute="top" secondItem="KC5-jr-onj" secondAttribute="topMargin" constant="-43" id="xO3-dZ-gwF"/>
+                            <constraint firstItem="AyB-jC-anb" firstAttribute="bottom" secondItem="2i8-XJ-xbU" secondAttribute="bottom" constant="10" id="zE2-h0-mw5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pus-do-p7A"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTW-cL-IEs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1087.7862595419847" y="1543.661971830986"/>
+        </scene>
         <!--Player Edit Controller-->
         <scene sceneID="aBU-BB-yPG">
             <objects>
@@ -197,35 +372,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bionicle Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXH-et-6HW">
-                                <rect key="frame" x="16" y="76" width="361" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bionicle Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXH-et-6HW">
+                                <rect key="frame" x="16" y="76" width="361" height="17.333333333333329"/>
+                                <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="17"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bionicle - Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwn-fF-uNx">
-                                <rect key="frame" x="16" y="104" width="361" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bionicle - Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwn-fF-uNx">
+                                <rect key="frame" x="16" y="101.33333333333333" width="361" height="18"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOs-4c-hcv">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOs-4c-hcv">
                                 <rect key="frame" x="16" y="344" width="361" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="View Character Details">
+                                <state key="normal" title="Manage Player">
                                     <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
                                 </state>
                                 <connections>
                                     <segue destination="q8n-sj-w8s" kind="show" id="wVj-0P-oDj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuN-bp-l5F">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuN-bp-l5F">
                                 <rect key="frame" x="16" y="270" width="361" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Play">
@@ -235,14 +406,16 @@
                                     <segue destination="2xE-CA-LUh" kind="show" id="XKM-sa-wO2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPD-TT-3YG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPD-TT-3YG">
                                 <rect key="frame" x="16" y="405" width="361" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Help">
                                     <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="helpButton:" destination="fUa-bY-8jl" eventType="touchUpInside" id="79V-Pp-JMn"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saY-fI-X9f">
                                 <rect key="frame" x="-1359" y="614" width="2982" height="21"/>
@@ -254,21 +427,47 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bX-vQ-d07">
                                 <rect key="frame" x="16" y="750.33333333333337" width="361" height="71.666666666666629"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="361" id="Z3M-Hw-5oD"/>
-                                </constraints>
                                 <string key="text">This game is unofficial. The creator, Job Dyer, does not in anyway claim any ownership of any of the copywrited materials used here in other than the app itself and any personal assets created by Job Dyer for this game. Matoran, Bionicle, The Bionicle Logo, the LEGO logo and all other such materials are trademarks and property of the LEGO group. ©2023 The LEGO Group. All rights reserved.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" systemColor="tableBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tf-dN-jbC">
+                                <rect key="frame" x="16" y="470" width="361" height="34"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="About">
+                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="aboutButton:" destination="fUa-bY-8jl" eventType="touchUpInside" id="pZx-9l-1fK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oeX-3l-py7"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
-                            <constraint firstItem="oeX-3l-py7" firstAttribute="bottom" secondItem="9bX-vQ-d07" secondAttribute="bottom" constant="20" id="HMP-Re-2sO"/>
-                            <constraint firstItem="oeX-3l-py7" firstAttribute="trailing" secondItem="9bX-vQ-d07" secondAttribute="trailing" constant="16" id="gDf-w9-5nn"/>
-                            <constraint firstItem="9bX-vQ-d07" firstAttribute="leading" secondItem="oeX-3l-py7" secondAttribute="leading" constant="16" id="gL3-QT-5hI"/>
+                            <constraint firstItem="lPD-TT-3YG" firstAttribute="top" secondItem="aOs-4c-hcv" secondAttribute="bottom" constant="27" id="9YG-ZJ-5dZ"/>
+                            <constraint firstItem="0tf-dN-jbC" firstAttribute="leading" secondItem="9bX-vQ-d07" secondAttribute="leading" id="GgJ-Jm-cgF"/>
+                            <constraint firstItem="Vwn-fF-uNx" firstAttribute="trailing" secondItem="fuN-bp-l5F" secondAttribute="trailing" id="HOz-xD-2Ho"/>
+                            <constraint firstItem="aOs-4c-hcv" firstAttribute="trailing" secondItem="lPD-TT-3YG" secondAttribute="trailing" id="KRl-Mk-BbZ"/>
+                            <constraint firstItem="lPD-TT-3YG" firstAttribute="trailing" secondItem="0tf-dN-jbC" secondAttribute="trailing" id="SF4-b6-Dax"/>
+                            <constraint firstItem="dXH-et-6HW" firstAttribute="leading" secondItem="Vwn-fF-uNx" secondAttribute="leading" id="T7k-jh-0Zq"/>
+                            <constraint firstItem="fuN-bp-l5F" firstAttribute="top" secondItem="pd5-CC-Q55" secondAttribute="top" constant="270" id="W3Y-4J-Km3"/>
+                            <constraint firstItem="fuN-bp-l5F" firstAttribute="leading" secondItem="aOs-4c-hcv" secondAttribute="leading" id="XaC-fa-n7J"/>
+                            <constraint firstItem="oeX-3l-py7" firstAttribute="bottom" secondItem="9bX-vQ-d07" secondAttribute="bottom" constant="19.999999999999886" id="a0S-33-fDe"/>
+                            <constraint firstItem="Vwn-fF-uNx" firstAttribute="leading" secondItem="fuN-bp-l5F" secondAttribute="leading" id="a8P-xd-CyZ"/>
+                            <constraint firstItem="aOs-4c-hcv" firstAttribute="leading" secondItem="lPD-TT-3YG" secondAttribute="leading" id="dBA-eX-fai"/>
+                            <constraint firstItem="dXH-et-6HW" firstAttribute="top" secondItem="oeX-3l-py7" secondAttribute="top" constant="76" id="drO-zM-Lfh"/>
+                            <constraint firstItem="dXH-et-6HW" firstAttribute="leading" secondItem="pd5-CC-Q55" secondAttribute="leadingMargin" id="e4m-ta-q91"/>
+                            <constraint firstItem="0tf-dN-jbC" firstAttribute="top" secondItem="lPD-TT-3YG" secondAttribute="bottom" constant="31" id="eqY-0n-nsD"/>
+                            <constraint firstItem="Vwn-fF-uNx" firstAttribute="top" secondItem="dXH-et-6HW" secondAttribute="bottom" constant="8" symbolic="YES" id="fp4-Pz-muA"/>
+                            <constraint firstItem="fuN-bp-l5F" firstAttribute="trailing" secondItem="aOs-4c-hcv" secondAttribute="trailing" id="g39-mV-50I"/>
+                            <constraint firstItem="dXH-et-6HW" firstAttribute="trailing" secondItem="pd5-CC-Q55" secondAttribute="trailingMargin" id="oEI-NK-BGJ"/>
+                            <constraint firstItem="lPD-TT-3YG" firstAttribute="leading" secondItem="0tf-dN-jbC" secondAttribute="leading" id="uox-y0-qtQ"/>
+                            <constraint firstItem="0tf-dN-jbC" firstAttribute="trailing" secondItem="9bX-vQ-d07" secondAttribute="trailing" id="uye-Jd-A3j"/>
+                            <constraint firstItem="aOs-4c-hcv" firstAttribute="top" secondItem="fuN-bp-l5F" secondAttribute="bottom" constant="37" id="wzL-Z2-IOl"/>
+                            <constraint firstItem="dXH-et-6HW" firstAttribute="trailing" secondItem="Vwn-fF-uNx" secondAttribute="trailing" id="xBh-71-hM8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oi7-8o-ZDx"/>
@@ -337,7 +536,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qHN-Ua-pzr"/>
+        <segue reference="1BO-mg-YjO"/>
+        <segue reference="CTH-WT-H8A"/>
+        <segue reference="Ldq-Rd-rdy"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
