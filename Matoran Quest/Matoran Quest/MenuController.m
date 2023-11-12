@@ -17,7 +17,10 @@
     [super viewDidLoad];
     [_title1 setFont:[UIFont fontWithName:@"Mata Nui" size:15]];
     [_title2 setFont:[UIFont fontWithName:@"GoudyTrajan-Regular" size:16]];
+
+
 }
+
 
 /*
 #pragma mark - Navigation
