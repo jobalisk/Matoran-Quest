@@ -304,21 +304,30 @@
                                     <segue destination="fUa-bY-8jl" kind="show" id="qHN-Ua-pzr"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAA-F2-cxF">
+                                <rect key="frame" x="162.66666666666666" y="807.66666666666663" width="67.666666666666657" height="14.333333333333371"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tHM-2h-dPo"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="R4m-kR-9GS" firstAttribute="top" secondItem="y0B-zv-UR9" secondAttribute="bottom" constant="12" id="CbY-Vf-jtH"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="leading" secondItem="JhT-N3-6uU" secondAttribute="leadingMargin" id="H01-g9-2tg"/>
+                            <constraint firstItem="mAA-F2-cxF" firstAttribute="centerX" secondItem="y0B-zv-UR9" secondAttribute="centerX" id="PkG-l8-cbN"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="trailing" secondItem="R4m-kR-9GS" secondAttribute="trailing" id="YN0-Ug-2D0"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="top" secondItem="JhT-N3-6uU" secondAttribute="top" constant="20" symbolic="YES" id="bdY-F6-1xZ"/>
                             <constraint firstAttribute="bottom" secondItem="R4m-kR-9GS" secondAttribute="bottom" constant="20" symbolic="YES" id="nhv-jI-BG9"/>
+                            <constraint firstItem="mAA-F2-cxF" firstAttribute="bottom" secondItem="R4m-kR-9GS" secondAttribute="bottom" id="njQ-3R-Vfy"/>
                             <constraint firstItem="R4m-kR-9GS" firstAttribute="leading" secondItem="tHM-2h-dPo" secondAttribute="leading" constant="292" id="sTG-YA-TLT"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="trailing" secondItem="JhT-N3-6uU" secondAttribute="trailingMargin" id="wgu-HV-XHv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fcb-wT-ub8"/>
                     <connections>
+                        <outlet property="theLabel" destination="mAA-F2-cxF" id="OIX-E5-hD0"/>
                         <outlet property="theMap" destination="y0B-zv-UR9" id="1FJ-Ni-fh7"/>
                     </connections>
                 </viewController>
@@ -335,13 +344,13 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MapController : UIViewController
 
 @property (nonatomic, weak) IBOutlet MKMapView *theMap; //the players name feild setter
+@property (nonatomic, weak) IBOutlet UILabel *theLabel; //test label
+
 @end
 
 NS_ASSUME_NONNULL_END
