@@ -9,7 +9,7 @@
 #import "PlayerDetailsController.h"
 
 
-@interface MapController ()
+@interface MapController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @end
 
@@ -72,6 +72,9 @@ int playerWalkingSprite = 0; //the sprite number we're on
     }else {
         // your code to return annotationView or pinAnnotationView
         MKAnnotationView  *userannotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
+        userannotationView.draggable = YES;
+        userannotationView.canShowCallout = YES;
+        userannotationView.image = [UIImage imageNamed:@"item.png"];
         return userannotationView;
     }
 }
@@ -103,7 +106,6 @@ int playerWalkingSprite = 0; //the sprite number we're on
     //set user location image
     MKAnnotationView *playerSprite;
     [playerSprite setImage:[UIImage imageNamed:@"MatoranStandingStill.png"]];
-    
     /*
     MKPointAnnotation *playerLocation;
     [playerLocation setCoordinate:_theMap.userLocation.location.coordinate];
@@ -126,12 +128,14 @@ int playerWalkingSprite = 0; //the sprite number we're on
     CLLocationCoordinate2D location;
     location.latitude = aUserLocation.coordinate.latitude;
     location.longitude = aUserLocation.coordinate.longitude;
+    NSLog(@"Lat: %f", aUserLocation.coordinate.latitude);
+    NSLog(@"Long: %f", aUserLocation.coordinate.longitude );
     region.span = span;
     region.center = location;
     [aMapView setRegion:region animated:NO];
     
     [_theMap userLocation];
-    [self addAnnotation];
+    
     if([_theLabel.text isEqualToString: @"Updated2"]){
         _theMap.showsUserLocation = false;
         [_theLabel setText:@"Updated3"];
@@ -139,7 +143,7 @@ int playerWalkingSprite = 0; //the sprite number we're on
     else{
         [_theLabel setText:@"Updated2"];
     }
-    
+    [self add1Annotation];
     _theMap.showsUserLocation = true;
     //NSLog(@"Updated!");
     
@@ -155,18 +159,16 @@ int playerWalkingSprite = 0; //the sprite number we're on
 
 //update player location when player location has moved
 
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
 
 
-}
-
--(void)addAnnotation{
-    MKPointAnnotation *playerLocation;
-    [playerLocation setCoordinate:_theMap.userLocation.location.coordinate];
-    [playerLocation setCoordinate:_theMap.userLocation.location.coordinate];
-    [playerLocation setTitle:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]];
-    [playerLocation setSubtitle:@"Current Location"];
-    [_theMap addAnnotation:playerLocation];
+-(void)add1Annotation{ //create 1 annotation
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate: CLLocationCoordinate2DMake(-45.861659, 170.627214)];
+    [annotation setTitle:@"What could it be?"];
+    [annotation setSubtitle:@"Its a mystery..."];
+    [_theMap addAnnotation:annotation];
+    NSLog(@"added!");
+    //[self zoomInOnLocation: CLLocationCoordinate2DMake(-45.861659, 170.627214)];
 }
 
 -(void)playerWalker: (MKAnnotationView *) theView{
@@ -192,6 +194,13 @@ int playerWalkingSprite = 0; //the sprite number we're on
     }
 }
 
+-(void)zoomInOnLocation:(CLLocationCoordinate2D)location //go to where a pin has been dropped
+{
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location, 200, 200);
+    [_theMap setRegion:[_theMap regionThatFits:region] animated:YES];
+}
+
+
 /*
 #pragma mark - Navigation
 
@@ -201,5 +210,7 @@ int playerWalkingSprite = 0; //the sprite number we're on
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end
