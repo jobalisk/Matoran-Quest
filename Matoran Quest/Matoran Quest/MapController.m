@@ -1,38 +1,21 @@
 //
-//  PlayerDetailsController.m
+//  MapController.m
 //  Matoran Quest
 //
 //  Created by Job Dyer on 12/11/23.
 //
 
-#import "PlayerDetailsController.h"
+#import "MapController.h"
 
-@interface PlayerDetailsController ()
+@interface MapController ()
 
 @end
 
-@implementation PlayerDetailsController
-
-NSString *playerName; //store the players name
-
+@implementation MapController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
-
-
-
--(IBAction) playerNameFieldCatcher: (id) sender
-{
-    playerName = _playerNameField.text;
 }
 
 /*

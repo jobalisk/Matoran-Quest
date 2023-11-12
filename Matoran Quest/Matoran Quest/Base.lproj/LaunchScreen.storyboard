@@ -21,34 +21,38 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bionicle - Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5K-rs-ic2">
-                                <rect key="frame" x="26" y="450" width="362" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="4Au-1m-EPk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="16"/>
-                                <color key="textColor" systemColor="systemBrownColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eternity Ware Studios Presents..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgJ-WB-aZf">
-                                <rect key="frame" x="20" y="201" width="367" height="21"/>
+                                <rect key="frame" x="22" y="201" width="367" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Ybe-rn-b27"/>
+                                    <constraint firstAttribute="width" secondItem="qgJ-WB-aZf" secondAttribute="height" multiplier="367:21" id="7aE-cT-Uco"/>
+                                    <constraint firstAttribute="width" constant="367" id="tyV-h2-xxm"/>
+                                    <constraint firstAttribute="height" constant="21" id="xWI-Ne-bc4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="15"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bionicle - Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMP-Gu-s4F">
-                                <rect key="frame" x="33" y="476" width="361" height="18"/>
+                                <rect key="frame" x="22" y="479" width="367" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="a8X-l4-v84"/>
+                                    <constraint firstAttribute="width" constant="361" id="XRg-7v-Fba"/>
+                                    <constraint firstAttribute="width" secondItem="dMP-Gu-s4F" secondAttribute="height" multiplier="361:18" id="elm-g9-2Ig"/>
+                                    <constraint firstAttribute="height" constant="18" id="zsC-6Y-GNX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="23"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bionicle - Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5K-rs-ic2">
+                                <rect key="frame" x="22" y="453" width="367" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="Y07-zH-3XP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -56,15 +60,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="b5K-rs-ic2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="95A-cj-bIj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qgJ-WB-aZf" secondAttribute="trailing" constant="27" id="QyW-cQ-V5g"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dMP-Gu-s4F" secondAttribute="bottom" constant="368" id="YuJ-aY-v4a"/>
-                            <constraint firstItem="b5K-rs-ic2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="Zy6-Mz-eo0"/>
-                            <constraint firstItem="qgJ-WB-aZf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="aEn-Uj-ozr"/>
-                            <constraint firstItem="dMP-Gu-s4F" firstAttribute="top" secondItem="b5K-rs-ic2" secondAttribute="bottom" constant="8" symbolic="YES" id="ccm-o7-pZd"/>
-                            <constraint firstItem="dMP-Gu-s4F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="33" id="dQo-A6-HRs"/>
-                            <constraint firstItem="dMP-Gu-s4F" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="jxB-FD-7Oa"/>
-                            <constraint firstItem="qgJ-WB-aZf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="153" id="l9E-bQ-diP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b5K-rs-ic2" secondAttribute="trailing" constant="30" id="BNa-0T-Qr0"/>
+                            <constraint firstItem="b5K-rs-ic2" firstAttribute="top" secondItem="qgJ-WB-aZf" secondAttribute="bottom" constant="231" id="JEs-cH-wvc"/>
+                            <constraint firstItem="b5K-rs-ic2" firstAttribute="centerX" secondItem="dMP-Gu-s4F" secondAttribute="centerX" id="Jeb-bs-r8k"/>
+                            <constraint firstItem="b5K-rs-ic2" firstAttribute="centerX" secondItem="qgJ-WB-aZf" secondAttribute="centerX" id="KLh-1k-jYm"/>
+                            <constraint firstItem="dMP-Gu-s4F" firstAttribute="top" secondItem="b5K-rs-ic2" secondAttribute="bottom" constant="8" symbolic="YES" id="MGg-l5-Syb"/>
+                            <constraint firstItem="dMP-Gu-s4F" firstAttribute="height" secondItem="qgJ-WB-aZf" secondAttribute="height" id="Xxs-gJ-y9N"/>
+                            <constraint firstItem="dMP-Gu-s4F" firstAttribute="top" secondItem="b5K-rs-ic2" secondAttribute="bottom" constant="8" id="a6d-Kh-cWz"/>
+                            <constraint firstItem="b5K-rs-ic2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="a97-ZI-CTq"/>
+                            <constraint firstItem="qgJ-WB-aZf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="153" id="dBp-j8-Gfv"/>
+                            <constraint firstItem="dMP-Gu-s4F" firstAttribute="width" secondItem="qgJ-WB-aZf" secondAttribute="width" id="e3l-nh-asg"/>
+                            <constraint firstItem="b5K-rs-ic2" firstAttribute="trailing" secondItem="dMP-Gu-s4F" secondAttribute="trailing" id="gG9-fD-D5E"/>
+                            <constraint firstAttribute="bottom" secondItem="b5K-rs-ic2" secondAttribute="bottom" constant="428" id="qKZ-Nz-YNv"/>
                         </constraints>
                     </view>
                     <connections>
