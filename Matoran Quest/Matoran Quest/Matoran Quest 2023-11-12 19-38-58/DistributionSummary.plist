@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Matoran Quest.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>1</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>4DFD00C05758FE2AED5BB26E731FA59888BB5819</string>
+				<key>dateExpires</key>
+				<string>19/03/24</string>
+				<key>type</key>
+				<string>Cloud Managed Apple Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>M2GX896VLW.EternityWareStudios.JobDyer.Matoran-Quest</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>M2GX896VLW</string>
+				<key>get-task-allow</key>
+				<false/>
+			</dict>
+			<key>name</key>
+			<string>Matoran Quest.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>e4ff239d-5ccb-45c0-b4e4-3462727ba582</string>
+				<key>dateExpires</key>
+				<string>3/04/24</string>
+				<key>name</key>
+				<string>iOS Team Ad Hoc Provisioning Profile: EternityWareStudios.JobDyer.Matoran-Quest</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>M2GX896VLW</string>
+				<key>name</key>
+				<string>Job Dyer</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>0.0.0.1</string>
+		</dict>
+	</array>
+</dict>
+</plist>
