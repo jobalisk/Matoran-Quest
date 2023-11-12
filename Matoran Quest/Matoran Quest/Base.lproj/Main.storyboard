@@ -370,6 +370,40 @@
                                     <segue destination="q8n-sj-w8s" kind="show" id="Y5l-SI-aMw"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uqA-OO-Lwy">
+                                <rect key="frame" x="76" y="209" width="240" height="237"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="237" id="wO4-ow-fQ9"/>
+                                </constraints>
+                            </imageView>
+                            <colorWell contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4VC-ii-Nk7">
+                                <rect key="frame" x="76" y="454" width="67" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="nm2-A6-hBT"/>
+                                </constraints>
+                            </colorWell>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the colour wheel to choose a colour" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcs-d6-mXd">
+                                <rect key="frame" x="151" y="451" width="165" height="63"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3c-8I-kU1">
+                                <rect key="frame" x="76" y="519" width="240" height="96"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="ehx-X6-3fE"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Kanohi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gh0-b9-hFc">
+                                <rect key="frame" x="76" y="623" width="240" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="4EX-Ws-DgH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mp6-Yn-1rZ"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -377,16 +411,34 @@
                             <constraint firstItem="MrU-Eg-sd3" firstAttribute="leading" secondItem="EtH-Jq-jeU" secondAttribute="leading" id="0jh-uk-VNl"/>
                             <constraint firstItem="MrU-Eg-sd3" firstAttribute="trailing" secondItem="EtH-Jq-jeU" secondAttribute="trailing" id="0kL-l7-aIW"/>
                             <constraint firstItem="Rdk-5M-WY0" firstAttribute="top" secondItem="EtH-Jq-jeU" secondAttribute="bottom" constant="8" id="6nJ-aD-hkx"/>
+                            <constraint firstItem="uqA-OO-Lwy" firstAttribute="top" secondItem="1OT-7b-hUD" secondAttribute="top" constant="209" id="8kd-jk-l8U"/>
+                            <constraint firstAttribute="bottom" secondItem="m3c-8I-kU1" secondAttribute="bottom" constant="227" id="9vm-C2-17L"/>
+                            <constraint firstItem="uqA-OO-Lwy" firstAttribute="top" secondItem="Rdk-5M-WY0" secondAttribute="bottom" constant="32" id="CLl-EC-gKZ"/>
+                            <constraint firstItem="Mp6-Yn-1rZ" firstAttribute="trailing" secondItem="Tcs-d6-mXd" secondAttribute="trailing" constant="77" id="GjI-PS-eVa"/>
                             <constraint firstItem="EtH-Jq-jeU" firstAttribute="leading" secondItem="Rdk-5M-WY0" secondAttribute="leading" id="Hu1-iG-ljA"/>
+                            <constraint firstItem="uqA-OO-Lwy" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="76" id="Igz-Hk-dzm"/>
+                            <constraint firstItem="m3c-8I-kU1" firstAttribute="leading" secondItem="4VC-ii-Nk7" secondAttribute="leading" id="J9m-B7-hml"/>
+                            <constraint firstItem="4VC-ii-Nk7" firstAttribute="top" secondItem="uqA-OO-Lwy" secondAttribute="bottom" constant="8" id="JDJ-Yp-UlC"/>
                             <constraint firstItem="b78-lS-MfK" firstAttribute="bottom" secondItem="Mp6-Yn-1rZ" secondAttribute="bottom" id="JhF-7M-Qy1"/>
                             <constraint firstItem="MrU-Eg-sd3" firstAttribute="top" secondItem="1OT-7b-hUD" secondAttribute="topMargin" constant="-26" id="KXJ-PB-xm9"/>
+                            <constraint firstItem="Tcs-d6-mXd" firstAttribute="top" secondItem="uqA-OO-Lwy" secondAttribute="bottom" constant="5" id="MDr-UW-qbZ"/>
                             <constraint firstItem="b78-lS-MfK" firstAttribute="trailing" secondItem="1OT-7b-hUD" secondAttribute="trailingMargin" id="PhC-gr-tpA"/>
+                            <constraint firstItem="Mp6-Yn-1rZ" firstAttribute="trailing" secondItem="4VC-ii-Nk7" secondAttribute="trailing" constant="250" id="TxC-sP-Qc4"/>
+                            <constraint firstItem="Tcs-d6-mXd" firstAttribute="centerY" secondItem="4VC-ii-Nk7" secondAttribute="centerY" id="WI2-Gb-aju"/>
                             <constraint firstItem="b78-lS-MfK" firstAttribute="centerX" secondItem="1OT-7b-hUD" secondAttribute="centerX" id="X5e-U6-6RH"/>
+                            <constraint firstItem="gh0-b9-hFc" firstAttribute="top" secondItem="m3c-8I-kU1" secondAttribute="bottom" constant="8" id="Xlp-Cv-vE5"/>
                             <constraint firstItem="MrU-Eg-sd3" firstAttribute="trailing" secondItem="Fpy-pq-3vc" secondAttribute="trailing" id="ZDh-Op-pL2"/>
+                            <constraint firstItem="gh0-b9-hFc" firstAttribute="trailing" secondItem="m3c-8I-kU1" secondAttribute="trailing" id="a4m-an-iJI"/>
                             <constraint firstItem="MrU-Eg-sd3" firstAttribute="leading" secondItem="Fpy-pq-3vc" secondAttribute="leading" id="bQR-Kr-kdu"/>
+                            <constraint firstItem="4VC-ii-Nk7" firstAttribute="leading" secondItem="uqA-OO-Lwy" secondAttribute="leading" id="eYM-Af-TJJ"/>
                             <constraint firstItem="Fpy-pq-3vc" firstAttribute="top" secondItem="MrU-Eg-sd3" secondAttribute="bottom" constant="8" id="isj-N5-AzJ"/>
+                            <constraint firstItem="uqA-OO-Lwy" firstAttribute="centerX" secondItem="Rdk-5M-WY0" secondAttribute="centerX" id="lnu-G6-b5V"/>
                             <constraint firstItem="EtH-Jq-jeU" firstAttribute="top" secondItem="Mp6-Yn-1rZ" secondAttribute="top" constant="60" id="mAe-rG-KEc"/>
+                            <constraint firstItem="Tcs-d6-mXd" firstAttribute="trailing" secondItem="m3c-8I-kU1" secondAttribute="trailing" id="mgj-As-3UU"/>
                             <constraint firstItem="EtH-Jq-jeU" firstAttribute="leading" secondItem="1OT-7b-hUD" secondAttribute="leadingMargin" id="nA0-c8-qP1"/>
+                            <constraint firstItem="gh0-b9-hFc" firstAttribute="leading" secondItem="m3c-8I-kU1" secondAttribute="leading" id="oFP-d9-jvd"/>
+                            <constraint firstItem="Tcs-d6-mXd" firstAttribute="leading" secondItem="4VC-ii-Nk7" secondAttribute="trailing" constant="8" id="qsl-Qa-Tvy"/>
+                            <constraint firstItem="m3c-8I-kU1" firstAttribute="trailing" secondItem="uqA-OO-Lwy" secondAttribute="trailing" id="s3H-O8-nie"/>
                             <constraint firstItem="EtH-Jq-jeU" firstAttribute="trailing" secondItem="Rdk-5M-WY0" secondAttribute="trailing" id="t9c-mq-gE9"/>
                             <constraint firstItem="EtH-Jq-jeU" firstAttribute="centerX" secondItem="1OT-7b-hUD" secondAttribute="centerX" id="wKc-Hu-yuN"/>
                         </constraints>
@@ -398,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ET-he-3ks" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="822"/>
+            <point key="canvasLocation" x="852.67175572519079" y="821.83098591549299"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -603,7 +655,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qHN-Ua-pzr"/>
+        <segue reference="1BO-mg-YjO"/>
         <segue reference="mxv-5u-YSP"/>
         <segue reference="Y5l-SI-aMw"/>
     </inferredMetricsTieBreakers>

@@ -14,9 +14,11 @@
 @implementation PlayerEditController
 
 NSUserDefaults *playerDetails;
+NSMutableArray *kanohiList;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    kanohiList = [[NSMutableArray alloc] init];
     playerDetails = [NSUserDefaults standardUserDefaults];
     _playerNameField.delegate = self;
     _playerNameField.returnKeyType = UIReturnKeyDone;
