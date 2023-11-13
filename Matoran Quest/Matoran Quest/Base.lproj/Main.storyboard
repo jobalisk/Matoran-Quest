@@ -503,14 +503,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtH-Jq-jeU">
-                                <rect key="frame" x="16" y="116.33333333333333" width="360" height="15.999999999999986"/>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
-                                <color key="textColor" systemColor="systemBrownColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-5M-WY0">
-                                <rect key="frame" x="76" y="140.33333333333334" width="240" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-5M-WY0">
+                                <rect key="frame" x="85" y="140" width="240" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -554,50 +548,74 @@
                                 </constraints>
                             </colorWell>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3c-8I-kU1">
-                                <rect key="frame" x="27" y="419" width="360" height="93"/>
+                                <rect key="frame" x="27" y="419" width="360" height="71"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="93" id="rz2-qY-34h"/>
+                                    <constraint firstAttribute="height" constant="71" id="rz2-qY-34h"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="nNl-6b-2fA" id="CBk-Ne-ucH"/>
+                                    <outlet property="delegate" destination="nNl-6b-2fA" id="d2N-Rz-71P"/>
+                                </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Kanohi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gh0-b9-hFc">
-                                <rect key="frame" x="27" y="520" width="360" height="13"/>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select a Kanohi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gh0-b9-hFc">
+                                <rect key="frame" x="27" y="498" width="360" height="10"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="12"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZ0-fl-t4c">
-                                <rect key="frame" x="156" y="354" width="118" height="57"/>
+                                <rect key="frame" x="16" y="538" width="378" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="bd3-f1-t0F"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="STIXTwoText" family="STIX Two Text" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Set Colour">
+                                <state key="normal" title="Tap to apply changes">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="colourButtonPressed:" destination="nNl-6b-2fA" eventType="touchUpInside" id="Knk-lj-UrI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Colour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfN-1P-AO1">
+                                <rect key="frame" x="137" y="367" width="140" height="29"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="12"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <color key="highlightedColor" systemColor="systemBrownColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtH-Jq-jeU">
+                                <rect key="frame" x="27" y="116" width="360" height="15.999999999999986"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mp6-Yn-1rZ"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="GZ0-fl-t4c" firstAttribute="leading" secondItem="EtH-Jq-jeU" secondAttribute="leading" constant="-11" id="07X-5v-Fae"/>
                             <constraint firstItem="MrU-Eg-sd3" firstAttribute="top" secondItem="Mp6-Yn-1rZ" secondAttribute="top" constant="33" id="BcD-J4-ra8"/>
                             <constraint firstItem="Mp6-Yn-1rZ" firstAttribute="trailing" secondItem="4VC-ii-Nk7" secondAttribute="trailing" constant="251" id="CVU-G4-3tR"/>
                             <constraint firstItem="uqA-OO-Lwy" firstAttribute="top" secondItem="Rdk-5M-WY0" secondAttribute="bottom" constant="28.666666666666657" id="D8l-Qa-8wc"/>
+                            <constraint firstItem="AfN-1P-AO1" firstAttribute="top" secondItem="uqA-OO-Lwy" secondAttribute="bottom" constant="8" id="DQ5-mY-1vH"/>
+                            <constraint firstItem="GZ0-fl-t4c" firstAttribute="trailing" secondItem="b78-lS-MfK" secondAttribute="trailing" id="F4S-7I-1Cg"/>
                             <constraint firstItem="Mp6-Yn-1rZ" firstAttribute="trailing" secondItem="MrU-Eg-sd3" secondAttribute="trailing" constant="38" id="F6v-oJ-eLG"/>
                             <constraint firstItem="MrU-Eg-sd3" firstAttribute="leading" secondItem="Fpy-pq-3vc" secondAttribute="leading" id="G5N-yF-hUt"/>
                             <constraint firstItem="Fpy-pq-3vc" firstAttribute="top" secondItem="MrU-Eg-sd3" secondAttribute="bottom" constant="8.3333333333333428" id="GzH-fP-NuU"/>
                             <constraint firstItem="m3c-8I-kU1" firstAttribute="trailing" secondItem="gh0-b9-hFc" secondAttribute="trailing" id="HeA-ak-wlj"/>
                             <constraint firstItem="Rdk-5M-WY0" firstAttribute="top" secondItem="EtH-Jq-jeU" secondAttribute="bottom" constant="8.0000000000000284" id="J5D-yO-iSp"/>
-                            <constraint firstItem="Rdk-5M-WY0" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="76" id="JQt-aJ-rNT"/>
+                            <constraint firstItem="AfN-1P-AO1" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="137" id="JOE-3o-GwF"/>
+                            <constraint firstItem="Rdk-5M-WY0" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="85" id="JQt-aJ-rNT"/>
                             <constraint firstItem="m3c-8I-kU1" firstAttribute="top" secondItem="4VC-ii-Nk7" secondAttribute="bottom" constant="8" id="MFT-WL-oj6"/>
-                            <constraint firstItem="GZ0-fl-t4c" firstAttribute="trailing" secondItem="uqA-OO-Lwy" secondAttribute="trailing" constant="-31" id="NcZ-1o-YQg"/>
-                            <constraint firstItem="EtH-Jq-jeU" firstAttribute="centerX" secondItem="Rdk-5M-WY0" secondAttribute="centerX" id="OVv-gR-SCO"/>
+                            <constraint firstItem="EtH-Jq-jeU" firstAttribute="centerX" secondItem="Rdk-5M-WY0" secondAttribute="centerX" constant="2" id="OVv-gR-SCO"/>
+                            <constraint firstItem="GZ0-fl-t4c" firstAttribute="top" secondItem="gh0-b9-hFc" secondAttribute="bottom" constant="30" id="Ock-Wp-FdL"/>
                             <constraint firstItem="m3c-8I-kU1" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="27" id="QEe-Fi-xo8"/>
-                            <constraint firstItem="Fpy-pq-3vc" firstAttribute="leading" secondItem="EtH-Jq-jeU" secondAttribute="leading" id="RrW-cG-udW"/>
-                            <constraint firstItem="GZ0-fl-t4c" firstAttribute="centerY" secondItem="4VC-ii-Nk7" secondAttribute="centerY" id="TK7-6B-5j2"/>
-                            <constraint firstItem="Fpy-pq-3vc" firstAttribute="trailing" secondItem="EtH-Jq-jeU" secondAttribute="trailing" id="WdI-rD-X6G"/>
+                            <constraint firstItem="Fpy-pq-3vc" firstAttribute="leading" secondItem="EtH-Jq-jeU" secondAttribute="leading" constant="-11" id="RrW-cG-udW"/>
+                            <constraint firstItem="m3c-8I-kU1" firstAttribute="top" secondItem="AfN-1P-AO1" secondAttribute="bottom" constant="23" id="WFg-sS-Z54"/>
+                            <constraint firstItem="Fpy-pq-3vc" firstAttribute="trailing" secondItem="EtH-Jq-jeU" secondAttribute="trailing" constant="-11" id="WdI-rD-X6G"/>
                             <constraint firstItem="m3c-8I-kU1" firstAttribute="leading" secondItem="gh0-b9-hFc" secondAttribute="leading" id="XOX-5C-AGE"/>
+                            <constraint firstItem="AfN-1P-AO1" firstAttribute="centerX" secondItem="m3c-8I-kU1" secondAttribute="centerX" id="b5H-de-hOS"/>
                             <constraint firstItem="MrU-Eg-sd3" firstAttribute="trailing" secondItem="Fpy-pq-3vc" secondAttribute="trailing" id="fr6-wc-EcP"/>
                             <constraint firstItem="uqA-OO-Lwy" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="109" id="fwj-bq-tPy"/>
                             <constraint firstItem="4VC-ii-Nk7" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="75" id="ijk-hS-XkC"/>
@@ -605,7 +623,6 @@
                             <constraint firstItem="MrU-Eg-sd3" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="16" id="pBc-GK-662"/>
                             <constraint firstItem="EtH-Jq-jeU" firstAttribute="top" secondItem="Fpy-pq-3vc" secondAttribute="bottom" constant="41.999999999999972" id="pnq-Oi-ac0"/>
                             <constraint firstItem="gh0-b9-hFc" firstAttribute="centerX" secondItem="b78-lS-MfK" secondAttribute="centerX" id="rD2-WB-O65"/>
-                            <constraint firstItem="GZ0-fl-t4c" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="156" id="rMQ-K2-9eS"/>
                             <constraint firstItem="gh0-b9-hFc" firstAttribute="top" secondItem="m3c-8I-kU1" secondAttribute="bottom" constant="8" id="tbh-R9-tBN"/>
                             <constraint firstItem="m3c-8I-kU1" firstAttribute="top" secondItem="uqA-OO-Lwy" secondAttribute="bottom" constant="60" id="uvk-vu-KSd"/>
                             <constraint firstItem="uqA-OO-Lwy" firstAttribute="centerX" secondItem="m3c-8I-kU1" secondAttribute="centerX" id="vkZ-ac-YAU"/>
@@ -818,11 +835,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pvF-zg-jJD"/>
         <segue reference="YIO-Bn-OL9"/>
         <segue reference="CTH-WT-H8A"/>
         <segue reference="FnT-oO-gnw"/>
-        <segue reference="a6Z-om-Vhp"/>
+        <segue reference="Y5l-SI-aMw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">

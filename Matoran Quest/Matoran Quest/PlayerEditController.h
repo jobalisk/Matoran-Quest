@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) IBOutlet UITextField *playerNameField; //the players name feild setter
 @property (nonatomic, weak) IBOutlet UIColorWell *playerColourPicker; //the players name feild setter
+@property (nonatomic, weak) IBOutlet UIPickerView *playerMaskChooser; //the players name feild setter
 
 @property (nonatomic, weak) IBOutlet UIImageView *playerPortrait; //the players picture
 

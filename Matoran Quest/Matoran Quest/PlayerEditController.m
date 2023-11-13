@@ -7,23 +7,27 @@
 
 #import "PlayerEditController.h"
 
-@interface PlayerEditController () <UITextFieldDelegate>
+@interface PlayerEditController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @end
 
 @implementation PlayerEditController
 
 NSUserDefaults *playerDetails;
-NSMutableArray *kanohiList;
+NSArray *kanohiList;
 NSNotificationCenter *colorCenter;
 UIImage *playerSprite; //the image in the player portrait
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    kanohiList = [[NSMutableArray alloc] init];
+    
+    kanohiList = [NSArray arrayWithObjects: @"Unmasked", @"Hau", @"Miru", @"Kakama", @"Akaku", @"Huna", @"Rau", @"Matatu", @"Pakari", @"Ruru", @"Kaukau", @"Mahiki", @"Komau", nil]; //load up masks availible to player
     playerDetails = [NSUserDefaults standardUserDefaults];
     _playerNameField.delegate = self;
     _playerNameField.returnKeyType = UIReturnKeyDone;
+    _playerMaskChooser.delegate = self;
+    _playerMaskChooser.dataSource = self;
     
     //try to set a player name
 
@@ -50,8 +54,11 @@ UIImage *playerSprite; //the image in the player portrait
     [_playerPortrait setContentScaleFactor: UIViewContentModeScaleAspectFit];
     
     
-    // set an observer for the colour well
+    // set up the picker view
+    [_playerMaskChooser setDataSource: self];
+    
 
+    
 }
 
 -(void)colourWellPressed{
@@ -122,6 +129,31 @@ UIImage *playerSprite; //the image in the player portrait
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+
+//picker view functions
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
+}
+
+- (NSInteger)selectedRowInComponent:(NSInteger)component{
+    return kanohiList.count;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)thePickerView
+numberOfRowsInComponent:(NSInteger)component {
+    return kanohiList.count;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+     return 1;  // 1 item in it (as it, collumns)
+}
+
+- (NSString *)pickerView:(UIPickerView *)thePickerView
+             titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [NSString stringWithFormat: @"%@", kanohiList[row]];//Or, your suitable title; like Choice-a, etc.
 }
 
 
