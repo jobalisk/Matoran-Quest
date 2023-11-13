@@ -21,8 +21,9 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 60;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 30 seconds
+int playerUpdateTimerMax = 20;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 30 seconds
 int walkingTimer = 0; //this is for working out walking intervals
+int randomThing; //a random number for item placement purposes
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,8 +52,8 @@ int walkingTimer = 0; //this is for working out walking intervals
     //next, set up the map view
     _theMap.delegate = self;
     [_theMap setMapType: MKMapTypeStandard];
-    [_theMap setZoomEnabled:false];
-    [_theMap setScrollEnabled:false];
+    //[_theMap setZoomEnabled:false];
+    //[_theMap setScrollEnabled:false];
     userLocation = CGPointMake(_theMap.userLocation.location.coordinate.longitude, _theMap.userLocation.location.coordinate.latitude);
     _theMap.showsUserLocation = true;
     [_theMap.userLocation setTitle:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]];
@@ -134,10 +135,59 @@ int walkingTimer = 0; //this is for working out walking intervals
         //reset the timer every 30 seconds or so and update the new long and lat at current pos. before storing new long and lat, compare current with old old to see if the player has moved sufficently.
         float compLat = _theMap.userLocation.location.coordinate.latitude - playerOldLat;
         float compLong = _theMap.userLocation.location.coordinate.longitude - playerOldLong;
+        float Lo = _theMap.userLocation.location.coordinate.longitude; //these two are required for getting a item drop spot
+        float La = _theMap.userLocation.location.coordinate.latitude;
         //if we've moved more than around 5 meters...
-        if(compLat > 0.000005){
-            if(compLong > 0.000005){
-                [self add1Annotation];
+        if(compLat > 0.000005 || compLong > 0.000005){
+            randomThing = arc4random_uniform(4); //generate a random number for spawn rate
+            [_theLabel setText: [NSString stringWithFormat: @"%d", randomThing]];
+            if(randomThing != 3){ //1 chance in 3 that the item does not spawn
+                randomThing = arc4random_uniform(8); //generate a random number for spawn location
+                if (randomThing == 0){ //I tried this with cases but it didn't work
+                    Lo += 0.00015;
+                    [self add1AnnotationWithLong:Lo andLat:La];
+                }
+                else if (randomThing == 1){
+                    Lo -= 0.00015;
+                    [self add1AnnotationWithLong:Lo andLat:La];
+                }
+                else if (randomThing == 2){
+                    La += 0.00015;
+                    [self add1AnnotationWithLong:Lo andLat:La];
+                }
+                else if (randomThing == 3){
+                    La -= 0.00015;
+                    [self add1AnnotationWithLong:Lo andLat:La];
+                }
+                else if (randomThing == 4){
+                    Lo += 0.00015;
+                    La -= 0.00015;
+                    [self add1AnnotationWithLong:Lo andLat:La];
+                }
+                else if (randomThing == 5){
+                    Lo += 0.00015;
+                    La += 0.00015;
+                    [self add1AnnotationWithLong:Lo andLat:La];
+                }
+                else if (randomThing == 6){
+                    Lo -= 0.00015;
+                    La += 0.00015;
+                    [self add1AnnotationWithLong:Lo andLat:La];
+                }
+                else if (randomThing == 7){
+                    Lo -= 0.00015;
+                    La += 0.00015;
+                    [self add1AnnotationWithLong:Lo andLat:La];
+                }
+                else if (randomThing == 8){
+                    Lo += 0.00015;
+                    [self add1AnnotationWithLong:Lo andLat:La];//the item is NEVER placed directly under the player
+                }
+                else{
+                    Lo += 0.00015;
+                    [self add1AnnotationWithLong:Lo andLat:La];
+                }
+                
             }
         }
          
@@ -154,7 +204,7 @@ int walkingTimer = 0; //this is for working out walking intervals
     span.latitudeDelta = 0.0008; //zoom level (the smaller the number the bigger the zoom
     span.longitudeDelta = 0.0008;
     CLLocationCoordinate2D location;
-    location.latitude = aUserLocation.coordinate.latitude;
+    location.latitude = aUserLocation.coordinate.latitude; //go to player location and center on it
     location.longitude = aUserLocation.coordinate.longitude;
     //NSLog(@"Lat: %f", aUserLocation.coordinate.latitude);
     //NSLog(@"Long: %f", aUserLocation.coordinate.longitude );
@@ -163,9 +213,9 @@ int walkingTimer = 0; //this is for working out walking intervals
     [aMapView setRegion:region animated:NO];
     
     [_theMap userLocation];
-    
+    //walking timer is used for animations
     if(walkingTimer == 0){
-        _theMap.showsUserLocation = false;
+        _theMap.showsUserLocation = false; //turning this on and off again gets the players sprite to redraw and animate
         walkingTimer = 1;
         
     }
@@ -179,6 +229,8 @@ int walkingTimer = 0; //this is for working out walking intervals
             [_theLabel setText:[NSString stringWithFormat:@"Lat: %f", aUserLocation.coordinate.latitude]];
         }
         
+        
+        
     }
     
     _theMap.showsUserLocation = true;
@@ -190,19 +242,31 @@ int walkingTimer = 0; //this is for working out walking intervals
 }
 
 //if something is clicked on...
+
+
 -(void)mapView:(MKMapView *)aMapView didSelectAnnotation:(nonnull id<MKAnnotation>)annotation{
     //playerWalkingSprite = 3;
     _theMap.showsUserLocation = true;
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        //do nothing
+    }
+    else{
+        //[_theTimer setHidden:true];
+        [_theMap removeAnnotation:annotation]; //remove the annotation if clicked on
+    }
+    
+    
+    
 }
 
 //update player location when player location has moved
 
 
 
--(void)add1Annotation{ //create 1 annotation
+-(void)add1AnnotationWithLong: (float)longitude andLat:(float)latitude{ //create 1 annotation with given long and lat values
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    [annotation setCoordinate: CLLocationCoordinate2DMake(_theMap.userLocation.location.coordinate.latitude, _theMap.userLocation.location.coordinate.longitude)];
-    [annotation setCoordinate: CLLocationCoordinate2DMake(_theMap.userLocation.location.coordinate.latitude, _theMap.userLocation.location.coordinate.longitude)];
+    [annotation setCoordinate: CLLocationCoordinate2DMake(latitude, longitude)];
+    [annotation setCoordinate: CLLocationCoordinate2DMake(latitude, longitude)];
     [annotation setTitle:@"What could it be?"];
     [annotation setSubtitle:@"Its a mystery..."];
     [_theMap addAnnotation:annotation];
@@ -215,31 +279,39 @@ int walkingTimer = 0; //this is for working out walking intervals
 -(void)playerWalker: (MKAnnotationView *) theView{
     UIImage *playerSprite;
     UIColor *color1 = [UIColor colorWithRed:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerRed"] green:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerGreen"] blue:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerBlue"] alpha:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerAlpha"]];
-    if(playerWalkingSprite == 0){
-        playerSprite = [UIImage imageNamed:@"matoran0.png"];
-        playerSprite = [self colorizeImage:playerSprite color:color1];
-        theView.image = playerSprite;
-        playerWalkingSprite = 1;
+    if(playerOldLong != _theMap.userLocation.location.coordinate.longitude){ //only animate if the player has moved
+        if(playerWalkingSprite == 1){
+            playerSprite = [UIImage imageNamed:@"matoran0.png"];
+            playerSprite = [self colorizeImage:playerSprite color:color1];
+            theView.image = playerSprite;
+            playerWalkingSprite = 2;
+        }
+        else if(playerWalkingSprite == 2){
+            playerSprite = [UIImage imageNamed:@"matoran1.png"];
+            playerSprite = [self colorizeImage:playerSprite color:color1];
+            theView.image = playerSprite;
+            playerWalkingSprite = 3;
+        }
+        else if(playerWalkingSprite == 3){
+            playerSprite = [UIImage imageNamed:@"matoran2.png"];
+            playerSprite = [self colorizeImage:playerSprite color:color1];
+            theView.image = playerSprite;
+            playerWalkingSprite = 0;
+        }
+        else if(playerWalkingSprite == 0){
+            playerSprite = [UIImage imageNamed:@"matoran3.png"];
+            playerSprite = [self colorizeImage:playerSprite color:color1];
+            theView.image = playerSprite;
+            playerWalkingSprite = 1;
+        }
+        else{
+            playerSprite = [UIImage imageNamed:@"matoran0.png"];
+            playerSprite = [self colorizeImage:playerSprite color:color1];
+            theView.image = playerSprite;
+            playerWalkingSprite = 0;
+        }
     }
-    else if(playerWalkingSprite == 1){
-        playerSprite = [UIImage imageNamed:@"matoran1.png"];
-        playerSprite = [self colorizeImage:playerSprite color:color1];
-        theView.image = playerSprite;
-        playerWalkingSprite = 2;
-    }
-    else if(playerWalkingSprite == 2){
-        playerSprite = [UIImage imageNamed:@"matoran2.png"];
-        playerSprite = [self colorizeImage:playerSprite color:color1];
-        theView.image = playerSprite;
-        playerWalkingSprite = 3;
-    }
-    else if(playerWalkingSprite == 3){
-        playerSprite = [UIImage imageNamed:@"matoran3.png"];
-        playerSprite = [self colorizeImage:playerSprite color:color1];
-        theView.image = playerSprite;
-        playerWalkingSprite = 0;
-    }
-    else{
+    else{ //do this if the player isn't moving
         playerSprite = [UIImage imageNamed:@"matoran0.png"];
         playerSprite = [self colorizeImage:playerSprite color:color1];
         theView.image = playerSprite;

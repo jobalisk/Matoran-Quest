@@ -31,13 +31,13 @@ UIAlertController* aboutAlert; //the about dialog
     [helpAlert addAction:defaultAction];
     
     
-    
+    /*
     aboutAlert = [UIAlertController alertControllerWithTitle:@"About"
                                    message:@"This game was made by Job Dyer with assets borrowed from the LEGO Group's Bionicle range. The origonal idea came from Ezra Haren (though who knows how many others also had it.)"
                                    preferredStyle:UIAlertControllerStyleAlert];
 
     [aboutAlert addAction:defaultAction];
-    
+    */
     
     
     
@@ -50,7 +50,7 @@ UIAlertController* aboutAlert; //the about dialog
 
 -(IBAction) aboutButton: (id) sender
 {
-    [self presentViewController:aboutAlert animated:YES completion:nil];
+    //[self presentViewController:aboutAlert animated:YES completion:nil];
 }
 
 
