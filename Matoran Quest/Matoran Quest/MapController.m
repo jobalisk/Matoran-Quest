@@ -131,7 +131,19 @@ int walkingTimer = 0; //this is for working out walking intervals
         playerUpdateTimer += 1;
     }
     else{
+        //reset the timer every 30 seconds or so and update the new long and lat at current pos. before storing new long and lat, compare current with old old to see if the player has moved sufficently.
+        float compLat = _theMap.userLocation.location.coordinate.latitude - playerOldLat;
+        float compLong = _theMap.userLocation.location.coordinate.longitude - playerOldLong;
+        //if we've moved more than around 5 meters...
+        if(compLat > 0.000005){
+            if(compLong > 0.000005){
+                [self add1Annotation];
+            }
+        }
+         
         playerUpdateTimer = 0;
+        playerOldLat = _theMap.userLocation.location.coordinate.latitude;
+        playerOldLong = _theMap.userLocation.location.coordinate.longitude;
         
     }
     NSLog(@"Timer: %d", playerUpdateTimer);
@@ -168,7 +180,7 @@ int walkingTimer = 0; //this is for working out walking intervals
         }
         
     }
-    [self add1Annotation];
+    
     _theMap.showsUserLocation = true;
     //NSLog(@"Updated!");
     
@@ -189,7 +201,8 @@ int walkingTimer = 0; //this is for working out walking intervals
 
 -(void)add1Annotation{ //create 1 annotation
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    [annotation setCoordinate: CLLocationCoordinate2DMake(-45.861659, 170.627214)];
+    [annotation setCoordinate: CLLocationCoordinate2DMake(_theMap.userLocation.location.coordinate.latitude, _theMap.userLocation.location.coordinate.longitude)];
+    [annotation setCoordinate: CLLocationCoordinate2DMake(_theMap.userLocation.location.coordinate.latitude, _theMap.userLocation.location.coordinate.longitude)];
     [annotation setTitle:@"What could it be?"];
     [annotation setSubtitle:@"Its a mystery..."];
     [_theMap addAnnotation:annotation];
@@ -197,36 +210,38 @@ int walkingTimer = 0; //this is for working out walking intervals
     //[self zoomInOnLocation: CLLocationCoordinate2DMake(-45.861659, 170.627214)];
 }
 
+
+//work out player animations and colour the player with the user defined colour
 -(void)playerWalker: (MKAnnotationView *) theView{
     UIImage *playerSprite;
-    
+    UIColor *color1 = [UIColor colorWithRed:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerRed"] green:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerGreen"] blue:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerBlue"] alpha:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerAlpha"]];
     if(playerWalkingSprite == 0){
         playerSprite = [UIImage imageNamed:@"matoran0.png"];
-        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        playerSprite = [self colorizeImage:playerSprite color:color1];
         theView.image = playerSprite;
         playerWalkingSprite = 1;
     }
     else if(playerWalkingSprite == 1){
         playerSprite = [UIImage imageNamed:@"matoran1.png"];
-        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        playerSprite = [self colorizeImage:playerSprite color:color1];
         theView.image = playerSprite;
         playerWalkingSprite = 2;
     }
     else if(playerWalkingSprite == 2){
         playerSprite = [UIImage imageNamed:@"matoran2.png"];
-        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        playerSprite = [self colorizeImage:playerSprite color:color1];
         theView.image = playerSprite;
         playerWalkingSprite = 3;
     }
     else if(playerWalkingSprite == 3){
         playerSprite = [UIImage imageNamed:@"matoran3.png"];
-        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        playerSprite = [self colorizeImage:playerSprite color:color1];
         theView.image = playerSprite;
         playerWalkingSprite = 0;
     }
     else{
         playerSprite = [UIImage imageNamed:@"matoran0.png"];
-        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        playerSprite = [self colorizeImage:playerSprite color:color1];
         theView.image = playerSprite;
         playerWalkingSprite = 0;
     }

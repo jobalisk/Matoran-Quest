@@ -14,7 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 -(IBAction) playerNameFieldCatcher: (id) sender; //the getter for the players name text feild
+
+-(IBAction) colourButtonPressed: (id) sender; //the getter for the players name text feild
+
 @property (nonatomic, weak) IBOutlet UITextField *playerNameField; //the players name feild setter
+@property (nonatomic, weak) IBOutlet UIColorWell *playerColourPicker; //the players name feild setter
+
+@property (nonatomic, weak) IBOutlet UIImageView *playerPortrait; //the players picture
+
+
 
 @end
 

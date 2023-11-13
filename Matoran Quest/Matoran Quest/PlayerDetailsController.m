@@ -21,7 +21,13 @@
         [_playerNameLabel setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]]; //set up the player name and image
         UIImage *playerSprite;
         playerSprite = [UIImage imageNamed:@"matoran0.png"];
-        playerSprite = [self colorizeImage:playerSprite color:[UIColor blueColor]];
+        
+        //convert colour back to uicolour
+        
+        
+        UIColor *color1 = [UIColor colorWithRed:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerRed"] green:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerGreen"] blue:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerBlue"] alpha:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerAlpha"]];
+        
+        playerSprite = [self colorizeImage:playerSprite color:color1];
         [_playerPortrait setImage:playerSprite];
         [_playerPortrait setContentScaleFactor: UIViewContentModeScaleAspectFit];
     }
