@@ -400,8 +400,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZ0-fl-t4c">
-                                <rect key="frame" x="156" y="354" width="160" height="57"/>
-                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="15"/>
+                                <rect key="frame" x="156" y="354" width="118" height="57"/>
+                                <fontDescription key="fontDescription" name="STIXTwoText" family="STIX Two Text" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Set Colour">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -424,7 +424,7 @@
                             <constraint firstItem="Rdk-5M-WY0" firstAttribute="top" secondItem="EtH-Jq-jeU" secondAttribute="bottom" constant="8.0000000000000284" id="J5D-yO-iSp"/>
                             <constraint firstItem="Rdk-5M-WY0" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="76" id="JQt-aJ-rNT"/>
                             <constraint firstItem="m3c-8I-kU1" firstAttribute="top" secondItem="4VC-ii-Nk7" secondAttribute="bottom" constant="8" id="MFT-WL-oj6"/>
-                            <constraint firstItem="GZ0-fl-t4c" firstAttribute="trailing" secondItem="uqA-OO-Lwy" secondAttribute="trailing" constant="11" id="NcZ-1o-YQg"/>
+                            <constraint firstItem="GZ0-fl-t4c" firstAttribute="trailing" secondItem="uqA-OO-Lwy" secondAttribute="trailing" constant="-31" id="NcZ-1o-YQg"/>
                             <constraint firstItem="EtH-Jq-jeU" firstAttribute="centerX" secondItem="Rdk-5M-WY0" secondAttribute="centerX" id="OVv-gR-SCO"/>
                             <constraint firstItem="m3c-8I-kU1" firstAttribute="leading" secondItem="Mp6-Yn-1rZ" secondAttribute="leading" constant="27" id="QEe-Fi-xo8"/>
                             <constraint firstItem="Fpy-pq-3vc" firstAttribute="leading" secondItem="EtH-Jq-jeU" secondAttribute="leading" id="RrW-cG-udW"/>
@@ -669,13 +669,13 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
