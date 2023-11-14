@@ -59,7 +59,7 @@ UIImage *playerSprite; //the image in the player portrait
     playerSprite = [self colorizeImage:playerSprite color:color1];
     [_playerPortrait setImage:playerSprite];
     [_playerPortrait setContentScaleFactor: UIViewContentModeScaleAspectFit];
-    
+    [_playerColourPicker setSelectedColor: color1]; //set up the colourwell's colour
     
     // set up the picker view
     [_playerMaskChooser setDataSource: self];
@@ -67,7 +67,8 @@ UIImage *playerSprite; //the image in the player portrait
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [_playerMaskChooser selectRow:[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerMaskNumber"] inComponent:0 animated:false]; //go to the players selected mask on load up
+    [_playerMaskChooser selectRow:[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerMaskNumber"] inComponent:0 animated:true]; //go to the players selected mask on load up
+    //NSLog(@"row: %ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerMaskNumber"]);
 }
 
 -(void)colourWellPressed:(UIImage*)playerSprite1{ //change the colour of the given sprite then save those colours to user defaults
@@ -112,6 +113,7 @@ UIImage *playerSprite; //the image in the player portrait
     playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
     [_playerPortrait setImage:playerSprite];
     [self colourWellPressed: playerSprite];
+
     
     //sort out mask
     
