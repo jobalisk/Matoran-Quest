@@ -17,14 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     @try {
-        
+        //try to get a new player sprite working
         [_playerNameLabel setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]]; //set up the player name and image
         UIImage *playerSprite;
-        playerSprite = [UIImage imageNamed:@"matoran0.png"];
+        //try to load the sprite kind, if it doesnt exist, substitute a temp sprite
+        playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
+        NSString *checkString = [NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
+        if([checkString rangeOfString:@"matoran"].location == NSNotFound){
+            playerSprite = [UIImage imageNamed:@"matoran0.png"];
+        }
         
         //convert colour back to uicolour
-        
-        
         UIColor *color1 = [UIColor colorWithRed:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerRed"] green:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerGreen"] blue:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerBlue"] alpha:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerAlpha"]];
         
         playerSprite = [self colorizeImage:playerSprite color:color1];

@@ -277,42 +277,73 @@ int randomThing; //a random number for item placement purposes
 
 //work out player animations and colour the player with the user defined colour
 -(void)playerWalker: (MKAnnotationView *) theView{
+    NSString *tempPlayerImageName; //for holding the name of the player sprite
     UIImage *playerSprite;
     UIColor *color1 = [UIColor colorWithRed:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerRed"] green:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerGreen"] blue:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerBlue"] alpha:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerAlpha"]];
     if(playerOldLong != _theMap.userLocation.location.coordinate.longitude){ //only animate if the player has moved
         if(playerWalkingSprite == 1){
-            playerSprite = [UIImage imageNamed:@"matoran0.png"];
+            //try to load the sprite kind, if it doesnt exist, substitute a temp sprite
+            playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
+            NSString *checkString = [NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
+            if([checkString rangeOfString:@"matoran"].location == NSNotFound){
+                playerSprite = [UIImage imageNamed:@"matoran0.png"];
+            }
             playerSprite = [self colorizeImage:playerSprite color:color1];
             theView.image = playerSprite;
             playerWalkingSprite = 2;
         }
         else if(playerWalkingSprite == 2){
-            playerSprite = [UIImage imageNamed:@"matoran1.png"];
+            //try to load the sprite kind, if it doesnt exist, substitute a temp sprite
+            playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@1",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
+            NSString *checkString = [NSString stringWithFormat:@"%@1",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
+            if([checkString rangeOfString:@"matoran"].location == NSNotFound){
+                playerSprite = [UIImage imageNamed:@"matoran1.png"];
+            }
             playerSprite = [self colorizeImage:playerSprite color:color1];
             theView.image = playerSprite;
             playerWalkingSprite = 3;
         }
         else if(playerWalkingSprite == 3){
-            playerSprite = [UIImage imageNamed:@"matoran2.png"];
+            //try to load the sprite kind, if it doesnt exist, substitute a temp sprite
+            playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@2",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
+            NSString *checkString = [NSString stringWithFormat:@"%@2",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
+            if([checkString rangeOfString:@"matoran"].location == NSNotFound){
+                playerSprite = [UIImage imageNamed:@"matoran2.png"];
+            }
             playerSprite = [self colorizeImage:playerSprite color:color1];
             theView.image = playerSprite;
             playerWalkingSprite = 0;
         }
         else if(playerWalkingSprite == 0){
-            playerSprite = [UIImage imageNamed:@"matoran3.png"];
+            //try to load the sprite kind, if it doesnt exist, substitute a temp sprite
+            playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@3",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
+            NSString *checkString = [NSString stringWithFormat:@"%@3",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
+            if([checkString rangeOfString:@"matoran"].location == NSNotFound){
+                playerSprite = [UIImage imageNamed:@"matoran3.png"];
+            }
             playerSprite = [self colorizeImage:playerSprite color:color1];
             theView.image = playerSprite;
             playerWalkingSprite = 1;
         }
         else{
-            playerSprite = [UIImage imageNamed:@"matoran0.png"];
+            //try to load the sprite kind, if it doesnt exist, substitute a temp sprite
+            playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
+            NSString *checkString = [NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
+            if([checkString rangeOfString:@"matoran"].location == NSNotFound){
+                playerSprite = [UIImage imageNamed:@"matoran0.png"];
+            }
             playerSprite = [self colorizeImage:playerSprite color:color1];
             theView.image = playerSprite;
             playerWalkingSprite = 0;
         }
     }
     else{ //do this if the player isn't moving
-        playerSprite = [UIImage imageNamed:@"matoran0.png"];
+        //try to load the sprite kind, if it doesnt exist, substitute a temp sprite
+        playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
+        NSString *checkString = [NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
+        if([checkString rangeOfString:@"matoran"].location == NSNotFound){
+            playerSprite = [UIImage imageNamed:@"matoran0.png"];
+        }
         playerSprite = [self colorizeImage:playerSprite color:color1];
         theView.image = playerSprite;
         playerWalkingSprite = 0;

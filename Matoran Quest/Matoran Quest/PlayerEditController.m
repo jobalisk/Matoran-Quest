@@ -22,7 +22,7 @@ UIImage *playerSprite; //the image in the player portrait
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    kanohiList = [NSArray arrayWithObjects: @"Unmasked", @"Hau", @"Miru", @"Kakama", @"Akaku", @"Huna", @"Rau", @"Matatu", @"Pakari", @"Ruru", @"Kaukau", @"Mahiki", @"Komau", nil]; //load up masks availible to player
+    kanohiList = [NSArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", nil]; //load up masks availible to player
     playerDetails = [NSUserDefaults standardUserDefaults];
     _playerNameField.delegate = self;
     _playerNameField.returnKeyType = UIReturnKeyDone;
@@ -30,7 +30,7 @@ UIImage *playerSprite; //the image in the player portrait
     _playerMaskChooser.dataSource = self;
     
     //try to set a player name
-
+    //get the player portrait up and running
     @try {
         [_playerNameField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]];
     }
@@ -40,10 +40,17 @@ UIImage *playerSprite; //the image in the player portrait
     @finally {
       //Display Alternative
     }
-
-    //get the player portrait up and running
     
-    playerSprite = [UIImage imageNamed:@"matoran0.png"];
+    //try to load the sprite kind, if it doesnt exist, substitute a temp sprite
+    playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
+    NSString *checkString = [NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
+    if([checkString rangeOfString:@"matoran"].location == NSNotFound){
+        playerSprite = [UIImage imageNamed:@"matoran0.png"];
+    }
+
+    
+    
+    //playerSprite = [UIImage imageNamed:@"matoran0.png"];
     
     //convert colour text back to uicolour
 
@@ -56,17 +63,18 @@ UIImage *playerSprite; //the image in the player portrait
     
     // set up the picker view
     [_playerMaskChooser setDataSource: self];
-    
-
-    
+  
 }
 
--(void)colourWellPressed{
+-(void)viewDidAppear:(BOOL)animated{
+    [_playerMaskChooser selectRow:[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerMaskNumber"] inComponent:0 animated:false]; //go to the players selected mask on load up
+}
+
+-(void)colourWellPressed:(UIImage*)playerSprite1{ //change the colour of the given sprite then save those colours to user defaults
     //NSLog(@"colour changed ");
     if(_playerColourPicker.selectedColor != NULL){
-        playerSprite = [UIImage imageNamed:@"matoran0.png"];
-        playerSprite = [self colorizeImage:playerSprite color:_playerColourPicker.selectedColor];
-        [_playerPortrait setImage:playerSprite];
+        playerSprite1 = [self colorizeImage:playerSprite color:_playerColourPicker.selectedColor];
+        [_playerPortrait setImage:playerSprite1];
         //save the player colour
         
         //convert player colours to text for saving
@@ -101,7 +109,13 @@ UIImage *playerSprite; //the image in the player portrait
 
 -(IBAction) colourButtonPressed: (id) sender
 {
-    [self colourWellPressed];
+    playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
+    [_playerPortrait setImage:playerSprite];
+    [self colourWellPressed: playerSprite];
+    
+    //sort out mask
+    
+    
 }
 
 
@@ -135,7 +149,10 @@ UIImage *playerSprite; //the image in the player portrait
 //picker view functions
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    
+    NSString *playerMask = [NSString stringWithFormat:@"%@matoran", kanohiList[row]];
+    //NSLog(@"Mask name: %@",playerMask);
+    [playerDetails setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
+    [playerDetails setInteger: row forKey:@"PlayerMaskNumber"]; //save where that is in the list for later
 }
 
 - (NSInteger)selectedRowInComponent:(NSInteger)component{
