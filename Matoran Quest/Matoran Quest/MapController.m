@@ -21,9 +21,16 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 20;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 30 seconds
+int playerUpdateTimerMax = 4;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 30 seconds (normally 60 or 30)
 int walkingTimer = 0; //this is for working out walking intervals
 int randomThing; //a random number for item placement purposes
+NSArray *kanohiList2;
+NSArray *itemList;
+NSArray *rahiList;
+float spawnDistance = 0.0002; //how far away objects spawn from the player (0.00025 seems good)
+float spawnWalkDistance = 0.000005; //how far you need to walk to trigger a spawn chance (normally 0.00015)
+bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +39,13 @@ int randomThing; //a random number for item placement purposes
 
     [_theLabel setText:@"Updated!"];
     [self GetLocation];
+    
+    kanohiList2 = [NSArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", @"vahi" , @"avohkii", nil]; //load up masks the player can find
+    
+    itemList = [NSArray arrayWithObjects: @"Energised Protodermis", @"Vuata Maca fruit", @"Super Disk", @"Charged Fire Disk", @"Charged Water Disk", @"Charged Earth Disk", @"Charged Rock Disk", @"Charged Air Disk", @"Charged Ice Disk", nil]; //load up a list of items the player can find
+    
+    rahiList = [NSArray arrayWithObjects: @"Nui Rama", @"Nui Kopen", @"Nui Jaga", @"Kuma Nui", @"Tarakava", @"Tarakava Nui", @"Muaka", @"Kane Ra", @"Fikou Nui",nil]; //load up a list of rahi the player can encounter
+    
 }
 
 -(void)GetLocation{
@@ -52,8 +66,8 @@ int randomThing; //a random number for item placement purposes
     //next, set up the map view
     _theMap.delegate = self;
     [_theMap setMapType: MKMapTypeStandard];
-    //[_theMap setZoomEnabled:false];
-    //[_theMap setScrollEnabled:false];
+    [_theMap setZoomEnabled:false];
+    [_theMap setScrollEnabled:false];
     userLocation = CGPointMake(_theMap.userLocation.location.coordinate.longitude, _theMap.userLocation.location.coordinate.latitude);
     _theMap.showsUserLocation = true;
     [_theMap.userLocation setTitle:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]];
@@ -138,53 +152,53 @@ int randomThing; //a random number for item placement purposes
         float Lo = _theMap.userLocation.location.coordinate.longitude; //these two are required for getting a item drop spot
         float La = _theMap.userLocation.location.coordinate.latitude;
         //if we've moved more than around 5 meters...
-        if(compLat > 0.000005 || compLong > 0.000005){
+        if(compLat > spawnWalkDistance || compLong > spawnWalkDistance){
             randomThing = arc4random_uniform(4); //generate a random number for spawn rate
             [_theLabel setText: [NSString stringWithFormat: @"%d", randomThing]];
             if(randomThing != 3){ //1 chance in 3 that the item does not spawn
                 randomThing = arc4random_uniform(8); //generate a random number for spawn location
                 if (randomThing == 0){ //I tried this with cases but it didn't work
-                    Lo += 0.00015;
+                    Lo += spawnDistance;
                     [self add1AnnotationWithLong:Lo andLat:La];
                 }
                 else if (randomThing == 1){
-                    Lo -= 0.00015;
+                    Lo -= spawnDistance;
                     [self add1AnnotationWithLong:Lo andLat:La];
                 }
                 else if (randomThing == 2){
-                    La += 0.00015;
+                    La += spawnDistance;
                     [self add1AnnotationWithLong:Lo andLat:La];
                 }
                 else if (randomThing == 3){
-                    La -= 0.00015;
+                    La -= spawnDistance;
                     [self add1AnnotationWithLong:Lo andLat:La];
                 }
                 else if (randomThing == 4){
-                    Lo += 0.00015;
-                    La -= 0.00015;
+                    Lo += spawnDistance;
+                    La -= spawnDistance;
                     [self add1AnnotationWithLong:Lo andLat:La];
                 }
                 else if (randomThing == 5){
-                    Lo += 0.00015;
-                    La += 0.00015;
+                    Lo += spawnDistance;
+                    La += spawnDistance;
                     [self add1AnnotationWithLong:Lo andLat:La];
                 }
                 else if (randomThing == 6){
-                    Lo -= 0.00015;
-                    La += 0.00015;
+                    Lo -= spawnDistance;
+                    La += spawnDistance;
                     [self add1AnnotationWithLong:Lo andLat:La];
                 }
                 else if (randomThing == 7){
-                    Lo -= 0.00015;
-                    La += 0.00015;
+                    Lo -= spawnDistance;
+                    La += spawnDistance;
                     [self add1AnnotationWithLong:Lo andLat:La];
                 }
                 else if (randomThing == 8){
-                    Lo += 0.00015;
+                    Lo += spawnDistance;
                     [self add1AnnotationWithLong:Lo andLat:La];//the item is NEVER placed directly under the player
                 }
                 else{
-                    Lo += 0.00015;
+                    Lo += spawnDistance;
                     [self add1AnnotationWithLong:Lo andLat:La];
                 }
                 
@@ -210,7 +224,14 @@ int randomThing; //a random number for item placement purposes
     //NSLog(@"Long: %f", aUserLocation.coordinate.longitude );
     region.span = span;
     region.center = location;
-    [aMapView setRegion:region animated:NO];
+    if(initialZoom != true){
+        initialZoom = true;
+        [aMapView setRegion:region animated:NO];
+    }
+    else{
+        [aMapView setRegion:region animated:YES];
+    }
+    
     
     [_theMap userLocation];
     //walking timer is used for animations
@@ -252,6 +273,51 @@ int randomThing; //a random number for item placement purposes
     }
     else{
         //[_theTimer setHidden:true];
+        NSString *MysteryAlertMessage = @""; //this will hold the message for the alert or view.
+        //generate a random number to determine what we have just picked up:
+        int randomItem = arc4random_uniform(4);
+        if(randomItem == 0){
+            randomItem = arc4random_uniform((int)rahiList.count);
+            //randomItem -= 1;
+            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiList[randomItem]];
+        }
+        else if(randomItem == 1){
+            randomItem = arc4random_uniform((int)kanohiList2.count);
+            //randomItem -= 1;
+            MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!", kanohiList2[randomItem]];
+        }
+        else if(randomItem == 2){
+            randomItem = arc4random_uniform((int)itemList.count);
+            //randomItem -= 1;
+            MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!", itemList[randomItem]];
+        }
+        else if(randomItem == 3){
+            MysteryAlertMessage = @"You found some slightly interesting scenery!";
+        }
+        
+        else if(randomItem == 4){
+            randomItem = arc4random_uniform((int)rahiList.count);
+            //randomItem -= 1;
+            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiList[randomItem]];
+        }
+        else{
+            randomItem = arc4random_uniform((int)rahiList.count);
+            //randomItem -= 1;
+            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiList[randomItem]];
+        }
+        
+        //create an alert (temporary, later we will shift to a different view controller
+        UIAlertController *MysteryAlert = [UIAlertController alertControllerWithTitle:@"Mysterious Object"
+                                       message:MysteryAlertMessage
+                                       preferredStyle:UIAlertControllerStyleAlert];
+         
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {}];
+         
+        [MysteryAlert addAction:defaultAction];
+        
+        [self presentViewController:MysteryAlert animated:YES completion:nil]; //show the alert
+        
         [_theMap removeAnnotation:annotation]; //remove the annotation if clicked on
     }
     
@@ -277,7 +343,7 @@ int randomThing; //a random number for item placement purposes
 
 //work out player animations and colour the player with the user defined colour
 -(void)playerWalker: (MKAnnotationView *) theView{
-    NSString *tempPlayerImageName; //for holding the name of the player sprite
+    //NSString *tempPlayerImageName; //for holding the name of the player sprite
     UIImage *playerSprite;
     UIColor *color1 = [UIColor colorWithRed:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerRed"] green:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerGreen"] blue:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerBlue"] alpha:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerAlpha"]];
     if(playerOldLong != _theMap.userLocation.location.coordinate.longitude){ //only animate if the player has moved
@@ -289,7 +355,7 @@ int randomThing; //a random number for item placement purposes
                 playerSprite = [UIImage imageNamed:@"matoran0.png"];
             }
             playerSprite = [self colorizeImage:playerSprite color:color1];
-            theView.image = playerSprite;
+            
             playerWalkingSprite = 2;
         }
         else if(playerWalkingSprite == 2){
@@ -300,7 +366,7 @@ int randomThing; //a random number for item placement purposes
                 playerSprite = [UIImage imageNamed:@"matoran1.png"];
             }
             playerSprite = [self colorizeImage:playerSprite color:color1];
-            theView.image = playerSprite;
+            
             playerWalkingSprite = 3;
         }
         else if(playerWalkingSprite == 3){
@@ -311,7 +377,7 @@ int randomThing; //a random number for item placement purposes
                 playerSprite = [UIImage imageNamed:@"matoran2.png"];
             }
             playerSprite = [self colorizeImage:playerSprite color:color1];
-            theView.image = playerSprite;
+            
             playerWalkingSprite = 0;
         }
         else if(playerWalkingSprite == 0){
@@ -322,7 +388,7 @@ int randomThing; //a random number for item placement purposes
                 playerSprite = [UIImage imageNamed:@"matoran3.png"];
             }
             playerSprite = [self colorizeImage:playerSprite color:color1];
-            theView.image = playerSprite;
+            
             playerWalkingSprite = 1;
         }
         else{
@@ -333,9 +399,10 @@ int randomThing; //a random number for item placement purposes
                 playerSprite = [UIImage imageNamed:@"matoran0.png"];
             }
             playerSprite = [self colorizeImage:playerSprite color:color1];
-            theView.image = playerSprite;
+            
             playerWalkingSprite = 0;
         }
+        
     }
     else{ //do this if the player isn't moving
         //try to load the sprite kind, if it doesnt exist, substitute a temp sprite
@@ -345,9 +412,10 @@ int randomThing; //a random number for item placement purposes
             playerSprite = [UIImage imageNamed:@"matoran0.png"];
         }
         playerSprite = [self colorizeImage:playerSprite color:color1];
-        theView.image = playerSprite;
+        
         playerWalkingSprite = 0;
     }
+    theView.image = playerSprite; //set the image
     
 }
 
