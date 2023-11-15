@@ -359,30 +359,8 @@ int playerHP = 0; //this will later be loaded from the userdefaults and shared w
 					}
                 }
                 else if(itemArray2.count < 20){ //max inventory space is 20
-											if([itemArray2 containsObject: @"Widget"]){
-							NSString *widgetAdderString = itemArray2[[itemArray2 indexOfObject: @"Widget"]]; //find where the widgets are if they exist and add 1 to them
-							NSScanner *scanner = [NSScanner scannerWithString:widgetAdderString];
-							NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
-							// Throw away characters before the first number.
-							[scanner scanUpToCharactersFromSet:numbers intoString:NULL];
-							// Collect numbers.
-							[scanner scanCharactersFromSet:numbers intoString:&numberString];
-							// Result.
-							int numberW = [numberString integerValue];
-							numberW += 1; //add one to it
-							widgetAdderString = [NSString stringWithFormat: @"%d Widgets", numberW]; //make a new string
-							[myMutableArray replaceObjectAtIndex:[itemArray2 indexOfObject: @"Widget"] withObject:widgetAdderString]; //replace it in the array
-							[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
-						}
-						else{
-							[itemArray2 addObject: @"1 Widget"]; //add it to the array
-							[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
-						}
-					}
-					else{
-						[itemArray2 addObject: theItem]; //add it to the array
-						[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
-					}
+                    [itemArray2 addObject: theItem]; //add it to the array
+                    [[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
                 }
                 else{
                     NSLog(@"There's no room left in your back pack for that item!");
