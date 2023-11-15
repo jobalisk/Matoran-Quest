@@ -24,7 +24,7 @@
         playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
         NSString *checkString = [NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
         if([checkString rangeOfString:@"matoran"].location == NSNotFound){
-            playerSprite = [UIImage imageNamed:@"matoran0.png"];
+            playerSprite = [UIImage imageNamed:@"unmaskedmatoran0.png"];
         }
         
         //convert colour back to uicolour

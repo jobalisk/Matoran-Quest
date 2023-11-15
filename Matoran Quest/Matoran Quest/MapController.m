@@ -40,11 +40,7 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
     [_theLabel setText:@"Updated!"];
     [self GetLocation];
     
-    kanohiList2 = [NSArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", @"vahi" , @"avohkii", nil]; //load up masks the player can find
-    
-    itemList = [NSArray arrayWithObjects: @"Energised Protodermis", @"Vuata Maca fruit", @"Super Disk", @"Charged Fire Disk", @"Charged Water Disk", @"Charged Earth Disk", @"Charged Rock Disk", @"Charged Air Disk", @"Charged Ice Disk", nil]; //load up a list of items the player can find
-    
-    rahiList = [NSArray arrayWithObjects: @"Nui Rama", @"Nui Kopen", @"Nui Jaga", @"Kuma Nui", @"Tarakava", @"Tarakava Nui", @"Muaka", @"Kane Ra", @"Fikou Nui",nil]; //load up a list of rahi the player can encounter
+
     
 }
 
@@ -289,6 +285,7 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
         else if(randomItem == 2){
             randomItem = arc4random_uniform((int)itemList.count);
             //randomItem -= 1;
+            
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!", itemList[randomItem]];
         }
         else if(randomItem == 3){
@@ -352,7 +349,7 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
             playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
             NSString *checkString = [NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
             if([checkString rangeOfString:@"matoran"].location == NSNotFound){
-                playerSprite = [UIImage imageNamed:@"matoran0.png"];
+                playerSprite = [UIImage imageNamed:@"unmaskedmatoran0.png"];
             }
             playerSprite = [self colorizeImage:playerSprite color:color1];
             
@@ -363,7 +360,7 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
             playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@1",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
             NSString *checkString = [NSString stringWithFormat:@"%@1",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
             if([checkString rangeOfString:@"matoran"].location == NSNotFound){
-                playerSprite = [UIImage imageNamed:@"matoran1.png"];
+                playerSprite = [UIImage imageNamed:@"unmaskedmatoran1.png"];
             }
             playerSprite = [self colorizeImage:playerSprite color:color1];
             
@@ -374,7 +371,7 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
             playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@2",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
             NSString *checkString = [NSString stringWithFormat:@"%@2",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
             if([checkString rangeOfString:@"matoran"].location == NSNotFound){
-                playerSprite = [UIImage imageNamed:@"matoran2.png"];
+                playerSprite = [UIImage imageNamed:@"unmaskedmatoran2.png"];
             }
             playerSprite = [self colorizeImage:playerSprite color:color1];
             
@@ -385,7 +382,7 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
             playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@3",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
             NSString *checkString = [NSString stringWithFormat:@"%@3",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
             if([checkString rangeOfString:@"matoran"].location == NSNotFound){
-                playerSprite = [UIImage imageNamed:@"matoran3.png"];
+                playerSprite = [UIImage imageNamed:@"unmaskedmatoran3.png"];
             }
             playerSprite = [self colorizeImage:playerSprite color:color1];
             
@@ -396,7 +393,7 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
             playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
             NSString *checkString = [NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
             if([checkString rangeOfString:@"matoran"].location == NSNotFound){
-                playerSprite = [UIImage imageNamed:@"matoran0.png"];
+                playerSprite = [UIImage imageNamed:@"unmaskedmatoran0.png"];
             }
             playerSprite = [self colorizeImage:playerSprite color:color1];
             
@@ -409,7 +406,7 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
         playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
         NSString *checkString = [NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
         if([checkString rangeOfString:@"matoran"].location == NSNotFound){
-            playerSprite = [UIImage imageNamed:@"matoran0.png"];
+            playerSprite = [UIImage imageNamed:@"unmaskedmatoran0.png"];
         }
         playerSprite = [self colorizeImage:playerSprite color:color1];
         
@@ -418,6 +415,129 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
     theView.image = playerSprite; //set the image
     
 }
+
+//generate randoms
+
+
+
+
+
+
+
+-(NSString*)randomMaskMaker{
+    //kanohiList2 = [NSArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", @"vahi" , @"avohkii", nil]; //load up masks the player can find
+    int randomItem = arc4random_uniform(101);
+    if(randomItem == 1){ //rare mask
+        int randomItem = arc4random_uniform(5);
+        if (randomItem == 1){
+            return @"vahi"; //Mask of Time (ultra rare)
+        }
+        else if (randomItem == 2){
+            return @"infected hau"; // Infected Mask of Shielding (ultra rare)
+        }
+        else{
+            return @"avohkii"; //Mask of Light (rare)
+        }
+    }
+    else if(randomItem <= 51){ //Noble Masks
+        int randomItem = arc4random_uniform(12);
+        if (randomItem == 1){
+            return @"kaukau"; //Mask of Water Breathing (common)
+        }
+        else if (randomItem == 2){
+            return @"hau"; // Mask of Shielding (common)
+        }
+        else if (randomItem == 2){
+            return @"pakari"; // Mask of Strength (common)
+        }
+        else if (randomItem == 2){
+            return @"kakama"; // Mask of Speed (common)
+        }
+        else if (randomItem == 2){
+            return @"miru"; // Mask of Levitation (ultra rare)
+        }
+        else{
+            return @"akaku"; //Mask of X-Ray Vision (rare)
+        }
+    }
+    else if (randomItem > 51){ //Great Masks
+        int randomItem = arc4random_uniform(12);
+        int randomItem = arc4random_uniform(12);
+        if (randomItem == 1){
+            return @"kaukau"; //Mask of Time (ultra rare)
+        }
+        else if (randomItem == 2){
+            return @"hau"; // Infected Mask of Shielding (ultra rare)
+        }
+        else if (randomItem == 2){
+            return @"pakari"; // Infected Mask of Shielding (ultra rare)
+        }
+        else if (randomItem == 2){
+            return @"kakama"; // Infected Mask of Shielding (ultra rare)
+        }
+        else if (randomItem == 2){
+            return @"miru"; // Infected Mask of Shielding (ultra rare)
+        }
+        else{
+            return @"akaku"; //Mask of Light (rare)
+        }
+    }
+    else{ //nothing
+
+    }
+    
+}
+
+-(NSString*)randomItemMaker{
+    //itemList = [NSArray arrayWithObjects: @"Energised Protodermis", @"Vuata Maca fruit", @"Super Disk", @"Charged Fire Disk", @"Charged Water Disk", @"Charged Earth Disk", @"Charged Rock Disk", @"Charged Air Disk", @"Charged Ice Disk", nil]; //load up a list of items the player can find
+    int randomItem = arc4random_uniform(20);
+    if(randomItem < 13){ //healing items
+        itemList = [NSArray arrayWithObjects: @"Vuata Maca fruit", @"Vuata Maca fruit", @"Energised Protodermis", @"Vuata Maca fruit",nil]; //load up a list of healing items (multipul of 1 to increase likelyhood of getting it, its a dumb way to do it but it works so bite me
+        randomItem = arc4random_uniform((int)rahiList.count);
+        return itemList[randomItem]; //return a random greater rahi
+    }
+    else if (randomItem < 18){ //power disks
+        itemList = [NSArray arrayWithObjects: @"Super Disk", @"Charged Fire Disk", @"Charged Water Disk", @"Charged Earth Disk", @"Charged Rock Disk", @"Charged Air Disk", @"Charged Ice Disk",nil]; //load up a list of rahi the player can encounter
+        randomItem = arc4random_uniform((int)rahiList.count);
+        return itemList[randomItem]; //return a random greater rahi
+    }
+    else{ //rare item
+        int randomItem = arc4random_uniform(2);
+        if (randomItem == 1){
+            return @"Cool looking rock"; //useless, but cool!
+        }
+        else{
+            return @"Mystery Item"; //not sure what this will become yet
+        }
+    }
+}
+
+-(NSString*)randomRahiMaker{
+    //rahiList = [NSArray arrayWithObjects: @"Nui Rama", @"Nui Kopen", @"Nui Jaga", @"Kuma Nui", @"Tarakava", @"Manas", @"Mana Ko", @"Tarakava Nui", @"Muaka", @"Kane Ra", @"Fikou Nui",nil]; //load up a list of rahi the player can encounter
+    int randomItem = arc4random_uniform(20);
+    if(randomItem < 13){ //lesser rahi
+        rahiList = [NSArray arrayWithObjects: @"Nui Rama", @"Nui Jaga", @"Tarakava",nil]; //load up a list of rahi the player can encounter
+        randomItem = arc4random_uniform((int)rahiList.count);
+        return rahiList[randomItem]; //return a random greater rahi
+    }
+    else if (randomItem < 18){ //greater rahi
+        rahiList = [NSArray arrayWithObjects: @"Nui Kopen", @"Kuma Nui", @"Tarakava Nui", @"Muaka", @"Kane Ra", @"Fikou Nui",nil]; //load up a list of rahi the player can encounter
+        randomItem = arc4random_uniform((int)rahiList.count);
+        return rahiList[randomItem]; //return a random greater rahi
+    }
+    else{ //rare rahi
+        int randomItem = arc4random_uniform(2);
+        if (randomItem == 1){
+            return @"Manas";
+        }
+        else{
+            return @"Manas Ko";
+        }
+    }
+}
+
+
+//3rd party utlities
 
 -(void)zoomInOnLocation:(CLLocationCoordinate2D)location //go to where a pin has been dropped
 {
@@ -446,6 +566,8 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
     UIGraphicsEndImageContext();
     return newImage;
 }
+
+
 
 
 /*
