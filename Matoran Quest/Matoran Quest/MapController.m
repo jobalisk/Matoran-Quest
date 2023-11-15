@@ -427,6 +427,7 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
 -(NSString*)randomMaskMaker{
     //kanohiList2 = [NSArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", @"vahi" , @"avohkii", nil]; //load up masks the player can find
     int randomItem = arc4random_uniform(101);
+    NSString *colorString; //holds the found colour
     if(randomItem == 1){ //rare mask
         int randomItem = arc4random_uniform(5);
         if (randomItem == 1){
@@ -442,50 +443,73 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
     else if(randomItem <= 51){ //Noble Masks
         int randomItem = arc4random_uniform(12);
         if (randomItem == 1){
-            return @"kaukau"; //Mask of Water Breathing (common)
+            int randomItem = arc4random_uniform(14); //work out colour
+            if (randomItem == 1 || randomItem == 2){ //black
+                
+            }
+            else if (randomItem == 3 || randomItem == 4){ //red
+                
+            }
+            else if (randomItem == 6 || randomItem == 5){ //brown
+                
+            }
+            else if (randomItem == 8 || randomItem == 7){ //white
+                
+            }
+            else if (randomItem == 10 || randomItem == 9){ //green
+                
+            }
+            else if (randomItem == 11){ //silver
+                
+            }
+            else if (randomItem == 12){ //gold
+                
+            }
+            else{ //blue (slightly more common for this one
+                
+            }
+            return [NSString stringWithFormat:@"%@ kaukau", colorString]; //Mask of Water Breathing (common)
         }
         else if (randomItem == 2){
-            return @"hau"; // Mask of Shielding (common)
+            return [NSString stringWithFormat:@"%@ hau", colorString]; // Mask of Shielding (common)
         }
         else if (randomItem == 2){
-            return @"pakari"; // Mask of Strength (common)
+            return [NSString stringWithFormat:@"%@ pakari", colorString]; // Mask of Strength (common)
         }
         else if (randomItem == 2){
-            return @"kakama"; // Mask of Speed (common)
+            return [NSString stringWithFormat:@"%@ kakama", colorString]; // Mask of Speed (common)
         }
         else if (randomItem == 2){
-            return @"miru"; // Mask of Levitation (ultra rare)
+            return [NSString stringWithFormat:@"%@ miru", colorString]; // Mask of Levitation (common)
         }
         else{
-            return @"akaku"; //Mask of X-Ray Vision (rare)
+            return [NSString stringWithFormat:@"%@ akaku", colorString]; //Mask of X-Ray Vision (common)
         }
     }
     else if (randomItem > 51){ //Great Masks
         int randomItem = arc4random_uniform(12);
-        int randomItem = arc4random_uniform(12);
         if (randomItem == 1){
-            return @"kaukau"; //Mask of Time (ultra rare)
+            return [NSString stringWithFormat:@"%@ matatu", colorString]; //Mask of Telekinesis (common)
         }
         else if (randomItem == 2){
-            return @"hau"; // Infected Mask of Shielding (ultra rare)
+            return [NSString stringWithFormat:@"%@ rau", colorString]; // Infected Mask of Translation (common)
         }
         else if (randomItem == 2){
-            return @"pakari"; // Infected Mask of Shielding (ultra rare)
+            return [NSString stringWithFormat:@"%@ mahiki", colorString]; // Infected Mask of Illusion (common)
         }
         else if (randomItem == 2){
-            return @"kakama"; // Infected Mask of Shielding (ultra rare)
+            return [NSString stringWithFormat:@"%@ huna", colorString]; // Infected Mask of Concealment (common)
         }
         else if (randomItem == 2){
-            return @"miru"; // Infected Mask of Shielding (ultra rare)
+            return [NSString stringWithFormat:@"%@ ruru", colorString]; // Infected Mask of Night Vision (common)
         }
         else{
-            return @"akaku"; //Mask of Light (rare)
+            return [NSString stringWithFormat:@"%@ komau", colorString]; //Mask of Mind Control (common)
         }
     }
-    else{ //nothing
-
+    else{ //otherwise
+        return @"brown rau"; //you get my favourite
     }
-    
 }
 
 -(NSString*)randomItemMaker{
