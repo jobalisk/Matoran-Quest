@@ -21,16 +21,16 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 30;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 30 seconds (normally 60 or 30) (test 4)
+int playerUpdateTimerMax = 4;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 30 seconds (normally 60 or 30) (test 4)
 int walkingTimer = 0; //this is for working out walking intervals
 int randomThing; //a random number for item placement purposes
 NSArray *kanohiList2;
 NSArray *itemList;
 NSArray *rahiList;
-float spawnDistance = 0.00025; //how far away objects spawn from the player (0.00025 seems good) (test 0.0002)
-float spawnWalkDistance = 0.00015; //how far you need to walk to trigger a spawn chance (normally 0.00015) (test 0.000005)
+float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
+float spawnWalkDistance = 0.000005; //how far you need to walk to trigger a spawn chance (normally 0.00015) (test 0.000005)
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
-
+NSString *maskColorString; //holds the found masks's colour
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -273,20 +273,68 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
         //generate a random number to determine what we have just picked up:
         int randomItem = arc4random_uniform(4);
         if(randomItem == 0){
-            randomItem = arc4random_uniform((int)rahiList.count);
+            //randomItem = arc4random_uniform((int)rahiList.count);
             //randomItem -= 1;
-            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiList[randomItem]];
+            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", [self randomRahiMaker]];
         }
         else if(randomItem == 1){
-            randomItem = arc4random_uniform((int)kanohiList2.count);
+            //randomItem = arc4random_uniform((int)kanohiList2.count);
             //randomItem -= 1;
-            MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!", kanohiList2[randomItem]];
+            NSArray *maskDetails; //the holding container for the mask and its info
+            NSMutableArray *maskArray2;
+            NSString *theMask = [self randomMaskMaker];
+            NSArray *maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"];
+            NSString *long1 = [NSString stringWithFormat:@"%f",(float)_theMap.userLocation.location.coordinate.longitude];
+            NSString *lat1  = [NSString stringWithFormat:@"%f",(float)_theMap.userLocation.location.coordinate.longitude ];
+            //bit messy but need to first convert to float to convert to int as just straight int conversion causes a crash
+            //sort out mask details
+            maskDetails = [NSArray arrayWithObjects: theMask, [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"], lat1, long1, nil]; //give player name, location and mask details
+            
+            if(maskArray != NULL){ //check to see if the list exists first
+                
+                maskArray2 = [maskArray mutableCopy];
+                [maskArray2 addObject: maskDetails]; //add it to the array
+                [[NSUserDefaults standardUserDefaults] setObject: maskArray2 forKey:@"PlayerMasks"];
+                 
+            }
+            else{ //make a new array
+                maskArray = [NSArray arrayWithObjects: maskDetails, nil];
+                [[NSUserDefaults standardUserDefaults] setObject: maskArray forKey:@"PlayerMasks"]; //save the new mask array back to user defaults
+            }
+             
+            MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!",theMask];
         }
         else if(randomItem == 2){
-            randomItem = arc4random_uniform((int)itemList.count);
+            //randomItem = arc4random_uniform((int)itemList.count);
             //randomItem -= 1;
+            NSMutableArray *itemArray2;
+            NSString *theItem = [self randomItemMaker];
+            NSArray *itemArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerItems"];
             
-            MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!", itemList[randomItem]];
+            if(itemArray != NULL){
+                
+                itemArray2 = [itemArray mutableCopy];
+                if(itemArray2.count == 19){ //max inventory space is 20
+                    NSLog(@"Your back pack is now full!"); //give a warning message
+                    [itemArray2 addObject: theItem]; //add it to the array
+                    [[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
+                }
+                else if(itemArray2.count < 20){ //max inventory space is 20
+                    [itemArray2 addObject: theItem]; //add it to the array
+                    [[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
+                }
+                else{
+                    NSLog(@"There's no room left in your back pack for that item!");
+                }
+                 
+
+            }
+            else{
+                itemArray = [NSArray arrayWithObjects: theItem , nil];
+                [[NSUserDefaults standardUserDefaults] setObject: itemArray forKey:@"PlayerItems"]; //save the array to player defaults
+            }
+             
+            MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!", theItem];
         }
         else if(randomItem == 3){
             MysteryAlertMessage = @"You found some slightly interesting scenery!";
@@ -295,12 +343,13 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
         else if(randomItem == 4){
             randomItem = arc4random_uniform((int)rahiList.count);
             //randomItem -= 1;
-            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiList[randomItem]];
+            
+            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", [self randomRahiMaker]];
         }
         else{
             randomItem = arc4random_uniform((int)rahiList.count);
             //randomItem -= 1;
-            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiList[randomItem]];
+            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", [self randomRahiMaker]];
         }
         
         //create an alert (temporary, later we will shift to a different view controller
@@ -427,7 +476,6 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
 -(NSString*)randomMaskMaker{
     //kanohiList2 = [NSArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", @"vahi" , @"avohkii", nil]; //load up masks the player can find
     int randomItem = arc4random_uniform(101);
-    NSString *colorString; //holds the found colour
     if(randomItem == 1){ //rare mask
         int randomItem = arc4random_uniform(5);
         if (randomItem == 1){
@@ -441,70 +489,57 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
         }
     }
     else if(randomItem <= 51){ //Noble Masks
-        int randomItem = arc4random_uniform(12);
+        int randomItem = arc4random_uniform(6);
         if (randomItem == 1){
-            int randomItem = arc4random_uniform(14); //work out colour
-            if (randomItem == 1 || randomItem == 2){ //black
-                
-            }
-            else if (randomItem == 3 || randomItem == 4){ //red
-                
-            }
-            else if (randomItem == 6 || randomItem == 5){ //brown
-                
-            }
-            else if (randomItem == 8 || randomItem == 7){ //white
-                
-            }
-            else if (randomItem == 10 || randomItem == 9){ //green
-                
-            }
-            else if (randomItem == 11){ //silver
-                
-            }
-            else if (randomItem == 12){ //gold
-                
-            }
-            else{ //blue (slightly more common for this one
-                
-            }
-            return [NSString stringWithFormat:@"%@ kaukau", colorString]; //Mask of Water Breathing (common)
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ kaukau", maskColorString]; //Mask of Water Breathing (common)
         }
         else if (randomItem == 2){
-            return [NSString stringWithFormat:@"%@ hau", colorString]; // Mask of Shielding (common)
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ hau", maskColorString]; // Mask of Shielding (common)
         }
-        else if (randomItem == 2){
-            return [NSString stringWithFormat:@"%@ pakari", colorString]; // Mask of Strength (common)
+        else if (randomItem == 3){
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ pakari", maskColorString]; // Mask of Strength (common)
         }
-        else if (randomItem == 2){
-            return [NSString stringWithFormat:@"%@ kakama", colorString]; // Mask of Speed (common)
+        else if (randomItem == 4){
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ kakama", maskColorString]; // Mask of Speed (common)
         }
-        else if (randomItem == 2){
-            return [NSString stringWithFormat:@"%@ miru", colorString]; // Mask of Levitation (common)
+        else if (randomItem == 5){
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ miru", maskColorString]; // Mask of Levitation (common)
         }
         else{
-            return [NSString stringWithFormat:@"%@ akaku", colorString]; //Mask of X-Ray Vision (common)
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ akaku", maskColorString]; //Mask of X-Ray Vision (common)
         }
     }
     else if (randomItem > 51){ //Great Masks
-        int randomItem = arc4random_uniform(12);
+        int randomItem = arc4random_uniform(6);
         if (randomItem == 1){
-            return [NSString stringWithFormat:@"%@ matatu", colorString]; //Mask of Telekinesis (common)
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ matatu", maskColorString]; //Mask of Telekinesis (common)
         }
         else if (randomItem == 2){
-            return [NSString stringWithFormat:@"%@ rau", colorString]; // Infected Mask of Translation (common)
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ rau", maskColorString]; // Infected Mask of Translation (common)
         }
-        else if (randomItem == 2){
-            return [NSString stringWithFormat:@"%@ mahiki", colorString]; // Infected Mask of Illusion (common)
+        else if (randomItem == 3){
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ mahiki", maskColorString]; // Infected Mask of Illusion (common)
         }
-        else if (randomItem == 2){
-            return [NSString stringWithFormat:@"%@ huna", colorString]; // Infected Mask of Concealment (common)
+        else if (randomItem == 4){
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ huna", maskColorString]; // Infected Mask of Concealment (common)
         }
-        else if (randomItem == 2){
-            return [NSString stringWithFormat:@"%@ ruru", colorString]; // Infected Mask of Night Vision (common)
+        else if (randomItem == 5){
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ ruru", maskColorString]; // Infected Mask of Night Vision (common)
         }
         else{
-            return [NSString stringWithFormat:@"%@ komau", colorString]; //Mask of Mind Control (common)
+            [self randomColourPicker]; //choose a mask colour
+            return [NSString stringWithFormat:@"%@ komau", maskColorString]; //Mask of Mind Control (common)
         }
     }
     else{ //otherwise
@@ -557,6 +592,35 @@ bool initialZoom = false; //this is so that when we first zoom in on the player 
         else{
             return @"Manas Ko";
         }
+    }
+}
+
+-(void)randomColourPicker{ //chooses the colour of the mask
+    
+    int randomItem = arc4random_uniform(21); //work out colour
+    if (randomItem == 1 || randomItem == 2  || randomItem == 17){ //black
+        maskColorString = @"black";
+    }
+    else if (randomItem == 3 || randomItem == 4 || randomItem == 13){ //red
+        maskColorString = @"red";
+    }
+    else if (randomItem == 6 || randomItem == 5 || randomItem == 14){ //brown
+        maskColorString = @"brown";
+    }
+    else if (randomItem == 8 || randomItem == 7 || randomItem == 15){ //white
+        maskColorString = @"white";
+    }
+    else if (randomItem == 10 || randomItem == 9 || randomItem == 16){ //green
+        maskColorString = @"green";
+    }
+    else if (randomItem == 11){ //silver (uncommon)
+        maskColorString = @"silver";
+    }
+    else if (randomItem == 12){ //gold (uncommon)
+        maskColorString = @"gold";
+    }
+    else{ //blue (slightly more common for this one
+        maskColorString = @"blue";
     }
 }
 

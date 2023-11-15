@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) IBOutlet UILabel *playerNameLabel; //the players name in a label
 @property (nonatomic, weak) IBOutlet UIImageView *playerPortrait; //the players picture
+-(IBAction) resetButtonPressed: (id) sender; //the delete button
 
 @end
 
