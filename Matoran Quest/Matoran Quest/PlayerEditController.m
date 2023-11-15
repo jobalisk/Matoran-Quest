@@ -46,6 +46,7 @@ UIImage *playerSprite; //the image in the player portrait
     NSString *checkString = [NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]; //check this is a valid name
     if([checkString rangeOfString:@"matoran"].location == NSNotFound){
         playerSprite = [UIImage imageNamed:@"matoran0.png"];
+        
     }
 
     
@@ -58,11 +59,13 @@ UIImage *playerSprite; //the image in the player portrait
     
     playerSprite = [self colorizeImage:playerSprite color:color1];
     [_playerPortrait setImage:playerSprite];
-    [_playerPortrait setContentScaleFactor: UIViewContentModeScaleAspectFit];
+    //[_playerPortrait setContentScaleFactor: UIViewContentModeScaleAspectFit];
     [_playerColourPicker setSelectedColor: color1]; //set up the colourwell's colour
+    [_playerPortrait setContentScaleFactor: UIViewContentModeCenter]; //make sure the image isn't being stretched
     
     // set up the picker view
     [_playerMaskChooser setDataSource: self];
+    
   
 }
 
