@@ -482,76 +482,175 @@ NSString *maskColorString; //holds the found masks's colour
 
 -(NSString*)randomMaskMaker{
     //kanohiList2 = [NSArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", @"vahi" , @"avohkii", nil]; //load up masks the player can find
-    int randomItem = arc4random_uniform(101);
-    if(randomItem == 1){ //rare mask
-        int randomItem = arc4random_uniform(5);
-        if (randomItem == 1){
-            return @"vahi"; //Mask of Time (ultra rare)
+    int randomItem;
+    randomItem = arc4random_uniform(15);
+    if(randomItem != 3){ //start of with regional mask randomizer, 1 in 15 chance of finding a bronze region mask if in the correct region
+        randomItem = arc4random_uniform(101);
+        if(randomItem == 1){ //rare mask
+            int randomItem = arc4random_uniform(5);
+            if (randomItem == 1){
+                return @"vahi"; //Mask of Time (ultra rare)
+            }
+            else if (randomItem == 2){
+                return @"infected hau"; // Infected Mask of Shielding (ultra rare)
+            }
+            else{
+                return @"avohkii"; //Mask of Light (rare)
+            }
         }
-        else if (randomItem == 2){
-            return @"infected hau"; // Infected Mask of Shielding (ultra rare)
+        else if(randomItem <= 51){ //Noble Masks
+            int randomItem = arc4random_uniform(6);
+            if (randomItem == 1){
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ kaukau", maskColorString]; //Mask of Water Breathing (common)
+            }
+            else if (randomItem == 2){
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ hau", maskColorString]; // Mask of Shielding (common)
+            }
+            else if (randomItem == 3){
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ pakari", maskColorString]; // Mask of Strength (common)
+            }
+            else if (randomItem == 4){
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ kakama", maskColorString]; // Mask of Speed (common)
+            }
+            else if (randomItem == 5){
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ miru", maskColorString]; // Mask of Levitation (common)
+            }
+            else{
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ akaku", maskColorString]; //Mask of X-Ray Vision (common)
+            }
         }
-        else{
-            return @"avohkii"; //Mask of Light (rare)
+        else if (randomItem > 51){ //Great Masks
+            int randomItem = arc4random_uniform(6);
+            if (randomItem == 1){
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ matatu", maskColorString]; //Mask of Telekinesis (common)
+            }
+            else if (randomItem == 2){
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ rau", maskColorString]; // Infected Mask of Translation (common)
+            }
+            else if (randomItem == 3){
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ mahiki", maskColorString]; // Infected Mask of Illusion (common)
+            }
+            else if (randomItem == 4){
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ huna", maskColorString]; // Infected Mask of Concealment (common)
+            }
+            else if (randomItem == 5){
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ ruru", maskColorString]; // Infected Mask of Night Vision (common)
+            }
+            else{
+                [self randomColourPicker]; //choose a mask colour
+                return [NSString stringWithFormat:@"%@ komau", maskColorString]; //Mask of Mind Control (common)
+            }
+        }
+        else{ //otherwise
+            return @"brown rau"; //you get my favourite
         }
     }
-    else if(randomItem <= 51){ //Noble Masks
-        int randomItem = arc4random_uniform(6);
-        if (randomItem == 1){
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ kaukau", maskColorString]; //Mask of Water Breathing (common)
+    else{ //region locked bronze masks (uncommon, region specific)
+        
+        /*
+         LATITUDE AND LONGITUDES (2 masks for each area, antarctica and other places get 1 as an extra):
+        
+        Oceania between lat 21 and lat -54 long 109 and long 180
+        Africa between lat 37 and lat -37 long -20 and long 51
+        Asia between lat 82 and lat -10.5 long 40 and long 180
+        Europe between lat 82 and lat 33 long -13 and long 45 (only gets 1)
+        North America between lat 84 and lat 13 long -180 and long -53
+        South America between lat 12 and lat -58 long -27 and long -90
+        */
+        if(_theMap.userLocation.location.coordinate.latitude < 21.0 && _theMap.userLocation.location.coordinate.latitude > -54.0){
+            if(_theMap.userLocation.location.coordinate.longitude < 180.0 && _theMap.userLocation.location.coordinate.longitude > 109.0){
+                //these 2 met means we're in Oceania
+                int randomItem = arc4random_uniform(2);
+                if (randomItem == 1){
+                    return @"bronze rau";
+                }
+                else{
+                    return @"bronze kaukau";
+                }
+            }
+            
+        } //using ifs not if else because more than 1 may apply
+        if(_theMap.userLocation.location.coordinate.latitude < 37.0 && _theMap.userLocation.location.coordinate.latitude > -37.0){
+            if(_theMap.userLocation.location.coordinate.longitude < 51.0 && _theMap.userLocation.location.coordinate.longitude > -20.0){
+                //these 2 met means we're in Africa
+                int randomItem = arc4random_uniform(2);
+                if (randomItem == 1){
+                    return @"bronze hau";
+                }
+                else{
+                    return @"bronze huna";
+                }
+            }
+            
         }
-        else if (randomItem == 2){
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ hau", maskColorString]; // Mask of Shielding (common)
+        if(_theMap.userLocation.location.coordinate.latitude < 82.0 && _theMap.userLocation.location.coordinate.latitude > -10.5){
+            if(_theMap.userLocation.location.coordinate.longitude < 180.0 && _theMap.userLocation.location.coordinate.longitude > 40.0){
+                //these 2 met means we're in Asia
+                int randomItem = arc4random_uniform(2);
+                if (randomItem == 1){
+                    return @"bronze kakama";
+                }
+                else{
+                    return @"bronze komau";
+                }
+            }
+            
         }
-        else if (randomItem == 3){
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ pakari", maskColorString]; // Mask of Strength (common)
+        if(_theMap.userLocation.location.coordinate.latitude < 82.0 && _theMap.userLocation.location.coordinate.latitude > 33.0){
+            if(_theMap.userLocation.location.coordinate.longitude < 45.0 && _theMap.userLocation.location.coordinate.longitude > -13.0){
+                //these 2 met means we're in Europe
+                return @"bronze akaku";
+            }
+            
         }
-        else if (randomItem == 4){
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ kakama", maskColorString]; // Mask of Speed (common)
+        if(_theMap.userLocation.location.coordinate.latitude < 84.0 && _theMap.userLocation.location.coordinate.latitude > 13.0){
+            if(_theMap.userLocation.location.coordinate.longitude < -53.0 && _theMap.userLocation.location.coordinate.longitude > -180.0){
+                //these 2 met means we're in North America
+                int randomItem = arc4random_uniform(2);
+                if (randomItem == 1){
+                    return @"bronze pakari";
+                }
+                else{
+                    return @"bronze ruru";
+                }
+            }
+            
         }
-        else if (randomItem == 5){
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ miru", maskColorString]; // Mask of Levitation (common)
+        if(_theMap.userLocation.location.coordinate.latitude < 12.0 && _theMap.userLocation.location.coordinate.latitude > -58.0){
+            if(_theMap.userLocation.location.coordinate.longitude < -27.0 && _theMap.userLocation.location.coordinate.longitude > -90.0){
+                //these 2 met means we're in South America
+                int randomItem = arc4random_uniform(2);
+                if (randomItem == 1){
+                    return @"bronze miru";
+                }
+                else{
+                    return @"bronze mahiki";
+                }
+            }
+            
         }
-        else{
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ akaku", maskColorString]; //Mask of X-Ray Vision (common)
+        /*
+        else{ //other random bits that got left out like Antarctica and maybe bits of the Pacific or Middle East...
+            return @"bronze matatu";
         }
+        */
+
     }
-    else if (randomItem > 51){ //Great Masks
-        int randomItem = arc4random_uniform(6);
-        if (randomItem == 1){
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ matatu", maskColorString]; //Mask of Telekinesis (common)
-        }
-        else if (randomItem == 2){
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ rau", maskColorString]; // Infected Mask of Translation (common)
-        }
-        else if (randomItem == 3){
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ mahiki", maskColorString]; // Infected Mask of Illusion (common)
-        }
-        else if (randomItem == 4){
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ huna", maskColorString]; // Infected Mask of Concealment (common)
-        }
-        else if (randomItem == 5){
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ ruru", maskColorString]; // Infected Mask of Night Vision (common)
-        }
-        else{
-            [self randomColourPicker]; //choose a mask colour
-            return [NSString stringWithFormat:@"%@ komau", maskColorString]; //Mask of Mind Control (common)
-        }
-    }
-    else{ //otherwise
-        return @"brown rau"; //you get my favourite
-    }
+    //return @"brown rau"; //you get my favourite
+    return @"bronze matatu";//other random bits that got left out like Antarctica and maybe bits of the Pacific or Middle East...
+    //don't know why I need this here but apparently theres some kind of trippy extra condition that this meets
+    
 }
 
 -(NSString*)randomItemMaker{
