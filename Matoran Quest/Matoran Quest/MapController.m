@@ -284,9 +284,16 @@ NSString *maskColorString; //holds the found masks's colour
             NSMutableArray *maskArray2;
             NSString *theMask = [self randomMaskMaker];
             NSArray *maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"];
-            NSString *long1 = [NSString stringWithFormat:@"%f",(float)_theMap.userLocation.location.coordinate.longitude];
-            NSString *lat1  = [NSString stringWithFormat:@"%f",(float)_theMap.userLocation.location.coordinate.longitude ];
+            
+            //reduce down the accuracy of the lat and long by removing the decimal point
+            float long3 = (float)_theMap.userLocation.location.coordinate.longitude;
+            float lat3 = (float)_theMap.userLocation.location.coordinate.latitude;
+            int long2 = (int)long3;
+            int lat2 = (int)lat3;
+            NSString *long1 = [NSString stringWithFormat:@"%d",long2];
+            NSString *lat1  = [NSString stringWithFormat:@"%d", lat2];
             //bit messy but need to first convert to float to convert to int as just straight int conversion causes a crash
+            
             //sort out mask details
             maskDetails = [NSArray arrayWithObjects: theMask, [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"], lat1, long1, nil]; //give player name, location and mask details
             
