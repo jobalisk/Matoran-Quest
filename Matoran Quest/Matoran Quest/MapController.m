@@ -640,11 +640,10 @@ NSString *maskColorString; //holds the found masks's colour
             }
             
         }
-        /*
         else{ //other random bits that got left out like Antarctica and maybe bits of the Pacific or Middle East...
             return @"bronze matatu";
         }
-        */
+        
 
     }
     //return @"brown rau"; //you get my favourite
