@@ -41,21 +41,6 @@
                                     <segue destination="fUa-bY-8jl" kind="show" id="1BO-mg-YjO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtd-Dp-E2K">
-                                <rect key="frame" x="20" y="526" width="374" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="374" id="50i-fT-liV"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Reset Masks and Inventory">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="resetButtonPressed:" destination="q8n-sj-w8s" eventType="touchUpInside" id="Gkr-mL-gt3"/>
-                                    <action selector="resetButtonPressed:" destination="4OK-Ja-vhX" eventType="touchUpInside" id="nzn-MK-Z5m"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzd-Gw-FG5">
                                 <rect key="frame" x="27" y="45" width="361" height="17.333333333333329"/>
                                 <constraints>
@@ -66,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Player" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4p6-Y0-KM2">
-                                <rect key="frame" x="27" y="70" width="361" height="18"/>
+                                <rect key="frame" x="27" y="70.333333333333329" width="361" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="361" id="E9q-RA-VJq"/>
                                 </constraints>
@@ -140,18 +125,15 @@
                             <constraint firstItem="2gd-ST-Dk4" firstAttribute="trailing" secondItem="0SQ-Jx-0R3" secondAttribute="trailing" constant="6" id="3aN-Bp-c3D"/>
                             <constraint firstItem="0SQ-Jx-0R3" firstAttribute="leading" secondItem="2gd-ST-Dk4" secondAttribute="leading" constant="27" id="3eI-4Z-shD"/>
                             <constraint firstItem="2gd-ST-Dk4" firstAttribute="trailing" secondItem="4p6-Y0-KM2" secondAttribute="trailing" constant="5" id="5d6-dK-p1m"/>
-                            <constraint firstItem="t38-an-rm3" firstAttribute="top" secondItem="jtd-Dp-E2K" secondAttribute="bottom" constant="48" id="8Jm-i6-1Bn"/>
                             <constraint firstItem="fzd-Gw-FG5" firstAttribute="leading" secondItem="2gd-ST-Dk4" secondAttribute="leading" constant="27" id="DVb-el-RzD"/>
                             <constraint firstItem="2gd-ST-Dk4" firstAttribute="bottom" secondItem="Wnu-ib-dRb" secondAttribute="bottom" constant="342" id="FuC-yG-Mv0"/>
                             <constraint firstItem="Wnu-ib-dRb" firstAttribute="top" secondItem="2gd-ST-Dk4" secondAttribute="top" constant="179" id="N7b-ZV-U28"/>
                             <constraint firstItem="2gd-ST-Dk4" firstAttribute="trailing" secondItem="gtu-HJ-i0a" secondAttribute="trailing" constant="6" id="N9m-4m-tS5"/>
                             <constraint firstItem="Wnu-ib-dRb" firstAttribute="leading" secondItem="2gd-ST-Dk4" secondAttribute="leading" constant="87" id="NVP-2k-RZA"/>
                             <constraint firstItem="ZSk-EM-mFe" firstAttribute="top" secondItem="2gd-ST-Dk4" secondAttribute="top" constant="96" id="PmC-0Y-MuE"/>
-                            <constraint firstItem="jtd-Dp-E2K" firstAttribute="leading" secondItem="XjA-jm-iZV" secondAttribute="leadingMargin" id="Q4d-Da-8Wz"/>
                             <constraint firstItem="2gd-ST-Dk4" firstAttribute="trailing" secondItem="t38-an-rm3" secondAttribute="trailing" constant="6" id="RQl-rH-mgn"/>
                             <constraint firstItem="pur-nd-iCb" firstAttribute="top" secondItem="0SQ-Jx-0R3" secondAttribute="bottom" constant="8" symbolic="YES" id="TNQ-HH-2Qz"/>
                             <constraint firstItem="2gd-ST-Dk4" firstAttribute="bottom" secondItem="t38-an-rm3" secondAttribute="bottom" constant="79" id="Who-EK-lxH"/>
-                            <constraint firstItem="2gd-ST-Dk4" firstAttribute="trailing" secondItem="jtd-Dp-E2K" secondAttribute="trailing" constant="-1" id="ZQh-Lq-jSu"/>
                             <constraint firstItem="t38-an-rm3" firstAttribute="leading" secondItem="2gd-ST-Dk4" secondAttribute="leading" constant="27" id="cH3-PN-v9x"/>
                             <constraint firstItem="fzd-Gw-FG5" firstAttribute="top" secondItem="2gd-ST-Dk4" secondAttribute="top" constant="45" id="cfd-rf-uwq"/>
                             <constraint firstItem="4p6-Y0-KM2" firstAttribute="leading" secondItem="2gd-ST-Dk4" secondAttribute="leading" constant="27" id="ebD-8Q-SRY"/>
@@ -420,7 +402,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2B-KA-qB5">
-                                <rect key="frame" x="20" y="708" width="374" height="28"/>
+                                <rect key="frame" x="20" y="711" width="374" height="25"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Return">
@@ -675,6 +657,119 @@
             </objects>
             <point key="canvasLocation" x="1479" y="4"/>
         </scene>
+        <!--Options View Controller-->
+        <scene sceneID="3pM-j1-zzo">
+            <objects>
+                <viewController id="Wef-nB-vT9" customClass="OptionsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EnF-3t-4vP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtd-Dp-E2K">
+                                <rect key="frame" x="27" y="522" width="361" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reset Masks and Inventory">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="resetButtonPressed:" destination="Wef-nB-vT9" eventType="touchUpInside" id="Ism-3T-nyl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lY3-qb-gbN">
+                                <rect key="frame" x="27" y="35" width="361" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="u4U-5l-0Pa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="17"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zC3-qI-Vze">
+                                <rect key="frame" x="27" y="66" width="361" height="18"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udZ-Du-V5l">
+                                <rect key="frame" x="27" y="139" width="361" height="183"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="183" id="pN2-HM-pJ3"/>
+                                </constraints>
+                                <string key="text">If you wish to alter your location preferences please open your iPhones settings app and alter them there. Go to Settings &gt; Privacy &amp; Security &gt; Location Services. Then scroll down to find Matoran Quest where you can alter the settings for this app.</string>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNd-5K-la2">
+                                <rect key="frame" x="192" y="666" width="56" height="25"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Return">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smd-k9-uf1">
+                                <rect key="frame" x="37" y="532" width="361" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reset Masks and Inventory">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="resetButtonPressed:" destination="Wef-nB-vT9" eventType="touchUpInside" id="tBX-5d-WJi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqd-EJ-8po">
+                                <rect key="frame" x="37" y="149" width="361" height="183"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="183" id="ZHw-NC-gQ5"/>
+                                </constraints>
+                                <string key="text">If you wish to alter your location preferences please open your iPhones settings app and alter them there. Go to Settings &gt; Privacy &amp; Security &gt; Location Services. Then scroll down to find Matoran Quest where you can alter the settings for this app.</string>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMh-Cq-isk">
+                                <rect key="frame" x="182" y="656" width="56" height="25"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Return">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fUa-bY-8jl" kind="show" id="ruM-g3-Qas"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fuk-6y-ccd"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zC3-qI-Vze" firstAttribute="top" secondItem="lY3-qb-gbN" secondAttribute="bottom" constant="8" id="0Aq-fm-HkH"/>
+                            <constraint firstItem="udZ-Du-V5l" firstAttribute="trailing" secondItem="zC3-qI-Vze" secondAttribute="trailing" id="7si-9Y-U7a"/>
+                            <constraint firstItem="hMh-Cq-isk" firstAttribute="leading" secondItem="fuk-6y-ccd" secondAttribute="leading" constant="182" id="7wF-X0-zxi"/>
+                            <constraint firstItem="lY3-qb-gbN" firstAttribute="top" secondItem="fuk-6y-ccd" secondAttribute="top" constant="35" id="A1P-2c-eyM"/>
+                            <constraint firstItem="Cqd-EJ-8po" firstAttribute="leading" secondItem="Smd-k9-uf1" secondAttribute="leading" id="A25-bl-nA1"/>
+                            <constraint firstItem="lY3-qb-gbN" firstAttribute="leading" secondItem="zC3-qI-Vze" secondAttribute="leading" id="AvG-Pj-xka"/>
+                            <constraint firstItem="tNd-5K-la2" firstAttribute="top" secondItem="Smd-k9-uf1" secondAttribute="bottom" constant="96" id="CiW-pF-bRP"/>
+                            <constraint firstItem="udZ-Du-V5l" firstAttribute="leading" secondItem="jtd-Dp-E2K" secondAttribute="leading" id="HIh-Ne-rpm"/>
+                            <constraint firstItem="hMh-Cq-isk" firstAttribute="top" secondItem="jtd-Dp-E2K" secondAttribute="bottom" constant="96" id="SVG-9d-a7a"/>
+                            <constraint firstItem="lY3-qb-gbN" firstAttribute="leading" secondItem="fuk-6y-ccd" secondAttribute="leading" constant="27" id="Uwu-DK-zhu"/>
+                            <constraint firstItem="lY3-qb-gbN" firstAttribute="centerX" secondItem="EnF-3t-4vP" secondAttribute="centerX" id="X0v-Wq-svL"/>
+                            <constraint firstItem="lY3-qb-gbN" firstAttribute="trailing" secondItem="zC3-qI-Vze" secondAttribute="trailing" id="ZWu-LR-3ym"/>
+                            <constraint firstItem="Cqd-EJ-8po" firstAttribute="trailing" secondItem="Smd-k9-uf1" secondAttribute="trailing" id="iOB-ZH-oIN"/>
+                            <constraint firstItem="udZ-Du-V5l" firstAttribute="leading" secondItem="zC3-qI-Vze" secondAttribute="leading" id="jQb-Kw-G3x"/>
+                            <constraint firstItem="udZ-Du-V5l" firstAttribute="top" secondItem="zC3-qI-Vze" secondAttribute="bottom" constant="55" id="mNS-Ee-VdG"/>
+                            <constraint firstItem="udZ-Du-V5l" firstAttribute="trailing" secondItem="jtd-Dp-E2K" secondAttribute="trailing" id="ocN-rS-hIk"/>
+                            <constraint firstItem="fuk-6y-ccd" firstAttribute="bottom" secondItem="hMh-Cq-isk" secondAttribute="bottom" constant="35" id="rFT-yT-7fS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zPA-nF-aid"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3hJ-15-06b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-820.28985507246387" y="820.92391304347836"/>
+        </scene>
         <!--Menu Controller-->
         <scene sceneID="TV7-pa-ksj">
             <objects>
@@ -696,7 +791,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOs-4c-hcv">
-                                <rect key="frame" x="20" y="344" width="374" height="34"/>
+                                <rect key="frame" x="20" y="367" width="374" height="34"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Manage Player">
@@ -706,19 +801,8 @@
                                     <segue destination="q8n-sj-w8s" kind="show" id="wVj-0P-oDj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuN-bp-l5F">
-                                <rect key="frame" x="20" y="270" width="374" height="37"/>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="25"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Play">
-                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="2xE-CA-LUh" kind="show" id="XKM-sa-wO2"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPD-TT-3YG">
-                                <rect key="frame" x="20" y="405" width="374" height="34"/>
+                                <rect key="frame" x="20" y="493" width="374" height="34"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Help">
@@ -728,16 +812,15 @@
                                     <action selector="helpButton:" destination="fUa-bY-8jl" eventType="touchUpInside" id="79V-Pp-JMn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saY-fI-X9f">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saY-fI-X9f">
                                 <rect key="frame" x="-1359" y="614" width="2982" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">This game is unofficial. The creator, Job Dyer, does not in anyway claim any ownership of any of the copywrited materials used here in other than the app itself and any personal assets created by Job Dyer for this game. Matoran, Bionicle, The Bionicle Logo, the LEGO logo and all other such materials are trademarks and property of the LEGO group. ©2023 The LEGO Group. All rights reserved.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tf-dN-jbC">
-                                <rect key="frame" x="20" y="470" width="374" height="34"/>
+                                <rect key="frame" x="20" y="561" width="374" height="34"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="About">
@@ -748,28 +831,55 @@
                                     <segue destination="4OK-Ja-vhX" kind="show" id="yXw-wk-L9p"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8c-GL-Ab9">
+                                <rect key="frame" x="20" y="428" width="374" height="34"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Options">
+                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="aboutButton:" destination="fUa-bY-8jl" eventType="touchUpInside" id="fKT-sO-1WS"/>
+                                    <segue destination="Wef-nB-vT9" kind="show" id="Iqo-8I-WEp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuN-bp-l5F">
+                                <rect key="frame" x="20" y="300" width="374" height="37"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="25"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2xE-CA-LUh" kind="show" id="XKM-sa-wO2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oeX-3l-py7"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
-                            <constraint firstItem="0tf-dN-jbC" firstAttribute="leading" secondItem="lPD-TT-3YG" secondAttribute="leading" id="4Tg-Lx-AFX"/>
-                            <constraint firstItem="lPD-TT-3YG" firstAttribute="top" secondItem="aOs-4c-hcv" secondAttribute="bottom" constant="27" id="9YG-ZJ-5dZ"/>
-                            <constraint firstItem="Vwn-fF-uNx" firstAttribute="trailing" secondItem="fuN-bp-l5F" secondAttribute="trailing" id="HOz-xD-2Ho"/>
-                            <constraint firstItem="aOs-4c-hcv" firstAttribute="trailing" secondItem="lPD-TT-3YG" secondAttribute="trailing" id="KRl-Mk-BbZ"/>
+                            <constraint firstItem="lPD-TT-3YG" firstAttribute="trailing" secondItem="0tf-dN-jbC" secondAttribute="trailing" id="GbF-Vp-uQD"/>
+                            <constraint firstItem="fuN-bp-l5F" firstAttribute="trailing" secondItem="aOs-4c-hcv" secondAttribute="trailing" id="Jdf-1K-2SH"/>
+                            <constraint firstItem="aOs-4c-hcv" firstAttribute="top" secondItem="fuN-bp-l5F" secondAttribute="bottom" constant="30" id="Jg9-oQ-N3B"/>
+                            <constraint firstItem="saY-fI-X9f" firstAttribute="top" secondItem="0tf-dN-jbC" secondAttribute="bottom" constant="19" id="KAT-yO-dwf"/>
+                            <constraint firstItem="x8c-GL-Ab9" firstAttribute="leading" secondItem="lPD-TT-3YG" secondAttribute="leading" id="KoZ-CB-N5j"/>
+                            <constraint firstItem="fuN-bp-l5F" firstAttribute="top" secondItem="pd5-CC-Q55" secondAttribute="top" constant="300" id="Mfh-B2-ygM"/>
                             <constraint firstItem="dXH-et-6HW" firstAttribute="leading" secondItem="Vwn-fF-uNx" secondAttribute="leading" id="T7k-jh-0Zq"/>
-                            <constraint firstItem="fuN-bp-l5F" firstAttribute="top" secondItem="pd5-CC-Q55" secondAttribute="top" constant="270" id="W3Y-4J-Km3"/>
-                            <constraint firstItem="fuN-bp-l5F" firstAttribute="leading" secondItem="aOs-4c-hcv" secondAttribute="leading" id="XaC-fa-n7J"/>
-                            <constraint firstItem="Vwn-fF-uNx" firstAttribute="leading" secondItem="fuN-bp-l5F" secondAttribute="leading" id="a8P-xd-CyZ"/>
-                            <constraint firstItem="aOs-4c-hcv" firstAttribute="leading" secondItem="lPD-TT-3YG" secondAttribute="leading" id="dBA-eX-fai"/>
+                            <constraint firstItem="fuN-bp-l5F" firstAttribute="trailing" secondItem="Vwn-fF-uNx" secondAttribute="trailing" id="UpT-tc-sik"/>
+                            <constraint firstItem="lPD-TT-3YG" firstAttribute="top" secondItem="x8c-GL-Ab9" secondAttribute="bottom" constant="31" id="VrJ-gq-Q4d"/>
+                            <constraint firstItem="fuN-bp-l5F" firstAttribute="leading" secondItem="aOs-4c-hcv" secondAttribute="leading" id="X73-ZK-E06"/>
+                            <constraint firstItem="aOs-4c-hcv" firstAttribute="trailing" secondItem="x8c-GL-Ab9" secondAttribute="trailing" id="Zz9-gO-n1D"/>
+                            <constraint firstItem="fuN-bp-l5F" firstAttribute="leading" secondItem="Vwn-fF-uNx" secondAttribute="leading" id="brU-Q3-Oc8"/>
                             <constraint firstItem="dXH-et-6HW" firstAttribute="top" secondItem="oeX-3l-py7" secondAttribute="top" constant="76" id="drO-zM-Lfh"/>
                             <constraint firstItem="dXH-et-6HW" firstAttribute="leading" secondItem="pd5-CC-Q55" secondAttribute="leadingMargin" id="e4m-ta-q91"/>
                             <constraint firstItem="Vwn-fF-uNx" firstAttribute="top" secondItem="dXH-et-6HW" secondAttribute="bottom" constant="8" symbolic="YES" id="fp4-Pz-muA"/>
-                            <constraint firstItem="fuN-bp-l5F" firstAttribute="trailing" secondItem="aOs-4c-hcv" secondAttribute="trailing" id="g39-mV-50I"/>
+                            <constraint firstItem="lPD-TT-3YG" firstAttribute="leading" secondItem="0tf-dN-jbC" secondAttribute="leading" id="fxA-Z4-UpH"/>
+                            <constraint firstItem="0tf-dN-jbC" firstAttribute="top" secondItem="lPD-TT-3YG" secondAttribute="bottom" constant="34" id="inn-uD-6qP"/>
+                            <constraint firstItem="aOs-4c-hcv" firstAttribute="leading" secondItem="x8c-GL-Ab9" secondAttribute="leading" id="mR1-wa-yHa"/>
                             <constraint firstItem="dXH-et-6HW" firstAttribute="trailing" secondItem="pd5-CC-Q55" secondAttribute="trailingMargin" id="oEI-NK-BGJ"/>
-                            <constraint firstItem="0tf-dN-jbC" firstAttribute="trailing" secondItem="lPD-TT-3YG" secondAttribute="trailing" id="vHb-Hn-LMS"/>
-                            <constraint firstItem="aOs-4c-hcv" firstAttribute="top" secondItem="fuN-bp-l5F" secondAttribute="bottom" constant="37" id="wzL-Z2-IOl"/>
+                            <constraint firstItem="x8c-GL-Ab9" firstAttribute="trailing" secondItem="lPD-TT-3YG" secondAttribute="trailing" id="uTj-bG-MNl"/>
+                            <constraint firstItem="x8c-GL-Ab9" firstAttribute="top" secondItem="aOs-4c-hcv" secondAttribute="bottom" constant="27" id="wbh-nA-RYN"/>
                             <constraint firstItem="dXH-et-6HW" firstAttribute="trailing" secondItem="Vwn-fF-uNx" secondAttribute="trailing" id="xBh-71-hM8"/>
-                            <constraint firstItem="0tf-dN-jbC" firstAttribute="top" secondItem="lPD-TT-3YG" secondAttribute="bottom" constant="31" id="yBh-uE-KwX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oi7-8o-ZDx"/>
@@ -805,17 +915,17 @@
                                     <segue destination="fUa-bY-8jl" kind="show" id="qHN-Ua-pzr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Updated!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAA-F2-cxF">
-                                <rect key="frame" x="163" y="797" width="68" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFF-lY-JM1">
+                                <rect key="frame" x="34" y="671" width="54" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="EZp-eJ-A23"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFF-lY-JM1">
-                                <rect key="frame" x="34" y="671" width="38" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="38" id="3zt-9s-r6g"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAA-F2-cxF">
+                                <rect key="frame" x="129" y="667" width="156" height="33"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
@@ -824,19 +934,19 @@
                         <viewLayoutGuide key="safeArea" id="tHM-2h-dPo"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="dFF-lY-JM1" firstAttribute="centerY" secondItem="mAA-F2-cxF" secondAttribute="centerY" id="5ee-6w-nbI"/>
+                            <constraint firstItem="dFF-lY-JM1" firstAttribute="bottom" secondItem="R4m-kR-9GS" secondAttribute="bottom" id="9MK-wn-8kj"/>
                             <constraint firstItem="R4m-kR-9GS" firstAttribute="top" secondItem="y0B-zv-UR9" secondAttribute="bottom" constant="12" id="CbY-Vf-jtH"/>
-                            <constraint firstItem="mAA-F2-cxF" firstAttribute="leading" secondItem="dFF-lY-JM1" secondAttribute="trailing" constant="91" id="DWi-vE-iaC"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="leading" secondItem="JhT-N3-6uU" secondAttribute="leadingMargin" id="H01-g9-2tg"/>
-                            <constraint firstItem="dFF-lY-JM1" firstAttribute="top" secondItem="R4m-kR-9GS" secondAttribute="top" id="LWf-ZV-dnX"/>
-                            <constraint firstItem="mAA-F2-cxF" firstAttribute="centerX" secondItem="y0B-zv-UR9" secondAttribute="centerX" id="PkG-l8-cbN"/>
+                            <constraint firstItem="mAA-F2-cxF" firstAttribute="top" secondItem="y0B-zv-UR9" secondAttribute="bottom" constant="8" id="IXJ-KL-nIe"/>
+                            <constraint firstItem="dFF-lY-JM1" firstAttribute="leading" secondItem="tHM-2h-dPo" secondAttribute="leading" constant="34" id="LmM-19-woE"/>
+                            <constraint firstItem="dFF-lY-JM1" firstAttribute="top" secondItem="R4m-kR-9GS" secondAttribute="top" id="SLh-oH-82Y"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="trailing" secondItem="R4m-kR-9GS" secondAttribute="trailing" id="YN0-Ug-2D0"/>
-                            <constraint firstItem="dFF-lY-JM1" firstAttribute="leading" secondItem="tHM-2h-dPo" secondAttribute="leading" constant="34" id="YcQ-Dr-P1d"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="top" secondItem="JhT-N3-6uU" secondAttribute="top" constant="20" symbolic="YES" id="bdY-F6-1xZ"/>
-                            <constraint firstItem="dFF-lY-JM1" firstAttribute="baseline" secondItem="mAA-F2-cxF" secondAttribute="baseline" id="efp-oi-bYa"/>
-                            <constraint firstItem="dFF-lY-JM1" firstAttribute="firstBaseline" secondItem="mAA-F2-cxF" secondAttribute="firstBaseline" id="gZF-Kr-WRB"/>
+                            <constraint firstItem="mAA-F2-cxF" firstAttribute="leading" secondItem="dFF-lY-JM1" secondAttribute="trailing" constant="41" id="bg5-Cp-9JI"/>
                             <constraint firstAttribute="bottom" secondItem="R4m-kR-9GS" secondAttribute="bottom" constant="20" symbolic="YES" id="nhv-jI-BG9"/>
-                            <constraint firstItem="mAA-F2-cxF" firstAttribute="bottom" secondItem="R4m-kR-9GS" secondAttribute="bottom" id="njQ-3R-Vfy"/>
                             <constraint firstItem="R4m-kR-9GS" firstAttribute="leading" secondItem="tHM-2h-dPo" secondAttribute="leading" constant="292" id="sTG-YA-TLT"/>
+                            <constraint firstItem="R4m-kR-9GS" firstAttribute="leading" secondItem="mAA-F2-cxF" secondAttribute="trailing" constant="7" id="tt1-ml-BNj"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="trailing" secondItem="JhT-N3-6uU" secondAttribute="trailingMargin" id="wgu-HV-XHv"/>
                         </constraints>
                     </view>
@@ -849,31 +959,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyJ-MT-tpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767.17557251908397" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="766.66666666666674" y="3.2608695652173916"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YH4-WM-69j"/>
-        <segue reference="1BO-mg-YjO"/>
+        <segue reference="ruM-g3-Qas"/>
         <segue reference="mxv-5u-YSP"/>
         <segue reference="yXw-wk-L9p"/>
-        <segue reference="Y5l-SI-aMw"/>
+        <segue reference="wVj-0P-oDj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

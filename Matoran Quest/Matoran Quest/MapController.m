@@ -31,12 +31,20 @@ float spawnDistance = 0.0002; //how far away objects spawn from the player (0.00
 float spawnWalkDistance = 0.000005; //how far you need to walk to trigger a spawn chance (normally 0.00015) (test 0.000005)
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
+int playerHP = 0; //this will later be loaded from the userdefaults and shared with the gameviewcontroller
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     playerWalkingSprite = 0;
     // Do any additional setup after loading the view.
-
+    
+    playerHP = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"]; //load player HP
+    if(playerHP == 0){ //if there is no playerHP key yet
+        playerHP = 10;
+        [[NSUserDefaults standardUserDefaults] setInteger: playerHP forKey:@"PlayerHP"]; //set it if it doesnt exist
+        
+    }
+    
     [_theLabel setText:@"Updated!"];
     [self GetLocation];
     
@@ -703,28 +711,54 @@ NSString *maskColorString; //holds the found masks's colour
 -(void)randomColourPicker{ //chooses the colour of the mask
     
     int randomItem = arc4random_uniform(21); //work out colour
+    
+    //great mask colours
     if (randomItem == 1 || randomItem == 2  || randomItem == 17){ //black
         maskColorString = @"black";
     }
-    else if (randomItem == 3 || randomItem == 4 || randomItem == 13){ //red
+    else if (randomItem == 3 || randomItem == 13){ //red
         maskColorString = @"red";
     }
-    else if (randomItem == 6 || randomItem == 5 || randomItem == 14){ //brown
+    else if (randomItem == 6 || randomItem == 14){ //brown
         maskColorString = @"brown";
     }
-    else if (randomItem == 8 || randomItem == 7 || randomItem == 15){ //white
+    else if (randomItem == 8 || randomItem == 15){ //white
         maskColorString = @"white";
     }
-    else if (randomItem == 10 || randomItem == 9 || randomItem == 16){ //green
+    else if (randomItem == 10 || randomItem == 16){ //green
         maskColorString = @"green";
     }
-    else if (randomItem == 11){ //silver (uncommon)
+    //noble colours
+    else if (randomItem == 4){ //orange (uncommon)
+        maskColorString = @"red";
+    }
+    else if (randomItem == 5){ //light green (uncommon)
+        maskColorString = @"brown";
+    }
+    else if (randomItem == 7){ //grey (uncommon)
+        maskColorString = @"white";
+    }
+    else if (randomItem == 9){ //light brown (uncommon)
+        maskColorString = @"green";
+    }
+    else if (randomItem == 17){ //light blue (uncommon)
+        maskColorString = @"white";
+    }
+    else if (randomItem == 18){ //yellow (uncommon)
+        maskColorString = @"green";
+    }
+    
+    //metalics
+    
+    else if (randomItem == 11){ //silver (lesser rare)
         maskColorString = @"silver";
     }
-    else if (randomItem == 12){ //gold (uncommon)
+    else if (randomItem == 12){ //gold (lesser rare)
         maskColorString = @"gold";
     }
-    else{ //blue (slightly more common for this one
+    
+    //great mask blue
+    else{ //blue
         maskColorString = @"blue";
     }
 }
