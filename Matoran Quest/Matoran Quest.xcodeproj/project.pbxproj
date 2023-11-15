@@ -15,6 +15,7 @@
 		B8474A522B00955100FC6329 /* wallOfMasksController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8474A512B00955100FC6329 /* wallOfMasksController.m */; };
 		B8474A552B00956100FC6329 /* individualMaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8474A542B00956100FC6329 /* individualMaskController.m */; };
 		B8589A472B0540B50017F34D /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8589A462B0540B50017F34D /* OptionsViewController.m */; };
+		B8589A4D2B054DEC0017F34D /* UICollectionViewCell+CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8589A4C2B054DEC0017F34D /* UICollectionViewCell+CollectionViewCell.m */; };
 		B86BCBC52B0021F70015B2FB /* Mata Nui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */; };
 		B86BCBC62B0021FA0015B2FB /* Goudy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B86BCBC32B0020B60015B2FB /* Goudy.otf */; };
 		B8DC7DC12AFFFE69003BF68C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */; };
@@ -66,6 +67,8 @@
 		B8474A542B00956100FC6329 /* individualMaskController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = individualMaskController.m; sourceTree = "<group>"; };
 		B8589A452B0540B50017F34D /* OptionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
 		B8589A462B0540B50017F34D /* OptionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		B8589A4B2B054DEC0017F34D /* UICollectionViewCell+CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+CollectionViewCell.h"; sourceTree = "<group>"; };
+		B8589A4C2B054DEC0017F34D /* UICollectionViewCell+CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+CollectionViewCell.m"; sourceTree = "<group>"; };
 		B86BCBC32B0020B60015B2FB /* Goudy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Goudy.otf; path = "Matoran Quest/Goudy.otf"; sourceTree = SOURCE_ROOT; };
 		B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mata Nui.ttf"; path = "Matoran Quest/Mata Nui.ttf"; sourceTree = SOURCE_ROOT; };
 		B8DC7DBC2AFFFE69003BF68C /* Matoran Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Matoran Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +165,8 @@
 				B8474A542B00956100FC6329 /* individualMaskController.m */,
 				B8183A9A2B047ED100730B8F /* BackPackController.h */,
 				B8183A9B2B047ED100730B8F /* BackPackController.m */,
+				B8589A4B2B054DEC0017F34D /* UICollectionViewCell+CollectionViewCell.h */,
+				B8589A4C2B054DEC0017F34D /* UICollectionViewCell+CollectionViewCell.m */,
 				B8183A972B047DDE00730B8F /* AboutController.h */,
 				B8183A982B047DDE00730B8F /* AboutController.m */,
 				B8589A452B0540B50017F34D /* OptionsViewController.h */,
@@ -336,6 +341,7 @@
 				B8183A992B047DDE00730B8F /* AboutController.m in Sources */,
 				B82C348D2B00110F00625735 /* MenuController.m in Sources */,
 				B8F240B32B00470D00A519E6 /* MapController.m in Sources */,
+				B8589A4D2B054DEC0017F34D /* UICollectionViewCell+CollectionViewCell.m in Sources */,
 				B8589A472B0540B50017F34D /* OptionsViewController.m in Sources */,
 				B8DC7DD52AFFFE6C003BF68C /* main.m in Sources */,
 				B8DC7DC12AFFFE69003BF68C /* AppDelegate.m in Sources */,

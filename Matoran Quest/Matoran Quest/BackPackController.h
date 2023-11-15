@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BackPackController : UIViewController
 
+@property (nonatomic, weak) IBOutlet UICollectionView *itemGrid; //the back pack inventory view
+
 @end
 
 NS_ASSUME_NONNULL_END

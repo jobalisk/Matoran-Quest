@@ -452,15 +452,36 @@
                                     </connections>
                                 </searchBar>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Hfu-7n-SkE">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Hfu-7n-SkE" customClass="CollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="129" height="129"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DGu-VO-Zf9">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="129" height="129"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HxV-4R-kR4">
+                                                    <rect key="frame" x="43" y="54" width="43" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HxV-4R-kR4" firstAttribute="centerY" secondItem="DGu-VO-Zf9" secondAttribute="centerY" id="VAi-KZ-JQc"/>
+                                                <constraint firstItem="HxV-4R-kR4" firstAttribute="leading" secondItem="DGu-VO-Zf9" secondAttribute="leading" constant="43" id="fe3-tE-y1f"/>
+                                                <constraint firstItem="HxV-4R-kR4" firstAttribute="top" secondItem="DGu-VO-Zf9" secondAttribute="top" constant="54" id="sNS-B4-LoA"/>
+                                                <constraint firstItem="HxV-4R-kR4" firstAttribute="centerX" secondItem="DGu-VO-Zf9" secondAttribute="centerX" id="ySo-1H-9Wd"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="customLabel" destination="HxV-4R-kR4" id="wUg-N5-oeR"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="oFE-TB-Cg7" id="Kku-tM-vRz"/>
+                                    <outlet property="delegate" destination="oFE-TB-Cg7" id="dPQ-zR-jQl"/>
+                                </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2i8-XJ-xbU">
                                 <rect key="frame" x="20" y="667" width="374" height="39"/>
@@ -701,37 +722,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNd-5K-la2">
-                                <rect key="frame" x="192" y="666" width="56" height="25"/>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Return">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smd-k9-uf1">
-                                <rect key="frame" x="37" y="532" width="361" height="38"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Reset Masks and Inventory">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="resetButtonPressed:" destination="Wef-nB-vT9" eventType="touchUpInside" id="tBX-5d-WJi"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqd-EJ-8po">
-                                <rect key="frame" x="37" y="149" width="361" height="183"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="183" id="ZHw-NC-gQ5"/>
-                                </constraints>
-                                <string key="text">If you wish to alter your location preferences please open your iPhones settings app and alter them there. Go to Settings &gt; Privacy &amp; Security &gt; Location Services. Then scroll down to find Matoran Quest where you can alter the settings for this app.</string>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMh-Cq-isk">
-                                <rect key="frame" x="182" y="656" width="56" height="25"/>
+                                <rect key="frame" x="20" y="656" width="374" height="25"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Return">
@@ -747,21 +739,19 @@
                         <constraints>
                             <constraint firstItem="zC3-qI-Vze" firstAttribute="top" secondItem="lY3-qb-gbN" secondAttribute="bottom" constant="8" id="0Aq-fm-HkH"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="trailing" secondItem="zC3-qI-Vze" secondAttribute="trailing" id="7si-9Y-U7a"/>
-                            <constraint firstItem="hMh-Cq-isk" firstAttribute="leading" secondItem="fuk-6y-ccd" secondAttribute="leading" constant="182" id="7wF-X0-zxi"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="top" secondItem="fuk-6y-ccd" secondAttribute="top" constant="35" id="A1P-2c-eyM"/>
-                            <constraint firstItem="Cqd-EJ-8po" firstAttribute="leading" secondItem="Smd-k9-uf1" secondAttribute="leading" id="A25-bl-nA1"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="leading" secondItem="zC3-qI-Vze" secondAttribute="leading" id="AvG-Pj-xka"/>
-                            <constraint firstItem="tNd-5K-la2" firstAttribute="top" secondItem="Smd-k9-uf1" secondAttribute="bottom" constant="96" id="CiW-pF-bRP"/>
+                            <constraint firstItem="hMh-Cq-isk" firstAttribute="centerX" secondItem="jtd-Dp-E2K" secondAttribute="centerX" id="GOK-1H-1Fx"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="leading" secondItem="jtd-Dp-E2K" secondAttribute="leading" id="HIh-Ne-rpm"/>
-                            <constraint firstItem="hMh-Cq-isk" firstAttribute="top" secondItem="jtd-Dp-E2K" secondAttribute="bottom" constant="96" id="SVG-9d-a7a"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="leading" secondItem="fuk-6y-ccd" secondAttribute="leading" constant="27" id="Uwu-DK-zhu"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="centerX" secondItem="EnF-3t-4vP" secondAttribute="centerX" id="X0v-Wq-svL"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="trailing" secondItem="zC3-qI-Vze" secondAttribute="trailing" id="ZWu-LR-3ym"/>
-                            <constraint firstItem="Cqd-EJ-8po" firstAttribute="trailing" secondItem="Smd-k9-uf1" secondAttribute="trailing" id="iOB-ZH-oIN"/>
+                            <constraint firstItem="fuk-6y-ccd" firstAttribute="bottom" secondItem="hMh-Cq-isk" secondAttribute="bottom" constant="35" id="aI8-bi-one"/>
+                            <constraint firstItem="hMh-Cq-isk" firstAttribute="leading" secondItem="EnF-3t-4vP" secondAttribute="leadingMargin" id="eJX-rO-BcN"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="leading" secondItem="zC3-qI-Vze" secondAttribute="leading" id="jQb-Kw-G3x"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="top" secondItem="zC3-qI-Vze" secondAttribute="bottom" constant="55" id="mNS-Ee-VdG"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="trailing" secondItem="jtd-Dp-E2K" secondAttribute="trailing" id="ocN-rS-hIk"/>
-                            <constraint firstItem="fuk-6y-ccd" firstAttribute="bottom" secondItem="hMh-Cq-isk" secondAttribute="bottom" constant="35" id="rFT-yT-7fS"/>
+                            <constraint firstItem="hMh-Cq-isk" firstAttribute="top" secondItem="jtd-Dp-E2K" secondAttribute="bottom" constant="96" id="qsS-mN-VpG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zPA-nF-aid"/>
@@ -963,10 +953,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ruM-g3-Qas"/>
+        <segue reference="YH4-WM-69j"/>
+        <segue reference="1BO-mg-YjO"/>
         <segue reference="mxv-5u-YSP"/>
         <segue reference="yXw-wk-L9p"/>
-        <segue reference="wVj-0P-oDj"/>
+        <segue reference="Y5l-SI-aMw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
