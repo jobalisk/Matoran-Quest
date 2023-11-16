@@ -8,13 +8,14 @@
 #import "BackPackController.h"
 #import "UICollectionViewCell+CollectionViewCell.h"
 
-@interface BackPackController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface BackPackController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @end
 
 @implementation BackPackController
 
 NSArray *itemArray; //our item array
+//UICollectionView * itemGrid;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,15 +23,51 @@ NSArray *itemArray; //our item array
     _itemGrid.delegate = self;
     _itemGrid.dataSource = self;
     //[_itemGrid setDataSource:self];
-    //[_itemGrid registerClass:CollectionViewCell.self forCellWithReuseIdentifier:@"cell1"];
+    //[_itemGrid registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"cell1"];
 
+    //[_itemGrid registerNib: [UINib nibWithNibName:@"cell2" bundle:nil] forCellWithReuseIdentifier:@"cell1"];
+
+    //sort out widgets
+    int widgetCount1 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerWidgets"]; //load player Widgets
+    //NSLog(@"Widgets: %d", widgetCount1);
+    if(widgetCount1 == 0){ //if there is no playerHP key yet
+        //NSLog(@"we have no widgets");
+        widgetCount1 = 0;
+        [[NSUserDefaults standardUserDefaults] setInteger: widgetCount1 forKey:@"PlayerWidgets"]; //set it if it doesnt exist
+        
+    }
+    [_widgetCount setText:[NSString stringWithFormat:@"Widgets: %d", widgetCount1]];
+    
+    
 }
 
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    NSLog(@"Got this far");
+    //NSLog(@"Got this far");
     CollectionViewCell *cell1 = [_itemGrid dequeueReusableCellWithReuseIdentifier:@"cell1" forIndexPath:indexPath];
-    [cell1.customLabel setText:itemArray[indexPath.row]];
+    //[cell1.customLabel setText:itemArray[indexPath.row]];
+    //make a label
+    //UILabel *itemName = [[UILabel alloc]initWithFrame:CGRectMake(91, 15, 0, 0)];
+    //
+
+    UILabel *itemName=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 80)];//Set frame of label in your view
+    [itemName setBackgroundColor:[UIColor lightGrayColor]];//Set background color of label.
+    [itemName setText: itemArray[indexPath.row]];
+    [itemName setAdjustsFontSizeToFitWidth:true];
+    [itemName setFont:[UIFont fontWithName:@"Goudy Trajan Regular" size:10]];
+    [itemName setTextColor:[UIColor blackColor]];//Set text color in label.
+    [itemName setTextAlignment:NSTextAlignmentCenter];//Set text alignment in label.
+    [itemName setBaselineAdjustment:UIBaselineAdjustmentAlignBaselines];//Set line adjustment.
+    [itemName setLineBreakMode:NSLineBreakByCharWrapping];//Set linebreaking mode..
+    [itemName setNumberOfLines:3];//Set number of lines in label.
+    [itemName.layer setCornerRadius:40.0];//Set corner radius of label to change the shape.
+    [itemName.layer setBorderWidth:1.0f];//Set border width of label.
+    [itemName setClipsToBounds:YES];//Set its to YES for Corner radius to work.
+    [itemName.layer setBorderColor:[UIColor blackColor].CGColor];//Set Border color.
+    [cell1 addSubview:itemName];//Add it to the view of your choice.
+    
+    
+    
     return cell1;
     
 }
@@ -44,6 +81,35 @@ NSArray *itemArray; //our item array
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:   (UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(100, 100);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{ //tap brings up delete dialog
+    //NSLog(@"Tapped %d", (int)indexPath.row);
+    
+
+    UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Throw away  %@?", itemArray[indexPath.row]]
+                                   message:[NSString stringWithFormat:@"Are you sure you want to throw away %@?", itemArray[indexPath.row]]
+                                   preferredStyle:UIAlertControllerStyleAlert];
+     
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault
+       handler:^(UIAlertAction * action) {
+        NSMutableArray *TurfArray = [itemArray mutableCopy];
+        [TurfArray removeObjectAtIndex: indexPath.row]; //delete the item
+        [[NSUserDefaults standardUserDefaults] setObject: TurfArray forKey:@"PlayerItems"];
+        [self.itemGrid reloadData];//refresh the view
+        //NSLog(@"DELETED");
+        
+        
+    }];
+    [deleteAlert addAction:defaultAction];
+    
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel
+       handler:^(UIAlertAction * action) {}];
+     
+    [deleteAlert addAction:cancelAction];
+    
+    [self presentViewController:deleteAlert animated:YES completion:nil]; //run the alert
+    
 }
 
 /*

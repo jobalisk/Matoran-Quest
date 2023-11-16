@@ -16,6 +16,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [_maskName setText:[NSString stringWithFormat:@"%@", _maskDetailsArray[0]]];
+    [_maskCatcher setText:[NSString stringWithFormat:@"%@", _maskDetailsArray[1]]];
+    [_maskLat setText:[NSString stringWithFormat:@"%@", _maskDetailsArray[2]]];
+    [_maskLong setText:[NSString stringWithFormat:@"%@", _maskDetailsArray[3]]];
 }
 
 /*

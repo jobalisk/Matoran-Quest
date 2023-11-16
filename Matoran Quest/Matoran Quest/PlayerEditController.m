@@ -47,6 +47,9 @@ UIImage *playerSprite; //the image in the player portrait
     if([checkString rangeOfString:@"matoran"].location == NSNotFound){
         playerSprite = [UIImage imageNamed:@"unmaskedmatoran0.png"];
         
+        
+
+        
     }
 
     
@@ -65,7 +68,7 @@ UIImage *playerSprite; //the image in the player portrait
     
     // set up the picker view
     [_playerMaskChooser setDataSource: self];
-    
+
   
 }
 

@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface CollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UILabel *customLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END

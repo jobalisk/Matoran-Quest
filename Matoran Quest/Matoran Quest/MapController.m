@@ -32,6 +32,7 @@ float spawnWalkDistance = 0.000005; //how far you need to walk to trigger a spaw
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
 int playerHP = 0; //this will later be loaded from the userdefaults and shared with the gameviewcontroller
+int widgetCount = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,6 +43,13 @@ int playerHP = 0; //this will later be loaded from the userdefaults and shared w
     if(playerHP == 0){ //if there is no playerHP key yet
         playerHP = 10;
         [[NSUserDefaults standardUserDefaults] setInteger: playerHP forKey:@"PlayerHP"]; //set it if it doesnt exist
+        
+    }
+    
+    widgetCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerWidgets"]; //load player Widgets
+    if(widgetCount == 0){ //if there is no playerHP key yet
+        widgetCount = 0;
+        [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt exist
         
     }
     
@@ -246,7 +254,7 @@ int playerHP = 0; //this will later be loaded from the userdefaults and shared w
     }
     else{
         walkingTimer = 0;
-        [_theTimer setText: [NSString stringWithFormat:@"T: %d", playerUpdateTimer]];
+        //[_theTimer setText: [NSString stringWithFormat:@"T: %d", playerUpdateTimer]];
         if ([_theLabel.text rangeOfString:@"Long"].location == NSNotFound) {
             [_theLabel setText:[NSString stringWithFormat:@"Long: %f", aUserLocation.coordinate.longitude]];
         }
@@ -330,27 +338,9 @@ int playerHP = 0; //this will later be loaded from the userdefaults and shared w
                 
                 itemArray2 = [itemArray mutableCopy];
                 if(itemArray2.count == 19){ //max inventory space is 20
-					if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
-						if([itemArray2 containsObject: @"Widget"]){
-							NSString *widgetAdderString = itemArray2[[itemArray2 indexOfObject: @"Widget"]]; //find where the widgets are if they exist and add 1 to them
-							NSScanner *scanner = [NSScanner scannerWithString:widgetAdderString];
-							NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
-							// Throw away characters before the first number.
-							[scanner scanUpToCharactersFromSet:numbers intoString:NULL];
-							// Collect numbers.
-							[scanner scanCharactersFromSet:numbers intoString:&numberString];
-							// Result.
-							int numberW = [numberString integerValue];
-							numberW += 1; //add one to it
-							widgetAdderString = [NSString stringWithFormat: @"%d Widgets", numberW]; //make a new string
-							[myMutableArray replaceObjectAtIndex:[itemArray2 indexOfObject: @"Widget"] withObject:widgetAdderString]; //replace it in the array
-							[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
-						}
-						else{
-							NSLog(@"Your back pack is now full!"); //give a warning message
-							[itemArray2 addObject: @"1 Widget"]; //add it to the array
-							[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
-						}
+                    if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
+                        widgetCount +=1;
+                        [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
 					}
 					else{ //otherwise display a warning message
 						NSLog(@"Your back pack is now full!"); //give a warning message
@@ -359,33 +349,23 @@ int playerHP = 0; //this will later be loaded from the userdefaults and shared w
 					}
                 }
                 else if(itemArray2.count < 20){ //max inventory space is 20
-											if([itemArray2 containsObject: @"Widget"]){
-							NSString *widgetAdderString = itemArray2[[itemArray2 indexOfObject: @"Widget"]]; //find where the widgets are if they exist and add 1 to them
-							NSScanner *scanner = [NSScanner scannerWithString:widgetAdderString];
-							NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
-							// Throw away characters before the first number.
-							[scanner scanUpToCharactersFromSet:numbers intoString:NULL];
-							// Collect numbers.
-							[scanner scanCharactersFromSet:numbers intoString:&numberString];
-							// Result.
-							int numberW = [numberString integerValue];
-							numberW += 1; //add one to it
-							widgetAdderString = [NSString stringWithFormat: @"%d Widgets", numberW]; //make a new string
-							[myMutableArray replaceObjectAtIndex:[itemArray2 indexOfObject: @"Widget"] withObject:widgetAdderString]; //replace it in the array
-							[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
-						}
-						else{
-							[itemArray2 addObject: @"1 Widget"]; //add it to the array
-							[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
-						}
-					}
+                    if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
+                        widgetCount +=1;
+                        [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
+                    }
 					else{
 						[itemArray2 addObject: theItem]; //add it to the array
 						[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
 					}
                 }
                 else{
-                    NSLog(@"There's no room left in your back pack for that item!");
+                    if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
+                        widgetCount +=1;
+                        [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
+                    }
+                    else{
+                        NSLog(@"There's no room left in your back pack for that item!");
+                    }
                 }
                  
 
@@ -708,7 +688,7 @@ int playerHP = 0; //this will later be loaded from the userdefaults and shared w
 
 -(NSString*)randomItemMaker{
     //itemList = [NSArray arrayWithObjects: @"Energised Protodermis", @"Vuata Maca fruit", @"Super Disk", @"Charged Fire Disk", @"Charged Water Disk", @"Charged Earth Disk", @"Charged Rock Disk", @"Charged Air Disk", @"Charged Ice Disk", nil]; //load up a list of items the player can find
-    int randomItem = arc4random_uniform(20);
+    int randomItem = arc4random_uniform(10020);
     if(randomItem < 13){ //healing items
         itemList = [NSArray arrayWithObjects: @"Vuata Maca fruit", @"Vuata Maca fruit", @"Energised Protodermis", @"Vuata Maca fruit",nil]; //load up a list of healing items (multipul of 1 to increase likelyhood of getting it, its a dumb way to do it but it works so bite me
         randomItem = arc4random_uniform((int)rahiList.count);
@@ -843,15 +823,15 @@ int playerHP = 0; //this will later be loaded from the userdefaults and shared w
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    //[self removeFromParentViewController];
+    
 }
-*/
+
 
 
 

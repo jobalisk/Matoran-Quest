@@ -21,16 +21,18 @@
 - (void)resetButtonPressed:(nonnull id)sender __attribute__((ibaction)) { //make a yes no confirm alert for deleting everything
     NSLog(@"Masks: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]);
     NSLog(@"Items: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerItems"]);
+    NSLog(@"Widgets: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerWidgets"]);
     UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure"
                                    message:@"Press YES to delete all masks and items in the backpack or NO to cancel"
                                    preferredStyle:UIAlertControllerStyleAlert];
      
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault
        handler:^(UIAlertAction * action) {
-        NSArray *defaultArray1 = [NSArray arrayWithObjects: [NSArray arrayWithObjects: @"", nil], nil];
+        NSArray *defaultArray1 = [[NSMutableArray alloc] init]; 
         [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerMasks"];
-        defaultArray1 = [NSArray arrayWithObjects: @"", nil]; //create 2 arrays, 1 array within an array for the first item, the masks, the second for the items
+        defaultArray1 = [[NSMutableArray alloc] init]; //create 2 arrays, 1 array within an array for the first item, the masks, the second for the items
         [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerItems"];
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerWidgets"];
         NSLog(@"DELETED");
         
         
