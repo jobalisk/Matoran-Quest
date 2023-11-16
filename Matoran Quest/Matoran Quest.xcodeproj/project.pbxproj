@@ -542,7 +542,7 @@
 				);
 				MARKETING_VERSION = 0.0.1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "EternityWareStudios.JobDyer.Matoran-Quest";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jobdyer.matoranquest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -575,7 +575,7 @@
 				);
 				MARKETING_VERSION = 0.0.1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "EternityWareStudios.JobDyer.Matoran-Quest";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jobdyer.matoranquest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

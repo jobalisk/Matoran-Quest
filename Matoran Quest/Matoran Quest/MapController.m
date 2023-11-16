@@ -21,14 +21,14 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 4;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 30 seconds (normally 60 or 30) (test 4)
+int playerUpdateTimerMax = 40;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 30 seconds (normally between 60 and 30, trialing 40) (test 4)
 int walkingTimer = 0; //this is for working out walking intervals
 int randomThing; //a random number for item placement purposes
 NSArray *kanohiList2;
 NSArray *itemList;
 NSArray *rahiList;
 float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
-float spawnWalkDistance = 0.000005; //how far you need to walk to trigger a spawn chance (normally 0.00015) (test 0.000005)
+float spawnWalkDistance = 0.00015; //how far you need to walk to trigger a spawn chance (normally 0.00015) (test 0.000005)
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
 int playerHP = 0; //this will later be loaded from the userdefaults and shared with the gameviewcontroller
