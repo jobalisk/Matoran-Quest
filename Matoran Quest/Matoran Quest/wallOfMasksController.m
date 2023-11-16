@@ -23,7 +23,7 @@ NSArray *selectedMaskArray; //the mask we want to know more about
     _maskGrid.delegate = self;
     _maskGrid.dataSource = self;
     //NSLog(@"%@", maskArray);
-    
+    [_maskCount setText:[NSString stringWithFormat:@"Kanohi found: %d", (int)maskArray.count]]; // how many masks do we have?
 }
 
 
@@ -35,7 +35,7 @@ NSArray *selectedMaskArray; //the mask we want to know more about
     //UILabel *itemName = [[UILabel alloc]initWithFrame:CGRectMake(91, 15, 0, 0)];
     //
 
-    UILabel *maskName=[[UILabel alloc]initWithFrame:CGRectMake(0, -20, 60, 50)];//Set frame of label in your view
+    UILabel *maskName=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];//Set frame of label in your view
     //[itemName setBackgroundColor:[UIColor lightGrayColor]];//Set background color of label.
     NSArray *maskInterior = [maskArray objectAtIndex:indexPath.row]; //get the mask list to get out the name of the mask
     //NSLog(@"%@", maskInterior);
@@ -57,7 +57,7 @@ NSArray *selectedMaskArray; //the mask we want to know more about
     [maskName setTextAlignment:NSTextAlignmentCenter];//Set text alignment in label.
     [maskName setBaselineAdjustment:UIBaselineAdjustmentAlignBaselines];//Set line adjustment.
     [maskName setLineBreakMode:NSLineBreakByCharWrapping];//Set linebreaking mode..
-    [maskName setNumberOfLines:1];//Set number of lines in label.
+    [maskName setNumberOfLines:3];//Set number of lines in label.
     //[itemName.layer setCornerRadius:40.0];//Set corner radius of label to change the shape.
     //[itemName.layer setBorderWidth:1.0f];//Set border width of label.
     [maskName setClipsToBounds:YES];//Set its to YES for Corner radius to work.

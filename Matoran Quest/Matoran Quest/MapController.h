@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) IBOutlet MKMapView *theMap; //the players name feild setter
 @property (nonatomic, weak) IBOutlet UILabel *theLabel; //long and lat label
-@property (nonatomic, weak) IBOutlet UILabel *theTimer; //test label
+//@property (nonatomic, weak) IBOutlet UILabel *theTimer; //test label
 
 @end
 

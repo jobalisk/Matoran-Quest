@@ -37,7 +37,7 @@ NSArray *itemArray; //our item array
         
     }
     [_widgetCount setText:[NSString stringWithFormat:@"Widgets: %d", widgetCount1]];
-    
+    [_itemCount setText:[NSString stringWithFormat:@"items: %d", (int)itemArray.count]];
     
 }
 

@@ -336,7 +336,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nku-fi-bKj">
-                                <rect key="frame" x="20" y="20" width="374" height="629"/>
+                                <rect key="frame" x="20" y="60" width="374" height="589"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ayI-ia-VF1">
                                     <size key="itemSize" width="128" height="128"/>
@@ -352,6 +352,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.2193540592783505" green="0.2193540592783505" blue="0.2193540592783505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -370,28 +371,37 @@
                                     <segue destination="q8n-sj-w8s" kind="show" id="a6Z-om-Vhp"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kanohi Found: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6RZ-HZ-KUw">
+                                <rect key="frame" x="20" y="27" width="151" height="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6LB-wW-A6A"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nku-fi-bKj" firstAttribute="leading" secondItem="NWY-br-8CJ" secondAttribute="leadingMargin" id="E1q-ih-uvV"/>
-                            <constraint firstItem="nku-fi-bKj" firstAttribute="top" secondItem="6LB-wW-A6A" secondAttribute="top" constant="20" id="Hc5-Ia-8jD"/>
-                            <constraint firstItem="TKo-2x-9Pv" firstAttribute="top" secondItem="nku-fi-bKj" secondAttribute="bottom" constant="22" id="LlP-bu-oWi"/>
-                            <constraint firstItem="nku-fi-bKj" firstAttribute="leading" secondItem="TKo-2x-9Pv" secondAttribute="leading" id="MwI-oA-FZT"/>
-                            <constraint firstItem="nku-fi-bKj" firstAttribute="trailing" secondItem="TKo-2x-9Pv" secondAttribute="trailing" id="NPv-vH-gKG"/>
+                            <constraint firstItem="nku-fi-bKj" firstAttribute="leading" secondItem="TKo-2x-9Pv" secondAttribute="leading" id="129-pT-6dX"/>
+                            <constraint firstItem="nku-fi-bKj" firstAttribute="trailing" secondItem="TKo-2x-9Pv" secondAttribute="trailing" id="EPl-0o-ODt"/>
+                            <constraint firstItem="6RZ-HZ-KUw" firstAttribute="top" secondItem="6LB-wW-A6A" secondAttribute="top" constant="27" id="O7G-gv-wiC"/>
+                            <constraint firstItem="6RZ-HZ-KUw" firstAttribute="leading" secondItem="nku-fi-bKj" secondAttribute="leading" id="VRA-mx-lJi"/>
+                            <constraint firstItem="TKo-2x-9Pv" firstAttribute="top" secondItem="nku-fi-bKj" secondAttribute="bottom" constant="22" id="XjH-IZ-fo4"/>
+                            <constraint firstItem="nku-fi-bKj" firstAttribute="trailing" secondItem="NWY-br-8CJ" secondAttribute="trailingMargin" id="cdd-qA-mhh"/>
+                            <constraint firstItem="6RZ-HZ-KUw" firstAttribute="leading" secondItem="NWY-br-8CJ" secondAttribute="leadingMargin" id="cu8-Kf-ROE"/>
                             <constraint firstItem="6LB-wW-A6A" firstAttribute="bottom" secondItem="TKo-2x-9Pv" secondAttribute="bottom" constant="20" id="dC5-fZ-dwH"/>
-                            <constraint firstItem="nku-fi-bKj" firstAttribute="trailing" secondItem="NWY-br-8CJ" secondAttribute="trailingMargin" id="q8H-lK-HLn"/>
+                            <constraint firstItem="nku-fi-bKj" firstAttribute="top" secondItem="6RZ-HZ-KUw" secondAttribute="bottom" constant="17" id="xL9-aJ-LMc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HeL-sb-myi"/>
                     <connections>
+                        <outlet property="maskCount" destination="6RZ-HZ-KUw" id="WsY-p5-svv"/>
                         <outlet property="maskGrid" destination="nku-fi-bKj" id="Qwa-xV-FdY"/>
                         <segue destination="KWH-bJ-xPJ" kind="show" identifier="selectedMask" id="tPu-Lz-vHQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XBp-gP-Xex" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-564.12213740458014" y="1543.661971830986"/>
+            <point key="canvasLocation" x="-565.21739130434787" y="1543.2065217391305"/>
         </scene>
         <!--Individual Mask Controller-->
         <scene sceneID="Jyw-Ii-yF7">
@@ -557,13 +567,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Widgets:  0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7R-LF-RnX">
-                                <rect key="frame" x="27" y="76.333333333333329" width="97" height="16"/>
+                                <rect key="frame" x="27" y="76.333333333333329" width="97" height="15.333333333333329"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="25D-st-mdz">
-                                <rect key="frame" x="27" y="144.33333333333331" width="367" height="514.66666666666674"/>
+                                <rect key="frame" x="27" y="143.66666666666669" width="367" height="515.33333333333326"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wH8-TW-9yz">
                                     <size key="itemSize" width="128" height="128"/>
@@ -592,6 +602,15 @@
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxY-6L-CQT">
+                                <rect key="frame" x="297" y="76" width="65" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="07B-0W-Pww"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AyB-jC-anb"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
@@ -601,20 +620,24 @@
                             <constraint firstItem="KJf-2t-xvg" firstAttribute="top" secondItem="AyB-jC-anb" secondAttribute="top" constant="16" id="740-za-7eM"/>
                             <constraint firstItem="lUk-Xp-D9C" firstAttribute="leading" secondItem="2i8-XJ-xbU" secondAttribute="leading" id="AEu-9a-3QL"/>
                             <constraint firstItem="25D-st-mdz" firstAttribute="trailing" secondItem="2i8-XJ-xbU" secondAttribute="trailing" id="Erp-gn-Bag"/>
+                            <constraint firstItem="AyB-jC-anb" firstAttribute="trailing" secondItem="LxY-6L-CQT" secondAttribute="trailing" constant="52" id="LD7-0g-gm5"/>
                             <constraint firstItem="2i8-XJ-xbU" firstAttribute="trailing" secondItem="KC5-jr-onj" secondAttribute="trailingMargin" id="MGF-yh-3U9"/>
                             <constraint firstItem="s7R-LF-RnX" firstAttribute="leading" secondItem="25D-st-mdz" secondAttribute="leading" id="S0S-sx-Fll"/>
                             <constraint firstItem="2i8-XJ-xbU" firstAttribute="top" secondItem="25D-st-mdz" secondAttribute="bottom" constant="8" id="W1C-Q1-23O"/>
                             <constraint firstItem="KJf-2t-xvg" firstAttribute="trailing" secondItem="lUk-Xp-D9C" secondAttribute="trailing" id="XfQ-14-TGQ"/>
                             <constraint firstItem="25D-st-mdz" firstAttribute="top" secondItem="s7R-LF-RnX" secondAttribute="bottom" constant="52" id="Yp6-Ay-0Ah"/>
+                            <constraint firstItem="LxY-6L-CQT" firstAttribute="top" secondItem="lUk-Xp-D9C" secondAttribute="bottom" constant="20.666666666666664" id="ZZl-GI-6ne"/>
                             <constraint firstItem="2i8-XJ-xbU" firstAttribute="leading" secondItem="KC5-jr-onj" secondAttribute="leadingMargin" id="bS6-pR-Rul"/>
                             <constraint firstItem="lUk-Xp-D9C" firstAttribute="trailing" secondItem="25D-st-mdz" secondAttribute="trailing" id="dtI-53-49l"/>
                             <constraint firstItem="s7R-LF-RnX" firstAttribute="top" secondItem="lUk-Xp-D9C" secondAttribute="bottom" constant="21" id="n5L-sS-zNo"/>
                             <constraint firstItem="lUk-Xp-D9C" firstAttribute="top" secondItem="KJf-2t-xvg" secondAttribute="bottom" constant="8" id="rJe-jt-fLg"/>
+                            <constraint firstItem="LxY-6L-CQT" firstAttribute="centerY" secondItem="s7R-LF-RnX" secondAttribute="centerY" id="xlD-me-QeB"/>
                             <constraint firstItem="AyB-jC-anb" firstAttribute="bottom" secondItem="2i8-XJ-xbU" secondAttribute="bottom" constant="10" id="zE2-h0-mw5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pus-do-p7A"/>
                     <connections>
+                        <outlet property="itemCount" destination="LxY-6L-CQT" id="hZr-cP-g8x"/>
                         <outlet property="itemGrid" destination="25D-st-mdz" id="9CH-Kd-EJb"/>
                         <outlet property="widgetCount" destination="s7R-LF-RnX" id="Wx2-JC-lR9"/>
                     </connections>
@@ -1016,17 +1039,8 @@
                                     <segue destination="fUa-bY-8jl" kind="show" id="m2T-WJ-q46"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFF-lY-JM1">
-                                <rect key="frame" x="34" y="671" width="54" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="54" id="EZp-eJ-A23"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
-                                <color key="textColor" systemColor="systemBrownColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAA-F2-cxF">
-                                <rect key="frame" x="96" y="667" width="188" height="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAA-F2-cxF">
+                                <rect key="frame" x="20" y="671" width="225" height="25"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
@@ -1035,19 +1049,16 @@
                         <viewLayoutGuide key="safeArea" id="tHM-2h-dPo"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dFF-lY-JM1" firstAttribute="centerY" secondItem="mAA-F2-cxF" secondAttribute="centerY" id="5ee-6w-nbI"/>
-                            <constraint firstItem="dFF-lY-JM1" firstAttribute="bottom" secondItem="R4m-kR-9GS" secondAttribute="bottom" id="9MK-wn-8kj"/>
                             <constraint firstItem="R4m-kR-9GS" firstAttribute="top" secondItem="y0B-zv-UR9" secondAttribute="bottom" constant="12" id="CbY-Vf-jtH"/>
+                            <constraint firstItem="mAA-F2-cxF" firstAttribute="leading" secondItem="y0B-zv-UR9" secondAttribute="leading" id="Evm-BR-iHS"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="leading" secondItem="JhT-N3-6uU" secondAttribute="leadingMargin" id="H01-g9-2tg"/>
-                            <constraint firstItem="mAA-F2-cxF" firstAttribute="top" secondItem="y0B-zv-UR9" secondAttribute="bottom" constant="8" id="IXJ-KL-nIe"/>
-                            <constraint firstItem="dFF-lY-JM1" firstAttribute="leading" secondItem="tHM-2h-dPo" secondAttribute="leading" constant="34" id="LmM-19-woE"/>
-                            <constraint firstItem="dFF-lY-JM1" firstAttribute="top" secondItem="R4m-kR-9GS" secondAttribute="top" id="SLh-oH-82Y"/>
+                            <constraint firstItem="R4m-kR-9GS" firstAttribute="leading" secondItem="mAA-F2-cxF" secondAttribute="trailing" constant="47" id="TI0-Ug-hAy"/>
+                            <constraint firstItem="mAA-F2-cxF" firstAttribute="bottom" secondItem="R4m-kR-9GS" secondAttribute="bottom" id="VDY-hh-fWR"/>
+                            <constraint firstItem="mAA-F2-cxF" firstAttribute="top" secondItem="R4m-kR-9GS" secondAttribute="top" id="VgB-Ja-TMu"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="trailing" secondItem="R4m-kR-9GS" secondAttribute="trailing" id="YN0-Ug-2D0"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="top" secondItem="JhT-N3-6uU" secondAttribute="top" constant="20" symbolic="YES" id="bdY-F6-1xZ"/>
-                            <constraint firstItem="mAA-F2-cxF" firstAttribute="leading" secondItem="dFF-lY-JM1" secondAttribute="trailing" constant="8" id="bg5-Cp-9JI"/>
                             <constraint firstAttribute="bottom" secondItem="R4m-kR-9GS" secondAttribute="bottom" constant="20" symbolic="YES" id="nhv-jI-BG9"/>
                             <constraint firstItem="R4m-kR-9GS" firstAttribute="leading" secondItem="tHM-2h-dPo" secondAttribute="leading" constant="292" id="sTG-YA-TLT"/>
-                            <constraint firstItem="R4m-kR-9GS" firstAttribute="leading" secondItem="mAA-F2-cxF" secondAttribute="trailing" constant="8" id="tt1-ml-BNj"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="trailing" secondItem="JhT-N3-6uU" secondAttribute="trailingMargin" id="wgu-HV-XHv"/>
                         </constraints>
                     </view>
@@ -1055,7 +1066,6 @@
                     <connections>
                         <outlet property="theLabel" destination="mAA-F2-cxF" id="OIX-E5-hD0"/>
                         <outlet property="theMap" destination="y0B-zv-UR9" id="1FJ-Ni-fh7"/>
-                        <outlet property="theTimer" destination="dFF-lY-JM1" id="3Cu-O3-Tle"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyJ-MT-tpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1064,7 +1074,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1BO-mg-YjO"/>
+        <segue reference="tPu-Lz-vHQ"/>
+        <segue reference="m2T-WJ-q46"/>
         <segue reference="CTH-WT-H8A"/>
         <segue reference="yXw-wk-L9p"/>
         <segue reference="a6Z-om-Vhp"/>
@@ -1074,22 +1085,22 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

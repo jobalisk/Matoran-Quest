@@ -53,6 +53,8 @@ int widgetCount = 0;
         
     }
     
+    [self setModalInPresentation:true]; //make it so you can's swipe it away (stops cheating)
+    
     [_theLabel setText:@"Updated!"];
     [self GetLocation];
     
@@ -222,7 +224,7 @@ int widgetCount = 0;
         playerOldLong = _theMap.userLocation.location.coordinate.longitude;
         
     }
-    NSLog(@"Timer: %d", playerUpdateTimer);
+    //NSLog(@"Timer: %d", playerUpdateTimer);
     
     
     MKCoordinateRegion region;
@@ -262,7 +264,11 @@ int widgetCount = 0;
             [_theLabel setText:[NSString stringWithFormat:@"Lat: %f", aUserLocation.coordinate.latitude]];
         }
         
-        
+        //recover HP
+        if(playerHP != 10){
+            playerHP += 1;
+            [[NSUserDefaults standardUserDefaults] setInteger: playerHP forKey:@"PlayerHP"];
+        }
         
     }
     
@@ -337,7 +343,7 @@ int widgetCount = 0;
             if(itemArray != NULL){
                 
                 itemArray2 = [itemArray mutableCopy];
-                if(itemArray2.count == 19){ //max inventory space is 20
+                if(itemArray2.count == 14){ //max inventory space is 20
                     if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
                         widgetCount +=1;
                         [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
@@ -348,7 +354,7 @@ int widgetCount = 0;
 						[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
 					}
                 }
-                else if(itemArray2.count < 20){ //max inventory space is 20
+                else if(itemArray2.count < 15){ //max inventory space is 20
                     if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
                         widgetCount +=1;
                         [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
@@ -736,42 +742,42 @@ int widgetCount = 0;
 
 -(void)randomColourPicker{ //chooses the colour of the mask
     
-    int randomItem = arc4random_uniform(21); //work out colour
+    int randomItem = arc4random_uniform(33); //work out colour
     
     //great mask colours
-    if (randomItem == 1 || randomItem == 2  || randomItem == 17){ //black
+    if (randomItem == 1 || randomItem == 2  || randomItem == 19){ //black (common)
         maskColorString = @"black";
     }
-    else if (randomItem == 3 || randomItem == 13){ //red
+    else if (randomItem == 3 || randomItem == 13 || randomItem == 20){ //red (common)
         maskColorString = @"red";
     }
-    else if (randomItem == 6 || randomItem == 14){ //brown
+    else if (randomItem == 6 || randomItem == 14 || randomItem == 21){ //brown (common)
         maskColorString = @"brown";
     }
-    else if (randomItem == 8 || randomItem == 15){ //white
+    else if (randomItem == 8 || randomItem == 15 || randomItem == 22){ //white (common)
         maskColorString = @"white";
     }
-    else if (randomItem == 10 || randomItem == 16){ //green
+    else if (randomItem == 10 || randomItem == 16 || randomItem == 23){ //green (common)
         maskColorString = @"green";
     }
     //noble colours
-    else if (randomItem == 4){ //orange (uncommon)
-        maskColorString = @"red";
+    else if (randomItem == 4 || randomItem == 24){ //orange (uncommon)
+        maskColorString = @"orange";
     }
-    else if (randomItem == 5){ //light green (uncommon)
-        maskColorString = @"brown";
+    else if (randomItem == 5 || randomItem == 25){ //light green (uncommon)
+        maskColorString = @"light green";
     }
-    else if (randomItem == 7){ //grey (uncommon)
-        maskColorString = @"white";
+    else if (randomItem == 7 || randomItem == 26){ //grey (uncommon)
+        maskColorString = @"grey";
     }
-    else if (randomItem == 9){ //light brown (uncommon)
-        maskColorString = @"green";
+    else if (randomItem == 9 || randomItem == 27){ //light brown (uncommon)
+        maskColorString = @"light brown";
     }
-    else if (randomItem == 17){ //light blue (uncommon)
-        maskColorString = @"white";
+    else if (randomItem == 17 || randomItem == 28){ //light blue (uncommon)
+        maskColorString = @"light blue";
     }
-    else if (randomItem == 18){ //yellow (uncommon)
-        maskColorString = @"green";
+    else if (randomItem == 18 || randomItem == 29){ //yellow (uncommon)
+        maskColorString = @"yellow";
     }
     
     //metalics
@@ -785,7 +791,7 @@ int widgetCount = 0;
     
     //great mask blue
     else{ //blue
-        maskColorString = @"blue";
+        maskColorString = @"blue";// (common)
     }
 }
 
