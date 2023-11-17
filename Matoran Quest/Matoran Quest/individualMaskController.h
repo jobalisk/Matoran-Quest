@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface individualMaskController : UIViewController
 
 @property (nonatomic, assign) NSArray *maskDetailsArray;
+@property (nonatomic, assign) UIImage *maskImage;
+@property (nonatomic, assign) UIColor *maskImageColour;
 @property (nonatomic, weak) IBOutlet UILabel *maskName;
 @property (nonatomic, weak) IBOutlet UILabel *maskCatcher;
 @property (nonatomic, weak) IBOutlet UILabel *maskLong;
