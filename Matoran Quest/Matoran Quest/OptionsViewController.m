@@ -15,6 +15,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    int vibrationCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"];
+    //NSLog(@"tt: %d", vibrationCheck);
+    [_vibrationSwitch setSelectedSegmentIndex:vibrationCheck]; //set the on off for vibration
     // Do any additional setup after loading the view.
 }
 
@@ -56,5 +59,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)vibrationSwitchSwitched:(nonnull id)sender __attribute__((ibaction)) {
+    if(_vibrationSwitch.selectedSegmentIndex == 0){
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerVibrate"];
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"PlayerVibrate"];
+    }
+    //NSLog(@"tt: %d", (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"]);
+}
 
 @end

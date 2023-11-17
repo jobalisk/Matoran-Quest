@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OptionsViewController : UIViewController
 
 -(IBAction) resetButtonPressed: (id) sender; //the delete button
+-(IBAction) vibrationSwitchSwitched: (id) sender; //the vibration switch
+@property (nonatomic, weak) IBOutlet UISegmentedControl *vibrationSwitch; //is the vibration setting enabled?
 
 @end
 

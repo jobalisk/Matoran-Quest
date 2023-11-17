@@ -14,7 +14,7 @@
 @implementation PlayerEditController
 
 NSUserDefaults *playerDetails;
-NSArray *kanohiList;
+NSMutableArray *kanohiList;
 NSNotificationCenter *colorCenter;
 UIImage *playerSprite; //the image in the player portrait
 
@@ -22,7 +22,29 @@ UIImage *playerSprite; //the image in the player portrait
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    kanohiList = [NSArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", nil]; //load up masks availible to player
+    kanohiList = [NSMutableArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", nil]; //load up masks availible to player
+    NSArray *maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks from the user defaults and make an array of them
+    //NSLog(@"%@", maskArray);
+    NSArray *testMaskArray; //for checking masks
+    NSString *testString;
+    for (int i = 0; i <= (maskArray.count -1); i++)
+    {
+
+        
+        
+        testMaskArray = [maskArray objectAtIndex:i]; //go through each mask, if the player has a vahi or avohkii, add those to the array of availible masks
+        
+        testString = [testMaskArray objectAtIndex:0];
+        if([testString isEqualToString: @"avohkii"]){
+            //NSLog(@"contains A");
+            [kanohiList addObject:@"avohkii"];
+        }
+        if([testString isEqualToString: @"vahi"]){
+            [kanohiList addObject:@"vahi"];
+            //NSLog(@"contains V");
+        }
+    }
+    
     playerDetails = [NSUserDefaults standardUserDefaults];
     _playerNameField.delegate = self;
     _playerNameField.returnKeyType = UIReturnKeyDone;

@@ -846,6 +846,15 @@
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Vibration:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coA-tL-8Hr">
+                                <rect key="frame" x="27" y="342" width="173.33333333333334" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="wAF-AU-SUP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udZ-Du-V5l">
                                 <rect key="frame" x="27" y="139" width="361" height="183"/>
                                 <constraints>
@@ -867,6 +876,16 @@
                                     <segue destination="fUa-bY-8jl" kind="show" id="ruM-g3-Qas"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Owv-oL-hzM">
+                                <rect key="frame" x="253" y="336" width="77" height="32"/>
+                                <segments>
+                                    <segment title="Off"/>
+                                    <segment title="On"/>
+                                </segments>
+                                <connections>
+                                    <action selector="vibrationSwitchSwitched:" destination="Wef-nB-vT9" eventType="valueChanged" id="vav-eZ-hQS"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fuk-6y-ccd"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -877,18 +896,26 @@
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="leading" secondItem="zC3-qI-Vze" secondAttribute="leading" id="AvG-Pj-xka"/>
                             <constraint firstItem="hMh-Cq-isk" firstAttribute="centerX" secondItem="jtd-Dp-E2K" secondAttribute="centerX" id="GOK-1H-1Fx"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="leading" secondItem="jtd-Dp-E2K" secondAttribute="leading" id="HIh-Ne-rpm"/>
+                            <constraint firstItem="Owv-oL-hzM" firstAttribute="top" secondItem="udZ-Du-V5l" secondAttribute="bottom" constant="14" id="LtK-32-xmj"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="leading" secondItem="fuk-6y-ccd" secondAttribute="leading" constant="27" id="Uwu-DK-zhu"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="centerX" secondItem="EnF-3t-4vP" secondAttribute="centerX" id="X0v-Wq-svL"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="trailing" secondItem="zC3-qI-Vze" secondAttribute="trailing" id="ZWu-LR-3ym"/>
                             <constraint firstItem="fuk-6y-ccd" firstAttribute="bottom" secondItem="hMh-Cq-isk" secondAttribute="bottom" constant="35" id="aI8-bi-one"/>
+                            <constraint firstItem="Owv-oL-hzM" firstAttribute="leading" secondItem="coA-tL-8Hr" secondAttribute="trailing" constant="52.666666666666657" id="bZ2-70-5tg"/>
+                            <constraint firstItem="coA-tL-8Hr" firstAttribute="centerY" secondItem="Owv-oL-hzM" secondAttribute="centerY" id="cEm-Yq-kfc"/>
                             <constraint firstItem="hMh-Cq-isk" firstAttribute="leading" secondItem="EnF-3t-4vP" secondAttribute="leadingMargin" id="eJX-rO-BcN"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="leading" secondItem="zC3-qI-Vze" secondAttribute="leading" id="jQb-Kw-G3x"/>
+                            <constraint firstItem="coA-tL-8Hr" firstAttribute="leading" secondItem="jtd-Dp-E2K" secondAttribute="leading" id="jTa-ch-kgX"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="top" secondItem="zC3-qI-Vze" secondAttribute="bottom" constant="55" id="mNS-Ee-VdG"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="trailing" secondItem="jtd-Dp-E2K" secondAttribute="trailing" id="ocN-rS-hIk"/>
                             <constraint firstItem="hMh-Cq-isk" firstAttribute="top" secondItem="jtd-Dp-E2K" secondAttribute="bottom" constant="96" id="qsS-mN-VpG"/>
+                            <constraint firstItem="coA-tL-8Hr" firstAttribute="top" secondItem="udZ-Du-V5l" secondAttribute="bottom" constant="20" id="sOd-Gt-3CZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zPA-nF-aid"/>
+                    <connections>
+                        <outlet property="vibrationSwitch" destination="Owv-oL-hzM" id="41R-ib-CPH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hJ-15-06b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1074,7 +1101,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YIO-Bn-OL9"/>
+        <segue reference="ruM-g3-Qas"/>
         <segue reference="CTH-WT-H8A"/>
         <segue reference="yXw-wk-L9p"/>
         <segue reference="wVj-0P-oDj"/>
@@ -1084,22 +1111,22 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

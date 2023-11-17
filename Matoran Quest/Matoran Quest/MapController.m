@@ -7,6 +7,7 @@
 
 #import "MapController.h"
 #import "PlayerDetailsController.h"
+#import <AudioToolbox/AudioServices.h>
 
 
 @interface MapController () <MKMapViewDelegate, CLLocationManagerDelegate>
@@ -21,14 +22,14 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 20;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 4), 20 is a good trade off between time, distance and excitement
+int playerUpdateTimerMax = 16;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 4), 16 is a good trade off between time, distance and excitement
 int walkingTimer = 0; //this is for working out walking intervals
 int randomThing; //a random number for item placement purposes
 NSArray *kanohiList2;
 NSArray *itemList;
 NSArray *rahiList;
 float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
-float spawnWalkDistance = 0.00015; //how far you need to walk to trigger a spawn chance (normally 0.00015) (test 0.000005)
+float spawnWalkDistance = 0.0001; //how far you need to walk to trigger a spawn chance (normally 0.00015) (test 0.000005)
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
 int playerHP = 0; //this will later be loaded from the userdefaults and shared with the gameviewcontroller
@@ -170,51 +171,68 @@ int widgetCount = 0;
             randomThing = arc4random_uniform(4); //generate a random number for spawn rate
             [_theLabel setText: [NSString stringWithFormat: @"%d", randomThing]];
             if(randomThing != 3){ //1 chance in 3 that the item does not spawn
-                randomThing = arc4random_uniform(8); //generate a random number for spawn location
-                if (randomThing == 0){ //I tried this with cases but it didn't work
-                    Lo += spawnDistance;
-                    [self add1AnnotationWithLong:Lo andLat:La];
+                if([[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"] == 1){ //only do this if enabled in the options menu
+                    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate); //vibrate the phone (or beep on unsupported devices)
                 }
-                else if (randomThing == 1){
-                    Lo -= spawnDistance;
-                    [self add1AnnotationWithLong:Lo andLat:La];
+                
+                int randomThing2 = arc4random_uniform(2); //generate a random number for chance to spawn 2
+                randomThing2 += 1; //choose between spawning 1 or 2 objects
+                if(randomThing2 == 2){
+                    int randomThing1 = arc4random_uniform(2); //make it more unlikely
+                    if(randomThing1 == 1){
+                        randomThing2 = 1; //so now its a 1 in 4 chance roughly of getting 2 to spawn at once
+                    }
                 }
-                else if (randomThing == 2){
-                    La += spawnDistance;
-                    [self add1AnnotationWithLong:Lo andLat:La];
+                int i = 0;
+                while (i != randomThing2){ //do this once or twice
+                    i += 1;
+                    randomThing = arc4random_uniform(8); //generate a random number for spawn location
+                    if (randomThing == 0){ //I tried this with cases but it didn't work
+                        Lo += spawnDistance;
+                        [self add1AnnotationWithLong:Lo andLat:La];
+                    }
+                    else if (randomThing == 1){
+                        Lo -= spawnDistance;
+                        [self add1AnnotationWithLong:Lo andLat:La];
+                    }
+                    else if (randomThing == 2){
+                        La += spawnDistance;
+                        [self add1AnnotationWithLong:Lo andLat:La];
+                    }
+                    else if (randomThing == 3){
+                        La -= spawnDistance;
+                        [self add1AnnotationWithLong:Lo andLat:La];
+                    }
+                    else if (randomThing == 4){
+                        Lo += spawnDistance;
+                        La -= spawnDistance;
+                        [self add1AnnotationWithLong:Lo andLat:La];
+                    }
+                    else if (randomThing == 5){
+                        Lo += spawnDistance;
+                        La += spawnDistance;
+                        [self add1AnnotationWithLong:Lo andLat:La];
+                    }
+                    else if (randomThing == 6){
+                        Lo -= spawnDistance;
+                        La += spawnDistance;
+                        [self add1AnnotationWithLong:Lo andLat:La];
+                    }
+                    else if (randomThing == 7){
+                        Lo -= spawnDistance;
+                        La += spawnDistance;
+                        [self add1AnnotationWithLong:Lo andLat:La];
+                    }
+                    else if (randomThing == 8){
+                        Lo += spawnDistance;
+                        [self add1AnnotationWithLong:Lo andLat:La];//the item is NEVER placed directly under the player
+                    }
+                    else{
+                        Lo += spawnDistance;
+                        [self add1AnnotationWithLong:Lo andLat:La];
+                    }
                 }
-                else if (randomThing == 3){
-                    La -= spawnDistance;
-                    [self add1AnnotationWithLong:Lo andLat:La];
-                }
-                else if (randomThing == 4){
-                    Lo += spawnDistance;
-                    La -= spawnDistance;
-                    [self add1AnnotationWithLong:Lo andLat:La];
-                }
-                else if (randomThing == 5){
-                    Lo += spawnDistance;
-                    La += spawnDistance;
-                    [self add1AnnotationWithLong:Lo andLat:La];
-                }
-                else if (randomThing == 6){
-                    Lo -= spawnDistance;
-                    La += spawnDistance;
-                    [self add1AnnotationWithLong:Lo andLat:La];
-                }
-                else if (randomThing == 7){
-                    Lo -= spawnDistance;
-                    La += spawnDistance;
-                    [self add1AnnotationWithLong:Lo andLat:La];
-                }
-                else if (randomThing == 8){
-                    Lo += spawnDistance;
-                    [self add1AnnotationWithLong:Lo andLat:La];//the item is NEVER placed directly under the player
-                }
-                else{
-                    Lo += spawnDistance;
-                    [self add1AnnotationWithLong:Lo andLat:La];
-                }
+
                 
             }
         }
