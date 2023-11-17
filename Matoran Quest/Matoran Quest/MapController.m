@@ -75,7 +75,7 @@ int widgetCount = 0;
     locationManager.distanceFilter = 2; // meters
 
     [locationManager requestWhenInUseAuthorization];
-    [locationManager requestAlwaysAuthorization];
+    //[locationManager requestAlwaysAuthorization];
     [locationManager startUpdatingLocation];
     
     //next, set up the map view
