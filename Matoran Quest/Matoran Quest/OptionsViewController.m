@@ -36,6 +36,7 @@
         defaultArray1 = [[NSMutableArray alloc] init]; //create 2 arrays, 1 array within an array for the first item, the masks, the second for the items
         [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerItems"];
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerWidgets"];
+        [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"PlayerRares"];
         NSLog(@"DELETED");
         
         

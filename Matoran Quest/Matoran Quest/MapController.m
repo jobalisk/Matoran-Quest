@@ -22,14 +22,16 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 16;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 4), 16 is a good trade off between time, distance and excitement
+int playerUpdateTimerMax = 20;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 4), 16 or 20 is a good trade off between time, distance and excitement
 int walkingTimer = 0; //this is for working out walking intervals
 int randomThing; //a random number for item placement purposes
 NSArray *kanohiList2;
 NSArray *itemList;
 NSArray *rahiList;
+int rareMaskIdentifyier = 0; //this is here so that I can raise a flag when a rare mask has been found to stop crashes in the player edit controller
 float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
 float spawnWalkDistance = 0.0001; //how far you need to walk to trigger a spawn chance (normally 0.00015) (test 0.000005)
+int spawnRate = 6; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
 int playerHP = 0; //this will later be loaded from the userdefaults and shared with the gameviewcontroller
@@ -53,6 +55,14 @@ int widgetCount = 0;
         [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt exist
         
     }
+    
+    rareMaskIdentifyier = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerRares"]; //load player Widgets
+    if(rareMaskIdentifyier == 0){ //if there are no rare masks in the players posession
+        rareMaskIdentifyier = 0;
+        [[NSUserDefaults standardUserDefaults] setInteger: rareMaskIdentifyier forKey:@"PlayerRares"]; //set it if it doesnt exist
+        
+    }
+    
     
     [self setModalInPresentation:true]; //make it so you can's swipe it away (stops cheating)
     
@@ -168,7 +178,7 @@ int widgetCount = 0;
         float La = _theMap.userLocation.location.coordinate.latitude;
         //if we've moved more than around 5 meters...
         if(compLat > spawnWalkDistance || compLong > spawnWalkDistance){
-            randomThing = arc4random_uniform(4); //generate a random number for spawn rate
+            randomThing = arc4random_uniform(spawnRate); //generate a random number for spawn rate
             [_theLabel setText: [NSString stringWithFormat: @"%d", randomThing]];
             if(randomThing != 3){ //1 chance in 3 that the item does not spawn
                 if([[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"] == 1){ //only do this if enabled in the options menu
@@ -547,12 +557,15 @@ int widgetCount = 0;
         if(randomItem == 1){ //rare mask
             int randomItem = arc4random_uniform(5);
             if (randomItem == 1){
+                [[NSUserDefaults standardUserDefaults] setInteger: 1 forKey:@"PlayerRares"];
                 return @"vahi"; //Mask of Time (ultra rare)
+                
             }
             else if (randomItem == 2){
                 return @"infected hau"; // Infected Mask of Shielding (ultra rare)
             }
             else{
+                [[NSUserDefaults standardUserDefaults] setInteger: 1 forKey:@"PlayerRares"];
                 return @"avohkii"; //Mask of Light (rare)
             }
         }
@@ -712,7 +725,7 @@ int widgetCount = 0;
 
 -(NSString*)randomItemMaker{
     //itemList = [NSArray arrayWithObjects: @"Energised Protodermis", @"Vuata Maca fruit", @"Super Disk", @"Charged Fire Disk", @"Charged Water Disk", @"Charged Earth Disk", @"Charged Rock Disk", @"Charged Air Disk", @"Charged Ice Disk", nil]; //load up a list of items the player can find
-    int randomItem = arc4random_uniform(10020);
+    int randomItem = arc4random_uniform(20);
     if(randomItem < 13){ //healing items
         itemList = [NSArray arrayWithObjects: @"Vuata Maca fruit", @"Vuata Maca fruit", @"Energised Protodermis", @"Vuata Maca fruit",nil]; //load up a list of healing items (multipul of 1 to increase likelyhood of getting it, its a dumb way to do it but it works so bite me
         randomItem = arc4random_uniform((int)rahiList.count);

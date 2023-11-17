@@ -28,10 +28,12 @@ UIImage *playerSprite; //the image in the player portrait
     NSArray *testMaskArray; //for checking masks
     NSString *testString;
     //try catch because this will cause the app to crash if you have no masks atam
-    @try {
+    if((int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerRares"] == 1){
         for (int i = 0; i <= (maskArray.count -1); i++)
         {
-
+            
+            
+            NSLog(@"trying to do masks %d", (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerRares"]);
             testMaskArray = [maskArray objectAtIndex:i]; //go through each mask, if the player has a vahi or avohkii, add those to the array of availible masks
             
             testString = [testMaskArray objectAtIndex:0];
@@ -45,12 +47,7 @@ UIImage *playerSprite; //the image in the player portrait
             }
         }
     }
-    @catch (NSException *exception) {
-        
-    }
-    @finally {
-    }
-
+    //NSLog(@"got here");
     
     playerDetails = [NSUserDefaults standardUserDefaults];
     _playerNameField.delegate = self;
@@ -69,6 +66,7 @@ UIImage *playerSprite; //the image in the player portrait
     @finally {
       //Display Alternative
     }
+    //NSLog(@"got here");
     
     //try to load the sprite kind, if it doesnt exist, substitute a temp sprite
     playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
