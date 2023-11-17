@@ -27,23 +27,30 @@ UIImage *playerSprite; //the image in the player portrait
     //NSLog(@"%@", maskArray);
     NSArray *testMaskArray; //for checking masks
     NSString *testString;
-    for (int i = 0; i <= (maskArray.count -1); i++)
-    {
+    //try catch because this will cause the app to crash if you have no masks atam
+    @try {
+        for (int i = 0; i <= (maskArray.count -1); i++)
+        {
 
-        
-        
-        testMaskArray = [maskArray objectAtIndex:i]; //go through each mask, if the player has a vahi or avohkii, add those to the array of availible masks
-        
-        testString = [testMaskArray objectAtIndex:0];
-        if([testString isEqualToString: @"avohkii"]){
-            //NSLog(@"contains A");
-            [kanohiList addObject:@"avohkii"];
-        }
-        if([testString isEqualToString: @"vahi"]){
-            [kanohiList addObject:@"vahi"];
-            //NSLog(@"contains V");
+            testMaskArray = [maskArray objectAtIndex:i]; //go through each mask, if the player has a vahi or avohkii, add those to the array of availible masks
+            
+            testString = [testMaskArray objectAtIndex:0];
+            if([testString isEqualToString: @"avohkii"]){
+                //NSLog(@"contains A");
+                [kanohiList addObject:@"avohkii"];
+            }
+            if([testString isEqualToString: @"vahi"]){
+                [kanohiList addObject:@"vahi"];
+                //NSLog(@"contains V");
+            }
         }
     }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+    }
+
     
     playerDetails = [NSUserDefaults standardUserDefaults];
     _playerNameField.delegate = self;
