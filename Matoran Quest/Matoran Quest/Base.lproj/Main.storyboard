@@ -173,7 +173,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" id="uwW-lP-buq"/>
                                 </constraints>
-                                <string key="text">This game is unofficial. The creator, Job Dyer, does not in anyway claim any ownership of any of the copywrited materials used here in other than the app itself and any personal assets created by Job Dyer for this game. Matoran, Bionicle, The Bionicle Logo, the LEGO logo and all other such materials are trademarks and property of the LEGO group. ©2023 The LEGO Group. All rights reserved.</string>
+                                <string key="text">This game is unofficial. The creator, Job Dyer is not in any way affiliated with the LEGO Group. Bionicle and its affiliated concepts are property of the LEGO Group.  ©2023 The LEGO Group. All rights reserved.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" systemColor="tableBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -256,12 +256,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pC-dB-QdG">
-                                <rect key="frame" x="80" y="98" width="255" height="263"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pC-dB-QdG">
+                                <rect key="frame" x="20" y="98.333333333333314" width="374" height="263"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="263" id="3dY-qd-KA4"/>
                                 </constraints>
-                                <string key="text">This game was made by Eternity Ware Studios, AKA, Job Dyer in 2023 with assets borrowed from the LEGO Group's Bionicle range. The origonal idea came from Ezra Haren (though who knows how many others also had it.</string>
+                                <string key="text">This game was made by Eternity Ware Studios, AKA, Job Dyer in 2023. The origonal idea came from Ezra Haren (though who knows how many others also had it.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -307,7 +307,7 @@
                             <constraint firstItem="FGR-Fx-7fb" firstAttribute="bottom" secondItem="q08-S8-TQP" secondAttribute="bottom" constant="34" id="00s-fQ-PFc"/>
                             <constraint firstItem="zDX-M5-P0f" firstAttribute="leading" secondItem="Osx-ie-Q21" secondAttribute="leadingMargin" id="5SJ-wa-22g"/>
                             <constraint firstItem="zDX-M5-P0f" firstAttribute="leading" secondItem="RLI-hF-cTL" secondAttribute="leading" id="B5n-Ls-88T"/>
-                            <constraint firstItem="0pC-dB-QdG" firstAttribute="leading" secondItem="FGR-Fx-7fb" secondAttribute="leading" constant="80" id="Bmd-fx-f5O"/>
+                            <constraint firstItem="0pC-dB-QdG" firstAttribute="leading" secondItem="FGR-Fx-7fb" secondAttribute="leading" constant="20" id="Bmd-fx-f5O"/>
                             <constraint firstItem="XHN-V7-oFR" firstAttribute="top" secondItem="0pC-dB-QdG" secondAttribute="bottom" constant="99" id="CFj-A5-SmP"/>
                             <constraint firstItem="zDX-M5-P0f" firstAttribute="trailing" secondItem="RLI-hF-cTL" secondAttribute="trailing" id="NWO-dz-cFt"/>
                             <constraint firstItem="zDX-M5-P0f" firstAttribute="top" secondItem="FGR-Fx-7fb" secondAttribute="top" constant="20" id="PTn-cA-2DT"/>
@@ -902,14 +902,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bionicle Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXH-et-6HW">
-                                <rect key="frame" x="20" y="76" width="374" height="17.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXH-et-6HW">
+                                <rect key="frame" x="20" y="76" width="374" height="18"/>
                                 <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="17"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bionicle - Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwn-fF-uNx">
-                                <rect key="frame" x="20" y="101.33333333333333" width="374" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwn-fF-uNx">
+                                <rect key="frame" x="20" y="102" width="374" height="18"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
@@ -1074,11 +1074,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tPu-Lz-vHQ"/>
-        <segue reference="m2T-WJ-q46"/>
+        <segue reference="YIO-Bn-OL9"/>
         <segue reference="CTH-WT-H8A"/>
-        <segue reference="yXw-wk-L9p"/>
-        <segue reference="a6Z-om-Vhp"/>
+        <segue reference="FnT-oO-gnw"/>
+        <segue reference="wVj-0P-oDj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
