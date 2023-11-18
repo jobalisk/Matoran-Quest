@@ -173,7 +173,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" id="uwW-lP-buq"/>
                                 </constraints>
-                                <string key="text">This game is unofficial. The creator, Job Dyer is not in any way affiliated with the LEGO Group. Bionicle and its affiliated concepts are property of the LEGO Group.  ©2023 The LEGO Group. All rights reserved.</string>
+                                <string key="text">BIONIICLE and the BIONICLE logo are trademarks of the LEGO Group, which does not sponsor or endorse this work. This is a non-profit, and fan produced game.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" systemColor="tableBackgroundColor"/>
                                 <nil key="highlightedColor"/>
