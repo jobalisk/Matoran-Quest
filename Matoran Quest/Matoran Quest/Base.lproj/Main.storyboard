@@ -377,6 +377,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection: 0/183" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34j-1h-ZC0">
+                                <rect key="frame" x="246" y="27" width="148" height="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6LB-wW-A6A"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -386,7 +392,9 @@
                             <constraint firstItem="6RZ-HZ-KUw" firstAttribute="top" secondItem="6LB-wW-A6A" secondAttribute="top" constant="27" id="O7G-gv-wiC"/>
                             <constraint firstItem="6RZ-HZ-KUw" firstAttribute="leading" secondItem="nku-fi-bKj" secondAttribute="leading" id="VRA-mx-lJi"/>
                             <constraint firstItem="TKo-2x-9Pv" firstAttribute="top" secondItem="nku-fi-bKj" secondAttribute="bottom" constant="22" id="XjH-IZ-fo4"/>
+                            <constraint firstItem="34j-1h-ZC0" firstAttribute="trailing" secondItem="nku-fi-bKj" secondAttribute="trailing" id="Zkj-4n-wgE"/>
                             <constraint firstItem="nku-fi-bKj" firstAttribute="trailing" secondItem="NWY-br-8CJ" secondAttribute="trailingMargin" id="cdd-qA-mhh"/>
+                            <constraint firstItem="34j-1h-ZC0" firstAttribute="baseline" secondItem="6RZ-HZ-KUw" secondAttribute="baseline" id="cny-NH-Yqh"/>
                             <constraint firstItem="6RZ-HZ-KUw" firstAttribute="leading" secondItem="NWY-br-8CJ" secondAttribute="leadingMargin" id="cu8-Kf-ROE"/>
                             <constraint firstItem="6LB-wW-A6A" firstAttribute="bottom" secondItem="TKo-2x-9Pv" secondAttribute="bottom" constant="20" id="dC5-fZ-dwH"/>
                             <constraint firstItem="nku-fi-bKj" firstAttribute="top" secondItem="6RZ-HZ-KUw" secondAttribute="bottom" constant="17" id="xL9-aJ-LMc"/>
@@ -394,6 +402,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="HeL-sb-myi"/>
                     <connections>
+                        <outlet property="collectionCount" destination="34j-1h-ZC0" id="CSE-Lg-Q43"/>
                         <outlet property="maskCount" destination="6RZ-HZ-KUw" id="WsY-p5-svv"/>
                         <outlet property="maskGrid" destination="nku-fi-bKj" id="Qwa-xV-FdY"/>
                         <segue destination="KWH-bJ-xPJ" kind="show" identifier="selectedMask" id="tPu-Lz-vHQ"/>

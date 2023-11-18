@@ -25,6 +25,7 @@
     NSLog(@"Masks: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]);
     NSLog(@"Items: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerItems"]);
     NSLog(@"Widgets: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerWidgets"]);
+    NSLog(@"Collection: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMaskCollectionList"]);
     UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure"
                                    message:@"Press YES to delete all masks and items in the backpack or NO to cancel"
                                    preferredStyle:UIAlertControllerStyleAlert];
@@ -34,8 +35,10 @@
         NSArray *defaultArray1 = [[NSMutableArray alloc] init]; 
         [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerMasks"];
         defaultArray1 = [[NSMutableArray alloc] init]; //create 2 arrays, 1 array within an array for the first item, the masks, the second for the items
-        [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerItems"];
+        [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerItems"]; //set a variety of game variables back to 0.
+        [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerMaskCollectionList"]; //set the collection counter back to 0!
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerWidgets"];
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerFighting"];
         [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"PlayerRares"];
         NSLog(@"DELETED");
         

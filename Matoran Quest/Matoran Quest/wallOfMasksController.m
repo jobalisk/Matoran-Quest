@@ -19,7 +19,7 @@ NSArray *selectedMaskArray; //the mask we want to know more about
 UIImage *maskImage2; //the colourized mask image
 UIImage *outPutMask; //the mask we take to the individual mask viewer
 NSMutableArray *imagesInCollection; //an array of all the images
-
+NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has collected. 1 entry for each unique kind of mask (colour as well as type)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,6 +30,15 @@ NSMutableArray *imagesInCollection; //an array of all the images
     //NSLog(@"%@", maskArray);
     [_maskCount setText:[NSString stringWithFormat:@"Kanohi found: %d", (int)maskArray.count]]; // how many masks do we have?
     imagesInCollection = [[NSMutableArray alloc] init];
+    
+    collectedMasks2 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMaskCollectionList"];
+    if(collectedMasks2 == NULL){ //if there is no player masks collection key yet
+        collectedMasks2 = [[NSMutableArray alloc] init];
+        //NSLog(@"refreshing2");
+        [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMaskCollectionList"]; //set it if it doesnt exist
+        
+    }
+    [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/183", (int)collectedMasks2.count]];
 }
 
 

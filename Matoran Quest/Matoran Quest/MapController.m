@@ -30,13 +30,14 @@ NSArray *itemList;
 NSArray *rahiList;
 int rareMaskIdentifyier = 0; //this is here so that I can raise a flag when a rare mask has been found to stop crashes in the player edit controller
 float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
-float spawnWalkDistance = 0.00007
-; //how far you need to walk to trigger a spawn chance (normally  0.00007) (test 0.000005)
+float spawnWalkDistance = 0.00007; //how far you need to walk to trigger a spawn chance (normally  0.00007) (test 0.000005)
 int spawnRate = 6; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
 int playerHP = 0; //this will later be loaded from the userdefaults and shared with the gameviewcontroller
 int widgetCount = 0;
+int rahiFightFlag = 0; //are you encountering a rahi (in a fight)
+NSMutableArray *collectedMasks; //a list of the kinds of masks the player has collected. 1 entry for each unique kind of mask (colour as well as type)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +48,25 @@ int widgetCount = 0;
     if(playerHP == 0){ //if there is no playerHP key yet
         playerHP = 10;
         [[NSUserDefaults standardUserDefaults] setInteger: playerHP forKey:@"PlayerHP"]; //set it if it doesnt exist
+        
+    }
+    
+    collectedMasks = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMaskCollectionList"]; //load player list of collected masks
+    if(collectedMasks == NULL){ //if there is no player masks collection key yet
+        //NSLog(@"refreshing1");
+        NSMutableArray *collectedMasks = [[NSMutableArray alloc] init];
+        [[NSUserDefaults standardUserDefaults] setObject:collectedMasks forKey:@"PlayerMaskCollectionList"]; //set it if it doesnt exist
+        
+    }
+    else{
+        collectedMasks = [collectedMasks mutableCopy]; //make sure we can add to it!
+    }
+    
+    
+    rahiFightFlag = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerFighting"]; //load player fighting flag
+    if(rahiFightFlag == 0){ //if there is no playerHP key yet
+        rahiFightFlag = 0;
+        [[NSUserDefaults standardUserDefaults] setInteger: rahiFightFlag forKey:@"PlayerFighting"]; //set it if it doesnt exist
         
     }
     
@@ -367,7 +387,16 @@ int widgetCount = 0;
                 [[NSUserDefaults standardUserDefaults] setObject: maskArray forKey:@"PlayerMasks"]; //save the new mask array back to user defaults
                 //NSLog(@"MList1: %@", maskArray);
             }
-             
+            if([collectedMasks indexOfObject:theMask]==NSNotFound){ //if the mask is not in the list of collected masks, add it!
+                NSLog(@"adding: %@", theMask);
+                [collectedMasks addObject:theMask];
+                NSLog(@"list1: %@", collectedMasks);
+                [[NSUserDefaults standardUserDefaults] setObject:collectedMasks forKey:@"PlayerMaskCollectionList"]; //add the mask to the collection
+            }
+            else{
+                NSLog(@"not adding: %@", theMask);
+                NSLog(@"list2: %@", collectedMasks);
+            }
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!",theMask];
         }
         else if(randomItem == 2){
@@ -810,8 +839,8 @@ int widgetCount = 0;
     else if (randomItem == 7 || randomItem == 26){ //grey (uncommon)
         maskColorString = @"grey";
     }
-    else if (randomItem == 9 || randomItem == 27){ //light brown (uncommon)
-        maskColorString = @"light-brown";
+    else if (randomItem == 9 || randomItem == 27){ //dark brown (uncommon)
+        maskColorString = @"dark-brown";
     }
     else if (randomItem == 17 || randomItem == 28){ //light blue (uncommon)
         maskColorString = @"light-blue";
