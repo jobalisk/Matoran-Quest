@@ -30,7 +30,7 @@ NSArray *itemList;
 NSArray *rahiList;
 int rareMaskIdentifyier = 0; //this is here so that I can raise a flag when a rare mask has been found to stop crashes in the player edit controller
 float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
-float spawnWalkDistance = 0.00007; //how far you need to walk to trigger a spawn chance (normally  0.00007) (test 0.000005)
+float spawnWalkDistance = 0.000007; //how far you need to walk to trigger a spawn chance (normally  0.000007) (test 0.000005)
 int spawnRate = 6; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
