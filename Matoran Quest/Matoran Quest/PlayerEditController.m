@@ -215,7 +215,7 @@ numberOfRowsInComponent:(NSInteger)component {
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([_playerNameField hasText] == NO){
-        [playerDetails setObject: @"Kapura" forKey:@"PlayerName"]; //set a default name to avoid a really weird bug
+        [playerDetails setObject: @"Rīwai" forKey:@"PlayerName"]; //set a default name to avoid a really weird bug
     }
 }
 

@@ -65,7 +65,7 @@ int widgetCount = 0;
     }
     NSString *testName = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"];
     if(testName == NULL || [testName isEqualToString:@""]){
-        [[NSUserDefaults standardUserDefaults] setObject: @"Kapura" forKey:@""]; //set a default name to avoid a really weird bug
+        [[NSUserDefaults standardUserDefaults] setObject: @"Rīwai" forKey:@""]; //set a default name to avoid a really weird bug
     }
 
     [self setModalInPresentation:true]; //make it so you can's swipe it away (stops cheating)

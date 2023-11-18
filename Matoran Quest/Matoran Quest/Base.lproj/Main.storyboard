@@ -411,49 +411,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="View Kanohi Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhI-h5-Q2h">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="View Kanohi Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhI-h5-Q2h">
                                 <rect key="frame" x="27" y="20" width="361" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="1Dl-Kp-mak"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="15"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="View Kanohi Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfG-hO-7Ga">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="View Kanohi Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfG-hO-7Ga">
                                 <rect key="frame" x="27" y="63" width="361" height="18"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Kanohi Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZB-8R-KY1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kanohi Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZB-8R-KY1">
                                 <rect key="frame" x="11" y="269" width="393" height="16"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Kanohi Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wQ-Hh-ug0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kanohi Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wQ-Hh-ug0">
                                 <rect key="frame" x="11" y="309" width="393" height="16"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Collected by:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSh-D0-i67">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Collected by:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSh-D0-i67">
                                 <rect key="frame" x="11" y="345" width="393" height="16"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Catcher Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8o-2c-NvS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Catcher Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8o-2c-NvS">
                                 <rect key="frame" x="11" y="382" width="393" height="16"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="At Latitude:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E1-Qi-Soe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="At Latitude:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E1-Qi-Soe">
                                 <rect key="frame" x="11" y="423" width="393" height="16"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73G-7T-wYI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73G-7T-wYI">
                                 <rect key="frame" x="11" y="447" width="393" height="16"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
@@ -461,9 +464,6 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="And Longitude:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6w-iq-zLh">
                                 <rect key="frame" x="11" y="485" width="393" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="nnD-Pe-7Uv"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
@@ -485,51 +485,52 @@
                                     <segue destination="UfZ-YR-8qW" kind="show" id="CTH-WT-H8A"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nal-tj-Hev">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nal-tj-Hev">
                                 <rect key="frame" x="132" y="133" width="151" height="102"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="102" id="H24-cF-UHe"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cff-G6-nZu"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="7wQ-Hh-ug0" firstAttribute="top" secondItem="CZB-8R-KY1" secondAttribute="bottom" constant="24" id="09w-yq-BtO"/>
-                            <constraint firstItem="Nal-tj-Hev" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="132" id="0JP-XF-SMc"/>
-                            <constraint firstItem="x8o-2c-NvS" firstAttribute="top" secondItem="SSh-D0-i67" secondAttribute="bottom" constant="21" id="1Nt-er-wbs"/>
-                            <constraint firstItem="d0Q-xV-aYR" firstAttribute="centerX" secondItem="T2B-KA-qB5" secondAttribute="centerX" id="1TV-z8-nBi"/>
-                            <constraint firstItem="g6w-iq-zLh" firstAttribute="trailing" secondItem="d0Q-xV-aYR" secondAttribute="trailing" id="1VR-fT-GWA"/>
-                            <constraint firstItem="NfG-hO-7Ga" firstAttribute="centerX" secondItem="CZB-8R-KY1" secondAttribute="centerX" id="2tF-bL-U1l"/>
-                            <constraint firstItem="x8o-2c-NvS" firstAttribute="leading" secondItem="5E1-Qi-Soe" secondAttribute="leading" id="2tk-Ud-a3v"/>
-                            <constraint firstItem="T2B-KA-qB5" firstAttribute="leading" secondItem="nEf-zP-hr8" secondAttribute="leadingMargin" id="3QH-1X-A2A"/>
-                            <constraint firstItem="g6w-iq-zLh" firstAttribute="leading" secondItem="d0Q-xV-aYR" secondAttribute="leading" id="6Aa-Q4-JKx"/>
-                            <constraint firstItem="NfG-hO-7Ga" firstAttribute="top" secondItem="mhI-h5-Q2h" secondAttribute="bottom" constant="25" id="848-bh-Dfc"/>
-                            <constraint firstItem="5E1-Qi-Soe" firstAttribute="trailing" secondItem="73G-7T-wYI" secondAttribute="trailing" id="8S7-e2-X6s"/>
-                            <constraint firstItem="CZB-8R-KY1" firstAttribute="leading" secondItem="7wQ-Hh-ug0" secondAttribute="leading" id="9r4-cM-CGN"/>
-                            <constraint firstItem="g6w-iq-zLh" firstAttribute="trailing" secondItem="73G-7T-wYI" secondAttribute="trailing" id="BEg-xl-VCe"/>
-                            <constraint firstItem="d0Q-xV-aYR" firstAttribute="top" secondItem="g6w-iq-zLh" secondAttribute="bottom" constant="22" id="E7Z-jX-Qer"/>
-                            <constraint firstItem="SSh-D0-i67" firstAttribute="leading" secondItem="x8o-2c-NvS" secondAttribute="leading" id="F1h-qo-wcn"/>
-                            <constraint firstItem="x8o-2c-NvS" firstAttribute="trailing" secondItem="5E1-Qi-Soe" secondAttribute="trailing" id="FaB-3w-Vsi"/>
-                            <constraint firstItem="SSh-D0-i67" firstAttribute="trailing" secondItem="x8o-2c-NvS" secondAttribute="trailing" id="Gyo-5g-tde"/>
-                            <constraint firstItem="73G-7T-wYI" firstAttribute="top" secondItem="5E1-Qi-Soe" secondAttribute="bottom" constant="8" id="Jjv-DM-90v"/>
-                            <constraint firstItem="Nal-tj-Hev" firstAttribute="top" secondItem="NfG-hO-7Ga" secondAttribute="bottom" constant="52" id="Jxb-lW-At5"/>
-                            <constraint firstItem="SSh-D0-i67" firstAttribute="top" secondItem="7wQ-Hh-ug0" secondAttribute="bottom" constant="20" id="Lvr-Fv-KYW"/>
-                            <constraint firstItem="T2B-KA-qB5" firstAttribute="trailing" secondItem="nEf-zP-hr8" secondAttribute="trailingMargin" id="S3X-QL-u65"/>
-                            <constraint firstItem="T2B-KA-qB5" firstAttribute="bottom" secondItem="cff-G6-nZu" secondAttribute="bottom" constant="-23" id="TEA-zp-2Sg"/>
-                            <constraint firstItem="mhI-h5-Q2h" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="27" id="UMX-XF-iPO"/>
-                            <constraint firstItem="5E1-Qi-Soe" firstAttribute="top" secondItem="x8o-2c-NvS" secondAttribute="bottom" constant="25" id="UjX-fd-Hpp"/>
-                            <constraint firstItem="5E1-Qi-Soe" firstAttribute="leading" secondItem="73G-7T-wYI" secondAttribute="leading" id="Xe4-FF-8nX"/>
-                            <constraint firstItem="mhI-h5-Q2h" firstAttribute="centerX" secondItem="NfG-hO-7Ga" secondAttribute="centerX" id="ZHz-Wl-Fcl"/>
-                            <constraint firstItem="CZB-8R-KY1" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="11" id="Zmo-uI-ILi"/>
-                            <constraint firstItem="7wQ-Hh-ug0" firstAttribute="leading" secondItem="SSh-D0-i67" secondAttribute="leading" id="Zoq-Ln-9kI"/>
-                            <constraint firstItem="g6w-iq-zLh" firstAttribute="top" secondItem="73G-7T-wYI" secondAttribute="bottom" constant="22" id="d0P-Ym-hPU"/>
-                            <constraint firstItem="CZB-8R-KY1" firstAttribute="trailing" secondItem="7wQ-Hh-ug0" secondAttribute="trailing" id="dgA-2d-yYq"/>
-                            <constraint firstItem="g6w-iq-zLh" firstAttribute="leading" secondItem="73G-7T-wYI" secondAttribute="leading" id="nHJ-do-zUg"/>
-                            <constraint firstItem="mhI-h5-Q2h" firstAttribute="top" secondItem="cff-G6-nZu" secondAttribute="top" constant="20" id="oYC-pE-cBP"/>
-                            <constraint firstAttribute="bottom" secondItem="g6w-iq-zLh" secondAttribute="bottom" constant="215" id="tEN-oL-Qq6"/>
-                            <constraint firstItem="CZB-8R-KY1" firstAttribute="top" secondItem="Nal-tj-Hev" secondAttribute="bottom" constant="34" id="uKI-uv-g5A"/>
-                            <constraint firstItem="NfG-hO-7Ga" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="27" id="uj2-4e-9tQ"/>
-                            <constraint firstItem="7wQ-Hh-ug0" firstAttribute="trailing" secondItem="SSh-D0-i67" secondAttribute="trailing" id="wnX-M1-xKv"/>
-                            <constraint firstItem="Nal-tj-Hev" firstAttribute="centerX" secondItem="CZB-8R-KY1" secondAttribute="centerX" id="yyE-MA-O9T"/>
-                            <constraint firstItem="CZB-8R-KY1" firstAttribute="top" secondItem="NfG-hO-7Ga" secondAttribute="bottom" constant="188" id="zFl-vg-gDb"/>
+                            <constraint firstItem="d0Q-xV-aYR" firstAttribute="top" secondItem="g6w-iq-zLh" secondAttribute="bottom" constant="22" id="0VD-HE-Yt1"/>
+                            <constraint firstItem="g6w-iq-zLh" firstAttribute="top" secondItem="73G-7T-wYI" secondAttribute="bottom" constant="22" id="0kA-zN-d8c"/>
+                            <constraint firstItem="CZB-8R-KY1" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="11" id="1x9-wb-Jul"/>
+                            <constraint firstItem="mhI-h5-Q2h" firstAttribute="top" secondItem="cff-G6-nZu" secondAttribute="top" constant="20" id="59m-6s-55J"/>
+                            <constraint firstItem="NfG-hO-7Ga" firstAttribute="centerX" secondItem="Nal-tj-Hev" secondAttribute="centerX" id="6MG-0h-NU8"/>
+                            <constraint firstItem="7wQ-Hh-ug0" firstAttribute="leading" secondItem="SSh-D0-i67" secondAttribute="leading" id="6mn-b3-fMH"/>
+                            <constraint firstItem="7wQ-Hh-ug0" firstAttribute="top" secondItem="CZB-8R-KY1" secondAttribute="bottom" constant="24" id="71O-6K-x1a"/>
+                            <constraint firstItem="CZB-8R-KY1" firstAttribute="leading" secondItem="7wQ-Hh-ug0" secondAttribute="leading" id="7Sx-NZ-O88"/>
+                            <constraint firstItem="5E1-Qi-Soe" firstAttribute="leading" secondItem="73G-7T-wYI" secondAttribute="leading" id="9S9-tO-M4t"/>
+                            <constraint firstItem="SSh-D0-i67" firstAttribute="top" secondItem="7wQ-Hh-ug0" secondAttribute="bottom" constant="20" id="CDl-ho-Ch5"/>
+                            <constraint firstItem="g6w-iq-zLh" firstAttribute="leading" secondItem="73G-7T-wYI" secondAttribute="leading" id="COC-nl-Sgf"/>
+                            <constraint firstItem="5E1-Qi-Soe" firstAttribute="top" secondItem="x8o-2c-NvS" secondAttribute="bottom" constant="25" id="E8I-0x-95h"/>
+                            <constraint firstItem="x8o-2c-NvS" firstAttribute="leading" secondItem="5E1-Qi-Soe" secondAttribute="leading" id="FZm-ny-QMg"/>
+                            <constraint firstItem="NfG-hO-7Ga" firstAttribute="top" secondItem="mhI-h5-Q2h" secondAttribute="bottom" constant="25" id="JFG-3L-Pnr"/>
+                            <constraint firstItem="5E1-Qi-Soe" firstAttribute="trailing" secondItem="73G-7T-wYI" secondAttribute="trailing" id="Ogh-zH-HN0"/>
+                            <constraint firstItem="mhI-h5-Q2h" firstAttribute="trailing" secondItem="NfG-hO-7Ga" secondAttribute="trailing" id="QuZ-LB-f9M"/>
+                            <constraint firstItem="7wQ-Hh-ug0" firstAttribute="trailing" secondItem="SSh-D0-i67" secondAttribute="trailing" id="TpX-yD-1Qb"/>
+                            <constraint firstItem="SSh-D0-i67" firstAttribute="leading" secondItem="x8o-2c-NvS" secondAttribute="leading" id="U9U-yj-wJ7"/>
+                            <constraint firstItem="Nal-tj-Hev" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="132" id="YTP-IF-w24"/>
+                            <constraint firstItem="d0Q-xV-aYR" firstAttribute="centerX" secondItem="T2B-KA-qB5" secondAttribute="centerX" id="Zem-ci-EqH"/>
+                            <constraint firstItem="g6w-iq-zLh" firstAttribute="trailing" secondItem="73G-7T-wYI" secondAttribute="trailing" id="b49-zI-QXn"/>
+                            <constraint firstItem="x8o-2c-NvS" firstAttribute="top" secondItem="SSh-D0-i67" secondAttribute="bottom" constant="21" id="cD9-OY-5at"/>
+                            <constraint firstItem="SSh-D0-i67" firstAttribute="trailing" secondItem="x8o-2c-NvS" secondAttribute="trailing" id="gE0-6d-kgz"/>
+                            <constraint firstItem="cff-G6-nZu" firstAttribute="bottom" secondItem="T2B-KA-qB5" secondAttribute="bottom" constant="23" id="iGP-zf-1l8"/>
+                            <constraint firstItem="Nal-tj-Hev" firstAttribute="centerX" secondItem="CZB-8R-KY1" secondAttribute="centerX" id="jB2-ES-i2V"/>
+                            <constraint firstItem="g6w-iq-zLh" firstAttribute="trailing" secondItem="d0Q-xV-aYR" secondAttribute="trailing" id="kjt-dp-tGG"/>
+                            <constraint firstItem="CZB-8R-KY1" firstAttribute="top" secondItem="Nal-tj-Hev" secondAttribute="bottom" constant="34" id="nYP-QC-1D5"/>
+                            <constraint firstItem="x8o-2c-NvS" firstAttribute="trailing" secondItem="5E1-Qi-Soe" secondAttribute="trailing" id="oCx-wj-N2q"/>
+                            <constraint firstItem="Nal-tj-Hev" firstAttribute="top" secondItem="NfG-hO-7Ga" secondAttribute="bottom" constant="52" id="oWY-ij-hfE"/>
+                            <constraint firstItem="mhI-h5-Q2h" firstAttribute="leading" secondItem="NfG-hO-7Ga" secondAttribute="leading" id="qG4-9d-gib"/>
+                            <constraint firstItem="CZB-8R-KY1" firstAttribute="trailing" secondItem="7wQ-Hh-ug0" secondAttribute="trailing" id="qUI-Uc-Ihw"/>
+                            <constraint firstItem="73G-7T-wYI" firstAttribute="top" secondItem="5E1-Qi-Soe" secondAttribute="bottom" constant="8" id="r1K-8C-b6R"/>
+                            <constraint firstItem="mhI-h5-Q2h" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="27" id="se8-xM-6JU"/>
+                            <constraint firstItem="T2B-KA-qB5" firstAttribute="trailing" secondItem="nEf-zP-hr8" secondAttribute="trailingMargin" id="tVW-ad-gxi"/>
+                            <constraint firstItem="T2B-KA-qB5" firstAttribute="leading" secondItem="nEf-zP-hr8" secondAttribute="leadingMargin" id="uOB-Cn-ATm"/>
+                            <constraint firstItem="g6w-iq-zLh" firstAttribute="leading" secondItem="d0Q-xV-aYR" secondAttribute="leading" id="zLF-jh-NdO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ej0-Ay-kVK"/>
@@ -1118,22 +1119,22 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
