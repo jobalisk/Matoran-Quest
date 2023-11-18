@@ -332,7 +332,7 @@
             <objects>
                 <viewController id="UfZ-YR-8qW" customClass="wallOfMasksController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NWY-br-8CJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nku-fi-bKj">
@@ -352,7 +352,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.2193540592783505" green="0.2193540592783505" blue="0.2193540592783505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.093769427427311536" green="0.093769427427311536" blue="0.093769427427311536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -651,7 +651,7 @@
             <objects>
                 <viewController id="nNl-6b-2fA" customClass="PlayerEditController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1OT-7b-hUD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-5M-WY0">
@@ -1048,7 +1048,7 @@
             <objects>
                 <viewController id="2xE-CA-LUh" customClass="MapController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JhT-N3-6uU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0B-zv-UR9">
@@ -1101,8 +1101,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ruM-g3-Qas"/>
-        <segue reference="CTH-WT-H8A"/>
+        <segue reference="1BO-mg-YjO"/>
+        <segue reference="mxv-5u-YSP"/>
         <segue reference="yXw-wk-L9p"/>
         <segue reference="wVj-0P-oDj"/>
     </inferredMetricsTieBreakers>

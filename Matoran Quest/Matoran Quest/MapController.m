@@ -367,7 +367,7 @@ int widgetCount = 0;
             NSMutableArray *itemArray2;
             NSString *theItem = [self randomItemMaker];
             NSArray *itemArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerItems"];
-            
+            NSString *extraText = @"";//extra text for if you run out of bag space.
             if(itemArray != NULL){
                 
                 itemArray2 = [itemArray mutableCopy];
@@ -377,7 +377,7 @@ int widgetCount = 0;
                         [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
 					}
 					else{ //otherwise display a warning message
-						NSLog(@"Your back pack is now full!"); //give a warning message
+                        extraText = @"\nYour back pack is now full!"; //give a warning message
 						[itemArray2 addObject: theItem]; //add it to the array
 						[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
 					}
@@ -398,7 +398,7 @@ int widgetCount = 0;
                         [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
                     }
                     else{
-                        NSLog(@"There's no room left in your back pack for that item!");
+                        extraText = @"\nThere's no room left in your back pack for that item!";
                     }
                 }
                  
@@ -409,7 +409,7 @@ int widgetCount = 0;
                 [[NSUserDefaults standardUserDefaults] setObject: itemArray forKey:@"PlayerItems"]; //save the array to player defaults
             }
              
-            MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!", theItem];
+            MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!%@", theItem, extraText];
         }
         else if(randomItem == 3){
             MysteryAlertMessage = @"You found some slightly interesting scenery!";
@@ -866,6 +866,8 @@ int widgetCount = 0;
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     //[self removeFromParentViewController];
+    //[self dealloc];
+    [self dismissViewControllerAnimated:NO completion:nil];
     
 }
 

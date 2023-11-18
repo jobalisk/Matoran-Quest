@@ -96,10 +96,11 @@ NSArray *itemArray; //our item array
         NSMutableArray *TurfArray = [itemArray mutableCopy];
         [TurfArray removeObjectAtIndex: indexPath.row]; //delete the item
         [[NSUserDefaults standardUserDefaults] setObject: TurfArray forKey:@"PlayerItems"];
-        [self.itemGrid reloadData];//refresh the view
+
+        
         //NSLog(@"DELETED");
         
-        
+
     }];
     [deleteAlert addAction:defaultAction];
     
@@ -110,6 +111,14 @@ NSArray *itemArray; //our item array
     
     [self presentViewController:deleteAlert animated:YES completion:nil]; //run the alert
     
+
+    
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [collectionView deleteItemsAtIndexPaths:@[indexPath]]; //remove the cell
+    [self.itemGrid reloadData];//refresh the view
+    [collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
 
 /*

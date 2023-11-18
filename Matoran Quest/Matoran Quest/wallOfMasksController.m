@@ -74,15 +74,15 @@ NSMutableArray *imagesInCollection; //an array of all the images
     }
 
     [cell3 addSubview:maskImage];//Add it to the view of your choice.
-    /*
-    UILabel *maskName=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];//Set frame of label in your view
+    
+    UILabel *maskNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(25, 70, 50, 50)];//Set frame of label in your view
     //[itemName setBackgroundColor:[UIColor lightGrayColor]];//Set background color of label.
 
     @try {
-        [maskName setText: [NSString stringWithFormat: @"%@",maskColourAndName]];
+        [maskNameLabel setText: [NSString stringWithFormat: @"%@",maskNameAndColour]];
     }
     @catch (NSException *exception) {
-        [maskName setText: @""];
+        [maskNameLabel setText: @""];
     }
     @finally {
       //Display Alternative
@@ -90,20 +90,20 @@ NSMutableArray *imagesInCollection; //an array of all the images
     //NSLog(@"here: %@", maskArray);
     
     //[maskName setText: @"mask"];
-    [maskName setAdjustsFontSizeToFitWidth:true];
-    [maskName setFont:[UIFont fontWithName:@"Goudy Trajan Regular" size:10]];
-    [maskName setTextColor:[UIColor whiteColor]];//Set text color in label.
-    [maskName setTextAlignment:NSTextAlignmentCenter];//Set text alignment in label.
-    [maskName setBaselineAdjustment:UIBaselineAdjustmentAlignBaselines];//Set line adjustment.
-    [maskName setLineBreakMode:NSLineBreakByCharWrapping];//Set linebreaking mode..
-    [maskName setNumberOfLines:3];//Set number of lines in label.
+    [maskNameLabel setAdjustsFontSizeToFitWidth:true];
+    [maskNameLabel setFont:[UIFont fontWithName:@"Goudy Trajan Regular" size:10]];
+    [maskNameLabel setTextColor:[UIColor whiteColor]];//Set text color in label.
+    [maskNameLabel setTextAlignment:NSTextAlignmentCenter];//Set text alignment in label.
+    [maskNameLabel setBaselineAdjustment:UIBaselineAdjustmentAlignBaselines];//Set line adjustment.
+    [maskNameLabel setLineBreakMode:NSLineBreakByCharWrapping];//Set linebreaking mode..
+    [maskNameLabel setNumberOfLines:1];//Set number of lines in label.
     //[itemName.layer setCornerRadius:40.0];//Set corner radius of label to change the shape.
     //[itemName.layer setBorderWidth:1.0f];//Set border width of label.
-    [maskName setClipsToBounds:YES];//Set its to YES for Corner radius to work.
-    [maskName.layer setBorderColor:[UIColor blackColor].CGColor];//Set Border color.
-    [cell3 addSubview:maskName];//Add it to the view of your choice.
+    [maskNameLabel setClipsToBounds:YES];//Set its to YES for Corner radius to work.
+    [maskNameLabel.layer setBorderColor:[UIColor blackColor].CGColor];//Set Border color.
+    [cell3 addSubview:maskNameLabel];//Add it to the view of your choice.
      
-    */
+    
     
     return cell3;
     
