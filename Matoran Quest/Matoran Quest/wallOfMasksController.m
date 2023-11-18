@@ -24,6 +24,7 @@ NSMutableArray *imagesInCollection; //an array of all the images
 - (void)viewDidLoad {
     [super viewDidLoad];
     maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks from the user defaults and make an array of them
+    //NSLog(@"monkey: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]);
     _maskGrid.delegate = self;
     _maskGrid.dataSource = self;
     //NSLog(@"%@", maskArray);
@@ -58,10 +59,19 @@ NSMutableArray *imagesInCollection; //an array of all the images
         maskName = @"infected hau";
         noColourFlag = 1;
     }
+
     else{
         maskColourAndName = [maskNameAndColour componentsSeparatedByString:@" "];
         maskName = maskColourAndName[1];
     }
+    /*
+    //check and replace problem names (legacy). this will cause the app to crash if the string does not have a hyphen added
+    if([maskNameAndColour containsString:@"light green"]){
+        [maskInterior replaceObjectAtIndex:0 withObject:@"light green"];
+        [maskArray replaceObjectAtIndex:indexPath.row withObject:maskInterior];
+    }
+    */
+    
     UIImageView *maskImage=[[UIImageView alloc]initWithFrame:CGRectMake(18, 18, 64, 64)];
     if(noColourFlag == 0){ //if its not a special flag, then colourize it
         UIColor *tempColor = [self colourCaser: maskColourAndName[0]]; //colour the image
@@ -70,7 +80,12 @@ NSMutableArray *imagesInCollection; //an array of all the images
         maskImage2 = [self colorizeImage:maskImage2 color:tempColor];
         [maskImage setImage:maskImage2]; //set an image with a colour
         [maskImage2 setAccessibilityIdentifier: maskNameAndColour];
-        [imagesInCollection addObject: maskImage2];
+        if(maskImage2 != nil){
+            [imagesInCollection addObject: maskImage2];
+        }
+        else{
+            NSLog(@"adding to collection error");
+        }
         //NSLog(@"%@", imagesInCollection);
     }
     else{
@@ -233,7 +248,7 @@ NSMutableArray *imagesInCollection; //an array of all the images
         greenColour = 218.0;
         
     }
-    else if ([theColor isEqualToString:@"light green"]){
+    else if ([theColor isEqualToString:@"light-green"]){
         //r221 g255 b103
         redColour = 221.0;
         greenColour = 255.0;
@@ -245,13 +260,13 @@ NSMutableArray *imagesInCollection; //an array of all the images
         greenColour = 255.0;
         blueColour = 144.0;
     }
-    else if ([theColor isEqualToString:@"light blue"]){
+    else if ([theColor isEqualToString:@"light-blue"]){
         //r186 g222 b255
         redColour = 186.0;
         greenColour = 222.0;
         blueColour = 255.0;
     }
-    else if ([theColor isEqualToString:@"light brown"]){
+    else if ([theColor isEqualToString:@"light-brown"]){
         //r81 g59 b15
         redColour = 81.0;
         greenColour = 59.0;
@@ -281,6 +296,7 @@ NSMutableArray *imagesInCollection; //an array of all the images
     if([segue.identifier isEqualToString:@"selectedMask"]){
         individualMaskController *controller = (individualMaskController *)segue.destinationViewController;
         controller.maskDetailsArray = selectedMaskArray;
+        //NSLog(@"%@", maskArray);
         controller.maskImage = outPutMask;
         
     }
