@@ -332,7 +332,7 @@
             <objects>
                 <viewController id="UfZ-YR-8qW" customClass="wallOfMasksController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NWY-br-8CJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nku-fi-bKj">
@@ -471,10 +471,6 @@
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nal-tj-Hev">
-                                <rect key="frame" x="143" y="105" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2B-KA-qB5">
                                 <rect key="frame" x="20" y="668" width="374" height="25"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
@@ -486,11 +482,16 @@
                                     <segue destination="UfZ-YR-8qW" kind="show" id="CTH-WT-H8A"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nal-tj-Hev">
+                                <rect key="frame" x="132" y="133" width="151" height="102"/>
+                                <color key="backgroundColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cff-G6-nZu"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7wQ-Hh-ug0" firstAttribute="top" secondItem="CZB-8R-KY1" secondAttribute="bottom" constant="24" id="09w-yq-BtO"/>
+                            <constraint firstItem="Nal-tj-Hev" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="132" id="0JP-XF-SMc"/>
                             <constraint firstItem="x8o-2c-NvS" firstAttribute="top" secondItem="SSh-D0-i67" secondAttribute="bottom" constant="21" id="1Nt-er-wbs"/>
                             <constraint firstItem="d0Q-xV-aYR" firstAttribute="centerX" secondItem="T2B-KA-qB5" secondAttribute="centerX" id="1TV-z8-nBi"/>
                             <constraint firstItem="NfG-hO-7Ga" firstAttribute="centerX" secondItem="CZB-8R-KY1" secondAttribute="centerX" id="2tF-bL-U1l"/>
@@ -505,6 +506,7 @@
                             <constraint firstItem="x8o-2c-NvS" firstAttribute="trailing" secondItem="5E1-Qi-Soe" secondAttribute="trailing" id="FaB-3w-Vsi"/>
                             <constraint firstItem="SSh-D0-i67" firstAttribute="trailing" secondItem="x8o-2c-NvS" secondAttribute="trailing" id="Gyo-5g-tde"/>
                             <constraint firstItem="73G-7T-wYI" firstAttribute="top" secondItem="5E1-Qi-Soe" secondAttribute="bottom" constant="8" id="Jjv-DM-90v"/>
+                            <constraint firstItem="Nal-tj-Hev" firstAttribute="top" secondItem="NfG-hO-7Ga" secondAttribute="bottom" constant="52" id="Jxb-lW-At5"/>
                             <constraint firstItem="SSh-D0-i67" firstAttribute="top" secondItem="7wQ-Hh-ug0" secondAttribute="bottom" constant="20" id="Lvr-Fv-KYW"/>
                             <constraint firstItem="g6w-iq-zLh" firstAttribute="trailing" secondItem="d0Q-xV-aYR" secondAttribute="trailing" id="RTi-Qq-KGk"/>
                             <constraint firstItem="T2B-KA-qB5" firstAttribute="trailing" secondItem="nEf-zP-hr8" secondAttribute="trailingMargin" id="S3X-QL-u65"/>
@@ -519,9 +521,11 @@
                             <constraint firstItem="CZB-8R-KY1" firstAttribute="trailing" secondItem="7wQ-Hh-ug0" secondAttribute="trailing" id="dgA-2d-yYq"/>
                             <constraint firstItem="mhI-h5-Q2h" firstAttribute="top" secondItem="cff-G6-nZu" secondAttribute="top" constant="20" id="oYC-pE-cBP"/>
                             <constraint firstItem="d0Q-xV-aYR" firstAttribute="top" secondItem="g6w-iq-zLh" secondAttribute="bottom" constant="22" id="pc6-An-Pya"/>
+                            <constraint firstItem="CZB-8R-KY1" firstAttribute="top" secondItem="Nal-tj-Hev" secondAttribute="bottom" constant="34" id="uKI-uv-g5A"/>
                             <constraint firstItem="NfG-hO-7Ga" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="27" id="uj2-4e-9tQ"/>
                             <constraint firstItem="7wQ-Hh-ug0" firstAttribute="trailing" secondItem="SSh-D0-i67" secondAttribute="trailing" id="wnX-M1-xKv"/>
                             <constraint firstItem="73G-7T-wYI" firstAttribute="trailing" secondItem="g6w-iq-zLh" secondAttribute="trailing" id="xDE-qP-ljs"/>
+                            <constraint firstItem="Nal-tj-Hev" firstAttribute="centerX" secondItem="CZB-8R-KY1" secondAttribute="centerX" id="yyE-MA-O9T"/>
                             <constraint firstItem="CZB-8R-KY1" firstAttribute="top" secondItem="NfG-hO-7Ga" secondAttribute="bottom" constant="188" id="zFl-vg-gDb"/>
                         </constraints>
                     </view>
@@ -651,7 +655,7 @@
             <objects>
                 <viewController id="nNl-6b-2fA" customClass="PlayerEditController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1OT-7b-hUD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-5M-WY0">
@@ -1048,7 +1052,7 @@
             <objects>
                 <viewController id="2xE-CA-LUh" customClass="MapController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JhT-N3-6uU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0B-zv-UR9">
@@ -1102,7 +1106,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="1BO-mg-YjO"/>
-        <segue reference="mxv-5u-YSP"/>
+        <segue reference="CTH-WT-H8A"/>
         <segue reference="yXw-wk-L9p"/>
         <segue reference="wVj-0P-oDj"/>
     </inferredMetricsTieBreakers>

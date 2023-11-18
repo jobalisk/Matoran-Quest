@@ -14,7 +14,7 @@
 
 @implementation BackPackController
 
-NSArray *itemArray; //our item array
+NSMutableArray *itemArray; //our item array
 //UICollectionView * itemGrid;
 
 - (void)viewDidLoad {
@@ -48,7 +48,7 @@ NSArray *itemArray; //our item array
     //[cell1.customLabel setText:itemArray[indexPath.row]];
     //make a label
     //UILabel *itemName = [[UILabel alloc]initWithFrame:CGRectMake(91, 15, 0, 0)];
-    //
+
 
     UILabel *itemName=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 80)];//Set frame of label in your view
     [itemName setBackgroundColor:[UIColor lightGrayColor]];//Set background color of label.
@@ -93,11 +93,12 @@ NSArray *itemArray; //our item array
      
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault
        handler:^(UIAlertAction * action) {
-        NSMutableArray *TurfArray = [itemArray mutableCopy];
-        [TurfArray removeObjectAtIndex: indexPath.row]; //delete the item
-        [[NSUserDefaults standardUserDefaults] setObject: TurfArray forKey:@"PlayerItems"];
-
-        
+        itemArray = [itemArray mutableCopy];
+        [itemArray removeObjectAtIndex: indexPath.row]; //delete the item
+        [_itemCount setText:[NSString stringWithFormat:@"items: %d", (int)itemArray.count]]; //update the number of items display
+        [[NSUserDefaults standardUserDefaults] setObject: itemArray forKey:@"PlayerItems"];
+        [self.itemGrid reloadData];//refresh the view
+        NSIndexPath *cellForDeletionIndexPath; //a holder for the index path
         //NSLog(@"DELETED");
         
 
@@ -116,9 +117,9 @@ NSArray *itemArray; //our item array
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [collectionView deleteItemsAtIndexPaths:@[indexPath]]; //remove the cell
+    //[collectionView deleteItemsAtIndexPaths:@[indexPath]]; //remove the cell
     [self.itemGrid reloadData];//refresh the view
-    [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    //[collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
 
 /*

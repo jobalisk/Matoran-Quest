@@ -20,6 +20,7 @@ UIImage *maskImage2; //the colourized mask image
 UIImage *outPutMask; //the mask we take to the individual mask viewer
 NSMutableArray *imagesInCollection; //an array of all the images
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks from the user defaults and make an array of them
@@ -63,7 +64,10 @@ NSMutableArray *imagesInCollection; //an array of all the images
     }
     UIImageView *maskImage=[[UIImageView alloc]initWithFrame:CGRectMake(18, 18, 64, 64)];
     if(noColourFlag == 0){ //if its not a special flag, then colourize it
-        maskImage2 = [self colourCaser:[UIImage imageNamed:[NSString stringWithFormat: @"%@", maskName]] withColour:maskColourAndName[0]]; //colour the image
+        UIColor *tempColor = [self colourCaser: maskColourAndName[0]]; //colour the image
+        maskImage2 = [UIImage imageNamed:[NSString stringWithFormat: @"%@", maskName]];
+        //[maskImage2 imageWithTintColor:tempColor];
+        maskImage2 = [self colorizeImage:maskImage2 color:tempColor];
         [maskImage setImage:maskImage2]; //set an image with a colour
         [maskImage2 setAccessibilityIdentifier: maskNameAndColour];
         [imagesInCollection addObject: maskImage2];
@@ -158,7 +162,7 @@ NSMutableArray *imagesInCollection; //an array of all the images
     return newImage;
 }
 
--(UIImage *)colourCaser: (UIImage *)ImageToColour withColour:(NSString *)theColor { //takes a mask and works out what shade to colour it using colourizeimage
+-(UIColor *)colourCaser:(NSString *)theColor { //takes a mask and works out what shade to colour it using colourizeimage
     float redColour = 0.0;
     float blueColour = 0.0;
     float greenColour = 0.0;
@@ -259,11 +263,13 @@ NSMutableArray *imagesInCollection; //an array of all the images
         blueColour = 255.0;
         greenColour = 255.0;
     }
-
+    redColour = redColour / 255.0; //set proper colour portrayals in apple colour out of 1.0
+    greenColour = greenColour / 255.0;
+    blueColour = blueColour / 255.0;
     
     UIColor *colourzingColour = [UIColor colorWithRed:redColour green:greenColour blue:blueColour alpha:alphaColour];
     
-    return [self colorizeImage:ImageToColour color:colourzingColour];
+    return colourzingColour;
     
 }
 
