@@ -412,8 +412,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="View Kanohi Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhI-h5-Q2h">
-                                <rect key="frame" x="60" y="20" width="295" height="18"/>
-                                <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="17"/>
+                                <rect key="frame" x="27" y="20" width="361" height="18"/>
+                                <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="15"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -484,7 +484,6 @@
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nal-tj-Hev">
                                 <rect key="frame" x="132" y="133" width="151" height="102"/>
-                                <color key="backgroundColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cff-G6-nZu"/>
@@ -511,7 +510,7 @@
                             <constraint firstItem="g6w-iq-zLh" firstAttribute="trailing" secondItem="d0Q-xV-aYR" secondAttribute="trailing" id="RTi-Qq-KGk"/>
                             <constraint firstItem="T2B-KA-qB5" firstAttribute="trailing" secondItem="nEf-zP-hr8" secondAttribute="trailingMargin" id="S3X-QL-u65"/>
                             <constraint firstItem="T2B-KA-qB5" firstAttribute="bottom" secondItem="cff-G6-nZu" secondAttribute="bottom" constant="-23" id="TEA-zp-2Sg"/>
-                            <constraint firstItem="mhI-h5-Q2h" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="60" id="UMX-XF-iPO"/>
+                            <constraint firstItem="mhI-h5-Q2h" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="27" id="UMX-XF-iPO"/>
                             <constraint firstItem="5E1-Qi-Soe" firstAttribute="top" secondItem="x8o-2c-NvS" secondAttribute="bottom" constant="25" id="UjX-fd-Hpp"/>
                             <constraint firstItem="g6w-iq-zLh" firstAttribute="leading" secondItem="d0Q-xV-aYR" secondAttribute="leading" id="Upp-Gx-IRk"/>
                             <constraint firstItem="5E1-Qi-Soe" firstAttribute="leading" secondItem="73G-7T-wYI" secondAttribute="leading" id="Xe4-FF-8nX"/>
@@ -933,7 +932,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bionicle Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXH-et-6HW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXH-et-6HW">
                                 <rect key="frame" x="20" y="76" width="374" height="17.333333333333329"/>
                                 <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="17"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
@@ -1108,7 +1107,7 @@
         <segue reference="1BO-mg-YjO"/>
         <segue reference="CTH-WT-H8A"/>
         <segue reference="yXw-wk-L9p"/>
-        <segue reference="wVj-0P-oDj"/>
+        <segue reference="Y5l-SI-aMw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
