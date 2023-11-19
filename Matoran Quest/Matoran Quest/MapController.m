@@ -30,8 +30,8 @@ NSArray *itemList;
 NSArray *rahiList;
 int rareMaskIdentifyier = 0; //this is here so that I can raise a flag when a rare mask has been found to stop crashes in the player edit controller
 float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
-float spawnWalkDistance = 0.000003; //how far you need to walk to trigger a spawn chance (normally  0.000003) (test 0.0000005)
-int spawnRate = 5; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
+float spawnWalkDistance = 0.00005; //how far you need to walk to trigger a spawn chance (normally  0.000005) (test 0.0000005)
+int spawnRate = 4; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
 int playerHP = 0; //this will later be loaded from the userdefaults and shared with the gameviewcontroller
@@ -185,6 +185,14 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     [playerSprite setAnnotation:playerLocation];
     [_theMap addAnnotation:playerLocation];
     */
+    /*
+    float x = -45.884126;
+    float y = -45.884055;
+    float z = y - x;
+    z = 0.000007 * -1;
+    NSLog(@"%f", z);
+    */
+     
 }
 
 
@@ -196,12 +204,22 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     }
     else{
         //reset the timer every 30 seconds or so and update the new long and lat at current pos. before storing new long and lat, compare current with old old to see if the player has moved sufficently.
-        float compLat = _theMap.userLocation.location.coordinate.latitude - playerOldLat;
-        float compLong = _theMap.userLocation.location.coordinate.longitude - playerOldLong;
+        //get the difference by adding or subtracing to a value and then comparing to the origonal value. for walking south which means the number decreases, we add a number to it
+        float compLat = _theMap.userLocation.location.coordinate.latitude - spawnWalkDistance;
+        float compLong = _theMap.userLocation.location.coordinate.longitude - spawnWalkDistance;
+        float compLatNeg = _theMap.userLocation.location.coordinate.latitude + spawnWalkDistance;
+        float compLongNeg = _theMap.userLocation.location.coordinate.longitude + spawnWalkDistance;
         float Lo = _theMap.userLocation.location.coordinate.longitude; //these two are required for getting a item drop spot
         float La = _theMap.userLocation.location.coordinate.latitude;
         //if we've moved more than around 5 meters...
-        if(compLat > spawnWalkDistance || compLong > spawnWalkDistance){
+        if(compLat > playerOldLat || compLong > playerOldLong || compLatNeg < playerOldLat || compLongNeg < playerOldLong){ //check to see if we have moved north or south, east or west, further than the required amount
+            //NSLog(@"compLong: %f", compLong);
+            //NSLog(@"compLat: %f", compLat);
+            //NSLog(@"spawnWalkDistance: %f", spawnWalkDistance);
+            //NSLog(@"spawnWalkDistance: %f", (spawnWalkDistance * -1));
+            
+            
+            [_theTester setText: [NSString stringWithFormat: @"%f , %f", compLat, compLong]];
             randomThing = arc4random_uniform(spawnRate); //generate a random number for spawn rate
             [_theLabel setText: [NSString stringWithFormat: @"%d", randomThing]];
             if(randomThing != 3){ //1 chance in 3 that the item does not spawn

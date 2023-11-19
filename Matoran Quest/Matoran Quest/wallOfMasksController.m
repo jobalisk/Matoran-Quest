@@ -275,7 +275,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         greenColour = 222.0;
         blueColour = 255.0;
     }
-    else if ([theColor isEqualToString:@"light-brown"]){
+    else if ([theColor isEqualToString:@"dark-brown"]){
         //r81 g59 b15
         redColour = 81.0;
         greenColour = 59.0;
