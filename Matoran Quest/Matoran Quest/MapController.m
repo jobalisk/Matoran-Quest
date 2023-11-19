@@ -22,7 +22,7 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 20;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 4), 16 or 20 is a good trade off between time, distance and excitement
+int playerUpdateTimerMax = 24;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 4), 16 or 20 is a good trade off between time, distance and excitement
 int walkingTimer = 0; //this is for working out walking intervals
 int randomThing; //a random number for item placement purposes
 NSArray *kanohiList2;
@@ -31,7 +31,7 @@ NSArray *rahiList;
 int rareMaskIdentifyier = 0; //this is here so that I can raise a flag when a rare mask has been found to stop crashes in the player edit controller
 float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
 float spawnWalkDistance = 0.00005; //how far you need to walk to trigger a spawn chance (normally  0.000005) (test 0.0000005)
-int spawnRate = 4; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
+int spawnRate = 3; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
 int playerHP = 0; //this will later be loaded from the userdefaults and shared with the gameviewcontroller
@@ -222,7 +222,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             [_theTester setText: [NSString stringWithFormat: @"%f , %f", compLat, compLong]];
             randomThing = arc4random_uniform(spawnRate); //generate a random number for spawn rate
             [_theLabel setText: [NSString stringWithFormat: @"%d", randomThing]];
-            if(randomThing != 3){ //1 chance in 3 that the item does not spawn
+            if(randomThing != 1){ //1 chance in 3 that the item does not spawn
                 if([[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"] == 1){ //only do this if enabled in the options menu
                     AudioServicesPlayAlertSound(kSystemSoundID_Vibrate); //vibrate the phone (or beep on unsupported devices)
                 }
