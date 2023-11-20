@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B8183A992B047DDE00730B8F /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8183A982B047DDE00730B8F /* AboutController.m */; };
 		B8183A9C2B047ED100730B8F /* BackPackController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8183A9B2B047ED100730B8F /* BackPackController.m */; };
-		B82C348A2B000F8600625735 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B82C34882B000F8600625735 /* LaunchScreen.storyboard */; };
 		B82C348D2B00110F00625735 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82C348C2B00110F00625735 /* MenuController.m */; };
 		B82C34902B00111D00625735 /* PlayerDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82C348F2B00111D00625735 /* PlayerDetailsController.m */; };
 		B8474A522B00955100FC6329 /* wallOfMasksController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8474A512B00955100FC6329 /* wallOfMasksController.m */; };
@@ -18,6 +17,7 @@
 		B8589A4D2B054DEC0017F34D /* UICollectionViewCell+CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8589A4C2B054DEC0017F34D /* UICollectionViewCell+CollectionViewCell.m */; };
 		B86BCBC52B0021F70015B2FB /* Mata Nui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */; };
 		B86BCBC62B0021FA0015B2FB /* Goudy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B86BCBC32B0020B60015B2FB /* Goudy.otf */; };
+		B8C255412B0BD7CA000B2124 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C255402B0BD7CA000B2124 /* Launch Screen.storyboard */; };
 		B8DC7DC12AFFFE69003BF68C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */; };
 		B8DC7DC32AFFFE69003BF68C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DC22AFFFE69003BF68C /* GameScene.sks */; };
 		B8DC7DC52AFFFE69003BF68C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DC42AFFFE69003BF68C /* Actions.sks */; };
@@ -55,7 +55,6 @@
 		B8183A982B047DDE00730B8F /* AboutController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		B8183A9A2B047ED100730B8F /* BackPackController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackPackController.h; sourceTree = "<group>"; };
 		B8183A9B2B047ED100730B8F /* BackPackController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackPackController.m; sourceTree = "<group>"; };
-		B82C34892B000F8600625735 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B82C348B2B00110F00625735 /* MenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuController.h; sourceTree = "<group>"; };
 		B82C348C2B00110F00625735 /* MenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuController.m; sourceTree = "<group>"; };
 		B82C348E2B00111D00625735 /* PlayerDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerDetailsController.h; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		B8589A4C2B054DEC0017F34D /* UICollectionViewCell+CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+CollectionViewCell.m"; sourceTree = "<group>"; };
 		B86BCBC32B0020B60015B2FB /* Goudy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Goudy.otf; path = "Matoran Quest/Goudy.otf"; sourceTree = SOURCE_ROOT; };
 		B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mata Nui.ttf"; path = "Matoran Quest/Mata Nui.ttf"; sourceTree = SOURCE_ROOT; };
+		B8C255402B0BD7CA000B2124 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B8DC7DBC2AFFFE69003BF68C /* Matoran Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Matoran Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DC7DBF2AFFFE69003BF68C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -171,8 +171,8 @@
 				B8183A982B047DDE00730B8F /* AboutController.m */,
 				B8589A452B0540B50017F34D /* OptionsViewController.h */,
 				B8589A462B0540B50017F34D /* OptionsViewController.m */,
+				B8C255402B0BD7CA000B2124 /* Launch Screen.storyboard */,
 				B8DC7DCC2AFFFE69003BF68C /* Main.storyboard */,
-				B82C34882B000F8600625735 /* LaunchScreen.storyboard */,
 				B8DC7DCF2AFFFE6C003BF68C /* Assets.xcassets */,
 				B8DC7DD42AFFFE6C003BF68C /* main.m */,
 				B86BCBC32B0020B60015B2FB /* Goudy.otf */,
@@ -306,8 +306,8 @@
 				B8DC7DCE2AFFFE69003BF68C /* Main.storyboard in Resources */,
 				B8DC7DC32AFFFE69003BF68C /* GameScene.sks in Resources */,
 				B8DC7DD02AFFFE6C003BF68C /* Assets.xcassets in Resources */,
-				B82C348A2B000F8600625735 /* LaunchScreen.storyboard in Resources */,
 				B8DC7DC52AFFFE69003BF68C /* Actions.sks in Resources */,
+				B8C255412B0BD7CA000B2124 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,14 +382,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B82C34882B000F8600625735 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B82C34892B000F8600625735 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		B8DC7DCC2AFFFE69003BF68C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -531,7 +523,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.simulation-games";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your location in order to show where you are while playing. It does not share your GPS location with any third parties and only uses the infomation in order to run the game.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -565,7 +557,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.simulation-games";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your location in order to show where you are while playing. It does not share your GPS location with any third parties and only uses the infomation in order to run the game.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
