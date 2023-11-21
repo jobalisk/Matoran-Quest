@@ -95,8 +95,10 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         
     }
 
-    NSLog(@"masks: %@", collectedMasks2);
-        
+    //NSLog(@"masks: %@", collectedMasks2);
+      
+    
+    //continue on with the regularly scheduled program
         
     if([maskNameAndColour isEqualToString: @"vahi"]){ //seperate things out if needed
         maskName = @"vahi";
