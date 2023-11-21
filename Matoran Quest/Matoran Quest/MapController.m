@@ -837,7 +837,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
 
 -(void)randomColourPicker{ //chooses the colour of the mask
     
-    int randomItem = arc4random_uniform(33); //work out colour
+    int randomItem = arc4random_uniform(34); //work out colour
     
     //great mask colours
     if (randomItem == 1 || randomItem == 2  || randomItem == 19){ //black (common)
@@ -873,6 +873,9 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     }
     else if (randomItem == 18 || randomItem == 29){ //yellow (uncommon)
         maskColorString = @"yellow";
+    }
+    else if (randomItem == 30){ //bright yellow (lesser rare)
+        maskColorString = @"bright-yellow";
     }
     
     //metalics

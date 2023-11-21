@@ -38,7 +38,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMaskCollectionList"]; //set it if it doesnt exist
         
     }
-    [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/183", (int)collectedMasks2.count]];
+    [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/195", (int)collectedMasks2.count]];
 }
 
 
@@ -257,6 +257,12 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         redColour = 255.0;
         greenColour = 255.0;
         blueColour = 144.0;
+    }
+    else if ([theColor isEqualToString:@"bright-yellow"]){
+        //r255 g245 b0
+        redColour = 255.0;
+        greenColour = 245.0;
+        blueColour = 0.0;
     }
     else if ([theColor isEqualToString:@"light-blue"]){
         //r186 g222 b255
