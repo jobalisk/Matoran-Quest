@@ -6,7 +6,7 @@
 //
 
 #import "wallOfMasksController.h"
-#import "UICollectionViewCell+CollectionViewCell.h"
+#import "Celler1.h"
 
 @interface wallOfMasksController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -42,9 +42,9 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
 }
 
 
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+- (nonnull __kindof Celler1 *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     //NSLog(@"Got this far");
-    CollectionViewCell *cell3 = [_maskGrid dequeueReusableCellWithReuseIdentifier:@"cell3" forIndexPath:indexPath];
+    Celler1 *cell3 = [_maskGrid dequeueReusableCellWithReuseIdentifier:@"Celler1" forIndexPath:indexPath];
     //[cell1.customLabel setText:itemArray[indexPath.row]];
     //make a label
     //UILabel *itemName = [[UILabel alloc]initWithFrame:CGRectMake(91, 15, 0, 0)];
@@ -81,13 +81,13 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
     }
     */
     
-    cell3.maskImage=[[UIImageView alloc]initWithFrame:CGRectMake(18, 18, 64, 64)];
+    
     if(noColourFlag == 0){ //if its not a special flag, then colourize it
         UIColor *tempColor = [self colourCaser: maskColourAndName[0]]; //colour the image
         maskImage2 = [UIImage imageNamed:[NSString stringWithFormat: @"%@", maskName]];
         //[maskImage2 imageWithTintColor:tempColor];
         maskImage2 = [self colorizeImage:maskImage2 color:tempColor];
-        [cell3.maskImage setImage:maskImage2]; //set an image with a colour
+        [cell3.maskImage5 setImage:maskImage2]; //set an image with a colour
         [maskImage2 setAccessibilityIdentifier: maskNameAndColour];
         if(maskImage2 != nil){
             [imagesInCollection addObject: maskImage2];
@@ -98,19 +98,19 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         //NSLog(@"%@", imagesInCollection);
     }
     else{
-        [cell3.maskImage setImage:[UIImage imageNamed:[NSString stringWithFormat: @"%@", maskName]]]; //get the image named the name of the mask without the colour
+        [cell3.maskImage5 setImage:[UIImage imageNamed:[NSString stringWithFormat: @"%@", maskName]]]; //get the image named the name of the mask without the colour
     }
 
     //[cell3 addSubview:cell3.maskImage];//Add it to the view of your choice.
     
-   cell3.maskName3 =[[UILabel alloc]initWithFrame:CGRectMake(25, 70, 50, 50)];//Set frame of label in your view
+   //cell3.maskName5 =[[UILabel alloc]initWithFrame:CGRectMake(25, 70, 50, 50)];//Set frame of label in your view
     //[itemName setBackgroundColor:[UIColor lightGrayColor]];//Set background color of label.
 
     @try {
-        [cell3.maskName3  setText: [NSString stringWithFormat: @"%@",maskNameAndColour]];
+        [cell3.maskName5  setText: [NSString stringWithFormat: @"%@",maskNameAndColour]];
     }
     @catch (NSException *exception) {
-        [cell3.maskName3  setText: @""];
+        [cell3.maskName5  setText: @""];
     }
     @finally {
       //Display Alternative
@@ -118,18 +118,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
     //NSLog(@"here: %@", maskArray);
     
     //[maskName setText: @"mask"];
-    [cell3.maskName3  setAdjustsFontSizeToFitWidth:true];
-    [cell3.maskName3  setFont:[UIFont fontWithName:@"Goudy Trajan Regular" size:10]];
-    [cell3.maskName3  setTextColor:[UIColor whiteColor]];//Set text color in label.
-    [cell3.maskName3  setTextAlignment:NSTextAlignmentCenter];//Set text alignment in label.
-    [cell3.maskName3  setBaselineAdjustment:UIBaselineAdjustmentAlignBaselines];//Set line adjustment.
-    [cell3.maskName3  setLineBreakMode:NSLineBreakByCharWrapping];//Set linebreaking mode..
-    [cell3.maskName3  setNumberOfLines:1];//Set number of lines in label.
-    //[itemName.layer setCornerRadius:40.0];//Set corner radius of label to change the shape.
-    //[itemName.layer setBorderWidth:1.0f];//Set border width of label.
-    [cell3.maskName3  setClipsToBounds:YES];//Set its to YES for Corner radius to work.
-    [cell3.maskName3 .layer setBorderColor:[UIColor blackColor].CGColor];//Set Border color.
-    //[cell3 addSubview:cell3.maskName3 ];//Add it to the view of your choice.
+
      
     
     
