@@ -120,10 +120,18 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     userLocation = CGPointMake(_theMap.userLocation.location.coordinate.longitude, _theMap.userLocation.location.coordinate.latitude);
     _theMap.showsUserLocation = true;
     [_theMap.userLocation setTitle:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]];
+    //[_theMap.userLocation.enabled]
 
     
     
 }
+
+-(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views //make clicking on the user impossible
+{
+    MKAnnotationView *ulv = [mapView viewForAnnotation:mapView.userLocation];
+    ulv.enabled = NO;
+}
+
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation {
 
