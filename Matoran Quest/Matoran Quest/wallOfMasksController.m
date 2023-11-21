@@ -14,7 +14,7 @@
 
 @implementation wallOfMasksController
 
-NSArray *maskArray; //our mask array
+NSMutableArray *maskArray; //our mask array
 NSArray *selectedMaskArray; //the mask we want to know more about
 UIImage *maskImage2; //the colourized mask image
 UIImage *outPutMask; //the mask we take to the individual mask viewer
@@ -24,6 +24,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
 - (void)viewDidLoad {
     [super viewDidLoad];
     maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks from the user defaults and make an array of them
+    maskArray = [maskArray mutableCopy];
     //NSLog(@"monkey: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]);
     _maskGrid.delegate = self;
     _maskGrid.dataSource = self;
@@ -32,6 +33,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
     imagesInCollection = [[NSMutableArray alloc] init];
     
     collectedMasks2 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMaskCollectionList"];
+    collectedMasks2 = [collectedMasks2 mutableCopy];
     if(collectedMasks2 == NULL){ //if there is no player masks collection key yet
         collectedMasks2 = [[NSMutableArray alloc] init];
         //NSLog(@"refreshing2");
@@ -50,12 +52,52 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
     //UILabel *itemName = [[UILabel alloc]initWithFrame:CGRectMake(91, 15, 0, 0)];
     //
     
-    NSArray *maskInterior = [maskArray objectAtIndex:indexPath.row]; //get the mask list to get out the name of the mask
+    NSMutableArray *maskInterior = [maskArray objectAtIndex:indexPath.row]; //get the mask list to get out the name of the mask
     //NSLog(@"%@", maskInterior)
+    maskInterior = [maskInterior mutableCopy];
     NSString *maskNameAndColour = maskInterior[0];
     NSArray *maskColourAndName; //array of seperated name and colour
     NSString *maskName;
     int noColourFlag = 0; //check if mask is special and skip colourizing
+    
+    //fix colour name issues by replacing old colour names with new ones:
+    maskColourAndName = [maskNameAndColour componentsSeparatedByString:@" "];
+    NSMutableArray *maskColourAndName2 = [maskColourAndName mutableCopy];
+    
+    if([maskColourAndName2[0] isEqualToString: @"yellow"]){
+        maskInterior[0] = [NSString stringWithFormat: @"tan %@", maskColourAndName[1]];
+        NSLog(@"%@", maskInterior);
+        maskArray[indexPath.row] = maskInterior;
+        
+        for (int i = 0; i <= (collectedMasks2.count -1); i++)
+        {
+            if([collectedMasks2[i] isEqualToString: @"yellow"]){
+                collectedMasks2[i] = @"tan";
+                [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMaskCollectionList"];
+            }
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:maskArray forKey:@"PlayerMasks"];
+    }
+    
+    if([maskColourAndName2[0] isEqualToString: @"bright-yellow"]){
+        maskInterior[0] = [NSString stringWithFormat: @"yellow %@", maskColourAndName[1]];
+        NSLog(@"%@", maskInterior);
+        maskArray[indexPath.row] = maskInterior;
+        
+        for (int i = 0; i <= (collectedMasks2.count -1); i++)
+        {
+            if([collectedMasks2[i] isEqualToString: @"bright-yellow"]){
+                collectedMasks2[i] = @"yellow";
+                [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMasks"];
+            }
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:maskArray forKey:@"PlayerMaskCollectionList"];
+        
+    }
+
+    NSLog(@"masks: %@", collectedMasks2);
+        
+        
     if([maskNameAndColour isEqualToString: @"vahi"]){ //seperate things out if needed
         maskName = @"vahi";
         noColourFlag = 1;
@@ -246,19 +288,26 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         greenColour = 218.0;
         
     }
+    else if ([theColor isEqualToString:@"dark-grey"]){
+        //all 112
+        redColour = 112.0;
+        blueColour = 112.0;
+        greenColour = 112.0;
+        
+    }
     else if ([theColor isEqualToString:@"light-green"]){
         //r221 g255 b103
         redColour = 171.0;
         greenColour = 193.0;
         blueColour = 106.0;
     }
-    else if ([theColor isEqualToString:@"yellow"]){
-        //r255 g255 b144
-        redColour = 255.0;
-        greenColour = 255.0;
-        blueColour = 144.0;
+    else if ([theColor isEqualToString:@"tan"]){
+        //r250 g229 b175
+        redColour = 250.0;
+        greenColour = 229.0;
+        blueColour = 175.0;
     }
-    else if ([theColor isEqualToString:@"bright-yellow"]){
+    else if ([theColor isEqualToString:@"yellow"]){ //formerly bright-yellow
         //r255 g245 b0
         redColour = 255.0;
         greenColour = 245.0;
