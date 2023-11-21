@@ -40,7 +40,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMaskCollectionList"]; //set it if it doesnt exist
         
     }
-    [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/195", (int)collectedMasks2.count]];
+    [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/219", (int)collectedMasks2.count]];
 }
 
 
