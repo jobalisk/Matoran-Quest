@@ -17,6 +17,7 @@
 		B86BCBC52B0021F70015B2FB /* Mata Nui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */; };
 		B86BCBC62B0021FA0015B2FB /* Goudy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B86BCBC32B0020B60015B2FB /* Goudy.otf */; };
 		B8B1255F2B0C44C200738447 /* Celler1.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B1255E2B0C44C200738447 /* Celler1.m */; };
+		B8B125612B0C5FD200738447 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B125602B0C5FD200738447 /* LaunchScreen.storyboard */; };
 		B8C255412B0BD7CA000B2124 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C255402B0BD7CA000B2124 /* Launch Screen.storyboard */; };
 		B8DC7DC12AFFFE69003BF68C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */; };
 		B8DC7DC32AFFFE69003BF68C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DC22AFFFE69003BF68C /* GameScene.sks */; };
@@ -70,6 +71,7 @@
 		B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mata Nui.ttf"; path = "Matoran Quest/Mata Nui.ttf"; sourceTree = SOURCE_ROOT; };
 		B8B1255D2B0C44C200738447 /* Celler1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Celler1.h; sourceTree = "<group>"; };
 		B8B1255E2B0C44C200738447 /* Celler1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Celler1.m; sourceTree = "<group>"; };
+		B8B125602B0C5FD200738447 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8C255402B0BD7CA000B2124 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B8DC7DBC2AFFFE69003BF68C /* Matoran Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Matoran Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DC7DBF2AFFFE69003BF68C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				B8589A452B0540B50017F34D /* OptionsViewController.h */,
 				B8589A462B0540B50017F34D /* OptionsViewController.m */,
 				B8C255402B0BD7CA000B2124 /* Launch Screen.storyboard */,
+				B8B125602B0C5FD200738447 /* LaunchScreen.storyboard */,
 				B8DC7DCC2AFFFE69003BF68C /* Main.storyboard */,
 				B8DC7DCF2AFFFE6C003BF68C /* Assets.xcassets */,
 				B8DC7DD42AFFFE6C003BF68C /* main.m */,
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B86BCBC62B0021FA0015B2FB /* Goudy.otf in Resources */,
+				B8B125612B0C5FD200738447 /* LaunchScreen.storyboard in Resources */,
 				B86BCBC52B0021F70015B2FB /* Mata Nui.ttf in Resources */,
 				B8DC7DCE2AFFFE69003BF68C /* Main.storyboard in Resources */,
 				B8DC7DC32AFFFE69003BF68C /* GameScene.sks in Resources */,
@@ -523,7 +527,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.simulation-games";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your location in order to show where you are while playing. It does not share your GPS location with any third parties and only uses the infomation in order to run the game.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -557,7 +561,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.simulation-games";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your location in order to show where you are while playing. It does not share your GPS location with any third parties and only uses the infomation in order to run the game.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
