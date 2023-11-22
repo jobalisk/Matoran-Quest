@@ -36,12 +36,15 @@
         [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerMasks"];
         defaultArray1 = [[NSMutableArray alloc] init]; //create 2 arrays, 1 array within an array for the first item, the masks, the second for the items
         [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerItems"]; //set a variety of game variables back to 0.
+        [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerAvailibleToWearMasks"]; //set a variety of game variables back to 0.
         [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerMaskCollectionList"]; //set the collection counter back to 0!
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerWidgets"];
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerFighting"];
         [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"PlayerRares"];
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"maskChosen"];
         NSLog(@"DELETED");
+        
+        
         
         
     }];
