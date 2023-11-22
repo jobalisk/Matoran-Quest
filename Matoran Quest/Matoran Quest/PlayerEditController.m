@@ -21,6 +21,7 @@ NSMutableArray *collectedMasks3; //what masks do we have already
 NSMutableArray *availibleMasks; //what masks the player can choose to wear
 UIImage *playerSprite; //the image in the player portrait
 NSString *playerMask; //the mask the player has chosen
+int selectedMaskRow; //and int value for where in the picker we have current selected
 
 
 - (void)viewDidLoad {
@@ -34,6 +35,11 @@ NSString *playerMask; //the mask the player has chosen
     //NSString *testString;
     availibleMasks = [[NSMutableArray alloc] init];
     maskChosenFlag = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"maskChosen"]; //have we chosen a mask before at the start of the game
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerAvailibleToWearMasks"] != NULL){
+        availibleMasks = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerAvailibleToWearMasks"];
+        availibleMasks = [availibleMasks mutableCopy];
+    }
+    
     /*
     //try catch because this will cause the app to crash if you have no masks atam
     if((int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerRares"] == 1){
@@ -56,7 +62,7 @@ NSString *playerMask; //the mask the player has chosen
         }
     }
     */
-    NSLog(@"Masks Chosen: %d", (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"maskChosen"]);
+    //NSLog(@"Masks Chosen: %d", (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"maskChosen"]);
     if(maskChosenFlag != 0){ //if this is not the first time we have selected a mask for our player...
         [availibleMasks addObject: @"unmasked"];
         collectedMasks3 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMaskCollectionList"];
@@ -84,11 +90,11 @@ NSString *playerMask; //the mask the player has chosen
                     NSArray* maskColourAndName2 = [collectedMasks3[i] componentsSeparatedByString:@" "];
                     NSLog(@"%@", maskColourAndName2);
                     if([availibleMasks containsObject:maskColourAndName2[1]] == false){
-                        NSLog(@"not found yet");
+                        //NSLog(@"not found yet");
                         [availibleMasks addObject: maskColourAndName2[1]];
                     }
                     else{
-                        NSLog(@"already present");
+                        //NSLog(@"already present");
                     }
                     
                     
@@ -96,7 +102,7 @@ NSString *playerMask; //the mask the player has chosen
             }
             
         }
-        NSLog(@"%@", availibleMasks);
+        //NSLog(@"%@", availibleMasks);
         kanohiList = availibleMasks; //this is now the list of masks shown in the picker
         
 
@@ -199,11 +205,16 @@ NSString *playerMask; //the mask the player has chosen
 
 -(IBAction) colourButtonPressed: (id) sender
 {
-    [playerDetails setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
+    [[NSUserDefaults standardUserDefaults] setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
     playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
     [_playerPortrait setImage:playerSprite];
     [self colourWellPressed: playerSprite];
+    if(maskChosenFlag == 0){ //set the availible masks list to include the mask the player has chosen at the start
+        [availibleMasks addObject:kanohiList[selectedMaskRow]]; //add that first mask you selected
+        [[NSUserDefaults standardUserDefaults] setObject: availibleMasks forKey:@"PlayerAvailibleToWearMasks"];
+    }
     [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"maskChosen"]; //we have now chosen a mask, if this was the first time, we don't get to see all the masks again
+    
 
     
     //sort out mask
@@ -244,6 +255,7 @@ NSString *playerMask; //the mask the player has chosen
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     playerMask = [NSString stringWithFormat:@"%@matoran", kanohiList[row]];
     //NSLog(@"Mask name: %@",playerMask);
+    selectedMaskRow = (int)row;
     //[playerDetails setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
     [playerDetails setInteger: row forKey:@"PlayerMaskNumber"]; //save where that is in the list for later
 }
