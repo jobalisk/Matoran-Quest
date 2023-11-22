@@ -16,24 +16,32 @@
 NSUserDefaults *playerDetails;
 NSMutableArray *kanohiList;
 NSNotificationCenter *colorCenter;
+int maskChosenFlag; //at the start of the game, the player choses a mask to wear, after that, they can only select from masks they have already found
+NSMutableArray *collectedMasks3; //what masks do we have already
+NSMutableArray *availibleMasks; //what masks the player can choose to wear
 UIImage *playerSprite; //the image in the player portrait
+NSString *playerMask; //the mask the player has chosen
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     kanohiList = [NSMutableArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", nil]; //load up masks availible to player
-    NSArray *maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks from the user defaults and make an array of them
+    //NSArray *maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks from the user defaults and make an array of them
     //NSLog(@"%@", maskArray);
-    NSArray *testMaskArray; //for checking masks
-    NSString *testString;
+    //NSArray *testMaskArray; //for checking masks
+    //NSString *testString;
+    //NSString *testString;
+    availibleMasks = [[NSMutableArray alloc] init];
+    maskChosenFlag = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"maskChosen"]; //have we chosen a mask before at the start of the game
+    /*
     //try catch because this will cause the app to crash if you have no masks atam
     if((int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerRares"] == 1){
         for (int i = 0; i <= (maskArray.count -1); i++)
         {
             
             
-            NSLog(@"trying to do masks %d", (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerRares"]);
+            //NSLog(@"trying to do masks %d", (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerRares"]);
             testMaskArray = [maskArray objectAtIndex:i]; //go through each mask, if the player has a vahi or avohkii, add those to the array of availible masks
             
             testString = [testMaskArray objectAtIndex:0];
@@ -47,6 +55,54 @@ UIImage *playerSprite; //the image in the player portrait
             }
         }
     }
+    */
+    NSLog(@"Masks Chosen: %d", (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"maskChosen"]);
+    if(maskChosenFlag != 0){ //if this is not the first time we have selected a mask for our player...
+        [availibleMasks addObject: @"unmasked"];
+        collectedMasks3 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMaskCollectionList"];
+        if(collectedMasks3.count != 0){
+            for (int i = 0; i <= (collectedMasks3.count -1); i++){ //go through each collected mask
+                if([collectedMasks3[i] isEqualToString: @"vahi"]){ //seperate things out if needed
+                    if([availibleMasks containsObject:@"vahi"] == false){
+                        [availibleMasks addObject: @"vahi"]; //if we have found the mask before, add it to the list of masks we can choose from
+                    }
+                    
+                }
+                else if([collectedMasks3[i] isEqualToString: @"avohkii"]){
+                    if([availibleMasks containsObject:@"avohkii"] == false){
+                        [availibleMasks addObject: @"avohkii"];
+                    }
+                }
+                else if([collectedMasks3[i] isEqualToString: @"hau"]){
+                    if([availibleMasks containsObject:@"hau"] == false){
+                        [availibleMasks addObject: @"hau"];
+                    }
+                }
+                
+                else{
+                    
+                    NSArray* maskColourAndName2 = [collectedMasks3[i] componentsSeparatedByString:@" "];
+                    NSLog(@"%@", maskColourAndName2);
+                    if([availibleMasks containsObject:maskColourAndName2[1]] == false){
+                        NSLog(@"not found yet");
+                        [availibleMasks addObject: maskColourAndName2[1]];
+                    }
+                    else{
+                        NSLog(@"already present");
+                    }
+                    
+                    
+                }
+            }
+            
+        }
+        NSLog(@"%@", availibleMasks);
+        kanohiList = availibleMasks; //this is now the list of masks shown in the picker
+        
+
+    }
+    
+    
     //NSLog(@"got here");
     
     playerDetails = [NSUserDefaults standardUserDefaults];
@@ -143,9 +199,11 @@ UIImage *playerSprite; //the image in the player portrait
 
 -(IBAction) colourButtonPressed: (id) sender
 {
+    [playerDetails setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
     playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
     [_playerPortrait setImage:playerSprite];
     [self colourWellPressed: playerSprite];
+    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"maskChosen"]; //we have now chosen a mask, if this was the first time, we don't get to see all the masks again
 
     
     //sort out mask
@@ -184,9 +242,9 @@ UIImage *playerSprite; //the image in the player portrait
 //picker view functions
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    NSString *playerMask = [NSString stringWithFormat:@"%@matoran", kanohiList[row]];
+    playerMask = [NSString stringWithFormat:@"%@matoran", kanohiList[row]];
     //NSLog(@"Mask name: %@",playerMask);
-    [playerDetails setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
+    //[playerDetails setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
     [playerDetails setInteger: row forKey:@"PlayerMaskNumber"]; //save where that is in the list for later
 }
 

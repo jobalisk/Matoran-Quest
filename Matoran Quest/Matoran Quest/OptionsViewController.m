@@ -40,6 +40,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerWidgets"];
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerFighting"];
         [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"PlayerRares"];
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"maskChosen"];
         NSLog(@"DELETED");
         
         
