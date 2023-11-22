@@ -172,7 +172,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="134" id="7gS-on-5hz"/>
                                 </constraints>
-                                <string key="text">This game was made by Eternity Ware Studios, AKA, Job Dyer in 2023. The origonal idea came from Ezra Haren (though who knows how many others also had it.</string>
+                                <string key="text">This game was made by Eternity Ware Studios, AKA, Job Dyer in 2023. The origonal idea came from Ezra Haren (though who knows how many others also had it. Special thanks to all my testers who helped make this game possible.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -269,7 +269,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection: 0/219" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6m-i0-t67">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection: 0/231" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6m-i0-t67">
                                 <rect key="frame" x="211" y="20" width="183" height="15"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1088,7 +1088,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bo3-Fh-8j5"/>
         <segue reference="NFs-HN-tdf"/>
         <segue reference="KGm-Ov-KRg"/>
         <segue reference="hoN-rf-ndP"/>

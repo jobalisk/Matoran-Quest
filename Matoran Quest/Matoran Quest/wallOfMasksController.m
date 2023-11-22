@@ -14,6 +14,7 @@
 
 @implementation wallOfMasksController
 
+int totalMasksInGame = 231; //the total findable mask variations in the game
 NSMutableArray *maskArray; //our mask array
 NSArray *selectedMaskArray; //the mask we want to know more about
 UIImage *maskImage2; //the colourized mask image
@@ -40,7 +41,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMaskCollectionList"]; //set it if it doesnt exist
         
     }
-    [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/219", (int)collectedMasks2.count]];
+    [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/%d", (int)collectedMasks2.count, totalMasksInGame]];
 }
 
 
@@ -61,6 +62,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
     int noColourFlag = 0; //check if mask is special and skip colourizing
     
     //fix colour name issues by replacing old colour names with new ones:
+    /*
     maskColourAndName = [maskNameAndColour componentsSeparatedByString:@" "];
     NSMutableArray *maskColourAndName2 = [maskColourAndName mutableCopy];
     
@@ -96,7 +98,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
     }
 
     //NSLog(@"masks: %@", collectedMasks2);
-      
+      */
     
     //continue on with the regularly scheduled program
         
@@ -302,6 +304,12 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         redColour = 171.0;
         greenColour = 193.0;
         blueColour = 106.0;
+    }
+    else if ([theColor isEqualToString:@"cyan"]){
+        //r113 g220 b190
+        redColour = 113.0;
+        greenColour = 220.0;
+        blueColour = 190.0;
     }
     else if ([theColor isEqualToString:@"tan"]){
         //r250 g229 b175
