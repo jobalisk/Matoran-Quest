@@ -379,7 +379,7 @@
             <objects>
                 <viewController id="KWH-bJ-xPJ" customClass="individualMaskController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nEf-zP-hr8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="View Kanohi Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhI-h5-Q2h">
@@ -446,7 +446,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2B-KA-qB5">
-                                <rect key="frame" x="20" y="668" width="374" height="25"/>
+                                <rect key="frame" x="20" y="665" width="374" height="28"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Return">
@@ -630,11 +630,11 @@
             <objects>
                 <viewController id="nNl-6b-2fA" customClass="PlayerEditController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1OT-7b-hUD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-5M-WY0">
-                                <rect key="frame" x="85" y="140.66666666666666" width="240" height="34"/>
+                                <rect key="frame" x="85" y="148.66666666666666" width="240" height="34"/>
                                 <color key="backgroundColor" red="0.21692641739992746" green="0.21692641739992746" blue="0.21692641739992746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -644,36 +644,36 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Player Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpy-pq-3vc">
-                                <rect key="frame" x="16" y="56.666666666666657" width="360" height="18"/>
+                                <rect key="frame" x="16" y="59" width="360" height="21"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Player Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrU-Eg-sd3">
-                                <rect key="frame" x="16" y="33" width="360" height="15.333333333333336"/>
+                                <rect key="frame" x="16" y="33" width="360" height="17.666666666666671"/>
                                 <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="15"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b78-lS-MfK">
-                                <rect key="frame" x="20" y="660" width="374" height="25"/>
+                                <rect key="frame" x="20" y="657" width="374" height="28"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Return">
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="q8n-sj-w8s" kind="show" id="Y5l-SI-aMw"/>
+                                    <segue destination="q8n-sj-w8s" kind="show" identifier="BackToManagePlayer" id="Y5l-SI-aMw"/>
                                 </connections>
                             </button>
                             <colorWell contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4VC-ii-Nk7">
-                                <rect key="frame" x="75" y="354.33333333333331" width="88" height="57"/>
+                                <rect key="frame" x="75" y="362.33333333333331" width="88" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="NKR-u6-Svd"/>
                                 </constraints>
                             </colorWell>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3c-8I-kU1">
-                                <rect key="frame" x="27" y="419.33333333333331" width="360" height="71"/>
+                                <rect key="frame" x="27" y="427.33333333333331" width="360" height="71"/>
                                 <color key="backgroundColor" red="0.58218019140680333" green="0.58765651105092442" blue="0.60408546998328772" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" systemColor="tintColor"/>
                                 <constraints>
@@ -705,13 +705,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Colour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfN-1P-AO1">
-                                <rect key="frame" x="137" y="367.33333333333331" width="140" height="29"/>
+                                <rect key="frame" x="137" y="375.33333333333331" width="140" height="29"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="12"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <color key="highlightedColor" systemColor="systemBrownColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtH-Jq-jeU">
-                                <rect key="frame" x="27" y="116.66666666666667" width="360" height="16.000000000000014"/>
+                                <rect key="frame" x="27" y="122.00000000000001" width="360" height="18.666666666666671"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
@@ -904,23 +904,23 @@
             <objects>
                 <viewController storyboardIdentifier="menu" id="fUa-bY-8jl" customClass="MenuController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pd5-CC-Q55">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXH-et-6HW">
-                                <rect key="frame" x="20" y="76" width="374" height="17.333333333333329"/>
+                                <rect key="frame" x="20" y="76" width="374" height="20"/>
                                 <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="17"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matoran Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwn-fF-uNx">
-                                <rect key="frame" x="20" y="101.33333333333333" width="374" height="18"/>
+                                <rect key="frame" x="20" y="104" width="374" height="21"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOs-4c-hcv">
-                                <rect key="frame" x="20" y="367" width="374" height="34"/>
+                                <rect key="frame" x="20" y="372" width="374" height="38"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Manage Player">
@@ -931,7 +931,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPD-TT-3YG">
-                                <rect key="frame" x="20" y="493" width="374" height="34"/>
+                                <rect key="frame" x="20" y="506" width="374" height="38"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Help">
@@ -949,7 +949,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tf-dN-jbC">
-                                <rect key="frame" x="20" y="561" width="374" height="34"/>
+                                <rect key="frame" x="20" y="578" width="374" height="38"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="About">
@@ -961,7 +961,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8c-GL-Ab9">
-                                <rect key="frame" x="20" y="428" width="374" height="34"/>
+                                <rect key="frame" x="20" y="437" width="374" height="38"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Options">
@@ -972,8 +972,8 @@
                                     <segue destination="Wef-nB-vT9" kind="show" id="Iqo-8I-WEp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuN-bp-l5F">
-                                <rect key="frame" x="20" y="300" width="374" height="37"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuN-bp-l5F">
+                                <rect key="frame" x="20" y="300" width="374" height="42"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Play">
@@ -1013,6 +1013,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oi7-8o-ZDx"/>
                     <connections>
+                        <outlet property="playButton" destination="fuN-bp-l5F" id="dR7-Nh-tcB"/>
                         <outlet property="title1" destination="dXH-et-6HW" id="klZ-CG-e7w"/>
                         <outlet property="title2" destination="Vwn-fF-uNx" id="n5V-zY-G0b"/>
                     </connections>

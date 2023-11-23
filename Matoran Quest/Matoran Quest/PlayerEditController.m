@@ -205,7 +205,6 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
 
 -(IBAction) colourButtonPressed: (id) sender
 {
-    [[NSUserDefaults standardUserDefaults] setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
     playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@0",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]]];
     [_playerPortrait setImage:playerSprite];
     [self colourWellPressed: playerSprite];
@@ -221,8 +220,9 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
 			[[NSUserDefaults standardUserDefaults] setObject: availibleMasks forKey:@"PlayerAvailibleToWearMasks"];
 			maskChosenFlag = 1;
 			[[NSUserDefaults standardUserDefaults] setInteger:maskChosenFlag forKey:@"maskChosen"]; //we have now chosen a mask, if this was the first time, we don't get to see all the masks again
-			
-			
+            [[NSUserDefaults standardUserDefaults] setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
+            //BackToManagePlayer
+            [self performSegueWithIdentifier:@"BackToManagePlayer" sender:self]; //return so we can't mess anything up
 			
 		}];
 		[deleteAlert addAction:defaultAction];
@@ -235,6 +235,9 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
 		[self presentViewController:deleteAlert animated:YES completion:nil]; //run the alert
 		
 
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
     }
     
     
