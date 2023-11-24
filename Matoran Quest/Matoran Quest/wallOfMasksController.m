@@ -377,7 +377,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender { //assign the mask we want to view to the next controller
     if([segue.identifier isEqualToString:@"selectedMask"]){
-        NSLog(@"%@", selectedMaskArray);
+        //NSLog(@"%@", selectedMaskArray);
         individualMaskController *controller = (individualMaskController *)segue.destinationViewController;
         controller.maskDetailsArray = selectedMaskArray;
         //NSLog(@"%@", maskArray);

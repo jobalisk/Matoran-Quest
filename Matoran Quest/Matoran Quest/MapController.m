@@ -622,7 +622,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     randomItem = arc4random_uniform(15);
     if(randomItem != 3){ //start of with regional mask randomizer, 1 in 15 chance of finding a bronze region mask if in the correct region
         randomItem = arc4random_uniform(101);
-        if(randomItem > 1){ //rare mask
+        if(randomItem == 1){ //rare mask
             int randomItem = arc4random_uniform(5);
             if (randomItem == 1){
                 [[NSUserDefaults standardUserDefaults] setInteger: 1 forKey:@"PlayerRares"];
