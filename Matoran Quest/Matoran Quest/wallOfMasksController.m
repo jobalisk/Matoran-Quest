@@ -103,19 +103,23 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
     //continue on with the regularly scheduled program
         
     if([maskNameAndColour isEqualToString: @"vahi"]){ //seperate things out if needed
+        //NSLog(@"check");
         maskName = @"vahi";
         noColourFlag = 1;
     }
     else if([maskNameAndColour isEqualToString: @"avohkii"]){
+        //NSLog(@"check");
         maskName = @"avohkii";
         noColourFlag = 1;
     }
     else if([maskNameAndColour isEqualToString: @"infected hau"]){
+        //NSLog(@"check");
         maskName = @"infected hau";
         noColourFlag = 1;
     }
 
     else{
+        //NSLog(@"then do");
         maskColourAndName = [maskNameAndColour componentsSeparatedByString:@" "];
         maskName = maskColourAndName[1];
     }
@@ -194,6 +198,16 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         if([tempImage.accessibilityIdentifier isEqualToString: selectedMaskArray[0]] ){
             outPutMask = tempImage;
         }
+        if([selectedMaskArray[0]containsString:@"infected hau"]){
+            outPutMask = [UIImage imageNamed:@"infected hau"];
+        }
+        else if([selectedMaskArray[0]containsString:@"avohkii"]){
+            outPutMask = [UIImage imageNamed:@"avohkii"];
+        }
+        else if([selectedMaskArray[0]containsString:@"vahi"]){
+            outPutMask = [UIImage imageNamed:@"vahi"];
+        }
+        
     }
     
     [self performSegueWithIdentifier:@"selectedMask" sender:self];
@@ -363,6 +377,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender { //assign the mask we want to view to the next controller
     if([segue.identifier isEqualToString:@"selectedMask"]){
+        NSLog(@"%@", selectedMaskArray);
         individualMaskController *controller = (individualMaskController *)segue.destinationViewController;
         controller.maskDetailsArray = selectedMaskArray;
         //NSLog(@"%@", maskArray);
