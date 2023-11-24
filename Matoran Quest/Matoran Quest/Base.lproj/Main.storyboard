@@ -1051,9 +1051,9 @@
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="move" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pe-0D-R7N">
-                                <rect key="frame" x="20" y="684" width="26" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HP: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pe-0D-R7N">
+                                <rect key="frame" x="20" y="671" width="42" height="25"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1078,9 +1078,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="fcb-wT-ub8"/>
                     <connections>
+                        <outlet property="theHP" destination="1pe-0D-R7N" id="uT7-Pl-Xcy"/>
                         <outlet property="theLabel" destination="mAA-F2-cxF" id="OIX-E5-hD0"/>
                         <outlet property="theMap" destination="y0B-zv-UR9" id="1FJ-Ni-fh7"/>
-                        <outlet property="theTester" destination="1pe-0D-R7N" id="fEw-J9-P7Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyJ-MT-tpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1089,7 +1089,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NFs-HN-tdf"/>
+        <segue reference="m2T-WJ-q46"/>
         <segue reference="KGm-Ov-KRg"/>
         <segue reference="wVj-0P-oDj"/>
     </inferredMetricsTieBreakers>

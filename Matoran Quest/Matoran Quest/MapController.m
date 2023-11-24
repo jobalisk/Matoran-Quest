@@ -22,7 +22,7 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 24;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 4), 16 or 20 is a good trade off between time, distance and excitement
+int playerUpdateTimerMax = 24;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 4), 24 is a good time
 int walkingTimer = 0; //this is for working out walking intervals
 int randomThing; //a random number for item placement purposes
 NSArray *kanohiList2;
@@ -215,6 +215,12 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         playerUpdateTimer += 1;
     }
     else{
+        //recover HP
+        if(playerHP != 10){
+            playerHP += 1;
+            [[NSUserDefaults standardUserDefaults] setInteger: playerHP forKey:@"PlayerHP"];
+        }
+
         //reset the timer every 30 seconds or so and update the new long and lat at current pos. before storing new long and lat, compare current with old old to see if the player has moved sufficently.
         //get the difference by adding or subtracing to a value and then comparing to the origonal value. for walking south which means the number decreases, we add a number to it
         float compLat = _theMap.userLocation.location.coordinate.latitude - spawnWalkDistance;
@@ -231,7 +237,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             //NSLog(@"spawnWalkDistance: %f", (spawnWalkDistance * -1));
             
             
-            [_theTester setText: [NSString stringWithFormat: @"%f , %f", compLat, compLong]];
+            //[_theTester setText: [NSString stringWithFormat: @"%f , %f", compLat, compLong]];
             randomThing = arc4random_uniform(spawnRate); //generate a random number for spawn rate
             [_theLabel setText: [NSString stringWithFormat: @"%d", randomThing]];
             if(randomThing != 1){ //1 chance in 3 that the item does not spawn
@@ -345,14 +351,10 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         else{
             [_theLabel setText:[NSString stringWithFormat:@"Lat: %f", aUserLocation.coordinate.latitude]];
         }
-        
-        //recover HP
-        if(playerHP != 10){
-            playerHP += 1;
-            [[NSUserDefaults standardUserDefaults] setInteger: playerHP forKey:@"PlayerHP"];
-        }
-        
+
     }
+    //set HP label:
+    [_theHP setText:[NSString stringWithFormat:@"HP: %d", playerHP]];
     
     _theMap.showsUserLocation = true;
     //NSLog(@"Updated!");

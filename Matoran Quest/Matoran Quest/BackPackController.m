@@ -86,32 +86,93 @@ NSMutableArray *itemArray; //our item array
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{ //tap brings up delete dialog
     //NSLog(@"Tapped %d", (int)indexPath.row);
     
-
-    UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Throw away  %@?", itemArray[indexPath.row]]
-                                   message:[NSString stringWithFormat:@"Are you sure you want to throw away %@?", itemArray[indexPath.row]]
-                                   preferredStyle:UIAlertControllerStyleAlert];
-     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault
-       handler:^(UIAlertAction * action) {
-        itemArray = [itemArray mutableCopy];
-        [itemArray removeObjectAtIndex: indexPath.row]; //delete the item
-        [_itemCount setText:[NSString stringWithFormat:@"items: %d", (int)itemArray.count]]; //update the number of items display
-        [[NSUserDefaults standardUserDefaults] setObject: itemArray forKey:@"PlayerItems"];
-        [self.itemGrid reloadData];//refresh the view
-        NSIndexPath *cellForDeletionIndexPath; //a holder for the index path
-        //NSLog(@"DELETED");
+    //2 different alerts for if the item is a heal item or not...
+    if([itemArray[indexPath.row] isEqualToString:@"Vuata Maca fruit"] || [itemArray[indexPath.row] isEqualToString:@"Energised Protodermis"]){
         
+        UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Throw away or use %@?", itemArray[indexPath.row]]
+                                                                             message:@"Doing one of these two options will remove this from your backpack!"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDestructive
+                                                              handler:^(UIAlertAction * action) {
+            itemArray = [itemArray mutableCopy];
+            [itemArray removeObjectAtIndex: indexPath.row]; //delete the item
+            [self.itemCount setText:[NSString stringWithFormat:@"items: %d", (int)itemArray.count]]; //update the number of items display
+            [[NSUserDefaults standardUserDefaults] setObject: itemArray forKey:@"PlayerItems"];
+            [self.itemGrid reloadData];//refresh the view
+            //NSIndexPath *cellForDeletionIndexPath; //a holder for the index path
+            //NSLog(@"DELETED");
+            
+            
+        }];
+        [deleteAlert addAction:defaultAction];
+        
+        UIAlertAction* useAction = [UIAlertAction actionWithTitle:@"Use" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+            itemArray = [itemArray mutableCopy];
+            
+            [self.itemCount setText:[NSString stringWithFormat:@"items: %d", (int)itemArray.count]]; //update the number of items display
 
-    }];
-    [deleteAlert addAction:defaultAction];
-    
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel
-       handler:^(UIAlertAction * action) {}];
-     
-    [deleteAlert addAction:cancelAction];
-    
-    [self presentViewController:deleteAlert animated:YES completion:nil]; //run the alert
-    
+            if([itemArray[indexPath.row] isEqualToString:@"Vuata Maca fruit"]){ //heal player health
+                int playerHP2 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"];
+                if(playerHP2 < 5){
+                    playerHP2 += 5; //5 for a vuata maca fruit
+                }
+                else{
+                    playerHP2 = 10;
+                    [[NSUserDefaults standardUserDefaults] setInteger: playerHP2 forKey:@"PlayerHP"];
+                }
+            }
+            if([itemArray[indexPath.row] isEqualToString:@"Energised Protodermis"]){
+                int playerHP2 = 10; //full health for energised protodermis
+                [[NSUserDefaults standardUserDefaults] setInteger: playerHP2 forKey:@"PlayerHP"];
+            }
+            [itemArray removeObjectAtIndex: indexPath.row]; //delete the item
+            [[NSUserDefaults standardUserDefaults] setObject: itemArray forKey:@"PlayerItems"];
+            [self.itemGrid reloadData];//refresh the view
+            //NSIndexPath *cellForDeletionIndexPath; //a holder for the index path
+            
+        }];
+        
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * action) {}];
+        
+        [deleteAlert addAction:useAction];
+        
+        
+        [deleteAlert addAction:cancelAction];
+        
+        [self presentViewController:deleteAlert animated:YES completion:nil]; //run the alert
+    }
+    else{
+       
+        UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Throw away  %@?", itemArray[indexPath.row]]
+                                       message:[NSString stringWithFormat:@"Are you sure you want to throw away %@?", itemArray[indexPath.row]]
+                                       preferredStyle:UIAlertControllerStyleAlert];
+         
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDestructive
+           handler:^(UIAlertAction * action) {
+            itemArray = [itemArray mutableCopy];
+            [itemArray removeObjectAtIndex: indexPath.row]; //delete the item
+            [self.itemCount setText:[NSString stringWithFormat:@"items: %d", (int)itemArray.count]]; //update the number of items display
+            [[NSUserDefaults standardUserDefaults] setObject: itemArray forKey:@"PlayerItems"];
+            [self.itemGrid reloadData];//refresh the view
+            //NSIndexPath *cellForDeletionIndexPath; //a holder for the index path
+            //NSLog(@"DELETED");
+            
+
+        }];
+        [deleteAlert addAction:defaultAction];
+        
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel
+           handler:^(UIAlertAction * action) {}];
+         
+        [deleteAlert addAction:cancelAction];
+        
+        [self presentViewController:deleteAlert animated:YES completion:nil]; //run the alert
+        
+    }
+
 
     
 }
