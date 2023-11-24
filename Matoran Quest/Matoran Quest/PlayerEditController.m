@@ -35,11 +35,12 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
     //NSString *testString;
     availibleMasks = [[NSMutableArray alloc] init];
     maskChosenFlag = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"maskChosen"]; //have we chosen a mask before at the start of the game
+    /*
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerAvailibleToWearMasks"] != NULL){
         availibleMasks = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerAvailibleToWearMasks"];
         availibleMasks = [availibleMasks mutableCopy];
     }
-    
+    */
     /*
     //try catch because this will cause the app to crash if you have no masks atam
     if((int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerRares"] == 1){
