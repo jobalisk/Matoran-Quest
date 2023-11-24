@@ -93,8 +93,12 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     [_theLabel setText:@"Updated!"];
     [self GetLocation];
     
-
-    
+    /*
+     //random item checker
+    itemList = [NSArray arrayWithObjects: @"Super Disk", @"Charged Fire Disk", @"Charged Water Disk", @"Charged Earth Disk", @"Charged Rock Disk", @"Charged Air Disk", @"Charged Ice Disk",nil]; //load up a list of rahi the player can encounter
+    int randomItem = arc4random_uniform((int)itemList.count);
+    NSLog(@"%@", itemList[randomItem]);
+    */
 }
 
 -(void)GetLocation{
@@ -792,12 +796,12 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     int randomItem = arc4random_uniform(20);
     if(randomItem < 13){ //healing items
         itemList = [NSArray arrayWithObjects: @"Vuata Maca fruit", @"Vuata Maca fruit", @"Energised Protodermis", @"Vuata Maca fruit",nil]; //load up a list of healing items (multipul of 1 to increase likelyhood of getting it, its a dumb way to do it but it works so bite me
-        randomItem = arc4random_uniform((int)rahiList.count);
+        randomItem = arc4random_uniform((int)itemList.count);
         return itemList[randomItem]; //return a random greater rahi
     }
     else if (randomItem < 18){ //power disks
         itemList = [NSArray arrayWithObjects: @"Super Disk", @"Charged Fire Disk", @"Charged Water Disk", @"Charged Earth Disk", @"Charged Rock Disk", @"Charged Air Disk", @"Charged Ice Disk",nil]; //load up a list of rahi the player can encounter
-        randomItem = arc4random_uniform((int)rahiList.count);
+        randomItem = arc4random_uniform((int)itemList.count);
         return itemList[randomItem]; //return a random greater rahi
     }
     else{ //rare item

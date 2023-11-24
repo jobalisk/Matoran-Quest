@@ -275,6 +275,12 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         greenColour = 84.0;
         blueColour = 0.0;
     }
+    else if ([theColor isEqualToString:@"purple"]){
+        //r140 g51 b182
+        redColour = 140.0;
+        greenColour = 51.0;
+        blueColour = 182.0;
+    }
     else if ([theColor isEqualToString:@"black"]){
         //all 0
         //do nothing
@@ -306,10 +312,10 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         blueColour = 106.0;
     }
     else if ([theColor isEqualToString:@"cyan"]){
-        //r113 g220 b190
-        redColour = 113.0;
-        greenColour = 220.0;
-        blueColour = 190.0;
+        //r107 g184 b178
+        redColour = 107.0;
+        greenColour = 184.0;
+        blueColour = 178.0;
     }
     else if ([theColor isEqualToString:@"tan"]){
         //r250 g229 b175
