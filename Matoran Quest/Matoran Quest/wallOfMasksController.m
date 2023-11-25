@@ -8,7 +8,7 @@
 #import "wallOfMasksController.h"
 #import "Celler1.h"
 
-@interface wallOfMasksController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface wallOfMasksController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate>
 
 @end
 
@@ -42,6 +42,12 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         
     }
     [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/%d", (int)collectedMasks2.count, totalMasksInGame]];
+    
+    
+    //set up search bar
+    _searchBar1.showsCancelButton=TRUE;
+    _searchBar1.delegate = self;
+    
 }
 
 
@@ -371,6 +377,12 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
     
 }
 
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [_searchBar1 resignFirstResponder];
+}
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [_searchBar1 resignFirstResponder];
+}
 
 #pragma mark - Navigation
 

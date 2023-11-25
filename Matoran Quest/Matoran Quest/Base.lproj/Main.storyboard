@@ -276,7 +276,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WNr-Aj-4OI">
-                                <rect key="frame" x="20" y="43" width="374" height="604"/>
+                                <rect key="frame" x="20" y="93" width="374" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zcr-9x-Mi6">
                                     <size key="itemSize" width="106" height="131"/>
@@ -343,22 +343,34 @@
                                     <segue destination="q8n-sj-w8s" kind="show" id="hoN-rf-ndP"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-nZ-0PZ">
+                                <rect key="frame" x="20" y="49" width="374" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="jIf-V5-HvP" id="vXF-l2-1R5"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nw0-Bw-uQ4"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Nw0-Bw-uQ4" firstAttribute="trailing" secondItem="v2Q-Uw-p00" secondAttribute="trailing" constant="128" id="2CB-SC-Ngu"/>
+                            <constraint firstItem="lcW-nZ-0PZ" firstAttribute="leading" secondItem="vwE-oD-6fh" secondAttribute="leading" id="2li-mU-PzK"/>
                             <constraint firstItem="Nw0-Bw-uQ4" firstAttribute="trailing" secondItem="w6m-i0-t67" secondAttribute="trailing" constant="20" id="CKr-TI-AGq"/>
+                            <constraint firstItem="lcW-nZ-0PZ" firstAttribute="top" secondItem="vwE-oD-6fh" secondAttribute="bottom" constant="14" id="CVF-xi-4e5"/>
                             <constraint firstItem="vwE-oD-6fh" firstAttribute="top" secondItem="KL2-Ao-GeS" secondAttribute="top" constant="20" symbolic="YES" id="D1j-5x-v2A"/>
                             <constraint firstItem="v2Q-Uw-p00" firstAttribute="top" secondItem="WNr-Aj-4OI" secondAttribute="bottom" constant="24" id="KOJ-9H-XuS"/>
+                            <constraint firstItem="lcW-nZ-0PZ" firstAttribute="trailing" secondItem="w6m-i0-t67" secondAttribute="trailing" id="SBb-xW-YhK"/>
                             <constraint firstItem="WNr-Aj-4OI" firstAttribute="leading" secondItem="Nw0-Bw-uQ4" secondAttribute="leading" constant="20" id="Ul2-ww-zXg"/>
-                            <constraint firstItem="WNr-Aj-4OI" firstAttribute="top" secondItem="vwE-oD-6fh" secondAttribute="bottom" constant="8" symbolic="YES" id="W7o-QJ-BbR"/>
+                            <constraint firstItem="WNr-Aj-4OI" firstAttribute="top" secondItem="vwE-oD-6fh" secondAttribute="bottom" constant="58" id="W7o-QJ-BbR"/>
                             <constraint firstItem="v2Q-Uw-p00" firstAttribute="top" secondItem="WNr-Aj-4OI" secondAttribute="bottom" constant="24" id="dEJ-1J-jfB"/>
                             <constraint firstItem="w6m-i0-t67" firstAttribute="leading" secondItem="vwE-oD-6fh" secondAttribute="trailing" constant="8" symbolic="YES" id="gxD-f7-e2a"/>
                             <constraint firstItem="Nw0-Bw-uQ4" firstAttribute="bottom" secondItem="v2Q-Uw-p00" secondAttribute="bottom" constant="20" id="hfX-Ih-4DJ"/>
                             <constraint firstItem="vwE-oD-6fh" firstAttribute="leading" secondItem="WNr-Aj-4OI" secondAttribute="leading" id="jnx-xx-VhP"/>
                             <constraint firstItem="Nw0-Bw-uQ4" firstAttribute="trailing" secondItem="WNr-Aj-4OI" secondAttribute="trailing" constant="20" id="mMW-Pd-Gkw"/>
                             <constraint firstItem="v2Q-Uw-p00" firstAttribute="leading" secondItem="Nw0-Bw-uQ4" secondAttribute="leading" constant="128" id="oPf-bi-h7h"/>
+                            <constraint firstItem="WNr-Aj-4OI" firstAttribute="top" secondItem="lcW-nZ-0PZ" secondAttribute="bottom" id="rkS-5l-kb0"/>
                             <constraint firstItem="vwE-oD-6fh" firstAttribute="baseline" secondItem="w6m-i0-t67" secondAttribute="baseline" id="z5k-Ht-rgY"/>
                         </constraints>
                     </view>
@@ -367,6 +379,7 @@
                         <outlet property="collectionCount" destination="w6m-i0-t67" id="SS7-1F-sy3"/>
                         <outlet property="maskCount" destination="vwE-oD-6fh" id="j7n-Zv-EfI"/>
                         <outlet property="maskGrid" destination="WNr-Aj-4OI" id="f5m-HR-hCX"/>
+                        <outlet property="searchBar1" destination="lcW-nZ-0PZ" id="CBR-tz-b9q"/>
                         <segue destination="KWH-bJ-xPJ" kind="show" identifier="selectedMask" id="bo3-Fh-8j5"/>
                     </connections>
                 </viewController>
@@ -1089,9 +1102,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="bo3-Fh-8j5"/>
         <segue reference="1BO-mg-YjO"/>
         <segue reference="KGm-Ov-KRg"/>
-        <segue reference="Ldq-Rd-rdy"/>
+        <segue reference="hoN-rf-ndP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
