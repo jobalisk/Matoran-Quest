@@ -21,11 +21,15 @@ UIImage *maskImage2; //the colourized mask image
 UIImage *outPutMask; //the mask we take to the individual mask viewer
 NSMutableArray *imagesInCollection; //an array of all the images
 NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has collected. 1 entry for each unique kind of mask (colour as well as type)
+NSMutableArray *backUpMasksList; //for refering to while using the search bar
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks from the user defaults and make an array of them
     maskArray = [maskArray mutableCopy];
+    backUpMasksList = [[NSMutableArray alloc] init]; //make a duplicate mask array
+    backUpMasksList = maskArray;
     //NSLog(@"monkey: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]);
     _maskGrid.delegate = self;
     _maskGrid.dataSource = self;
@@ -47,6 +51,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
     //set up search bar
     _searchBar1.showsCancelButton=TRUE;
     _searchBar1.delegate = self;
+    
     
 }
 
@@ -378,11 +383,45 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
 }
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    maskArray = backUpMasksList;
+    [_maskGrid reloadData]; //refresh all the data back to origonal
     [_searchBar1 resignFirstResponder];
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    maskArray = backUpMasksList;
+    NSMutableArray *searchArray = [[NSMutableArray alloc] init];
+    
+    [_maskGrid reloadData]; //refresh all the data back to origonal
+    //then compile a new mask array based on the search terms.
+    NSString *searchString1 = searchBar.text;
+    searchString1 = [searchString1 lowercaseString];
+    NSLog(@"Text: %@", searchString1);
+    NSArray *tempMaskItems = [[NSArray alloc] init];
+    for (int i = 0; i <= (maskArray.count -1); i++) //check each mask in the array
+    {
+        tempMaskItems = maskArray[i];
+        NSLog(@"check: %@",tempMaskItems[0]);
+        if([tempMaskItems[0] containsString:searchString1]){
+            [searchArray addObject:maskArray[i]];
+            //[_maskGrid reloadData]; //refresh the data with the new search results
+            NSLog(@"Good: %@",tempMaskItems[0]);
+        }
+        else{
+            
+            //[_maskGrid reloadData]; //refresh the data with the new search results
+        }
+    }
+    NSLog(@"array: %@", maskArray);
+    maskArray = searchArray;
+    [_maskGrid reloadData]; //refresh the data with the new search results
     [_searchBar1 resignFirstResponder];
 }
+    
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{ //for when the clear text button is pressed
+    maskArray = backUpMasksList;
+    [_maskGrid reloadData]; //refresh all the data back to origonal
+}
+    
 
 #pragma mark - Navigation
 
@@ -394,7 +433,7 @@ NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has c
         controller.maskDetailsArray = selectedMaskArray;
         //NSLog(@"%@", maskArray);
         controller.maskImage = outPutMask;
-        
+
     }
 }
 

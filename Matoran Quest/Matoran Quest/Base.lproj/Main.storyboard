@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Goudy.otf">
+        <array key="Goudy Trajan Regular.otf">
             <string>GoudyTrajan-Regular</string>
         </array>
         <array key="Mata Nui.ttf">
@@ -343,10 +343,17 @@
                                     <segue destination="q8n-sj-w8s" kind="show" id="hoN-rf-ndP"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-nZ-0PZ">
+                            <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-nZ-0PZ">
                                 <rect key="frame" x="20" y="49" width="374" height="44"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="searchField.textColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="jIf-V5-HvP" id="vXF-l2-1R5"/>
                                 </connections>
@@ -1064,8 +1071,11 @@
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HP: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pe-0D-R7N">
-                                <rect key="frame" x="20" y="671" width="42" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pe-0D-R7N">
+                                <rect key="frame" x="20" y="671" width="62" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="Rp2-fC-Ngb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
@@ -1074,18 +1084,19 @@
                         <viewLayoutGuide key="safeArea" id="tHM-2h-dPo"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1pe-0D-R7N" firstAttribute="baseline" secondItem="mAA-F2-cxF" secondAttribute="baseline" id="95x-7n-JCs"/>
                             <constraint firstItem="R4m-kR-9GS" firstAttribute="top" secondItem="y0B-zv-UR9" secondAttribute="bottom" constant="12" id="CbY-Vf-jtH"/>
                             <constraint firstItem="mAA-F2-cxF" firstAttribute="leading" secondItem="y0B-zv-UR9" secondAttribute="leading" id="Evm-BR-iHS"/>
-                            <constraint firstItem="1pe-0D-R7N" firstAttribute="bottom" secondItem="mAA-F2-cxF" secondAttribute="bottom" id="FTF-NC-Zd2"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="leading" secondItem="JhT-N3-6uU" secondAttribute="leadingMargin" id="H01-g9-2tg"/>
                             <constraint firstItem="R4m-kR-9GS" firstAttribute="leading" secondItem="mAA-F2-cxF" secondAttribute="trailing" constant="47" id="TI0-Ug-hAy"/>
+                            <constraint firstItem="1pe-0D-R7N" firstAttribute="leading" secondItem="mAA-F2-cxF" secondAttribute="leading" id="TSU-a7-sBz"/>
                             <constraint firstItem="mAA-F2-cxF" firstAttribute="bottom" secondItem="R4m-kR-9GS" secondAttribute="bottom" id="VDY-hh-fWR"/>
                             <constraint firstItem="mAA-F2-cxF" firstAttribute="top" secondItem="R4m-kR-9GS" secondAttribute="top" id="VgB-Ja-TMu"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="trailing" secondItem="R4m-kR-9GS" secondAttribute="trailing" id="YN0-Ug-2D0"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="top" secondItem="JhT-N3-6uU" secondAttribute="top" constant="20" symbolic="YES" id="bdY-F6-1xZ"/>
-                            <constraint firstItem="1pe-0D-R7N" firstAttribute="leading" secondItem="mAA-F2-cxF" secondAttribute="leading" id="fwU-iT-KIW"/>
                             <constraint firstAttribute="bottom" secondItem="R4m-kR-9GS" secondAttribute="bottom" constant="20" symbolic="YES" id="nhv-jI-BG9"/>
                             <constraint firstItem="R4m-kR-9GS" firstAttribute="leading" secondItem="tHM-2h-dPo" secondAttribute="leading" constant="292" id="sTG-YA-TLT"/>
+                            <constraint firstItem="1pe-0D-R7N" firstAttribute="firstBaseline" secondItem="mAA-F2-cxF" secondAttribute="firstBaseline" id="vug-IQ-Aoz"/>
                             <constraint firstItem="y0B-zv-UR9" firstAttribute="trailing" secondItem="JhT-N3-6uU" secondAttribute="trailingMargin" id="wgu-HV-XHv"/>
                         </constraints>
                     </view>
@@ -1103,7 +1114,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="bo3-Fh-8j5"/>
-        <segue reference="1BO-mg-YjO"/>
+        <segue reference="m2T-WJ-q46"/>
         <segue reference="KGm-Ov-KRg"/>
         <segue reference="hoN-rf-ndP"/>
     </inferredMetricsTieBreakers>

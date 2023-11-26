@@ -14,6 +14,7 @@
 		B8474A522B00955100FC6329 /* wallOfMasksController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8474A512B00955100FC6329 /* wallOfMasksController.m */; };
 		B8474A552B00956100FC6329 /* individualMaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8474A542B00956100FC6329 /* individualMaskController.m */; };
 		B8589A472B0540B50017F34D /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8589A462B0540B50017F34D /* OptionsViewController.m */; };
+		B85FC9552B12BC2300AAF7D1 /* Goudy Trajan Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B85FC9542B12BC0D00AAF7D1 /* Goudy Trajan Regular.otf */; };
 		B86BCBC52B0021F70015B2FB /* Mata Nui.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */; };
 		B86BCBC62B0021FA0015B2FB /* Goudy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B86BCBC32B0020B60015B2FB /* Goudy.otf */; };
 		B8B1255F2B0C44C200738447 /* Celler1.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B1255E2B0C44C200738447 /* Celler1.m */; };
@@ -67,6 +68,7 @@
 		B8474A542B00956100FC6329 /* individualMaskController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = individualMaskController.m; sourceTree = "<group>"; };
 		B8589A452B0540B50017F34D /* OptionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
 		B8589A462B0540B50017F34D /* OptionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		B85FC9542B12BC0D00AAF7D1 /* Goudy Trajan Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Goudy Trajan Regular.otf"; path = "assets/misc/Goudy Trajan Regular.otf"; sourceTree = "<group>"; };
 		B86BCBC32B0020B60015B2FB /* Goudy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Goudy.otf; path = "Matoran Quest/Goudy.otf"; sourceTree = SOURCE_ROOT; };
 		B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mata Nui.ttf"; path = "Matoran Quest/Mata Nui.ttf"; sourceTree = SOURCE_ROOT; };
 		B8B1255D2B0C44C200738447 /* Celler1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Celler1.h; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				B8DC7DCC2AFFFE69003BF68C /* Main.storyboard */,
 				B8DC7DCF2AFFFE6C003BF68C /* Assets.xcassets */,
 				B8DC7DD42AFFFE6C003BF68C /* main.m */,
+				B85FC9542B12BC0D00AAF7D1 /* Goudy Trajan Regular.otf */,
 				B86BCBC32B0020B60015B2FB /* Goudy.otf */,
 				B86BCBC42B0020B60015B2FB /* Mata Nui.ttf */,
 			);
@@ -304,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B85FC9552B12BC2300AAF7D1 /* Goudy Trajan Regular.otf in Resources */,
 				B86BCBC62B0021FA0015B2FB /* Goudy.otf in Resources */,
 				B8B125612B0C5FD200738447 /* LaunchScreen.storyboard in Resources */,
 				B86BCBC52B0021F70015B2FB /* Mata Nui.ttf in Resources */,
@@ -519,7 +523,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_TEAM = M2GX896VLW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Matoran-Quest-Info.plist";
@@ -553,7 +557,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_TEAM = M2GX896VLW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Matoran-Quest-Info.plist";
