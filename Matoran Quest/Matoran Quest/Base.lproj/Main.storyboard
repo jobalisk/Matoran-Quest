@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Goudy Trajan Regular.otf">
+        <array key="Goudy.otf">
             <string>GoudyTrajan-Regular</string>
         </array>
         <array key="Mata Nui.ttf">
@@ -799,16 +799,19 @@
             <objects>
                 <viewController storyboardIdentifier="game" id="BV1-FR-VrT" customClass="GameViewController" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
-                        <color key="backgroundColor" systemColor="labelColor"/>
+                        <color key="backgroundColor" red="0.63362977596171299" green="1" blue="0.39999525005333447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="i3q-ao-ekx"/>
+                    <connections>
+                        <segue destination="2xE-CA-LUh" kind="show" identifier="ReturnToMap" id="O5r-Um-uqm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1479" y="4"/>
+            <point key="canvasLocation" x="1591" y="3"/>
         </scene>
         <!--Options View Controller-->
         <scene sceneID="3pM-j1-zzo">
@@ -1105,6 +1108,7 @@
                         <outlet property="theHP" destination="1pe-0D-R7N" id="uT7-Pl-Xcy"/>
                         <outlet property="theLabel" destination="mAA-F2-cxF" id="OIX-E5-hD0"/>
                         <outlet property="theMap" destination="y0B-zv-UR9" id="1FJ-Ni-fh7"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="GoToRahi" id="oRo-ZW-4Zr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyJ-MT-tpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1113,15 +1117,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bo3-Fh-8j5"/>
+        <segue reference="O5r-Um-uqm"/>
         <segue reference="m2T-WJ-q46"/>
         <segue reference="KGm-Ov-KRg"/>
         <segue reference="hoN-rf-ndP"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

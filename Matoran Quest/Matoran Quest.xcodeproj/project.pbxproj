@@ -529,6 +529,7 @@
 				INFOPLIST_FILE = "Matoran-Quest-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Matoran Quest";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.simulation-games";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This device requires your camera for Rahi Battles";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your location in order to show where you are while playing. It does not share your GPS location with any third parties and only uses the infomation in order to run the game.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -563,6 +564,7 @@
 				INFOPLIST_FILE = "Matoran-Quest-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Matoran Quest";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.simulation-games";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This device requires your camera for Rahi Battles";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your location in order to show where you are while playing. It does not share your GPS location with any third parties and only uses the infomation in order to run the game.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
