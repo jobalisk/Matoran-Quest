@@ -377,13 +377,13 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         //[_theTimer setHidden:true];
         NSString *MysteryAlertMessage = @""; //this will hold the message for the alert or view.
         //generate a random number to determine what we have just picked up:
-        int randomItem = arc4random_uniform(4);
+        int randomItem = arc4random_uniform(8);
         if(randomItem == 0){
             //randomItem = arc4random_uniform((int)rahiList.count);
             //randomItem -= 1;
             MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", [self randomRahiMaker]];
         }
-        else if(randomItem == 1){
+        else if(randomItem == 1 || randomItem == 4){
             //randomItem = arc4random_uniform((int)kanohiList2.count);
             //randomItem -= 1;
             NSArray *maskDetails; //the holding container for the mask and its info
@@ -431,7 +431,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             }
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!",theMask];
         }
-        else if(randomItem == 2){
+        else if(randomItem == 2 || randomItem == 5){
             //randomItem = arc4random_uniform((int)itemList.count);
             //randomItem -= 1;
             NSMutableArray *itemArray2;
@@ -481,11 +481,20 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
              
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!%@", theItem, extraText];
         }
-        else if(randomItem == 3){
-            MysteryAlertMessage = @"You found some slightly interesting scenery!";
+        else if(randomItem == 3 || randomItem == 6 || randomItem == 7){
+            randomItem = arc4random_uniform(2);
+            if(randomItem == 0){
+                MysteryAlertMessage = @"You found some slightly interesting scenery!";
+            }
+            else{
+                MysteryAlertMessage = @"You thought you saw something, must have been mistaken.";
+            }
+            
+            
         }
+
         
-        else if(randomItem == 4){
+        else if(randomItem == 8){
             randomItem = arc4random_uniform((int)rahiList.count);
             //randomItem -= 1;
             
@@ -819,25 +828,47 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
 
 -(NSString*)randomRahiMaker{
     //rahiList = [NSArray arrayWithObjects: @"Nui Rama", @"Nui Kopen", @"Nui Jaga", @"Kuma Nui", @"Tarakava", @"Manas", @"Mana Ko", @"Tarakava Nui", @"Muaka", @"Kane Ra", @"Fikou Nui",nil]; //load up a list of rahi the player can encounter
-    int randomItem = arc4random_uniform(20);
-    if(randomItem < 13){ //lesser rahi
-        rahiList = [NSArray arrayWithObjects: @"Nui Rama", @"Nui Jaga", @"Tarakava",nil]; //load up a list of rahi the player can encounter
-        randomItem = arc4random_uniform((int)rahiList.count);
-        return rahiList[randomItem]; //return a random greater rahi
+    int randomItem = arc4random_uniform(3);
+    if(randomItem == 1){ //1 in three chance of getting a big rahi...
+        randomItem = arc4random_uniform(20);
+        if(randomItem < 13){ //lesser rahi
+            rahiList = [NSArray arrayWithObjects: @"Nui Rama", @"Nui Jaga", @"Tarakava",nil]; //load up a list of rahi the player can encounter
+            randomItem = arc4random_uniform((int)rahiList.count);
+            return rahiList[randomItem]; //return a random greater rahi
+        }
+        else if (randomItem < 18){ //greater rahi
+            rahiList = [NSArray arrayWithObjects: @"Nui Kopen", @"Kuma Nui", @"Tarakava Nui", @"Muaka", @"Kane Ra", @"Fikou Nui",nil]; //load up a list of rahi the player can encounter
+            randomItem = arc4random_uniform((int)rahiList.count);
+            return rahiList[randomItem]; //return a random greater rahi
+        }
+        else{ //rare rahi
+            int randomItem = arc4random_uniform(2);
+            if (randomItem == 1){
+                return @"Manas";
+            }
+            else{
+                return @"Manas Ko";
+            }
+        }
     }
-    else if (randomItem < 18){ //greater rahi
-        rahiList = [NSArray arrayWithObjects: @"Nui Kopen", @"Kuma Nui", @"Tarakava Nui", @"Muaka", @"Kane Ra", @"Fikou Nui",nil]; //load up a list of rahi the player can encounter
-        randomItem = arc4random_uniform((int)rahiList.count);
-        return rahiList[randomItem]; //return a random greater rahi
-    }
-    else{ //rare rahi
-        int randomItem = arc4random_uniform(2);
-        if (randomItem == 1){
-            return @"Manas";
+    else{ //otherwise, a small one
+        randomItem = arc4random_uniform(5);
+        if(randomItem == 1){
+            return @"Fikou"; //spider
+        }
+        else if (randomItem == 2){
+            return @"Jaga"; //scorpian
+        }
+        else if (randomItem == 3){
+            return @"Hoi"; //turtle
+        }
+        else if (randomItem == 4){
+            return @"Ngarere"; //bug
         }
         else{
-            return @"Manas Ko";
+            return @"Pekapeka"; //bat
         }
+        
     }
 }
 
