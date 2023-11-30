@@ -431,7 +431,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             }
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!",theMask];
         }
-        else if(randomItem == 2 || randomItem == 5){
+        else if(randomItem == 2){
             //randomItem = arc4random_uniform((int)itemList.count);
             //randomItem -= 1;
             NSMutableArray *itemArray2;
@@ -481,10 +481,13 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
              
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!%@", theItem, extraText];
         }
-        else if(randomItem == 3 || randomItem == 6 || randomItem == 7){
-            randomItem = arc4random_uniform(2);
+        else if(randomItem == 3 || randomItem == 6 || randomItem == 7 || randomItem == 5){
+            randomItem = arc4random_uniform(3);
             if(randomItem == 0){
                 MysteryAlertMessage = @"You found some slightly interesting scenery!";
+            }
+            else if(randomItem == 1){
+                MysteryAlertMessage = @"You found a thing.\nIt wasn't a useful thing though so you let it be.";
             }
             else{
                 MysteryAlertMessage = @"You thought you saw something, must have been mistaken.";
