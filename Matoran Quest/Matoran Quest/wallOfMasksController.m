@@ -22,7 +22,8 @@ UIImage *outPutMask; //the mask we take to the individual mask viewer
 NSMutableArray *imagesInCollection; //an array of all the images
 NSMutableArray *collectedMasks2; //a list of the kinds of masks the player has collected. 1 entry for each unique kind of mask (colour as well as type)
 NSMutableArray *backUpMasksList; //for refering to while using the search bar
-
+NSMutableArray *noDuplicateMasksList; //for only showing one of each type found
+int maskDisplayingCheck2 = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,6 +31,9 @@ NSMutableArray *backUpMasksList; //for refering to while using the search bar
     maskArray = [maskArray mutableCopy];
     backUpMasksList = [[NSMutableArray alloc] init]; //make a duplicate mask array
     backUpMasksList = maskArray;
+    noDuplicateMasksList = [[NSMutableArray alloc] init]; //initialize this one too
+    noDuplicateMasksList = maskArray;
+    maskDisplayingCheck2 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"showKanohiCollectionSetting"];
     //NSLog(@"monkey: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]);
     _maskGrid.delegate = self;
     _maskGrid.dataSource = self;
@@ -52,6 +56,7 @@ NSMutableArray *backUpMasksList; //for refering to while using the search bar
     _searchBar1.showsCancelButton=TRUE;
     _searchBar1.delegate = self;
     
+
     
 }
 
@@ -383,12 +388,23 @@ NSMutableArray *backUpMasksList; //for refering to while using the search bar
 }
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    maskArray = backUpMasksList;
+    if(maskDisplayingCheck2 == 0){
+        maskArray = noDuplicateMasksList;
+    }
+    else{
+        maskArray = backUpMasksList;
+    }
     [_maskGrid reloadData]; //refresh all the data back to origonal
     [_searchBar1 resignFirstResponder];
 }
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    maskArray = backUpMasksList;
+    if(maskDisplayingCheck2 == 0){
+        maskArray = noDuplicateMasksList;
+    }
+    else{
+        maskArray = backUpMasksList;
+    }
+    
     NSMutableArray *searchArray = [[NSMutableArray alloc] init];
     
     [_maskGrid reloadData]; //refresh all the data back to origonal
@@ -418,8 +434,61 @@ NSMutableArray *backUpMasksList; //for refering to while using the search bar
 }
     
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{ //for when the clear text button is pressed
-    maskArray = backUpMasksList;
-    [_maskGrid reloadData]; //refresh all the data back to origonal
+    if(maskDisplayingCheck2 == 0){
+        maskArray = noDuplicateMasksList;
+        [_maskGrid reloadData]; //refresh all the data back to origonal
+    }
+    else{
+        maskArray = backUpMasksList;
+        [_maskGrid reloadData]; //refresh all the data back to origonal
+    }
+
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    if(collectedMasks2.count == totalMasksInGame){
+        UIAlertController *completionAlert = [UIAlertController alertControllerWithTitle:@"Congratulations!"
+                                                                                 message:[NSString stringWithFormat: @"You have collected all %d kanohi masks and completed the game!\nYou can now return to your village and retire in peace.", totalMasksInGame]
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [completionAlert addAction:defaultAction];
+        [self presentViewController:completionAlert animated:YES completion:nil]; //show the completion alert if you have collected all masks.
+        //this alert will be presented later, once the view has fully loaded
+    }
+    
+    //if show all masks is switched off...
+    if(maskDisplayingCheck2 == 0){
+        int maskAlreadyThere = 0; //flag for if the mask has already been found in the list
+        for (int j = 0; j <= (collectedMasks2.count -1); j++) //go through each mask in the collected masks array
+        {
+            maskAlreadyThere = 0; //reset the flag to 0
+            for (int i = 0; i <= (noDuplicateMasksList.count -1); i++) //check it against each mask in the full mask list (this could take a while)
+            {
+                NSArray *checkingArray2 = noDuplicateMasksList[i];
+                //NSLog(@"Mask Found: %d", maskAlreadyThere);
+                //NSLog(@"Currently searching for: %@", collectedMasks2[j]);
+                if([checkingArray2[0] isEqualToString: collectedMasks2[j]]){
+                    if(maskAlreadyThere == 0){ //if this is the first mask of its kind, keep it
+                        //NSLog(@"Found 1: %@", collectedMasks2[j]);
+                        maskAlreadyThere = 1;
+                    }
+                    else{
+                        //NSLog(@"Found more than 1: %@", collectedMasks2[j]);
+                        //NSLog(@"Mask Found status: %d", maskAlreadyThere);
+                        
+                        [noDuplicateMasksList removeObjectAtIndex:i]; //otherwise, get rid of it.
+                    }
+                }
+            }
+        }
+        maskArray = noDuplicateMasksList; //update the mask array
+        //NSLog(@"Slimmer grid: %@", noDuplicateMasksList);
+        [_maskGrid reloadData];
+    }
+    
 }
     
 

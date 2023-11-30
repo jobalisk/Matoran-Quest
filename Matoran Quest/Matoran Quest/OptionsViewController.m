@@ -19,6 +19,16 @@
     //NSLog(@"tt: %d", vibrationCheck);
     [_vibrationSwitch setSelectedSegmentIndex:vibrationCheck]; //set the on off for vibration
     // Do any additional setup after loading the view.
+    
+    
+    int maskDisplayingCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"showKanohiCollectionSetting"];
+    if(maskDisplayingCheck == 0){
+        [_maskDisplaySwitch setSelectedSegmentIndex:1]; //set the on off for mask displays (default is show all masks)
+    }
+    else{
+        [_maskDisplaySwitch setSelectedSegmentIndex:0];
+    }
+
 }
 
 - (void)resetButtonPressed:(nonnull id)sender __attribute__((ibaction)) { //make a yes no confirm alert for deleting everything
@@ -74,6 +84,16 @@
     }
     else{
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"PlayerVibrate"];
+    }
+    //NSLog(@"tt: %d", (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"]);
+}
+
+- (void)MaskSwitchSwitched:(nonnull id)sender __attribute__((ibaction)) {
+    if(_maskDisplaySwitch.selectedSegmentIndex == 0){
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"showKanohiCollectionSetting"];
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"showKanohiCollectionSetting"];
     }
     //NSLog(@"tt: %d", (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"]);
 }
