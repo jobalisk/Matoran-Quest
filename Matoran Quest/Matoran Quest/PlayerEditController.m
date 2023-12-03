@@ -206,7 +206,15 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
 
 -(IBAction) colourButtonPressed: (id) sender
 {
-    playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@matoran0", kanohiList[selectedMaskRow]]];
+    @try{
+        playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@matoran0", kanohiList[selectedMaskRow]]];
+    }
+    @catch (NSException *exception) {
+        playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@matoran0", kanohiList[0]]];
+    }
+    @finally {
+      //Display Alternative
+    }
     
     [_playerPortrait setImage:playerSprite];
     [self colourWellPressed: playerSprite];
