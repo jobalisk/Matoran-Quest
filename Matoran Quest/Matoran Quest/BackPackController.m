@@ -61,6 +61,7 @@ NSMutableArray *itemArray; //our item array
     paragraphStyle.firstLineHeadIndent = 5.0f;
     paragraphStyle.headIndent = 5.0f;
     paragraphStyle.tailIndent = -5.0f;
+    //paragraphStyle.alignment = NSTextAlignmentJustified;
     //paragraphStyle.lineSpacing = 8.0f;
     //paragraphStyle.usesDefaultHyphenation = true;
         
