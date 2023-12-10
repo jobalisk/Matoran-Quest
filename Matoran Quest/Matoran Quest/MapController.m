@@ -37,11 +37,17 @@ NSString *maskColorString; //holds the found masks's colour
 int playerHP = 0; //this will later be loaded from the userdefaults and shared with the gameviewcontroller
 int widgetCount = 0;
 int rahiFightFlag = 0; //are you encountering a rahi (in a fight)
+NSString *rahiName = @""; //the name of the rahi we will be fighting...
 NSMutableArray *collectedMasks; //a list of the kinds of masks the player has collected. 1 entry for each unique kind of mask (colour as well as type)
+
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     playerWalkingSprite = 0;
+    
     // Do any additional setup after loading the view.
     
     playerHP = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"]; //load player HP
@@ -163,6 +169,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
 
 
 -(void)viewDidAppear:(BOOL)animated{ //display this warning message once everything has properly loaded
+    [self.blackOutView setAlpha:0.0]; //reset the fadeout screen
     UIAlertController* warningAlert = [UIAlertController alertControllerWithTitle:@"Attention!"
                                    message:@"Please be mindful of your location at all times while playing this game! Watch out for cars, people and other hazards!"
                                    preferredStyle:UIAlertControllerStyleAlert];
@@ -210,6 +217,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
 
 //update player location
 - (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation {
+    
     //first, work out timer
     if(playerUpdateTimer != playerUpdateTimerMax){
         playerUpdateTimer += 1;
@@ -242,7 +250,9 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             [_theLabel setText: [NSString stringWithFormat: @"%d", randomThing]];
             if(randomThing != 1){ //1 chance in 3 that the item does not spawn
                 if([[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"] == 1){ //only do this if enabled in the options menu
-                    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate); //vibrate the phone (or beep on unsupported devices)
+                    if(rahiFightFlag != 1){ //only vibrate when not in a rahi fight
+                        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate); //vibrate the phone (or beep on unsupported devices)
+                    }
                 }
                 
                 int randomThing2 = arc4random_uniform(2); //generate a random number for chance to spawn 2
@@ -314,6 +324,11 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     }
     //NSLog(@"Timer: %d", playerUpdateTimer);
     
+    //make sure that if we are no longer in a rahi fight, the screen is not black:
+    if(rahiFightFlag == 0){
+        [self.blackOutView setAlpha:0.0]; //reset the fadeout screen
+    }
+    
     
     MKCoordinateRegion region;
     MKCoordinateSpan span;
@@ -379,11 +394,9 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         //generate a random number to determine what we have just picked up:
         int randomItem = arc4random_uniform(8);
         if(randomItem == 0){
-            //randomItem = arc4random_uniform((int)rahiList.count);
-            //randomItem -= 1;
-            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", [self randomRahiMaker]];
+            MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
         }
-        else if(randomItem == 1 || randomItem == 4){
+        else if(randomItem == 11 || randomItem == 14){ //normally 1 and 4
             //randomItem = arc4random_uniform((int)kanohiList2.count);
             //randomItem -= 1;
             NSArray *maskDetails; //the holding container for the mask and its info
@@ -431,7 +444,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             }
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!",theMask];
         }
-        else if(randomItem == 2){
+        else if(randomItem == 12){ //normally 2
             //randomItem = arc4random_uniform((int)itemList.count);
             //randomItem -= 1;
             NSMutableArray *itemArray2;
@@ -481,7 +494,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
              
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!%@", theItem, extraText];
         }
-        else if(randomItem == 3 || randomItem == 6 || randomItem == 7 || randomItem == 5){
+        else if(randomItem == 13 || randomItem == 16 || randomItem == 17 || randomItem == 15){ //normally 3, 6, 7, 5
             randomItem = arc4random_uniform(3);
             if(randomItem == 0){
                 MysteryAlertMessage = @"You found some slightly interesting scenery!";
@@ -498,15 +511,16 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
 
         
         else if(randomItem == 8){
-            randomItem = arc4random_uniform((int)rahiList.count);
+            //randomItem = arc4random_uniform((int)rahiList.count);
             //randomItem -= 1;
-            
-            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", [self randomRahiMaker]];
+            MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
         }
         else{
-            randomItem = arc4random_uniform((int)rahiList.count);
+            //randomItem = arc4random_uniform((int)rahiList.count);
             //randomItem -= 1;
-            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", [self randomRahiMaker]];
+            rahiFightFlag = 1; //flag up that we are fighting a rahi
+            rahiName = [self randomRahiMaker]; //generate a random rahi
+            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiName];
         }
         
         //create an alert (temporary, later we will shift to a different view controller
@@ -515,7 +529,21 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
                                        preferredStyle:UIAlertControllerStyleAlert];
          
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-           handler:^(UIAlertAction * action) {}];
+           handler:^(UIAlertAction * action) {
+            //handle rahi fight here!
+            if(rahiFightFlag == 1){
+                
+                [UIView animateWithDuration:1.0 //fade to black then segue
+                     animations:^{self.blackOutView.alpha = 1.0;}
+                                 completion:^(BOOL finished){
+                    [self performSegueWithIdentifier:@"GoToRahi" sender:self];
+                    
+                }];
+
+                
+            }
+            
+        }];
          
         [MysteryAlert addAction:defaultAction];
         
@@ -873,6 +901,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         }
         
     }
+    
 }
 
 -(void)randomColourPicker{ //chooses the colour of the mask
@@ -941,6 +970,16 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     }
 }
 
+-(NSString*)encounterRahi:(NSString *)alertMessage{ //this happens three times so I've turned it into a function
+    //randomItem = arc4random_uniform((int)rahiList.count);
+    //randomItem -= 1;
+    
+    rahiFightFlag = 1; //flag up that we are fighting a rahi
+    rahiName = [self randomRahiMaker]; //generate a random rahi
+    alertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiName];
+    return alertMessage;
+}
+    
 
 //3rd party utlities
 
@@ -982,7 +1021,17 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     //[self removeFromParentViewController];
     //[self dealloc];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if(rahiFightFlag == 1){ //if we're about to fight some rahi...
+        //rahiFightFlag = 0;
+        GameViewController *controller = (GameViewController *)segue.destinationViewController;
+        controller.rahiName2 = rahiName;
+        
+        
+    }
+    else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
     
 }
 

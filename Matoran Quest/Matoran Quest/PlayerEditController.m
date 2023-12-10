@@ -219,7 +219,7 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
     [_playerPortrait setImage:playerSprite];
     [self colourWellPressed: playerSprite];
     if(maskChosenFlag == 0){ //set the availible masks list to include the mask the player has chosen at the start
-        				UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure"
+        				UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
 									   message:@"Press yes to select this as your starting mask. Press no to cancel. Once selected, you will have to find the other masks to wear them."
 									   preferredStyle:UIAlertControllerStyleAlert];
 		 

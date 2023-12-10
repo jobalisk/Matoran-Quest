@@ -12,9 +12,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self setModalInPresentation:true]; //make it so you can's swipe it away (stops cheating)
     // Load the SKScene from 'GameScene.sks'
-    GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"GameScene"];
+    GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"rahiScene"];
     
     // Set the scale mode to scale to fit the window
     scene.scaleMode = SKSceneScaleModeAspectFill;
@@ -26,6 +26,8 @@
     
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeLeft) forKey:@"orientation"]; //set the controller to be landscape
+    //[UINavigationController attemptRotationToDeviceOrientation];
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {

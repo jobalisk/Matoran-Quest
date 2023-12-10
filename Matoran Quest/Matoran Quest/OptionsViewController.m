@@ -36,7 +36,7 @@
     NSLog(@"Items: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerItems"]);
     NSLog(@"Widgets: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerWidgets"]);
     NSLog(@"Collection: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMaskCollectionList"]);
-    UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure"
+    UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
                                    message:@"Press YES to delete all masks and items in the backpack or NO to cancel"
                                    preferredStyle:UIAlertControllerStyleAlert];
      
@@ -96,6 +96,12 @@
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"showKanohiCollectionSetting"];
     }
     //NSLog(@"tt: %d", (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"]);
+}
+
+- (void)eyeHolesSwitchSwitched:(nonnull id)sender __attribute__((ibaction)) {
+}
+
+- (void)cameraSwitchSwitched:(nonnull id)sender __attribute__((ibaction)) {
 }
 
 @end

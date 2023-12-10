@@ -50,7 +50,7 @@
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Player" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4p6-Y0-KM2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Player" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4p6-Y0-KM2">
                                 <rect key="frame" x="27" y="70.333333333333329" width="361" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="361" id="E9q-RA-VJq"/>
@@ -93,7 +93,7 @@
                                     <segue destination="oFE-TB-Cg7" kind="show" id="HFv-lk-sD5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-EM-mFe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSk-EM-mFe">
                                 <rect key="frame" x="11" y="96" width="393" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="393" id="O64-2j-5Bd"/>
@@ -177,7 +177,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLI-hF-cTL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLI-hF-cTL">
                                 <rect key="frame" x="20" y="43.333333333333336" width="374" height="18"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
@@ -204,7 +204,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="134" id="Z4D-fX-vz2"/>
                                 </constraints>
-                                <string key="text">BIONIICLE and the BIONICLE logo are trademarks of the LEGO Group, which does not sponsor or endorse this work. This is a non-profit, and fan produced game.</string>
+                                <string key="text">BIONICLE and the BIONICLE logo are trademarks of the LEGO Group, which does not sponsor or endorse this work. This is a non-profit, and fan produced game.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -411,26 +411,80 @@
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="View Kanohi Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfG-hO-7Ga">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="View Kanohi Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfG-hO-7Ga">
                                 <rect key="frame" x="27" y="63" width="361" height="18"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kanohi Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZB-8R-KY1">
-                                <rect key="frame" x="11" y="269" width="393" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kanohi Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZB-8R-KY1">
+                                <rect key="frame" x="11" y="225" width="393" height="16"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kanohi Name:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wQ-Hh-ug0">
-                                <rect key="frame" x="11" y="293" width="393" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kanohi Name:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wQ-Hh-ug0">
+                                <rect key="frame" x="11" y="249" width="393" height="44"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXj-L2-GIc">
+                                <rect key="frame" x="16" y="527" width="382" height="25"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Trade Kanohi Mask">
+                                    <color key="titleColor" systemColor="systemYellowColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="tradeButtonPressed:" destination="KWH-bJ-xPJ" eventType="touchUpInside" id="88z-Rb-RCA"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nal-tj-Hev">
+                                <rect key="frame" x="132" y="89" width="151" height="102"/>
+                                <color key="backgroundColor" red="0.11726591759121296" green="0.11726591759121296" blue="0.11726591759121296" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="102" id="H24-cF-UHe"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Collected by:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSh-D0-i67">
+                                <rect key="frame" x="11" y="301" width="393" height="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Catcher Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8o-2c-NvS">
+                                <rect key="frame" x="11" y="338" width="393" height="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="At Latitude:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E1-Qi-Soe">
+                                <rect key="frame" x="11" y="379" width="393" height="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73G-7T-wYI">
+                                <rect key="frame" x="11" y="403" width="393" height="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="And Longitude:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6w-iq-zLh">
+                                <rect key="frame" x="11" y="441" width="393" height="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0Q-xV-aYR">
+                                <rect key="frame" x="11" y="479" width="393" height="16"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2B-KA-qB5">
-                                <rect key="frame" x="20" y="668" width="374" height="25"/>
+                                <rect key="frame" x="20" y="582" width="374" height="25"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Return">
@@ -440,49 +494,6 @@
                                     <segue destination="jIf-V5-HvP" kind="show" id="KGm-Ov-KRg"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nal-tj-Hev">
-                                <rect key="frame" x="132" y="133" width="151" height="102"/>
-                                <color key="backgroundColor" red="0.11726591759121296" green="0.11726591759121296" blue="0.11726591759121296" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="102" id="H24-cF-UHe"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Collected by:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSh-D0-i67">
-                                <rect key="frame" x="11" y="345" width="393" height="16"/>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
-                                <color key="textColor" systemColor="systemBrownColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Catcher Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8o-2c-NvS">
-                                <rect key="frame" x="11" y="382" width="393" height="16"/>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="At Latitude:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E1-Qi-Soe">
-                                <rect key="frame" x="11" y="423" width="393" height="16"/>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
-                                <color key="textColor" systemColor="systemBrownColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73G-7T-wYI">
-                                <rect key="frame" x="11" y="447" width="393" height="16"/>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="And Longitude:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6w-iq-zLh">
-                                <rect key="frame" x="11" y="485" width="393" height="16"/>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
-                                <color key="textColor" systemColor="systemBrownColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0Q-xV-aYR">
-                                <rect key="frame" x="11" y="523" width="393" height="16"/>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cff-G6-nZu"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -491,6 +502,7 @@
                             <constraint firstItem="g6w-iq-zLh" firstAttribute="top" secondItem="73G-7T-wYI" secondAttribute="bottom" constant="22" id="0kA-zN-d8c"/>
                             <constraint firstItem="CZB-8R-KY1" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="11" id="1x9-wb-Jul"/>
                             <constraint firstItem="mhI-h5-Q2h" firstAttribute="top" secondItem="cff-G6-nZu" secondAttribute="top" constant="20" id="59m-6s-55J"/>
+                            <constraint firstItem="T2B-KA-qB5" firstAttribute="top" secondItem="jXj-L2-GIc" secondAttribute="bottom" constant="30" id="5VH-T9-tH5"/>
                             <constraint firstItem="NfG-hO-7Ga" firstAttribute="centerX" secondItem="Nal-tj-Hev" secondAttribute="centerX" id="6MG-0h-NU8"/>
                             <constraint firstItem="7wQ-Hh-ug0" firstAttribute="leading" secondItem="SSh-D0-i67" secondAttribute="leading" id="6mn-b3-fMH"/>
                             <constraint firstItem="7wQ-Hh-ug0" firstAttribute="top" secondItem="CZB-8R-KY1" secondAttribute="bottom" constant="8" id="71O-6K-x1a"/>
@@ -501,27 +513,30 @@
                             <constraint firstItem="5E1-Qi-Soe" firstAttribute="top" secondItem="x8o-2c-NvS" secondAttribute="bottom" constant="25" id="E8I-0x-95h"/>
                             <constraint firstItem="x8o-2c-NvS" firstAttribute="leading" secondItem="5E1-Qi-Soe" secondAttribute="leading" id="FZm-ny-QMg"/>
                             <constraint firstItem="NfG-hO-7Ga" firstAttribute="top" secondItem="mhI-h5-Q2h" secondAttribute="bottom" constant="25" id="JFG-3L-Pnr"/>
+                            <constraint firstItem="T2B-KA-qB5" firstAttribute="leading" secondItem="nEf-zP-hr8" secondAttribute="leadingMargin" id="NPj-LO-yy0"/>
                             <constraint firstItem="5E1-Qi-Soe" firstAttribute="trailing" secondItem="73G-7T-wYI" secondAttribute="trailing" id="Ogh-zH-HN0"/>
+                            <constraint firstItem="cff-G6-nZu" firstAttribute="trailing" secondItem="jXj-L2-GIc" secondAttribute="trailing" constant="16" id="Pbc-tc-m3E"/>
                             <constraint firstItem="mhI-h5-Q2h" firstAttribute="trailing" secondItem="NfG-hO-7Ga" secondAttribute="trailing" id="QuZ-LB-f9M"/>
+                            <constraint firstItem="jXj-L2-GIc" firstAttribute="leading" secondItem="CZB-8R-KY1" secondAttribute="leading" constant="5" id="S8Q-7q-1pK"/>
                             <constraint firstItem="7wQ-Hh-ug0" firstAttribute="trailing" secondItem="SSh-D0-i67" secondAttribute="trailing" id="TpX-yD-1Qb"/>
                             <constraint firstItem="SSh-D0-i67" firstAttribute="leading" secondItem="x8o-2c-NvS" secondAttribute="leading" id="U9U-yj-wJ7"/>
                             <constraint firstItem="Nal-tj-Hev" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="132" id="YTP-IF-w24"/>
-                            <constraint firstItem="d0Q-xV-aYR" firstAttribute="centerX" secondItem="T2B-KA-qB5" secondAttribute="centerX" id="Zem-ci-EqH"/>
                             <constraint firstItem="g6w-iq-zLh" firstAttribute="trailing" secondItem="73G-7T-wYI" secondAttribute="trailing" id="b49-zI-QXn"/>
                             <constraint firstItem="x8o-2c-NvS" firstAttribute="top" secondItem="SSh-D0-i67" secondAttribute="bottom" constant="21" id="cD9-OY-5at"/>
                             <constraint firstItem="SSh-D0-i67" firstAttribute="trailing" secondItem="x8o-2c-NvS" secondAttribute="trailing" id="gE0-6d-kgz"/>
-                            <constraint firstItem="cff-G6-nZu" firstAttribute="bottom" secondItem="T2B-KA-qB5" secondAttribute="bottom" constant="23" id="iGP-zf-1l8"/>
+                            <constraint firstItem="jXj-L2-GIc" firstAttribute="top" secondItem="NfG-hO-7Ga" secondAttribute="bottom" constant="446" id="hjX-Qw-chE"/>
                             <constraint firstItem="Nal-tj-Hev" firstAttribute="centerX" secondItem="CZB-8R-KY1" secondAttribute="centerX" id="jB2-ES-i2V"/>
+                            <constraint firstItem="T2B-KA-qB5" firstAttribute="centerX" secondItem="d0Q-xV-aYR" secondAttribute="centerX" id="jQr-Xh-CLU"/>
                             <constraint firstItem="g6w-iq-zLh" firstAttribute="trailing" secondItem="d0Q-xV-aYR" secondAttribute="trailing" id="kjt-dp-tGG"/>
                             <constraint firstItem="CZB-8R-KY1" firstAttribute="top" secondItem="Nal-tj-Hev" secondAttribute="bottom" constant="34" id="nYP-QC-1D5"/>
                             <constraint firstItem="x8o-2c-NvS" firstAttribute="trailing" secondItem="5E1-Qi-Soe" secondAttribute="trailing" id="oCx-wj-N2q"/>
-                            <constraint firstItem="Nal-tj-Hev" firstAttribute="top" secondItem="NfG-hO-7Ga" secondAttribute="bottom" constant="52" id="oWY-ij-hfE"/>
+                            <constraint firstItem="Nal-tj-Hev" firstAttribute="top" secondItem="NfG-hO-7Ga" secondAttribute="bottom" constant="8" id="oWY-ij-hfE"/>
                             <constraint firstItem="mhI-h5-Q2h" firstAttribute="leading" secondItem="NfG-hO-7Ga" secondAttribute="leading" id="qG4-9d-gib"/>
                             <constraint firstItem="CZB-8R-KY1" firstAttribute="trailing" secondItem="7wQ-Hh-ug0" secondAttribute="trailing" id="qUI-Uc-Ihw"/>
                             <constraint firstItem="73G-7T-wYI" firstAttribute="top" secondItem="5E1-Qi-Soe" secondAttribute="bottom" constant="8" id="r1K-8C-b6R"/>
+                            <constraint firstItem="T2B-KA-qB5" firstAttribute="trailing" secondItem="nEf-zP-hr8" secondAttribute="trailingMargin" id="rs5-zv-4BZ"/>
                             <constraint firstItem="mhI-h5-Q2h" firstAttribute="leading" secondItem="cff-G6-nZu" secondAttribute="leading" constant="27" id="se8-xM-6JU"/>
-                            <constraint firstItem="T2B-KA-qB5" firstAttribute="trailing" secondItem="nEf-zP-hr8" secondAttribute="trailingMargin" id="tVW-ad-gxi"/>
-                            <constraint firstItem="T2B-KA-qB5" firstAttribute="leading" secondItem="nEf-zP-hr8" secondAttribute="leadingMargin" id="uOB-Cn-ATm"/>
+                            <constraint firstItem="T2B-KA-qB5" firstAttribute="centerX" secondItem="jXj-L2-GIc" secondAttribute="centerX" id="wUh-sz-tHV"/>
                             <constraint firstItem="g6w-iq-zLh" firstAttribute="leading" secondItem="d0Q-xV-aYR" secondAttribute="leading" id="zLF-jh-NdO"/>
                         </constraints>
                     </view>
@@ -566,13 +581,13 @@
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Widgets:  0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7R-LF-RnX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Widgets:  0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7R-LF-RnX">
                                 <rect key="frame" x="27" y="76" width="97" height="16"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxY-6L-CQT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxY-6L-CQT">
                                 <rect key="frame" x="297" y="76" width="65" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="07B-0W-Pww"/>
@@ -605,7 +620,7 @@
                                     <outlet property="delegate" destination="oFE-TB-Cg7" id="FdT-0U-ArT"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUk-Xp-D9C">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUk-Xp-D9C">
                                 <rect key="frame" x="20" y="42.333333333333336" width="374" height="16"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
@@ -663,7 +678,7 @@
                                     <action selector="playerNameFieldCatcher:" destination="nNl-6b-2fA" eventType="editingDidEnd" id="LEz-oM-InO"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Player Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpy-pq-3vc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Player Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpy-pq-3vc">
                                 <rect key="frame" x="16" y="56.666666666666657" width="360" height="18"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
@@ -730,7 +745,7 @@
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <color key="highlightedColor" systemColor="systemBrownColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtH-Jq-jeU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtH-Jq-jeU">
                                 <rect key="frame" x="27" y="116.66666666666667" width="360" height="16.000000000000014"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
@@ -801,10 +816,10 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <viewLayoutGuide key="safeArea" id="UE0-3U-PIn"/>
                         <color key="backgroundColor" red="0.63362977596171299" green="1" blue="0.39999525005333447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="i3q-ao-ekx"/>
+                    <navigationItem key="navigationItem" id="9gX-M1-5OU"/>
                     <connections>
                         <segue destination="2xE-CA-LUh" kind="show" identifier="ReturnToMap" id="O5r-Um-uqm"/>
                     </connections>
@@ -830,13 +845,13 @@
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zC3-qI-Vze">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zC3-qI-Vze">
                                 <rect key="frame" x="27" y="66" width="361" height="18"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Vibration:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coA-tL-8Hr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Vibration:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coA-tL-8Hr">
                                 <rect key="frame" x="27" y="341" width="173.33333333333334" height="18.666666666666686"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18.666666666666686" id="su7-n7-pLh"/>
@@ -845,7 +860,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udZ-Du-V5l">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udZ-Du-V5l">
                                 <rect key="frame" x="27" y="139" width="361" height="183"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="183" id="pN2-HM-pJ3"/>
@@ -855,7 +870,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMh-Cq-isk">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMh-Cq-isk">
                                 <rect key="frame" x="20" y="656" width="374" height="25"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -879,14 +894,17 @@
                                     <action selector="vibrationSwitchSwitched:" destination="Wef-nB-vT9" eventType="valueChanged" id="vav-eZ-hQS"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show all Masks:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEk-5n-QDu">
-                                <rect key="frame" x="27" y="416.66666666666669" width="160.33333333333334" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show all Masks:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEk-5n-QDu">
+                                <rect key="frame" x="27" y="394" width="160.33333333333334" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="3MZ-6Z-JAk"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="o8g-kl-jqP">
-                                <rect key="frame" x="253" y="410" width="77" height="32.333333333333314"/>
+                                <rect key="frame" x="253" y="388" width="77" height="31"/>
                                 <segments>
                                     <segment title="On"/>
                                     <segment title="Off"/>
@@ -896,7 +914,7 @@
                                     <action selector="vibrationSwitchSwitched:" destination="Wef-nB-vT9" eventType="valueChanged" id="Wxv-t8-Cny"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtd-Dp-E2K">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtd-Dp-E2K">
                                 <rect key="frame" x="27" y="568" width="361" height="38"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Reset Masks and Inventory">
@@ -907,6 +925,48 @@
                                     <action selector="resetButtonPressed:" destination="Wef-nB-vT9" eventType="touchUpInside" id="Ism-3T-nyl"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Eyeholes in Battles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzF-UX-KxX">
+                                <rect key="frame" x="27" y="451" width="197" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="GOD-pQ-ysJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-XB-1tg">
+                                <rect key="frame" x="253" y="440.66666666666669" width="77" height="35"/>
+                                <segments>
+                                    <segment title="On"/>
+                                    <segment title="Off"/>
+                                </segments>
+                                <connections>
+                                    <action selector="MaskSwitchSwitched:" destination="Wef-nB-vT9" eventType="valueChanged" id="kao-z0-Iav"/>
+                                    <action selector="eyeHolesSwitchSwitched:" destination="Wef-nB-vT9" eventType="valueChanged" id="7yT-lr-qCj"/>
+                                    <action selector="vibrationSwitchSwitched:" destination="Wef-nB-vT9" eventType="valueChanged" id="rMc-l0-7Oo"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Ma-hj-oDM">
+                                <rect key="frame" x="253" y="501.33333333333331" width="77" height="28.333333333333314"/>
+                                <segments>
+                                    <segment title="On"/>
+                                    <segment title="Off"/>
+                                </segments>
+                                <connections>
+                                    <action selector="MaskSwitchSwitched:" destination="Wef-nB-vT9" eventType="valueChanged" id="EB1-Er-phQ"/>
+                                    <action selector="cameraSwitchSwitched:" destination="Wef-nB-vT9" eventType="valueChanged" id="h7I-e1-o8B"/>
+                                    <action selector="vibrationSwitchSwitched:" destination="Wef-nB-vT9" eventType="valueChanged" id="bu4-lx-4uJ"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Camera in Battles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUS-9e-Xhe">
+                                <rect key="frame" x="27" y="505" width="169.33333333333334" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="zz4-tm-BVn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fuk-6y-ccd"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -914,31 +974,45 @@
                             <constraint firstItem="zC3-qI-Vze" firstAttribute="top" secondItem="lY3-qb-gbN" secondAttribute="bottom" constant="8" id="0Aq-fm-HkH"/>
                             <constraint firstItem="hMh-Cq-isk" firstAttribute="top" secondItem="jtd-Dp-E2K" secondAttribute="bottom" constant="50" id="44J-b3-diP"/>
                             <constraint firstItem="jtd-Dp-E2K" firstAttribute="leading" secondItem="udZ-Du-V5l" secondAttribute="leading" id="4T2-18-7vi"/>
+                            <constraint firstItem="RzF-UX-KxX" firstAttribute="top" secondItem="hEk-5n-QDu" secondAttribute="bottom" constant="39" id="6os-Ke-MjD"/>
+                            <constraint firstItem="o8g-kl-jqP" firstAttribute="leading" secondItem="C2w-XB-1tg" secondAttribute="leading" id="7gS-CO-5HE"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="trailing" secondItem="zC3-qI-Vze" secondAttribute="trailing" id="7si-9Y-U7a"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="top" secondItem="fuk-6y-ccd" secondAttribute="top" constant="35" id="A1P-2c-eyM"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="leading" secondItem="zC3-qI-Vze" secondAttribute="leading" id="AvG-Pj-xka"/>
+                            <constraint firstItem="jtd-Dp-E2K" firstAttribute="top" secondItem="6Ma-hj-oDM" secondAttribute="bottom" constant="36.666666666666742" id="HqK-Z8-gUR"/>
+                            <constraint firstItem="hEk-5n-QDu" firstAttribute="leading" secondItem="RzF-UX-KxX" secondAttribute="leading" id="Jsa-by-JRf"/>
                             <constraint firstItem="coA-tL-8Hr" firstAttribute="top" secondItem="udZ-Du-V5l" secondAttribute="bottom" constant="19" id="Lv7-Gb-war"/>
-                            <constraint firstItem="o8g-kl-jqP" firstAttribute="top" secondItem="Owv-oL-hzM" secondAttribute="bottom" constant="43" id="NnE-np-O0x"/>
+                            <constraint firstItem="VUS-9e-Xhe" firstAttribute="centerY" secondItem="6Ma-hj-oDM" secondAttribute="centerY" constant="-1" id="NiK-hA-qYP"/>
+                            <constraint firstItem="o8g-kl-jqP" firstAttribute="top" secondItem="Owv-oL-hzM" secondAttribute="bottom" constant="21" id="NnE-np-O0x"/>
+                            <constraint firstItem="VUS-9e-Xhe" firstAttribute="top" secondItem="RzF-UX-KxX" secondAttribute="bottom" constant="36" id="OrE-O0-d8S"/>
                             <constraint firstItem="hEk-5n-QDu" firstAttribute="centerY" secondItem="o8g-kl-jqP" secondAttribute="centerY" id="SFn-eP-NP0"/>
                             <constraint firstItem="hEk-5n-QDu" firstAttribute="leading" secondItem="jtd-Dp-E2K" secondAttribute="leading" id="Sig-fu-rRa"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="leading" secondItem="fuk-6y-ccd" secondAttribute="leading" constant="27" id="Uwu-DK-zhu"/>
+                            <constraint firstItem="VUS-9e-Xhe" firstAttribute="leading" secondItem="fuk-6y-ccd" secondAttribute="leading" constant="27" id="V4W-uR-9GO"/>
+                            <constraint firstItem="C2w-XB-1tg" firstAttribute="top" secondItem="o8g-kl-jqP" secondAttribute="bottom" constant="22.666666666666686" id="Vdz-wl-zM0"/>
                             <constraint firstItem="jtd-Dp-E2K" firstAttribute="centerX" secondItem="hMh-Cq-isk" secondAttribute="centerX" id="Wsv-23-Hby"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="centerX" secondItem="EnF-3t-4vP" secondAttribute="centerX" id="X0v-Wq-svL"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="trailing" secondItem="zC3-qI-Vze" secondAttribute="trailing" id="ZWu-LR-3ym"/>
                             <constraint firstItem="fuk-6y-ccd" firstAttribute="bottom" secondItem="hMh-Cq-isk" secondAttribute="bottom" constant="35" id="aI8-bi-one"/>
                             <constraint firstItem="Owv-oL-hzM" firstAttribute="leading" secondItem="o8g-kl-jqP" secondAttribute="leading" id="cUO-3m-CBj"/>
+                            <constraint firstItem="6Ma-hj-oDM" firstAttribute="top" secondItem="C2w-XB-1tg" secondAttribute="bottom" constant="26.666666666666742" id="ctd-bl-fun"/>
                             <constraint firstItem="hMh-Cq-isk" firstAttribute="leading" secondItem="EnF-3t-4vP" secondAttribute="leadingMargin" id="eJX-rO-BcN"/>
                             <constraint firstItem="Owv-oL-hzM" firstAttribute="leading" secondItem="coA-tL-8Hr" secondAttribute="trailing" constant="52.666666666666657" id="edw-6N-E2p"/>
                             <constraint firstItem="jtd-Dp-E2K" firstAttribute="trailing" secondItem="udZ-Du-V5l" secondAttribute="trailing" id="f90-Nc-SfV"/>
-                            <constraint firstItem="hEk-5n-QDu" firstAttribute="top" secondItem="coA-tL-8Hr" secondAttribute="bottom" constant="57" id="iEI-jx-0I4"/>
+                            <constraint firstItem="hEk-5n-QDu" firstAttribute="top" secondItem="coA-tL-8Hr" secondAttribute="bottom" constant="34.333333333333314" id="iEI-jx-0I4"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="leading" secondItem="zC3-qI-Vze" secondAttribute="leading" id="jQb-Kw-G3x"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="top" secondItem="zC3-qI-Vze" secondAttribute="bottom" constant="55" id="mNS-Ee-VdG"/>
+                            <constraint firstItem="coA-tL-8Hr" firstAttribute="centerX" secondItem="VUS-9e-Xhe" secondAttribute="centerX" constant="2" id="n5g-x2-oJw"/>
+                            <constraint firstItem="RzF-UX-KxX" firstAttribute="centerY" secondItem="C2w-XB-1tg" secondAttribute="centerY" constant="2.3333333333333712" id="pae-14-4SD"/>
                             <constraint firstItem="Owv-oL-hzM" firstAttribute="top" secondItem="udZ-Du-V5l" secondAttribute="bottom" constant="14" id="sGZ-g8-juW"/>
                             <constraint firstItem="coA-tL-8Hr" firstAttribute="leading" secondItem="hEk-5n-QDu" secondAttribute="leading" id="uda-wl-zx0"/>
+                            <constraint firstItem="C2w-XB-1tg" firstAttribute="leading" secondItem="6Ma-hj-oDM" secondAttribute="leading" id="vdu-Rr-Qp2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zPA-nF-aid"/>
                     <connections>
+                        <outlet property="cameraSwitch" destination="6Ma-hj-oDM" id="yKa-tU-wTy"/>
+                        <outlet property="eyeHolesSwitch" destination="C2w-XB-1tg" id="WDt-gS-yQf"/>
                         <outlet property="maskDisplaySwitch" destination="o8g-kl-jqP" id="nPg-Nu-zMP"/>
                         <outlet property="vibrationSwitch" destination="Owv-oL-hzM" id="41R-ib-CPH"/>
                     </connections>
@@ -989,13 +1063,6 @@
                                     <action selector="helpButton:" destination="fUa-bY-8jl" eventType="touchUpInside" id="79V-Pp-JMn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saY-fI-X9f">
-                                <rect key="frame" x="-1359" y="614" width="2982" height="21"/>
-                                <string key="text">This game is unofficial. The creator, Job Dyer, does not in anyway claim any ownership of any of the copywrited materials used here in other than the app itself and any personal assets created by Job Dyer for this game. Matoran, Bionicle, The Bionicle Logo, the LEGO logo and all other such materials are trademarks and property of the LEGO group. ©2023 The LEGO Group. All rights reserved.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tf-dN-jbC">
                                 <rect key="frame" x="20" y="561" width="374" height="34"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="22"/>
@@ -1038,7 +1105,6 @@
                             <constraint firstItem="lPD-TT-3YG" firstAttribute="trailing" secondItem="0tf-dN-jbC" secondAttribute="trailing" id="GbF-Vp-uQD"/>
                             <constraint firstItem="fuN-bp-l5F" firstAttribute="trailing" secondItem="aOs-4c-hcv" secondAttribute="trailing" id="Jdf-1K-2SH"/>
                             <constraint firstItem="aOs-4c-hcv" firstAttribute="top" secondItem="fuN-bp-l5F" secondAttribute="bottom" constant="30" id="Jg9-oQ-N3B"/>
-                            <constraint firstItem="saY-fI-X9f" firstAttribute="top" secondItem="0tf-dN-jbC" secondAttribute="bottom" constant="19" id="KAT-yO-dwf"/>
                             <constraint firstItem="x8c-GL-Ab9" firstAttribute="leading" secondItem="lPD-TT-3YG" secondAttribute="leading" id="KoZ-CB-N5j"/>
                             <constraint firstItem="fuN-bp-l5F" firstAttribute="top" secondItem="pd5-CC-Q55" secondAttribute="top" constant="300" id="Mfh-B2-ygM"/>
                             <constraint firstItem="dXH-et-6HW" firstAttribute="leading" secondItem="Vwn-fF-uNx" secondAttribute="leading" id="T7k-jh-0Zq"/>
@@ -1068,7 +1134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hXJ-Ai-sn7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="55.725190839694655" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="55.072463768115945" y="3.2608695652173916"/>
         </scene>
         <!--Map Controller-->
         <scene sceneID="hzP-8t-UoP">
@@ -1108,6 +1174,11 @@
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LY2-0v-pVl">
+                                <rect key="frame" x="0.0" y="-20" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tHM-2h-dPo"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1130,6 +1201,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="fcb-wT-ub8"/>
                     <connections>
+                        <outlet property="blackOutView" destination="LY2-0v-pVl" id="hKL-gk-kjT"/>
                         <outlet property="theHP" destination="1pe-0D-R7N" id="uT7-Pl-Xcy"/>
                         <outlet property="theLabel" destination="mAA-F2-cxF" id="OIX-E5-hD0"/>
                         <outlet property="theMap" destination="y0B-zv-UR9" id="1FJ-Ni-fh7"/>
@@ -1145,20 +1217,23 @@
         <segue reference="O5r-Um-uqm"/>
         <segue reference="ruM-g3-Qas"/>
         <segue reference="KGm-Ov-KRg"/>
-        <segue reference="hoN-rf-ndP"/>
+        <segue reference="wVj-0P-oDj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

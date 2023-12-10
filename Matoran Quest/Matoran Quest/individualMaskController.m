@@ -110,4 +110,27 @@
 }
 */
 
+- (void)tradeButtonPressed:(nonnull id)sender __attribute__((ibaction)) {
+    //when pressed, this will attept to initiate a blu-tooth connection
+    
+    UIAlertController *tradeAlert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
+                   message:@"Press yes to trade this mask with a nearby friend over Blu-tooth.\nThe kanohi mask will be removed from your inventory.\nIt might be difficult to get this mask back again afterwards."
+                   preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault
+    handler:^(UIAlertAction * action) {
+
+
+    }];
+    [tradeAlert addAction:defaultAction];
+
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel
+    handler:^(UIAlertAction * action) {}];
+
+    [tradeAlert addAction:cancelAction];
+
+    [self presentViewController:tradeAlert animated:YES completion:nil]; //run the alert
+        
+}
+
 @end

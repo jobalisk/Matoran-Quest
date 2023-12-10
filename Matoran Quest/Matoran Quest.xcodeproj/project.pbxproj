@@ -11,6 +11,8 @@
 		B8183A9C2B047ED100730B8F /* BackPackController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8183A9B2B047ED100730B8F /* BackPackController.m */; };
 		B82C348D2B00110F00625735 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82C348C2B00110F00625735 /* MenuController.m */; };
 		B82C34902B00111D00625735 /* PlayerDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82C348F2B00111D00625735 /* PlayerDetailsController.m */; };
+		B836BE172B264D4900CE7148 /* rahiScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B836BE162B264D4900CE7148 /* rahiScene.sks */; };
+		B836BE192B264E0200CE7148 /* rahiActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B836BE182B264E0200CE7148 /* rahiActions.sks */; };
 		B8474A522B00955100FC6329 /* wallOfMasksController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8474A512B00955100FC6329 /* wallOfMasksController.m */; };
 		B8474A552B00956100FC6329 /* individualMaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8474A542B00956100FC6329 /* individualMaskController.m */; };
 		B8589A472B0540B50017F34D /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8589A462B0540B50017F34D /* OptionsViewController.m */; };
@@ -21,8 +23,6 @@
 		B8B125612B0C5FD200738447 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B125602B0C5FD200738447 /* LaunchScreen.storyboard */; };
 		B8C255412B0BD7CA000B2124 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C255402B0BD7CA000B2124 /* Launch Screen.storyboard */; };
 		B8DC7DC12AFFFE69003BF68C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */; };
-		B8DC7DC32AFFFE69003BF68C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DC22AFFFE69003BF68C /* GameScene.sks */; };
-		B8DC7DC52AFFFE69003BF68C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DC42AFFFE69003BF68C /* Actions.sks */; };
 		B8DC7DC82AFFFE69003BF68C /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DC72AFFFE69003BF68C /* GameScene.m */; };
 		B8DC7DCB2AFFFE69003BF68C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DCA2AFFFE69003BF68C /* GameViewController.m */; };
 		B8DC7DCE2AFFFE69003BF68C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8DC7DCC2AFFFE69003BF68C /* Main.storyboard */; };
@@ -62,6 +62,8 @@
 		B82C348E2B00111D00625735 /* PlayerDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerDetailsController.h; sourceTree = "<group>"; };
 		B82C348F2B00111D00625735 /* PlayerDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerDetailsController.m; sourceTree = "<group>"; };
 		B82C34952B0017B500625735 /* Matoran-Quest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Matoran-Quest-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B836BE162B264D4900CE7148 /* rahiScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = rahiScene.sks; sourceTree = "<group>"; };
+		B836BE182B264E0200CE7148 /* rahiActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = rahiActions.sks; sourceTree = "<group>"; };
 		B8474A502B00955100FC6329 /* wallOfMasksController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wallOfMasksController.h; sourceTree = "<group>"; };
 		B8474A512B00955100FC6329 /* wallOfMasksController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wallOfMasksController.m; sourceTree = "<group>"; };
 		B8474A532B00956100FC6329 /* individualMaskController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = individualMaskController.h; sourceTree = "<group>"; };
@@ -78,8 +80,6 @@
 		B8DC7DBC2AFFFE69003BF68C /* Matoran Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Matoran Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DC7DBF2AFFFE69003BF68C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B8DC7DC22AFFFE69003BF68C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		B8DC7DC42AFFFE69003BF68C /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		B8DC7DC62AFFFE69003BF68C /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		B8DC7DC72AFFFE69003BF68C /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		B8DC7DC92AFFFE69003BF68C /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
@@ -149,12 +149,12 @@
 				B82C34952B0017B500625735 /* Matoran-Quest-Info.plist */,
 				B8DC7DBF2AFFFE69003BF68C /* AppDelegate.h */,
 				B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */,
-				B8DC7DC22AFFFE69003BF68C /* GameScene.sks */,
-				B8DC7DC42AFFFE69003BF68C /* Actions.sks */,
 				B8DC7DC62AFFFE69003BF68C /* GameScene.h */,
 				B8DC7DC72AFFFE69003BF68C /* GameScene.m */,
 				B8DC7DC92AFFFE69003BF68C /* GameViewController.h */,
 				B8DC7DCA2AFFFE69003BF68C /* GameViewController.m */,
+				B836BE162B264D4900CE7148 /* rahiScene.sks */,
+				B836BE182B264E0200CE7148 /* rahiActions.sks */,
 				B82C348B2B00110F00625735 /* MenuController.h */,
 				B82C348C2B00110F00625735 /* MenuController.m */,
 				B82C348E2B00111D00625735 /* PlayerDetailsController.h */,
@@ -307,14 +307,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B836BE192B264E0200CE7148 /* rahiActions.sks in Resources */,
 				B85FC9552B12BC2300AAF7D1 /* Goudy Trajan Regular.otf in Resources */,
 				B86BCBC62B0021FA0015B2FB /* Goudy.otf in Resources */,
 				B8B125612B0C5FD200738447 /* LaunchScreen.storyboard in Resources */,
 				B86BCBC52B0021F70015B2FB /* Mata Nui.ttf in Resources */,
 				B8DC7DCE2AFFFE69003BF68C /* Main.storyboard in Resources */,
-				B8DC7DC32AFFFE69003BF68C /* GameScene.sks in Resources */,
 				B8DC7DD02AFFFE6C003BF68C /* Assets.xcassets in Resources */,
-				B8DC7DC52AFFFE69003BF68C /* Actions.sks in Resources */,
+				B836BE172B264D4900CE7148 /* rahiScene.sks in Resources */,
 				B8C255412B0BD7CA000B2124 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
