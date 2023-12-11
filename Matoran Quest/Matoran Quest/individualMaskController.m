@@ -279,6 +279,9 @@ int theMaskCode; //holds an int value for the mask
     else if ([_maskDetailsArray[0] containsString:@"blue"]) {
         theColour = @"r";
     }
+    else if ([_maskDetailsArray[0] containsString:@"bronze"]) {
+        theColour = @"t";
+    }
     else{
         theColour = @"s"; //special masks
     }
@@ -290,7 +293,12 @@ int theMaskCode; //holds an int value for the mask
         [[NSUserDefaults standardUserDefaults] setInteger:uniqueIdentifier2 forKey:@"UniquePhoneIdentifier"];
     }
     
-    theCode = [NSString stringWithFormat:@"%@#%.2fQ%.2fZ%dJ%@!%d?", theName, theLong, theLat, theMaskCode, theColour, uniqueIdentifier2];
+    //get the time since 1970 as an interger
+    NSTimeInterval timeSince19700 = [[NSDate date] timeIntervalSince1970];
+    int timeSince19701 = (int)timeSince19700;
+    
+    
+    theCode = [NSString stringWithFormat:@"%@#%.2fQ%.2fZ%dJ%@!%d?%d&13", theName, theLong, theLat, theMaskCode, theColour, uniqueIdentifier2, timeSince19701];
     //NSLog(@"Code: %@", theCode);
     
 }
@@ -305,6 +313,8 @@ int theMaskCode; //holds an int value for the mask
     float longDeets = 0.00;
     float latDeets = 0.00;
     int maskNameDeets1 = 0;
+    int theDate1 = 0;
+    int theDate2 = (int)[[NSDate date] timeIntervalSince1970]; //comparing against now
     NSString *maskNameDeets2 = @"";
     NSString *maskColourDeets = @"";
     int uniqueIdentifierDeets = 0;
@@ -349,6 +359,11 @@ int theMaskCode; //holds an int value for the mask
             theCodeToBreak2 = SplitCode[1]; //rest of code
             SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"?"]; //break off the mask name
             uniqueIdentifierDeets = [SplitCode[0] intValue]; //mask colour code
+            theCodeToBreak2 = SplitCode[1]; //rest of code
+            SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"&"]; //break off the time stamp
+            theDate1 = [SplitCode[0] intValue]; //time stamp
+            
+            
             
             //start working out the meaning of the mask codes
             //mask colour
@@ -409,6 +424,9 @@ int theMaskCode; //holds an int value for the mask
             else if ([maskColourDeets containsString:@"s"]) {
                 maskColourDeets = @"";
             }
+            else if ([maskColourDeets containsString:@"t"]) {
+                maskColourDeets = @"bronze";
+            }
             else{
                 errorFlag = true; //error found
             }
@@ -463,6 +481,24 @@ int theMaskCode; //holds an int value for the mask
                     errorFlag = true; //error found
                 }
                 if(errorFlag == false){
+                    int checkerNumber = theDate2 - theDate1; //work out the difference in seconds between when the code was generated and when the code was redeemed.
+                    if(checkerNumber > 86400){
+                        //if its been more than 24 hours...
+                        UIAlertController *heyYouCheaterAlert = [UIAlertController alertControllerWithTitle:@"Error: 3"
+                                       message:@"Your code is no longer valid.\nYou must redeem your code with 24 hours."
+                                       preferredStyle:UIAlertControllerStyleAlert];
+
+                        UIAlertAction* defaultAction4 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                               handler:^(UIAlertAction * action) {
+                            [self performSegueWithIdentifier:@"BackToWallOfMasks" sender:self];
+                        }];
+                        [heyYouCheaterAlert addAction:defaultAction4];
+
+                        [self presentViewController:heyYouCheaterAlert animated:YES completion:nil]; //run the alert
+                    }
+                }
+                if(errorFlag == false){
+
                     //now we have the name, colour, catcher and all other details, we can construct the mask
                     NSMutableArray * newMaskFreshFromTheForge = [[NSMutableArray alloc] init]; //make the new mask from a fresh disk
                     NSString *maskNameAndColourSetting;

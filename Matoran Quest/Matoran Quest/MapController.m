@@ -536,7 +536,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
                 [UIView animateWithDuration:1.0 //fade to black then segue
                      animations:^{self.blackOutView.alpha = 1.0;}
                                  completion:^(BOOL finished){
-                    [self performSegueWithIdentifier:@"GoToRahi" sender:self];
+                    //[self performSegueWithIdentifier:@"GoToRahi" sender:self];
                     
                 }];
 

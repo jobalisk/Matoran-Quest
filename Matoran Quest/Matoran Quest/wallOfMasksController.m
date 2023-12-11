@@ -104,12 +104,12 @@ int maskDisplayingCheck2 = 1;
     int noColourFlag = 0; //check if mask is special and skip colourizing
     
     //fix colour name issues by replacing old colour names with new ones:
-    /*
+    
     maskColourAndName = [maskNameAndColour componentsSeparatedByString:@" "];
     NSMutableArray *maskColourAndName2 = [maskColourAndName mutableCopy];
-    
-    if([maskColourAndName2[0] isEqualToString: @"yellow"]){
-        maskInterior[0] = [NSString stringWithFormat: @"tan %@", maskColourAndName[1]];
+    /*
+    if([maskColourAndName2[0] isEqualToString: @"kaukau"]){
+        maskInterior[0] = [NSString stringWithFormat: @"bronze %@", maskColourAndName[0]];
         NSLog(@"%@", maskInterior);
         maskArray[indexPath.row] = maskInterior;
         
@@ -138,9 +138,9 @@ int maskDisplayingCheck2 = 1;
         [[NSUserDefaults standardUserDefaults] setObject:maskArray forKey:@"PlayerMaskCollectionList"];
         
     }
-
+*/
     //NSLog(@"masks: %@", collectedMasks2);
-      */
+      
     
     //continue on with the regularly scheduled program
         
