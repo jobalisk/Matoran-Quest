@@ -231,6 +231,11 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
 			maskChosenFlag = 1;
 			[[NSUserDefaults standardUserDefaults] setInteger:maskChosenFlag forKey:@"maskChosen"]; //we have now chosen a mask, if this was the first time, we don't get to see all the masks again
             [[NSUserDefaults standardUserDefaults] setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
+            
+            int uniqueIdentifier1 = arc4random_uniform(100000); //generate a random 5 digit number for this devices identifier (used when trading)
+            [[NSUserDefaults standardUserDefaults] setInteger:uniqueIdentifier1 forKey:@"UniquePhoneIdentifier"]; //save the unique identifier for later, never reset this once its created
+            
+            
             //BackToManagePlayer
             [self performSegueWithIdentifier:@"BackToManagePlayer" sender:self]; //return so we can't mess anything up
 			

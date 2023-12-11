@@ -49,15 +49,41 @@ int maskDisplayingCheck2 = 1;
         [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMaskCollectionList"]; //set it if it doesnt exist
         
     }
-    [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/%d", (int)collectedMasks2.count, totalMasksInGame]];
+ 
     
     
     //set up search bar
     _searchBar1.showsCancelButton=TRUE;
     _searchBar1.delegate = self;
     
-
     
+    //check through collected masks and remove any that are no longer present in the masks array due to trading
+    int findersFlag = 0; //check to make sure we still have a mask of this type in our inventory
+    NSString *testMaskNameAndColour;
+    for (int i = 0; i <= (collectedMasks2.count -1); i++)
+    {
+        findersFlag = 0;
+        testMaskNameAndColour = collectedMasks2[i];
+        //NSLog(@"mask: %@", testMaskNameAndColour);
+        for (int j = 0; j <= (maskArray.count -1); j++)
+        {
+            NSArray *testMask2 = maskArray[j];
+            //NSLog(@"mask2: %@", testMask2[0]);
+            if([testMaskNameAndColour isEqualToString:testMask2[0]]){ //do we have the same name and colour
+                findersFlag = 1;
+                //NSLog(@"match!: %@", testMaskNameAndColour);
+            }
+        }
+        if(findersFlag == 0){
+            //NSLog(@"%@ is not present", testMaskNameAndColour);
+            
+            [collectedMasks2 removeObjectAtIndex:i];
+            [[NSUserDefaults standardUserDefaults] setObject: collectedMasks2 forKey:@"PlayerMaskCollectionList"]; //resave the array
+             
+        }
+    }
+    [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/%d", (int)collectedMasks2.count, totalMasksInGame]];
+
 }
 
 
@@ -411,23 +437,23 @@ int maskDisplayingCheck2 = 1;
     //then compile a new mask array based on the search terms.
     NSString *searchString1 = searchBar.text;
     searchString1 = [searchString1 lowercaseString];
-    NSLog(@"Text: %@", searchString1);
+    //NSLog(@"Text: %@", searchString1);
     NSArray *tempMaskItems = [[NSArray alloc] init];
     for (int i = 0; i <= (maskArray.count -1); i++) //check each mask in the array
     {
         tempMaskItems = maskArray[i];
-        NSLog(@"check: %@",tempMaskItems[0]);
+        //NSLog(@"check: %@",tempMaskItems[0]);
         if([tempMaskItems[0] containsString:searchString1]){
             [searchArray addObject:maskArray[i]];
             //[_maskGrid reloadData]; //refresh the data with the new search results
-            NSLog(@"Good: %@",tempMaskItems[0]);
+            //NSLog(@"Good: %@",tempMaskItems[0]);
         }
         else{
             
             //[_maskGrid reloadData]; //refresh the data with the new search results
         }
     }
-    NSLog(@"array: %@", maskArray);
+    //NSLog(@"array: %@", maskArray);
     maskArray = searchArray;
     [_maskGrid reloadData]; //refresh the data with the new search results
     [_searchBar1 resignFirstResponder];

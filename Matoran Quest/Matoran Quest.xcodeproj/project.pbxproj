@@ -523,12 +523,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = M2GX896VLW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Matoran-Quest-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Matoran Quest";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.simulation-games";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "This app uses Blutooth to trade kanohi masks with other players.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This device requires your camera for Rahi Battles";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your location in order to show where you are while playing. It does not share your GPS location with any third parties and only uses the infomation in order to run the game.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -542,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jobdyer.matoranquest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -558,12 +559,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = M2GX896VLW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Matoran-Quest-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Matoran Quest";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.simulation-games";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "This app uses Blutooth to trade kanohi masks with other players.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This device requires your camera for Rahi Battles";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires your location in order to show where you are while playing. It does not share your GPS location with any third parties and only uses the infomation in order to run the game.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -577,7 +579,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jobdyer.matoranquest;
 				PRODUCT_NAME = "$(TARGET_NAME)";

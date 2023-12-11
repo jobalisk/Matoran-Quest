@@ -396,7 +396,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         if(randomItem == 0){
             MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
         }
-        else if(randomItem == 11 || randomItem == 14){ //normally 1 and 4
+        else if(randomItem == 1 || randomItem == 4){ //normally 1 and 4
             //randomItem = arc4random_uniform((int)kanohiList2.count);
             //randomItem -= 1;
             NSArray *maskDetails; //the holding container for the mask and its info
@@ -433,18 +433,18 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
                 //NSLog(@"MList1: %@", maskArray);
             }
             if([collectedMasks indexOfObject:theMask]==NSNotFound){ //if the mask is not in the list of collected masks, add it!
-                NSLog(@"adding: %@", theMask);
+                //NSLog(@"adding: %@", theMask);
                 [collectedMasks addObject:theMask];
-                NSLog(@"list1: %@", collectedMasks);
+                //NSLog(@"list1: %@", collectedMasks);
                 [[NSUserDefaults standardUserDefaults] setObject:collectedMasks forKey:@"PlayerMaskCollectionList"]; //add the mask to the collection
             }
             else{
-                NSLog(@"not adding: %@", theMask);
-                NSLog(@"list2: %@", collectedMasks);
+                //NSLog(@"not adding: %@", theMask);
+                //NSLog(@"list2: %@", collectedMasks);
             }
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!",theMask];
         }
-        else if(randomItem == 12){ //normally 2
+        else if(randomItem == 2){ //normally 2
             //randomItem = arc4random_uniform((int)itemList.count);
             //randomItem -= 1;
             NSMutableArray *itemArray2;
@@ -494,7 +494,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
              
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!%@", theItem, extraText];
         }
-        else if(randomItem == 13 || randomItem == 16 || randomItem == 17 || randomItem == 15){ //normally 3, 6, 7, 5
+        else if(randomItem == 3 || randomItem == 6 || randomItem == 7 || randomItem == 5){ //normally 3, 6, 7, 5
             randomItem = arc4random_uniform(3);
             if(randomItem == 0){
                 MysteryAlertMessage = @"You found some slightly interesting scenery!";
@@ -518,7 +518,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         else{
             //randomItem = arc4random_uniform((int)rahiList.count);
             //randomItem -= 1;
-            rahiFightFlag = 1; //flag up that we are fighting a rahi
+            //rahiFightFlag = 1; //flag up that we are fighting a rahi
             rahiName = [self randomRahiMaker]; //generate a random rahi
             MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiName];
         }
