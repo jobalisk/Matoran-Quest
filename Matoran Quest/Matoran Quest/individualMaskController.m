@@ -150,14 +150,16 @@ NSMutableArray *maskArray9;
         pasteboard.string = theCode;
         
         //remove the item from the masks list and minus 1 off of the collected masks list
-
+        NSMutableArray *maskArray8 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"];
+        maskArray8 = [maskArray8 mutableCopy];
         for (int i = 0; i <= (maskArray9.count -1); i++) //sift through the list to find the mask we just traded...
         {
-            NSArray *testMask = maskArray9[i];
+            NSArray *testMask = maskArray8[i];
             if([testMask[0] isEqualToString:self.maskDetailsArray[0]]){ //do we have the same name and colour
                 if([testMask[1] isEqualToString:self.maskDetailsArray[1]]){ //do we have the same catcher name
-                    [maskArray9 removeObjectAtIndex:i];
-                    [[NSUserDefaults standardUserDefaults] setObject: maskArray9 forKey:@"PlayerMasks"]; //resave the array
+                    
+                    [maskArray8 removeObjectAtIndex:i];
+                    [[NSUserDefaults standardUserDefaults] setObject: maskArray8 forKey:@"PlayerMasks"]; //resave the array
                     break; //stop the loop here!
                 }
             }
@@ -541,10 +543,11 @@ NSMutableArray *maskArray9;
                             NSLog(@"Mask Not in collection");
                             [[NSUserDefaults standardUserDefaults] setObject:collectedMasks4 forKey:@"PlayerMaskCollectionList"]; //add the mask to the collection
                         }
-                        
+                        NSMutableArray *maskArray7 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"];
+                        maskArray7 = [maskArray7 mutableCopy];
 
-                        [maskArray9 addObject:newMaskFreshFromTheForge];
-                        [[NSUserDefaults standardUserDefaults] setObject: maskArray9 forKey:@"PlayerMasks"]; //save the new mask array back to user defaults
+                        [maskArray7 addObject:newMaskFreshFromTheForge];
+                        [[NSUserDefaults standardUserDefaults] setObject: maskArray7 forKey:@"PlayerMasks"]; //save the new mask array back to user defaults
                         UIAlertController *maskAddedAlert = [UIAlertController alertControllerWithTitle:@"New Kanohi Mask Received!"
                                                                                                 message:[NSString stringWithFormat: @"You have just received a %@", maskNameAndColourSetting]
                                                                                          preferredStyle:UIAlertControllerStyleAlert];
