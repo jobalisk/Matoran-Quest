@@ -15,15 +15,21 @@
 
 NSString *theCode; //holds the mask trading code
 int theMaskCode; //holds an int value for the mask
-
+NSMutableArray *maskArray9;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //NSLog(@"%@", _maskDetailsArray);
     
     //add detail text to mask names
-
+    maskArray9 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"];
     NSString *finalNameString;
+    [_tradeButton setHidden:false];
+    if(maskArray9.count < 2){ //if there is only one mask availible to trade
+        //hide the option to trade until there are at least 2 masks
+        [_tradeButton setHidden:true];
+    }
+    
     if ([_maskDetailsArray[0] containsString:@"infected hau"]) {
         finalNameString = [NSString stringWithFormat:@"%@\n\n%@",_maskDetailsArray[0], @"This Kanohi has been\ncorrupted by the Makuta"];
         theMaskCode = 0;
@@ -144,15 +150,14 @@ int theMaskCode; //holds an int value for the mask
         pasteboard.string = theCode;
         
         //remove the item from the masks list and minus 1 off of the collected masks list
-        NSMutableArray *maskArray6 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks from the user defaults and make an array of them
-        maskArray6 = [maskArray6 mutableCopy]; //make it editable
-        for (int i = 0; i <= (maskArray6.count -1); i++) //sift through the list to find the mask we just traded...
+
+        for (int i = 0; i <= (maskArray9.count -1); i++) //sift through the list to find the mask we just traded...
         {
-            NSArray *testMask = maskArray6[i];
+            NSArray *testMask = maskArray9[i];
             if([testMask[0] isEqualToString:self.maskDetailsArray[0]]){ //do we have the same name and colour
                 if([testMask[1] isEqualToString:self.maskDetailsArray[1]]){ //do we have the same catcher name
-                    [maskArray6 removeObjectAtIndex:i];
-                    [[NSUserDefaults standardUserDefaults] setObject: maskArray6 forKey:@"PlayerMasks"]; //resave the array
+                    [maskArray9 removeObjectAtIndex:i];
+                    [[NSUserDefaults standardUserDefaults] setObject: maskArray9 forKey:@"PlayerMasks"]; //resave the array
                     break; //stop the loop here!
                 }
             }
@@ -305,254 +310,280 @@ int theMaskCode; //holds an int value for the mask
 }
 
 -(void)CodeBreaker: (NSString *)theCodeToBreak{
-    bool errorFlag = false; //this flag will be raised if we detect a invalid code later in the code(not the initial check)
-    NSString *theCodeToBreak2 = @""; //a temp store for the code as its broken down
-    //break a code and generate a kanohi mask with details
-    NSArray *SplitCode; //for sorting through the code peice by peice
-    //the various components of the code
-    NSString *catcherDeets = @"";
-    float longDeets = 0.00;
-    float latDeets = 0.00;
-    int maskNameDeets1 = 0;
-    int theDate1 = 0;
-    int theDate2 = (int)[[NSDate date] timeIntervalSince1970]; //comparing against now
-    NSString *maskNameDeets2 = @"";
-    NSString *maskColourDeets = @"";
-    int uniqueIdentifierDeets = 0;
-    int uniqueIdentifier3 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"UniquePhoneIdentifier"];
-    //NSLog(@"The Code: %@", theCodeToBreak);
-    if([theCodeToBreak containsString: [NSString stringWithFormat:@"%d", uniqueIdentifier3]]){
-        UIAlertController *heyYouCheaterAlert = [UIAlertController alertControllerWithTitle:@"Error: 1"
-                       message:@"You cannot trade masks with yourself!"
-                       preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction4 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                               handler:^(UIAlertAction * action) {
-            [self performSegueWithIdentifier:@"BackToWallOfMasks" sender:self];
-        }];
-        [heyYouCheaterAlert addAction:defaultAction4];
-
-        [self presentViewController:heyYouCheaterAlert animated:YES completion:nil]; //run the alert
+    //first up, check if the code has been recieved before:
+    NSMutableArray *collectedCodes = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerCollectedKanohiCodes"];
+    collectedCodes = [collectedCodes mutableCopy];
+    if(collectedCodes == NULL){ //if there is no player masks collection key yet
+        collectedCodes = [[NSMutableArray alloc] init];
+        //NSLog(@"refreshing2");
+        [[NSUserDefaults standardUserDefaults] setObject:collectedCodes forKey:@"PlayerCollectedKanohiCodes"]; //set it if it doesnt exist
         
     }
-    else{
-        @try {
+    if([collectedCodes indexOfObject:theCodeToBreak]==NSNotFound){
+        [collectedCodes addObject:theCodeToBreak];
+        [[NSUserDefaults standardUserDefaults] setObject:collectedCodes forKey:@"PlayerCollectedKanohiCodes"]; 
+        
+        bool errorFlag = false; //this flag will be raised if we detect a invalid code later in the code(not the initial check)
+        NSString *theCodeToBreak2 = @""; //a temp store for the code as its broken down
+        //break a code and generate a kanohi mask with details
+        NSArray *SplitCode; //for sorting through the code peice by peice
+        //the various components of the code
+        NSString *catcherDeets = @"";
+        float longDeets = 0.00;
+        float latDeets = 0.00;
+        int maskNameDeets1 = 0;
+        int theDate1 = 0;
+        int theDate2 = (int)[[NSDate date] timeIntervalSince1970]; //comparing against now
+        NSString *maskNameDeets2 = @"";
+        NSString *maskColourDeets = @"";
+        int uniqueIdentifierDeets = 0;
+        int uniqueIdentifier3 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"UniquePhoneIdentifier"];
+        //NSLog(@"The Code: %@", theCodeToBreak);
+        if([theCodeToBreak containsString: [NSString stringWithFormat:@"%d", uniqueIdentifier3]]){
+            UIAlertController *heyYouCheaterAlert = [UIAlertController alertControllerWithTitle:@"Error: 1"
+                                                                                        message:@"You cannot trade masks with yourself!"
+                                                                                 preferredStyle:UIAlertControllerStyleAlert];
             
-            //try to spit the code up. If it fails somehow then the catcher will show this up as an invalid code
-            theCodeToBreak2 = theCodeToBreak;
-            SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"#"]; //break off the name of the catcher
-            catcherDeets = SplitCode[0]; //catcher name
-            theCodeToBreak2 = SplitCode[1]; //rest of code
-            SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"Q"]; //break off the long
-            longDeets = [SplitCode[0] floatValue]; //long
-            longDeets = longDeets * 2; //multiply it back again
-            theCodeToBreak2 = SplitCode[1]; //the rest of the code
-            SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"Z"]; //break off the lat
-            latDeets = [SplitCode[0] floatValue]; //lat
-            latDeets = latDeets * 2; //multiply back to origonal value
-            theCodeToBreak2 = SplitCode[1]; //rest of code
-            SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"J"]; //break off the mask name
-            maskNameDeets1 = [SplitCode[0] intValue]; //mask name
-            maskNameDeets1 = maskNameDeets1 / 3; //divide the name code back to its origonal value
-            theCodeToBreak2 = SplitCode[1]; //rest of code
-            SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"!"]; //break off the mask name
-            maskColourDeets =  SplitCode[0]; //mask colour code
-            theCodeToBreak2 = SplitCode[1]; //rest of code
-            SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"?"]; //break off the mask name
-            uniqueIdentifierDeets = [SplitCode[0] intValue]; //mask colour code
-            theCodeToBreak2 = SplitCode[1]; //rest of code
-            SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"&"]; //break off the time stamp
-            theDate1 = [SplitCode[0] intValue]; //time stamp
+            UIAlertAction* defaultAction4 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                   handler:^(UIAlertAction * action) {
+                [self performSegueWithIdentifier:@"BackToWallOfMasks" sender:self];
+            }];
+            [heyYouCheaterAlert addAction:defaultAction4];
             
+            [self presentViewController:heyYouCheaterAlert animated:YES completion:nil]; //run the alert
             
-            
-            //start working out the meaning of the mask codes
-            //mask colour
-            if ([maskColourDeets containsString:@"a"]) {
-                maskColourDeets = @"black";
-            }
-            else if ([maskColourDeets containsString:@"b"]) {
-                maskColourDeets = @"red";
-            }
-            else if ([maskColourDeets containsString:@"c"]) {
-                maskColourDeets = @"brown";
-            }
-            else if ([maskColourDeets containsString:@"d"]) {
-                maskColourDeets = @"white";
-            }
-            else if ([maskColourDeets containsString:@"e"]) {
-                maskColourDeets = @"green";
-            }
-            else if ([maskColourDeets containsString:@"f"]) {
-                maskColourDeets = @"orange";
-            }
-            else if ([maskColourDeets containsString:@"g"]) {
-                maskColourDeets = @"light-green";
-            }
-            else if ([maskColourDeets containsString:@"h"]) {
-                maskColourDeets = @"grey";
-            }
-            else if ([maskColourDeets containsString:@"i"]) {
-                maskColourDeets = @"dark-brown";
-            }
-            else if ([maskColourDeets containsString:@"j"]) {
-                maskColourDeets = @"light-blue";
-            }
-            else if ([maskColourDeets containsString:@"k"]) {
-                maskColourDeets = @"tan";
-            }
-            else if ([maskColourDeets containsString:@"l"]) {
-                maskColourDeets = @"yellow";
-            }
-            else if ([maskColourDeets containsString:@"m"]) {
-                maskColourDeets = @"purple";
-            }
-            else if ([maskColourDeets containsString:@"n"]) {
-                maskColourDeets = @"dark-grey";
-            }
-            else if ([maskColourDeets containsString:@"o"]) {
-                maskColourDeets = @"cyan";
-            }
-            else if ([maskColourDeets containsString:@"p"]) {
-                maskColourDeets = @"silver";
-            }
-            else if ([maskColourDeets containsString:@"q"]) {
-                maskColourDeets = @"gold";
-            }
-            else if ([maskColourDeets containsString:@"r"]) {
-                maskColourDeets = @"blue";
-            }
-            else if ([maskColourDeets containsString:@"s"]) {
-                maskColourDeets = @"";
-            }
-            else if ([maskColourDeets containsString:@"t"]) {
-                maskColourDeets = @"bronze";
-            }
-            else{
-                errorFlag = true; //error found
-            }
-            if(errorFlag == false){
-                //mask name (these numbers are found at the top of this file
-                if (maskNameDeets1 == 0) {
-                    maskNameDeets2 = @"infected hau";
+        }
+        else{
+            @try {
+                
+                //try to spit the code up. If it fails somehow then the catcher will show this up as an invalid code
+                theCodeToBreak2 = theCodeToBreak;
+                SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"#"]; //break off the name of the catcher
+                catcherDeets = SplitCode[0]; //catcher name
+                theCodeToBreak2 = SplitCode[1]; //rest of code
+                SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"Q"]; //break off the long
+                longDeets = [SplitCode[0] floatValue]; //long
+                longDeets = longDeets * 2; //multiply it back again
+                theCodeToBreak2 = SplitCode[1]; //the rest of the code
+                SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"Z"]; //break off the lat
+                latDeets = [SplitCode[0] floatValue]; //lat
+                latDeets = latDeets * 2; //multiply back to origonal value
+                theCodeToBreak2 = SplitCode[1]; //rest of code
+                SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"J"]; //break off the mask name
+                maskNameDeets1 = [SplitCode[0] intValue]; //mask name
+                maskNameDeets1 = maskNameDeets1 / 3; //divide the name code back to its origonal value
+                theCodeToBreak2 = SplitCode[1]; //rest of code
+                SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"!"]; //break off the mask name
+                maskColourDeets =  SplitCode[0]; //mask colour code
+                theCodeToBreak2 = SplitCode[1]; //rest of code
+                SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"?"]; //break off the mask name
+                uniqueIdentifierDeets = [SplitCode[0] intValue]; //mask colour code
+                theCodeToBreak2 = SplitCode[1]; //rest of code
+                SplitCode = [theCodeToBreak2 componentsSeparatedByString:@"&"]; //break off the time stamp
+                theDate1 = [SplitCode[0] intValue]; //time stamp
+                
+                
+                
+                //start working out the meaning of the mask codes
+                //mask colour
+                if ([maskColourDeets containsString:@"a"]) {
+                    maskColourDeets = @"black";
                 }
-                else if (maskNameDeets1 == 1) {
-                    maskNameDeets2 = @"hau";
+                else if ([maskColourDeets containsString:@"b"]) {
+                    maskColourDeets = @"red";
                 }
-                else if (maskNameDeets1 == 2) {
-                    maskNameDeets2 = @"miru";
+                else if ([maskColourDeets containsString:@"c"]) {
+                    maskColourDeets = @"brown";
                 }
-                else if (maskNameDeets1 == 3) {
-                    maskNameDeets2 = @"kaukau";
+                else if ([maskColourDeets containsString:@"d"]) {
+                    maskColourDeets = @"white";
                 }
-                else if (maskNameDeets1 == 4) {
-                    maskNameDeets2 = @"kakama";
+                else if ([maskColourDeets containsString:@"e"]) {
+                    maskColourDeets = @"green";
                 }
-                else if (maskNameDeets1 == 5) {
-                    maskNameDeets2 = @"akaku";
+                else if ([maskColourDeets containsString:@"f"]) {
+                    maskColourDeets = @"orange";
                 }
-                else if (maskNameDeets1 == 6) {
-                    maskNameDeets2 = @"pakari";
+                else if ([maskColourDeets containsString:@"g"]) {
+                    maskColourDeets = @"light-green";
                 }
-                else if (maskNameDeets1 == 7) {
-                    maskNameDeets2 = @"huna";
+                else if ([maskColourDeets containsString:@"h"]) {
+                    maskColourDeets = @"grey";
                 }
-                else if (maskNameDeets1 == 8) {
-                    maskNameDeets2 = @"rau";
+                else if ([maskColourDeets containsString:@"i"]) {
+                    maskColourDeets = @"dark-brown";
                 }
-                else if (maskNameDeets1 == 9) {
-                    maskNameDeets2 = @"ruru";
+                else if ([maskColourDeets containsString:@"j"]) {
+                    maskColourDeets = @"light-blue";
                 }
-                else if (maskNameDeets1 == 10) {
-                    maskNameDeets2 = @"mahiki";
+                else if ([maskColourDeets containsString:@"k"]) {
+                    maskColourDeets = @"tan";
                 }
-                else if (maskNameDeets1 == 11) {
-                    maskNameDeets2 = @"matatu";
+                else if ([maskColourDeets containsString:@"l"]) {
+                    maskColourDeets = @"yellow";
                 }
-                else if (maskNameDeets1 == 12) {
-                    maskNameDeets2 = @"komau";
+                else if ([maskColourDeets containsString:@"m"]) {
+                    maskColourDeets = @"purple";
                 }
-                else if (maskNameDeets1 == 13) {
-                    maskNameDeets2 = @"vahi";
+                else if ([maskColourDeets containsString:@"n"]) {
+                    maskColourDeets = @"dark-grey";
                 }
-                else if (maskNameDeets1 == 14) {
-                    maskNameDeets2 = @"avohkii";
+                else if ([maskColourDeets containsString:@"o"]) {
+                    maskColourDeets = @"cyan";
+                }
+                else if ([maskColourDeets containsString:@"p"]) {
+                    maskColourDeets = @"silver";
+                }
+                else if ([maskColourDeets containsString:@"q"]) {
+                    maskColourDeets = @"gold";
+                }
+                else if ([maskColourDeets containsString:@"r"]) {
+                    maskColourDeets = @"blue";
+                }
+                else if ([maskColourDeets containsString:@"s"]) {
+                    maskColourDeets = @"";
+                }
+                else if ([maskColourDeets containsString:@"t"]) {
+                    maskColourDeets = @"bronze";
                 }
                 else{
                     errorFlag = true; //error found
                 }
                 if(errorFlag == false){
-                    int checkerNumber = theDate2 - theDate1; //work out the difference in seconds between when the code was generated and when the code was redeemed.
-                    if(checkerNumber > 86400 || checkerNumber < 0){
-                        //if its been more than 24 hours or less than the current time...
-                        UIAlertController *heyYouCheaterAlert = [UIAlertController alertControllerWithTitle:@"Error: 3"
-                                       message:@"Your code is no longer valid.\nYou must redeem your code with 24 hours."
-                                       preferredStyle:UIAlertControllerStyleAlert];
+                    //mask name (these numbers are found at the top of this file
+                    if (maskNameDeets1 == 0) {
+                        maskNameDeets2 = @"infected hau";
+                    }
+                    else if (maskNameDeets1 == 1) {
+                        maskNameDeets2 = @"hau";
+                    }
+                    else if (maskNameDeets1 == 2) {
+                        maskNameDeets2 = @"miru";
+                    }
+                    else if (maskNameDeets1 == 3) {
+                        maskNameDeets2 = @"kaukau";
+                    }
+                    else if (maskNameDeets1 == 4) {
+                        maskNameDeets2 = @"kakama";
+                    }
+                    else if (maskNameDeets1 == 5) {
+                        maskNameDeets2 = @"akaku";
+                    }
+                    else if (maskNameDeets1 == 6) {
+                        maskNameDeets2 = @"pakari";
+                    }
+                    else if (maskNameDeets1 == 7) {
+                        maskNameDeets2 = @"huna";
+                    }
+                    else if (maskNameDeets1 == 8) {
+                        maskNameDeets2 = @"rau";
+                    }
+                    else if (maskNameDeets1 == 9) {
+                        maskNameDeets2 = @"ruru";
+                    }
+                    else if (maskNameDeets1 == 10) {
+                        maskNameDeets2 = @"mahiki";
+                    }
+                    else if (maskNameDeets1 == 11) {
+                        maskNameDeets2 = @"matatu";
+                    }
+                    else if (maskNameDeets1 == 12) {
+                        maskNameDeets2 = @"komau";
+                    }
+                    else if (maskNameDeets1 == 13) {
+                        maskNameDeets2 = @"vahi";
+                    }
+                    else if (maskNameDeets1 == 14) {
+                        maskNameDeets2 = @"avohkii";
+                    }
+                    else{
+                        errorFlag = true; //error found
+                    }
+                    if(errorFlag == false){
+                        int checkerNumber = theDate2 - theDate1; //work out the difference in seconds between when the code was generated and when the code was redeemed.
+                        if(checkerNumber > 86400 || checkerNumber < 0){
+                            //if its been more than 24 hours or less than the current time...
+                            UIAlertController *heyYouCheaterAlert = [UIAlertController alertControllerWithTitle:@"Error: 3"
+                                                                                                        message:@"Your code is no longer valid.\nYou must redeem your code with 24 hours."
+                                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+                            
+                            UIAlertAction* defaultAction4 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                   handler:^(UIAlertAction * action) {
+                                [self performSegueWithIdentifier:@"BackToWallOfMasks" sender:self];
+                            }];
+                            [heyYouCheaterAlert addAction:defaultAction4];
+                            
+                            [self presentViewController:heyYouCheaterAlert animated:YES completion:nil]; //run the alert
+                        }
+                    }
+                    if(errorFlag == false){
+                        
+                        //now we have the name, colour, catcher and all other details, we can construct the mask
+                        NSMutableArray * newMaskFreshFromTheForge = [[NSMutableArray alloc] init]; //make the new mask from a fresh disk
+                        NSString *maskNameAndColourSetting;
+                        if([maskColourDeets isEqualToString: @""]){ //check for special masks
+                            maskNameAndColourSetting = maskNameDeets2;
+                        }
+                        else{
+                            maskNameAndColourSetting = [NSString stringWithFormat: @"%@ %@", maskColourDeets, maskNameDeets2];
+                        }
+                        [newMaskFreshFromTheForge addObject:maskNameAndColourSetting]; //add a name and colour
+                        [newMaskFreshFromTheForge addObject:catcherDeets]; //add a catcher
+                        [newMaskFreshFromTheForge addObject:[NSString stringWithFormat:@"%f", latDeets]]; //add a latitude
+                        [newMaskFreshFromTheForge addObject:[NSString stringWithFormat:@"%f", longDeets]]; //add a longitude
+                        
+                        //now add it to the relevent arrays
+                        
+                        NSMutableArray *collectedMasks4 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMaskCollectionList"]; //get a list of collected mask types
+                        collectedMasks4 = [collectedMasks4 mutableCopy];
+                        if([collectedMasks4 indexOfObject:maskNameAndColourSetting]==NSNotFound){ //if the mask is not in the list of collected masks, add it!
+                            [collectedMasks4 addObject:maskNameAndColourSetting];
+                            NSLog(@"Mask Not in collection");
+                            [[NSUserDefaults standardUserDefaults] setObject:collectedMasks4 forKey:@"PlayerMaskCollectionList"]; //add the mask to the collection
+                        }
+                        
 
-                        UIAlertAction* defaultAction4 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                        [maskArray9 addObject:newMaskFreshFromTheForge];
+                        [[NSUserDefaults standardUserDefaults] setObject: maskArray9 forKey:@"PlayerMasks"]; //save the new mask array back to user defaults
+                        UIAlertController *maskAddedAlert = [UIAlertController alertControllerWithTitle:@"New Kanohi Mask Received!"
+                                                                                                message:[NSString stringWithFormat: @"You have just received a %@", maskNameAndColourSetting]
+                                                                                         preferredStyle:UIAlertControllerStyleAlert];
+                        
+                        UIAlertAction* defaultAction6 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                                                handler:^(UIAlertAction * action) {
                             [self performSegueWithIdentifier:@"BackToWallOfMasks" sender:self];
                         }];
-                        [heyYouCheaterAlert addAction:defaultAction4];
-
-                        [self presentViewController:heyYouCheaterAlert animated:YES completion:nil]; //run the alert
+                        [maskAddedAlert addAction:defaultAction6];
+                        
+                        [self presentViewController:maskAddedAlert animated:YES completion:nil]; //run the alert
                     }
+                    
                 }
-                if(errorFlag == false){
-
-                    //now we have the name, colour, catcher and all other details, we can construct the mask
-                    NSMutableArray * newMaskFreshFromTheForge = [[NSMutableArray alloc] init]; //make the new mask from a fresh disk
-                    NSString *maskNameAndColourSetting;
-                    if([maskColourDeets isEqualToString: @""]){ //check for special masks
-                        maskNameAndColourSetting = maskNameDeets2;
-                    }
-                    else{
-                        maskNameAndColourSetting = [NSString stringWithFormat: @"%@ %@", maskColourDeets, maskNameDeets2];
-                    }
-                    [newMaskFreshFromTheForge addObject:maskNameAndColourSetting]; //add a name and colour
-                    [newMaskFreshFromTheForge addObject:catcherDeets]; //add a catcher
-                    [newMaskFreshFromTheForge addObject:[NSString stringWithFormat:@"%f", latDeets]]; //add a latitude
-                    [newMaskFreshFromTheForge addObject:[NSString stringWithFormat:@"%f", longDeets]]; //add a longitude
-                    
-                    //now add it to the relevent arrays
-                    
-                    NSMutableArray *collectedMasks4 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMaskCollectionList"]; //get a list of collected mask types
-                    collectedMasks4 = [collectedMasks4 mutableCopy];
-                    if([collectedMasks4 indexOfObject:maskNameAndColourSetting]==NSNotFound){ //if the mask is not in the list of collected masks, add it!
-                        [collectedMasks4 addObject:maskNameAndColourSetting];
-                        NSLog(@"Mask Not in collection");
-                        [[NSUserDefaults standardUserDefaults] setObject:collectedMasks4 forKey:@"PlayerMaskCollectionList"]; //add the mask to the collection
-                    }
-                    
-                    NSMutableArray *maskArray9 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks
-                    maskArray9 = [maskArray9 mutableCopy];
-                    [maskArray9 addObject:newMaskFreshFromTheForge];
-                    [[NSUserDefaults standardUserDefaults] setObject: maskArray9 forKey:@"PlayerMasks"]; //save the new mask array back to user defaults
-                    UIAlertController *maskAddedAlert = [UIAlertController alertControllerWithTitle:@"New Kanohi Mask Received!"
-                                                                                            message:[NSString stringWithFormat: @"You have just received a %@", maskNameAndColourSetting]
-                                   preferredStyle:UIAlertControllerStyleAlert];
-
-                    UIAlertAction* defaultAction6 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                           handler:^(UIAlertAction * action) {
-                        [self performSegueWithIdentifier:@"BackToWallOfMasks" sender:self];
-                    }];
-                    [maskAddedAlert addAction:defaultAction6];
-
-                    [self presentViewController:maskAddedAlert animated:YES completion:nil]; //run the alert
+                if(errorFlag == true){ //handle errors in the given code
+                    [self error2Message];
                 }
-
+                
             }
-            if(errorFlag == true){ //handle errors in the given code
+            @catch (NSException *exception) {
                 [self error2Message];
             }
-            
+            @finally {
+                //Display Alternative
+            }
         }
-        @catch (NSException *exception) {
-            [self error2Message];
-        }
-        @finally {
-          //Display Alternative
-        }
+    }
+    else{ //if the user is trying to re-redeem a code...
+        UIAlertController *heyYouCheaterAlert4 = [UIAlertController alertControllerWithTitle:@"Error: 4"
+                                                                                message:@"You cannot redeem a Kanohi Mask Code more than once!"
+                                                                         preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction7 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * action) {
+            [self performSegueWithIdentifier:@"BackToWallOfMasks" sender:self];
+        }];
+        [heyYouCheaterAlert4 addAction:defaultAction7];
+        
+        [self presentViewController:heyYouCheaterAlert4 animated:YES completion:nil]; //run the alert
     }
 }
 

@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet UILabel *maskCatcher;
 @property (nonatomic, weak) IBOutlet UILabel *maskLong;
 @property (nonatomic, weak) IBOutlet UILabel *maskLat;
+@property (nonatomic, weak) IBOutlet UIButton *tradeButton;
 @property (nonatomic, weak) IBOutlet UIImageView *maskPortrait;
 -(IBAction) tradeButtonPressed: (id) sender; //the trade kanohi mask button
 

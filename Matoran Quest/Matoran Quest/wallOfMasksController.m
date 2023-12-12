@@ -28,6 +28,13 @@ int maskDisplayingCheck2 = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks from the user defaults and make an array of them
+    if(maskArray == NULL){ //if there are no player masks yet
+        maskArray = [[NSMutableArray alloc] init];
+        //NSLog(@"refreshing2");
+        [[NSUserDefaults standardUserDefaults] setObject:maskArray forKey:@"PlayerMasks"]; //set it if it doesnt exist
+        
+    }
+
     maskArray = [maskArray mutableCopy];
     backUpMasksList = [[NSMutableArray alloc] init]; //make a duplicate mask array
     backUpMasksList = maskArray;
