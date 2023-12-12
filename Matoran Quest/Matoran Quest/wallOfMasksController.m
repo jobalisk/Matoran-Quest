@@ -63,31 +63,38 @@ int maskDisplayingCheck2 = 1;
     _searchBar1.showsCancelButton=TRUE;
     _searchBar1.delegate = self;
     
-    
-    //check through collected masks and remove any that are no longer present in the masks array due to trading
-    int findersFlag = 0; //check to make sure we still have a mask of this type in our inventory
-    NSString *testMaskNameAndColour;
-    for (int i = 0; i <= (collectedMasks2.count -1); i++)
-    {
-        findersFlag = 0;
-        testMaskNameAndColour = collectedMasks2[i];
-        //NSLog(@"mask: %@", testMaskNameAndColour);
-        for (int j = 0; j <= (maskArray.count -1); j++)
+    @try {
+        //check through collected masks and remove any that are no longer present in the masks array due to trading
+        int findersFlag = 0; //check to make sure we still have a mask of this type in our inventory
+        NSString *testMaskNameAndColour;
+        for (int i = 0; i <= (collectedMasks2.count -1); i++)
         {
-            NSArray *testMask2 = maskArray[j];
-            //NSLog(@"mask2: %@", testMask2[0]);
-            if([testMaskNameAndColour isEqualToString:testMask2[0]]){ //do we have the same name and colour
-                findersFlag = 1;
-                //NSLog(@"match!: %@", testMaskNameAndColour);
+            findersFlag = 0;
+            testMaskNameAndColour = collectedMasks2[i];
+            //NSLog(@"mask: %@", testMaskNameAndColour);
+            for (int j = 0; j <= (maskArray.count -1); j++)
+            {
+                NSArray *testMask2 = maskArray[j];
+                //NSLog(@"mask2: %@", testMask2[0]);
+                if([testMaskNameAndColour isEqualToString:testMask2[0]]){ //do we have the same name and colour
+                    findersFlag = 1;
+                    //NSLog(@"match!: %@", testMaskNameAndColour);
+                }
+            }
+            if(findersFlag == 0){
+                //NSLog(@"%@ is not present", testMaskNameAndColour);
+                
+                [collectedMasks2 removeObjectAtIndex:i];
+                [[NSUserDefaults standardUserDefaults] setObject: collectedMasks2 forKey:@"PlayerMaskCollectionList"]; //resave the array
+                 
             }
         }
-        if(findersFlag == 0){
-            //NSLog(@"%@ is not present", testMaskNameAndColour);
-            
-            [collectedMasks2 removeObjectAtIndex:i];
-            [[NSUserDefaults standardUserDefaults] setObject: collectedMasks2 forKey:@"PlayerMaskCollectionList"]; //resave the array
-             
-        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Could not find the mask to remove!");
+    }
+    @finally {
+      //Display Alternative
     }
     [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/%d", (int)collectedMasks2.count, totalMasksInGame]];
 
