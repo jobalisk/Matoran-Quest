@@ -284,6 +284,7 @@ int theMaskCode; //holds an int value for the mask
     }
     else{
         theColour = @"s"; //special masks
+
     }
 
     //sort out the unique identifier of the phone:
@@ -482,8 +483,8 @@ int theMaskCode; //holds an int value for the mask
                 }
                 if(errorFlag == false){
                     int checkerNumber = theDate2 - theDate1; //work out the difference in seconds between when the code was generated and when the code was redeemed.
-                    if(checkerNumber > 86400){
-                        //if its been more than 24 hours...
+                    if(checkerNumber > 86400 || checkerNumber < 0){
+                        //if its been more than 24 hours or less than the current time...
                         UIAlertController *heyYouCheaterAlert = [UIAlertController alertControllerWithTitle:@"Error: 3"
                                        message:@"Your code is no longer valid.\nYou must redeem your code with 24 hours."
                                        preferredStyle:UIAlertControllerStyleAlert];
@@ -542,84 +543,12 @@ int theMaskCode; //holds an int value for the mask
 
             }
             if(errorFlag == true){ //handle errors in the given code
-                UIAlertController *heyYouCheaterAlert2 = [UIAlertController alertControllerWithTitle:@"Error: 2"
-                               message:@"You code is invalid!"
-                               preferredStyle:UIAlertControllerStyleAlert];
-
-                UIAlertAction* defaultAction5 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                       handler:^(UIAlertAction * action) {
-                    UIAlertController *recieveTradeAlert = [UIAlertController alertControllerWithTitle:@"Receive a Kanohi Mask:"
-                                   message:@"If you have received a code in return, enter it here:/nIf not, or after entering the code/npress OK to end the trade."
-                                   preferredStyle:UIAlertControllerStyleAlert];
-                    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectZero];
-                    textView.translatesAutoresizingMaskIntoConstraints = NO;
-
-                    NSLayoutConstraint *leadConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:-8.0];
-                    NSLayoutConstraint *trailConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:8.0];
-
-                    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeTop multiplier:1.0 constant:-64.0];
-                    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:64.0];
-                    [recieveTradeAlert.view addSubview:textView];
-                    [NSLayoutConstraint activateConstraints:@[leadConstraint, trailConstraint, topConstraint, bottomConstraint]];
-
-                    [recieveTradeAlert addAction: [UIAlertAction actionWithTitle:@"OK"style:UIAlertActionStyleDefault handler:^(UIAlertAction*action) {
-                        //handle what we need to do with the text
-                        if (textView.text && textView.text.length > 0)
-                        {
-                            [self CodeBreaker: textView.text];
-                        }
-                        else
-                        {
-                           //the text field is empty so do nothing
-                        }
-                    }]];
-
-                    [self presentViewController:recieveTradeAlert animated:YES completion:nil]; //run the alert
-                }];
-                [heyYouCheaterAlert2 addAction:defaultAction5];
-
-                [self presentViewController:heyYouCheaterAlert2 animated:YES completion:nil]; //run the alert
+                [self error2Message];
             }
             
         }
         @catch (NSException *exception) {
-            UIAlertController *heyYouCheaterAlert2 = [UIAlertController alertControllerWithTitle:@"Error: 2"
-                           message:@"You code is invalid!"
-                           preferredStyle:UIAlertControllerStyleAlert];
-
-            UIAlertAction* defaultAction5 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                   handler:^(UIAlertAction * action) {
-                UIAlertController *recieveTradeAlert = [UIAlertController alertControllerWithTitle:@"Receive a Kanohi Mask:"
-                               message:@"If you have received a code in return, enter it here:/nIf not, or after entering the code/npress OK to end the trade."
-                               preferredStyle:UIAlertControllerStyleAlert];
-                UITextView *textView = [[UITextView alloc] initWithFrame:CGRectZero];
-                textView.translatesAutoresizingMaskIntoConstraints = NO;
-
-                NSLayoutConstraint *leadConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:-8.0];
-                NSLayoutConstraint *trailConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:8.0];
-
-                NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeTop multiplier:1.0 constant:-64.0];
-                NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:64.0];
-                [recieveTradeAlert.view addSubview:textView];
-                [NSLayoutConstraint activateConstraints:@[leadConstraint, trailConstraint, topConstraint, bottomConstraint]];
-
-                [recieveTradeAlert addAction: [UIAlertAction actionWithTitle:@"OK"style:UIAlertActionStyleDefault handler:^(UIAlertAction*action) {
-                    //handle what we need to do with the text
-                    if (textView.text && textView.text.length > 0)
-                    {
-                        [self CodeBreaker: textView.text];
-                    }
-                    else
-                    {
-                       //the text field is empty so do nothing
-                    }
-                }]];
-
-                [self presentViewController:recieveTradeAlert animated:YES completion:nil]; //run the alert
-            }];
-            [heyYouCheaterAlert2 addAction:defaultAction5];
-
-            [self presentViewController:heyYouCheaterAlert2 animated:YES completion:nil]; //run the alert
+            [self error2Message];
         }
         @finally {
           //Display Alternative
@@ -627,5 +556,45 @@ int theMaskCode; //holds an int value for the mask
     }
 }
 
+
+-(void)error2Message{ //if you have typed an invalid responce
+    UIAlertController *heyYouCheaterAlert2 = [UIAlertController alertControllerWithTitle:@"Error: 2"
+                   message:@"You code is invalid!"
+                   preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction5 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action) {
+        UIAlertController *recieveTradeAlert = [UIAlertController alertControllerWithTitle:@"Receive a Kanohi Mask:"
+                       message:@"If you have received a code in return, enter it here:/nIf not, or after entering the code/npress OK to end the trade."
+                       preferredStyle:UIAlertControllerStyleAlert];
+        UITextView *textView = [[UITextView alloc] initWithFrame:CGRectZero];
+        textView.translatesAutoresizingMaskIntoConstraints = NO;
+
+        NSLayoutConstraint *leadConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:-8.0];
+        NSLayoutConstraint *trailConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:8.0];
+
+        NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeTop multiplier:1.0 constant:-64.0];
+        NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:recieveTradeAlert.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:textView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:64.0];
+        [recieveTradeAlert.view addSubview:textView];
+        [NSLayoutConstraint activateConstraints:@[leadConstraint, trailConstraint, topConstraint, bottomConstraint]];
+
+        [recieveTradeAlert addAction: [UIAlertAction actionWithTitle:@"OK"style:UIAlertActionStyleDefault handler:^(UIAlertAction*action) {
+            //handle what we need to do with the text
+            if (textView.text && textView.text.length > 0)
+            {
+                [self CodeBreaker: textView.text];
+            }
+            else
+            {
+               //the text field is empty so do nothing
+            }
+        }]];
+
+        [self presentViewController:recieveTradeAlert animated:YES completion:nil]; //run the alert
+    }];
+    [heyYouCheaterAlert2 addAction:defaultAction5];
+
+    [self presentViewController:heyYouCheaterAlert2 animated:YES completion:nil]; //run the alert
+}
 
 @end
