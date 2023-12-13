@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Goudy Trajan Regular.otf">
+        <array key="Goudy.otf">
             <string>GoudyTrajan-Regular</string>
         </array>
         <array key="Mata Nui.ttf">
@@ -1217,7 +1217,7 @@
                         <outlet property="theHP" destination="1pe-0D-R7N" id="uT7-Pl-Xcy"/>
                         <outlet property="theLabel" destination="mAA-F2-cxF" id="OIX-E5-hD0"/>
                         <outlet property="theMap" destination="y0B-zv-UR9" id="1FJ-Ni-fh7"/>
-                        <segue destination="BV1-FR-VrT" kind="show" identifier="GoToRahi" id="oRo-ZW-4Zr"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="GoToRahi" animates="NO" id="oRo-ZW-4Zr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyJ-MT-tpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1235,16 +1235,16 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
