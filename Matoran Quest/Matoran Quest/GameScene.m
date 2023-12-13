@@ -9,12 +9,66 @@
 
 @implementation GameScene {
 
+    SKNode *backGroundBox;
+    SKNode *kanohiMaskEyeHoles;
+    SKNode *escapeSliderBar;
+    SKNode *aimSliderBar;
+    SKNode *slideBarSlider;
+    SKNode *playerArm;
+    SKNode *kanohiDisk;
+    SKNode *rahiSprite;
+    //SKNode *cameraARNode;
+    
+    
 }
 
 - (void)didMoveToView:(SKView *)view {
-    // Setup your scene here
-    
+    //NSLog(@"ran this");
  
+}
+
+-(void)sceneDidLoad{
+    // attach nodes to code
+    backGroundBox = [self childNodeWithName:@"menuBackground"];
+    //NSLog(@"background x: %f", backGroundBox.position.x);
+    //NSLog(@"background y: %f", backGroundBox.position.y);
+    kanohiMaskEyeHoles = [self childNodeWithName:@"KanohiMaskEyeHoles"];
+    escapeSliderBar = [self childNodeWithName:@"escapeBar"];
+    aimSliderBar = [self childNodeWithName:@"aimBar"];
+    //NSLog(@"aimSliderBar x: %f", aimSliderBar.position.x);
+    //NSLog(@"aimSliderBar y: %f", aimSliderBar.position.y);
+    slideBarSlider = [self childNodeWithName:@"sliderBarSlider1"];
+    playerArm = [self childNodeWithName:@"throwingArm"];
+    kanohiDisk = [self childNodeWithName:@"kanohiDisk"];
+    rahiSprite = [self childNodeWithName:@"rahi1"];
+    
+    //cameraARNode = [self childNodeWithName:@"camera4AR"];
+    //hide things that should always be hidden at the start...
+
+    [escapeSliderBar setHidden:TRUE];
+    [aimSliderBar setHidden:TRUE];
+    [slideBarSlider setHidden:TRUE];
+    
+    //sort out visuals based on user option settings
+    int eyeHolesCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowKanohiEyeHolesSetting"];
+    //NSLog(@"eyeholes: %d", eyeHolesCheck);
+    if(eyeHolesCheck == 0){
+        [kanohiMaskEyeHoles setHidden:TRUE];
+        //NSLog(@"eyeholes2: %d", kanohiMaskEyeHoles.hidden);
+    }
+    else{
+        [kanohiMaskEyeHoles setHidden:FALSE];
+        //NSLog(@"eyeholes2: %d", kanohiMaskEyeHoles.hidden);
+    }
+
+    
+    int cameraCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowCameraBackgroundSetting"];
+    if(cameraCheck == 1){
+
+    }
+    else{
+        
+    }
 }
 
 

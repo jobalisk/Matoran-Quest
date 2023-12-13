@@ -18,7 +18,23 @@
     int vibrationCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"];
     //NSLog(@"tt: %d", vibrationCheck);
     [_vibrationSwitch setSelectedSegmentIndex:vibrationCheck]; //set the on off for vibration
-    // Do any additional setup after loading the view.
+    
+    int cameraCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowCameraBackgroundSetting"];
+    if(cameraCheck == 0){
+        [_cameraSwitch setSelectedSegmentIndex:1];
+    }
+    else{
+        [_cameraSwitch setSelectedSegmentIndex:0]; //set camera switch to user default
+    }
+    
+    int eyeHolesCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowKanohiEyeHolesSetting"];
+    if(eyeHolesCheck == 0){
+        [_eyeHolesSwitch setSelectedSegmentIndex:1];
+    }
+    else{
+        [_eyeHolesSwitch setSelectedSegmentIndex:0]; //set eye holes switch to user default
+    }
+    
     
     
     int maskDisplayingCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"showKanohiCollectionSetting"];
@@ -37,7 +53,7 @@
     NSLog(@"Widgets: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerWidgets"]);
     NSLog(@"Collection: %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMaskCollectionList"]);
     UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
-                                   message:@"Press YES to delete all masks and items in the backpack or NO to cancel"
+                                   message:@"Press YES to completely reset the game.\nYou will lose all progress and restart with an empty inventory and mask collection."
                                    preferredStyle:UIAlertControllerStyleAlert];
      
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault
@@ -48,6 +64,7 @@
         [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerItems"]; //set a variety of game variables back to 0.
         [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerAvailibleToWearMasks"]; //set a variety of game variables back to 0.
         [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerMaskCollectionList"]; //set the collection counter back to 0!
+        [[NSUserDefaults standardUserDefaults] setObject: defaultArray1 forKey:@"PlayerCollectedKanohiCodes"]; //set the list of redeemed mask codes back to empty.
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerWidgets"];
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"PlayerFighting"];
         [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"PlayerRares"];
@@ -100,9 +117,21 @@
 }
 
 - (void)eyeHolesSwitchSwitched:(nonnull id)sender __attribute__((ibaction)) {
+    if(_eyeHolesSwitch.selectedSegmentIndex == 0){
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"ShowKanohiEyeHolesSetting"];
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"ShowKanohiEyeHolesSetting"];
+    }
 }
 
 - (void)cameraSwitchSwitched:(nonnull id)sender __attribute__((ibaction)) {
+    if(_cameraSwitch.selectedSegmentIndex == 0){
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"ShowCameraBackgroundSetting"];
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"ShowCameraBackgroundSetting"];
+    }
 }
 
 @end

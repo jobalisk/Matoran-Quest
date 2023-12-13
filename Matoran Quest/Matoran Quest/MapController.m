@@ -22,7 +22,7 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 24;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 4), 24 is a good time
+int playerUpdateTimerMax = 4;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 4), 24 is a good time
 int walkingTimer = 0; //this is for working out walking intervals
 int randomThing; //a random number for item placement purposes
 NSArray *kanohiList2;
@@ -30,7 +30,7 @@ NSArray *itemList;
 NSArray *rahiList;
 int rareMaskIdentifyier = 0; //this is here so that I can raise a flag when a rare mask has been found to stop crashes in the player edit controller
 float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
-float spawnWalkDistance = 0.00005; //how far you need to walk to trigger a spawn chance (normally  0.000005) (test 0.0000005)
+float spawnWalkDistance = 0.000005; //how far you need to walk to trigger a spawn chance (normally  0.000005) (test 0.0000005)
 int spawnRate = 3; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
@@ -394,9 +394,10 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         //generate a random number to determine what we have just picked up:
         int randomItem = arc4random_uniform(8);
         if(randomItem == 0){
+            
             MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
         }
-        else if(randomItem == 1 || randomItem == 4){ //normally 1 and 4
+        else if(randomItem == 11 || randomItem == 14){ //normally 1 and 4
             //randomItem = arc4random_uniform((int)kanohiList2.count);
             //randomItem -= 1;
             NSArray *maskDetails; //the holding container for the mask and its info
@@ -444,7 +445,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             }
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!",theMask];
         }
-        else if(randomItem == 2){ //normally 2
+        else if(randomItem == 12){ //normally 2
             //randomItem = arc4random_uniform((int)itemList.count);
             //randomItem -= 1;
             NSMutableArray *itemArray2;
@@ -494,7 +495,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
              
             MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!%@", theItem, extraText];
         }
-        else if(randomItem == 3 || randomItem == 6 || randomItem == 7 || randomItem == 5){ //normally 3, 6, 7, 5
+        else if(randomItem == 13 || randomItem == 16 || randomItem == 17 || randomItem == 15){ //normally 3, 6, 7, 5
             randomItem = arc4random_uniform(3);
             if(randomItem == 0){
                 MysteryAlertMessage = @"You found some slightly interesting scenery!";
@@ -513,14 +514,16 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         else if(randomItem == 8){
             //randomItem = arc4random_uniform((int)rahiList.count);
             //randomItem -= 1;
+            //rahiName = [self randomRahiMaker]; //generate a random rahi
             MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
         }
         else{
             //randomItem = arc4random_uniform((int)rahiList.count);
             //randomItem -= 1;
             //rahiFightFlag = 1; //flag up that we are fighting a rahi
-            rahiName = [self randomRahiMaker]; //generate a random rahi
-            MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiName];
+            //rahiName = [self randomRahiMaker]; //generate a random rahi
+            MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
+            //MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiName];
         }
         
         //create an alert (temporary, later we will shift to a different view controller
@@ -532,15 +535,15 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
            handler:^(UIAlertAction * action) {
             //handle rahi fight here!
             if(rahiFightFlag == 1){
-                /*
-                [UIView animateWithDuration:1.0 //fade to black then segue
+                
+                [UIView animateWithDuration:0.75 //fade to black then segue
                      animations:^{self.blackOutView.alpha = 1.0;}
                                  completion:^(BOOL finished){
                     [self performSegueWithIdentifier:@"GoToRahi" sender:self];
                     
                 }];
-                 */
-                rahiFightFlag = 0;
+                 
+                //rahiFightFlag = 0;
 
                 
             }
