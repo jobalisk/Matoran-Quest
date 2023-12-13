@@ -184,32 +184,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     
     userLocation = CGPointMake(_theMap.userLocation.location.coordinate.longitude, _theMap.userLocation.location.coordinate.latitude);
     
-    //NSLog(@"X: %f",userLocation.x);
-    //NSLog(@"Y: %f",userLocation.x);
-//    MKCoordinateSpan span = MKCoordinateSpanMake(0.001, 0.001);
-//    MKCoordinateRegion region = MKCoordinateRegionMake(_theMap.userLocation.location.coordinate, span);
-//    [_theMap setRegion:region animated: false];
-    
-    //set user location image
-    //MKAnnotationView *playerSprite;
-    //[playerSprite setImage:[UIImage imageNamed:@"MatoranStandingStill.png"]];
-    /*
-    MKPointAnnotation *playerLocation;
-    [playerLocation setCoordinate:_theMap.userLocation.location.coordinate];
-    [playerLocation setTitle:[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]];
-    [playerLocation setSubtitle:@"Current Location"];
-    MKAnnotationView *playerSprite;
-    [playerSprite setImage:[UIImage imageNamed:@"MatoranStandingStill.png"]];
-    [playerSprite setAnnotation:playerLocation];
-    [_theMap addAnnotation:playerLocation];
-    */
-    /*
-    float x = -45.884126;
-    float y = -45.884055;
-    float z = y - x;
-    z = 0.000007 * -1;
-    NSLog(@"%f", z);
-    */
+
     
 }
 
@@ -251,13 +226,11 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             if(randomThing != 1){ //1 chance in 3 that the item does not spawn
                 if([[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"] == 1){ //only do this if enabled in the options menu
                     
-                    /*
                     if(rahiFightFlag != 1){ //only vibrate when not in a rahi fight
                         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate); //vibrate the phone (or beep on unsupported devices)
                     }
                      
-                     */
-                    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+
                 }
                 
                 int randomThing2 = arc4random_uniform(2); //generate a random number for chance to spawn 2
@@ -474,11 +447,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             
             //sort out mask details
             maskDetails = [NSArray arrayWithObjects: theMask, [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"], lat1, long1, nil]; //give player name, location and mask details
-            //NSLog(@"name: %@", theMask);
-            //NSLog(@"player: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"]);
-            //NSLog(@"lat: %@", lat1);
-            //NSLog(@"long: %@", long1);
-            //NSLog(@"MList0: %@", maskDetails);
+
             if(maskArray != NULL){ //check to see if the list exists first
                 
                 maskArray2 = [maskArray mutableCopy];
@@ -576,10 +545,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
         }
         else{
-            //randomItem = arc4random_uniform((int)rahiList.count);
-            //randomItem -= 1;
-            //rahiFightFlag = 1; //flag up that we are fighting a rahi
-            //rahiName = [self randomRahiMaker]; //generate a random rahi
+
             MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
             //MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiName];
         }
@@ -594,7 +560,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             //handle rahi fight here!
             if(rahiFightFlag == 1){
                 
-                [UIView animateWithDuration:0.75 //fade to black then segue
+                [UIView animateWithDuration:1.5 //fade to black then segue
                      animations:^{self.blackOutView.alpha = 1.0;}
                                  completion:^(BOOL finished){
                     [self performSegueWithIdentifier:@"GoToRahi" sender:self];

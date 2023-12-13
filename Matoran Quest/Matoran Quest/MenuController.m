@@ -87,14 +87,6 @@ int maskChosenFlag2; //have we chosen a mask and player name, ect yet?
     //[self.view.window.rootViewController dismissViewControllerAnimated:NO completion:nil];
     
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ 
 
 @end

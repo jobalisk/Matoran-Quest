@@ -72,27 +72,16 @@
 
 
 - (void)touchDownAtPoint:(CGPoint)pos {
-    //NSLog(@"touching up");
-    //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
-    //[escapeSliderBar setHidden:false];
+
 }
 
 - (void)touchMovedToPoint:(CGPoint)pos {
-    //NSLog(@"touching move");
-    //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
-    //[aimSliderBar setHidden:false];
+
 }
 
 - (void)touchUpAtPoint:(CGPoint)pos {
-    //NSLog(@"touching down");
-    //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
-    //[slideBarSlider setHidden:false];
-    //jump back
+
     self.winLoss = 3;
-    //NSLog(@"WinLoss Gamescene: %d", self.winLoss);
-    
-    //[self.presenterController performSegueWithIdentifier:@"ReturnToMap" sender:self];
-        
 
     
     

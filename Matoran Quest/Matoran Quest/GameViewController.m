@@ -102,7 +102,7 @@ GameScene *scene;
         //once checks have been made...
         
     }
-    else{
+    else{ //if we don't want a camera it will just show a green background
         
     }
     
@@ -115,6 +115,7 @@ GameScene *scene;
             parentVC.rahiFightFlag4 = scene.winLoss;
             parentVC.rahiType3 = self.rahiName2;
             parentVC.screenFade = 0.0; //reset this back to visable.
+            [parentVC.blackOutView setAlpha:0.0]; //reset this back to visable.
             [self dismissViewControllerAnimated:YES completion:nil];
         });
 
@@ -170,22 +171,7 @@ GameScene *scene;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     //make sure to tie up any loose ends and properly close this controller so it doesn't use up extra RAM and CPU.
-    /*
-    if([segue.identifier isEqualToString:@"ReturnToMap"]){ //make sure to give the map controller feedback about how the fight went
-        //NSLog(@"WinLoss game controller 1: %d", scene.winLoss);
-        
-        MapController *controller = (MapController *)segue.destinationViewController;
-        controller.rahiType3 = _rahiName2;
-        controller.rahiFightFlag = scene.winLoss;
-        controller.screenFade = 0.0; //reset this back to visable.
-        //NSLog(@"WinLoss game controller 2: %d", controller.rahiFightFlag);
-        
-    }
-    //self.view.window.rootViewController = self;
-    //[self.navigationController pop];
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    
-    */
+
 }
 
 @end
