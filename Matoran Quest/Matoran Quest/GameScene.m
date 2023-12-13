@@ -17,6 +17,8 @@
     SKNode *playerArm;
     SKNode *kanohiDisk;
     SKNode *rahiSprite;
+    
+    //int winLoss; //0 undecided, 1 win, 2 loss
     //SKNode *cameraARNode;
     
     
@@ -41,7 +43,7 @@
     playerArm = [self childNodeWithName:@"throwingArm"];
     kanohiDisk = [self childNodeWithName:@"kanohiDisk"];
     rahiSprite = [self childNodeWithName:@"rahi1"];
-    
+    _winLoss = 0; //start of neutral
     //cameraARNode = [self childNodeWithName:@"camera4AR"];
     //hide things that should always be hidden at the start...
 
@@ -61,47 +63,68 @@
         //NSLog(@"eyeholes2: %d", kanohiMaskEyeHoles.hidden);
     }
 
-    
-    int cameraCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowCameraBackgroundSetting"];
-    if(cameraCheck == 1){
+    //do some other quick set up stuff
+    if(_rahiType == NULL){ //give a more pleasent name for rahi if the type is null.
+        _rahiType = @"unnamed";
+    }
 
-    }
-    else{
-        
-    }
 }
 
 
 - (void)touchDownAtPoint:(CGPoint)pos {
-
+    //NSLog(@"touching up");
+    //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
+    //[escapeSliderBar setHidden:false];
 }
 
 - (void)touchMovedToPoint:(CGPoint)pos {
-
+    //NSLog(@"touching move");
+    //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
+    //[aimSliderBar setHidden:false];
 }
 
 - (void)touchUpAtPoint:(CGPoint)pos {
+    //NSLog(@"touching down");
+    //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
+    //[slideBarSlider setHidden:false];
+    //jump back
+    self.winLoss = 3;
+    //NSLog(@"WinLoss Gamescene: %d", self.winLoss);
+    
+    //[self.presenterController performSegueWithIdentifier:@"ReturnToMap" sender:self];
+        
 
+    
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-
+    //NSLog(@"touching begins...");
+    //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
+    //run an alert and prepare to close the controller
     
     for (UITouch *t in touches) {[self touchDownAtPoint:[t locationInNode:self]];}
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    //NSLog(@"touching moved...");
+    //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
     for (UITouch *t in touches) {[self touchMovedToPoint:[t locationInNode:self]];}
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    //NSLog(@"touching ended...");
+    //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
     for (UITouch *t in touches) {[self touchUpAtPoint:[t locationInNode:self]];}
 }
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    //NSLog(@"touching cancelled...");
+    //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
     for (UITouch *t in touches) {[self touchUpAtPoint:[t locationInNode:self]];}
 }
 
 
 -(void)update:(CFTimeInterval)currentTime {
     // Called before each frame is rendered
+    //NSLog(@"updating");
 }
 
 @end

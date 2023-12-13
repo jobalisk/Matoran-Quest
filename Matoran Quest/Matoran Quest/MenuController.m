@@ -20,6 +20,7 @@ int maskChosenFlag2; //have we chosen a mask and player name, ect yet?
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [_title1 setFont:[UIFont fontWithName:@"Mata Nui" size:15]];
     [_title2 setFont:[UIFont fontWithName:@"GoudyTrajan-Regular" size:16]];
 
@@ -80,7 +81,10 @@ int maskChosenFlag2; //have we chosen a mask and player name, ect yet?
 -(void)viewDidAppear:(BOOL)animated{
     if(maskChosenFlag2 == 0){
         [self presentViewController:startAlert animated:YES completion:nil]; //show the start up alert
+
     }
+    //self.view.window.rootViewController = self;
+    //[self.view.window.rootViewController dismissViewControllerAnimated:NO completion:nil];
     
 }
 /*
