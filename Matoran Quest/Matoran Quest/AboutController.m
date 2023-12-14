@@ -18,6 +18,10 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait]forKey:@"orientation"];//set the controller to be portrait
+}
+
 /*
 #pragma mark - Navigation
 

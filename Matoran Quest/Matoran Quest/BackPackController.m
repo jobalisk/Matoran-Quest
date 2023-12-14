@@ -41,6 +41,9 @@ NSMutableArray *itemArray; //our item array
     
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait]forKey:@"orientation"];//set the controller to be portrait
+}
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     //NSLog(@"Got this far");

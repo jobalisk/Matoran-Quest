@@ -13,5 +13,6 @@
 @property (nonatomic) UIViewController *presenterController;
 @property (nonatomic, assign) NSString *rahiType;
 @property (nonatomic, assign) int winLoss; //how did the match go, 0 is neutral, 3 is win, 4 is loss
+@property (nonatomic, assign) int gotoBackPack; //jump to the back pack.
 
 @end

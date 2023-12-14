@@ -165,6 +165,7 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
 -(void)viewDidAppear:(BOOL)animated{
     [_playerMaskChooser selectRow:[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerMaskNumber"] inComponent:0 animated:true]; //go to the players selected mask on load up
     //NSLog(@"row: %ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerMaskNumber"]);
+    //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait] forKey:@"orientation"];//set the controller to be portrait
 }
 
 -(void)colourWellPressed:(UIImage*)playerSprite1{ //change the colour of the given sprite then save those colours to user defaults

@@ -9,7 +9,7 @@
 
 @implementation GameScene {
 
-    SKNode *backGroundBox;
+    SKNode *backGroundBox1;
     SKNode *kanohiMaskEyeHoles;
     SKNode *escapeSliderBar;
     SKNode *aimSliderBar;
@@ -20,6 +20,7 @@
     
     //int winLoss; //0 undecided, 1 win, 2 loss
     //SKNode *cameraARNode;
+    int doubleTapp;
     
     
 }
@@ -31,22 +32,21 @@
 
 -(void)sceneDidLoad{
     // attach nodes to code
-    backGroundBox = [self childNodeWithName:@"menuBackground"];
-    //NSLog(@"background x: %f", backGroundBox.position.x);
-    //NSLog(@"background y: %f", backGroundBox.position.y);
+    backGroundBox1 = [self childNodeWithName:@"backgroundBar1"];
     kanohiMaskEyeHoles = [self childNodeWithName:@"KanohiMaskEyeHoles"];
     escapeSliderBar = [self childNodeWithName:@"escapeBar"];
     aimSliderBar = [self childNodeWithName:@"aimBar"];
-    //NSLog(@"aimSliderBar x: %f", aimSliderBar.position.x);
-    //NSLog(@"aimSliderBar y: %f", aimSliderBar.position.y);
     slideBarSlider = [self childNodeWithName:@"sliderBarSlider1"];
     playerArm = [self childNodeWithName:@"throwingArm"];
     kanohiDisk = [self childNodeWithName:@"kanohiDisk"];
     rahiSprite = [self childNodeWithName:@"rahi1"];
     _winLoss = 0; //start of neutral
+    _gotoBackPack = 0; //we don't need to go to the back pack yet...
     //cameraARNode = [self childNodeWithName:@"camera4AR"];
     //hide things that should always be hidden at the start...
 
+    doubleTapp = 0;
+    [backGroundBox1 setHidden:FALSE];
     [escapeSliderBar setHidden:TRUE];
     [aimSliderBar setHidden:TRUE];
     [slideBarSlider setHidden:TRUE];
@@ -54,7 +54,7 @@
     //sort out visuals based on user option settings
     int eyeHolesCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowKanohiEyeHolesSetting"];
     //NSLog(@"eyeholes: %d", eyeHolesCheck);
-    if(eyeHolesCheck == 0){
+    if(eyeHolesCheck == 1){
         [kanohiMaskEyeHoles setHidden:TRUE];
         //NSLog(@"eyeholes2: %d", kanohiMaskEyeHoles.hidden);
     }
@@ -72,16 +72,21 @@
 
 
 - (void)touchDownAtPoint:(CGPoint)pos {
-
+    doubleTapp += 1;
+    if(doubleTapp == 2){
+        self.winLoss = 3;
+    }
 }
 
 - (void)touchMovedToPoint:(CGPoint)pos {
-
+    if(self.winLoss == 0){
+        self.gotoBackPack = 1;
+    }
 }
 
 - (void)touchUpAtPoint:(CGPoint)pos {
 
-    self.winLoss = 3;
+    
 
     
     

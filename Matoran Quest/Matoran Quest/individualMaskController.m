@@ -105,6 +105,10 @@ NSMutableArray *maskArray9;
     [_maskPortrait setImage: _maskImage];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait]forKey:@"orientation"];//set the controller to be portrait
+}
+
 -(UIImage *)colorizeImage:(UIImage *)baseImage color:(UIColor *)theColor {
     UIGraphicsBeginImageContext(baseImage.size);
 
@@ -197,7 +201,8 @@ NSMutableArray *maskArray9;
                 }
                 else
                 {
-                   //the text field is empty so do nothing
+                   //the text field is empty so just return to the masks view
+                    [self performSegueWithIdentifier:@"BackToWallOfMasks" sender:self];
                 }
             }]];
 

@@ -81,8 +81,9 @@ int maskChosenFlag2; //have we chosen a mask and player name, ect yet?
 -(void)viewDidAppear:(BOOL)animated{
     if(maskChosenFlag2 == 0){
         [self presentViewController:startAlert animated:YES completion:nil]; //show the start up alert
-
+        //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait]forKey:@"orientation"];//set the controller to be portrait
     }
+
     //self.view.window.rootViewController = self;
     //[self.view.window.rootViewController dismissViewControllerAnimated:NO completion:nil];
     

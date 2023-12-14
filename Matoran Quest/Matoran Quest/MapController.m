@@ -38,6 +38,8 @@ int playerHP = 0; //this will later be loaded from the userdefaults and shared w
 int widgetCount = 0;
 int rahiFightFlag = 0; //are you encountering a rahi (in a fight)
 NSString *rahiName = @""; //the name of the rahi we will be fighting...
+float fadeToRahiDuration = 1.0;
+bool rahiTestingFlag = false; //this is for auto setting it to rahi only spawning
 NSMutableArray *collectedMasks; //a list of the kinds of masks the player has collected. 1 entry for each unique kind of mask (colour as well as type)
 
 
@@ -184,7 +186,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     
     userLocation = CGPointMake(_theMap.userLocation.location.coordinate.longitude, _theMap.userLocation.location.coordinate.latitude);
     
-
+    //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait]forKey:@"orientation"];//set the controller to be portrait
     
 }
 
@@ -397,7 +399,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     
     
     //finally, unblack the screen if needed.
-    [self.blackOutView setAlpha:self.screenFade];
+    //[self.blackOutView setAlpha:self.screenFade];
     //NSLog(@"fade: %f", self.screenFade);
     //NSLog(@"winrate: %d", self.rahiFightFlag);
     
@@ -423,132 +425,140 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         //[_theTimer setHidden:true];
         NSString *MysteryAlertMessage = @""; //this will hold the message for the alert or view.
         //generate a random number to determine what we have just picked up:
-        int randomItem = arc4random_uniform(8);
-        if(randomItem == 0){
-            
-            MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
-        }
-        else if(randomItem == 1 || randomItem == 4){ //normally 1 and 4
-            //randomItem = arc4random_uniform((int)kanohiList2.count);
-            //randomItem -= 1;
-            NSArray *maskDetails; //the holding container for the mask and its info
-            NSMutableArray *maskArray2;
-            NSString *theMask = [self randomMaskMaker];
-            NSArray *maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"];
-            
-            //reduce down the accuracy of the lat and long by removing the decimal point
-            float long3 = (float)_theMap.userLocation.location.coordinate.longitude;
-            float lat3 = (float)_theMap.userLocation.location.coordinate.latitude;
-            int long2 = (int)long3;
-            int lat2 = (int)lat3;
-            NSString *long1 = [NSString stringWithFormat:@"%d",long2];
-            NSString *lat1  = [NSString stringWithFormat:@"%d", lat2];
-            //bit messy but need to first convert to float to convert to int as just straight int conversion causes a crash
-            
-            //sort out mask details
-            maskDetails = [NSArray arrayWithObjects: theMask, [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"], lat1, long1, nil]; //give player name, location and mask details
+        if(rahiTestingFlag != TRUE){
+            int randomItem = arc4random_uniform(8);
+            if(randomItem == 0){
+                
+                MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
+            }
+            else if(randomItem == 1 || randomItem == 4){ //normally 1 and 4
+                //randomItem = arc4random_uniform((int)kanohiList2.count);
+                //randomItem -= 1;
+                NSArray *maskDetails; //the holding container for the mask and its info
+                NSMutableArray *maskArray2;
+                NSString *theMask = [self randomMaskMaker];
+                NSArray *maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"];
+                
+                //reduce down the accuracy of the lat and long by removing the decimal point
+                float long3 = (float)_theMap.userLocation.location.coordinate.longitude;
+                float lat3 = (float)_theMap.userLocation.location.coordinate.latitude;
+                int long2 = (int)long3;
+                int lat2 = (int)lat3;
+                NSString *long1 = [NSString stringWithFormat:@"%d",long2];
+                NSString *lat1  = [NSString stringWithFormat:@"%d", lat2];
+                //bit messy but need to first convert to float to convert to int as just straight int conversion causes a crash
+                
+                //sort out mask details
+                maskDetails = [NSArray arrayWithObjects: theMask, [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"], lat1, long1, nil]; //give player name, location and mask details
 
-            if(maskArray != NULL){ //check to see if the list exists first
-                
-                maskArray2 = [maskArray mutableCopy];
-                [maskArray2 addObject: maskDetails]; //add it to the array
-                [[NSUserDefaults standardUserDefaults] setObject: maskArray2 forKey:@"PlayerMasks"];
-                //NSLog(@"MList2: %@", maskArray2);
-            }
-            else{ //make a new array
-                maskArray = [NSArray arrayWithObjects: maskDetails, nil];
-                [[NSUserDefaults standardUserDefaults] setObject: maskArray forKey:@"PlayerMasks"]; //save the new mask array back to user defaults
-                //NSLog(@"MList1: %@", maskArray);
-            }
-            if([collectedMasks indexOfObject:theMask]==NSNotFound){ //if the mask is not in the list of collected masks, add it!
-                //NSLog(@"adding: %@", theMask);
-                [collectedMasks addObject:theMask];
-                //NSLog(@"list1: %@", collectedMasks);
-                [[NSUserDefaults standardUserDefaults] setObject:collectedMasks forKey:@"PlayerMaskCollectionList"]; //add the mask to the collection
-            }
-            else{
-                //NSLog(@"not adding: %@", theMask);
-                //NSLog(@"list2: %@", collectedMasks);
-            }
-            MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!",theMask];
-        }
-        else if(randomItem == 2){ //normally 2
-            //randomItem = arc4random_uniform((int)itemList.count);
-            //randomItem -= 1;
-            NSMutableArray *itemArray2;
-            NSString *theItem = [self randomItemMaker];
-            NSArray *itemArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerItems"];
-            NSString *extraText = @"";//extra text for if you run out of bag space.
-            if(itemArray != NULL){
-                
-                itemArray2 = [itemArray mutableCopy];
-                if(itemArray2.count == 14){ //max inventory space is 20
-                    if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
-                        widgetCount +=1;
-                        [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
-					}
-					else{ //otherwise display a warning message
-                        extraText = @"\nYour back pack is now full!"; //give a warning message
-						[itemArray2 addObject: theItem]; //add it to the array
-						[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
-					}
+                if(maskArray != NULL){ //check to see if the list exists first
+                    
+                    maskArray2 = [maskArray mutableCopy];
+                    [maskArray2 addObject: maskDetails]; //add it to the array
+                    [[NSUserDefaults standardUserDefaults] setObject: maskArray2 forKey:@"PlayerMasks"];
+                    //NSLog(@"MList2: %@", maskArray2);
                 }
-                else if(itemArray2.count < 15){ //max inventory space is 20
-                    if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
-                        widgetCount +=1;
-                        [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
-                    }
-					else{
-						[itemArray2 addObject: theItem]; //add it to the array
-						[[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
-					}
+                else{ //make a new array
+                    maskArray = [NSArray arrayWithObjects: maskDetails, nil];
+                    [[NSUserDefaults standardUserDefaults] setObject: maskArray forKey:@"PlayerMasks"]; //save the new mask array back to user defaults
+                    //NSLog(@"MList1: %@", maskArray);
+                }
+                if([collectedMasks indexOfObject:theMask]==NSNotFound){ //if the mask is not in the list of collected masks, add it!
+                    //NSLog(@"adding: %@", theMask);
+                    [collectedMasks addObject:theMask];
+                    //NSLog(@"list1: %@", collectedMasks);
+                    [[NSUserDefaults standardUserDefaults] setObject:collectedMasks forKey:@"PlayerMaskCollectionList"]; //add the mask to the collection
                 }
                 else{
-                    if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
-                        widgetCount +=1;
-                        [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
+                    //NSLog(@"not adding: %@", theMask);
+                    //NSLog(@"list2: %@", collectedMasks);
+                }
+                MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@ Kanohi mask!",theMask];
+            }
+            else if(randomItem == 2){ //normally 2
+                //randomItem = arc4random_uniform((int)itemList.count);
+                //randomItem -= 1;
+                NSMutableArray *itemArray2;
+                NSString *theItem = [self randomItemMaker];
+                NSArray *itemArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerItems"];
+                NSString *extraText = @"";//extra text for if you run out of bag space.
+                if(itemArray != NULL){
+                    
+                    itemArray2 = [itemArray mutableCopy];
+                    if(itemArray2.count == 14){ //max inventory space is 20
+                        if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
+                            widgetCount +=1;
+                            [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
+                        }
+                        else{ //otherwise display a warning message
+                            extraText = @"\nYour back pack is now full!"; //give a warning message
+                            [itemArray2 addObject: theItem]; //add it to the array
+                            [[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
+                        }
+                    }
+                    else if(itemArray2.count < 15){ //max inventory space is 20
+                        if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
+                            widgetCount +=1;
+                            [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
+                        }
+                        else{
+                            [itemArray2 addObject: theItem]; //add it to the array
+                            [[NSUserDefaults standardUserDefaults] setObject: itemArray2 forKey:@"PlayerItems"];
+                        }
                     }
                     else{
-                        extraText = @"\nThere's no room left in your back pack for that item!";
+                        if([theItem isEqualToString: @"Widget"]){ //if the item is a widget just addi it to the stack
+                            widgetCount +=1;
+                            [[NSUserDefaults standardUserDefaults] setInteger: widgetCount forKey:@"PlayerWidgets"]; //set it if it doesnt
+                        }
+                        else{
+                            extraText = @"\nThere's no room left in your back pack for that item!";
+                        }
                     }
+                     
+
+                }
+                else{
+                    itemArray = [NSArray arrayWithObjects: theItem , nil];
+                    [[NSUserDefaults standardUserDefaults] setObject: itemArray forKey:@"PlayerItems"]; //save the array to player defaults
                 }
                  
+                MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!%@", theItem, extraText];
+            }
+            else if(randomItem == 3 || randomItem == 6 || randomItem == 7 || randomItem == 5){ //normally 3, 6, 7, 5
+                randomItem = arc4random_uniform(3);
+                if(randomItem == 0){
+                    MysteryAlertMessage = @"You found some slightly interesting scenery!";
+                }
+                else if(randomItem == 1){
+                    MysteryAlertMessage = @"You found a thing.\nIt wasn't a useful thing though so you let it be.";
+                }
+                else{
+                    MysteryAlertMessage = @"You thought you saw something, must have been mistaken.";
+                }
+                
+                
+            }
 
+            
+            else if(randomItem == 8){
+                //randomItem = arc4random_uniform((int)rahiList.count);
+                //randomItem -= 1;
+                //rahiName = [self randomRahiMaker]; //generate a random rahi
+                MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
             }
             else{
-                itemArray = [NSArray arrayWithObjects: theItem , nil];
-                [[NSUserDefaults standardUserDefaults] setObject: itemArray forKey:@"PlayerItems"]; //save the array to player defaults
-            }
-             
-            MysteryAlertMessage = [NSString stringWithFormat:@"You found a %@!%@", theItem, extraText];
-        }
-        else if(randomItem == 3 || randomItem == 6 || randomItem == 7 || randomItem == 5){ //normally 3, 6, 7, 5
-            randomItem = arc4random_uniform(3);
-            if(randomItem == 0){
-                MysteryAlertMessage = @"You found some slightly interesting scenery!";
-            }
-            else if(randomItem == 1){
-                MysteryAlertMessage = @"You found a thing.\nIt wasn't a useful thing though so you let it be.";
-            }
-            else{
-                MysteryAlertMessage = @"You thought you saw something, must have been mistaken.";
-            }
-            
-            
-        }
 
-        
-        else if(randomItem == 8){
-            //randomItem = arc4random_uniform((int)rahiList.count);
-            //randomItem -= 1;
-            //rahiName = [self randomRahiMaker]; //generate a random rahi
-            MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
+                MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
+                //MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiName];
+            }
         }
-        else{
-
+        else{ //for testing rahi...
             MysteryAlertMessage = [self encounterRahi:MysteryAlertMessage];
             //MysteryAlertMessage = [NSString stringWithFormat:@"You encountered a %@ Rahi!", rahiName];
         }
+
+        
         
         //create an alert (temporary, later we will shift to a different view controller
         UIAlertController *MysteryAlert = [UIAlertController alertControllerWithTitle:@"Mysterious Object"
@@ -560,7 +570,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             //handle rahi fight here!
             if(rahiFightFlag == 1){
                 
-                [UIView animateWithDuration:1.5 //fade to black then segue
+                [UIView animateWithDuration:fadeToRahiDuration //fade to black then segue
                      animations:^{self.blackOutView.alpha = 1.0;}
                                  completion:^(BOOL finished){
                     [self performSegueWithIdentifier:@"GoToRahi" sender:self];
@@ -923,7 +933,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
             return @"Hoi"; //turtle
         }
         else if (randomItem == 4){
-            return @"Ngarere"; //bug
+            return @"Ngarara"; //bug
         }
         else{
             return @"Pekapeka"; //bat

@@ -21,18 +21,18 @@
     
     int cameraCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowCameraBackgroundSetting"];
     if(cameraCheck == 0){
-        [_cameraSwitch setSelectedSegmentIndex:1];
+        [_cameraSwitch setSelectedSegmentIndex:0];
     }
     else{
-        [_cameraSwitch setSelectedSegmentIndex:0]; //set camera switch to user default
+        [_cameraSwitch setSelectedSegmentIndex:1]; //set camera switch to user default
     }
     
     int eyeHolesCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowKanohiEyeHolesSetting"];
     if(eyeHolesCheck == 0){
-        [_eyeHolesSwitch setSelectedSegmentIndex:1];
+        [_eyeHolesSwitch setSelectedSegmentIndex:0];
     }
     else{
-        [_eyeHolesSwitch setSelectedSegmentIndex:0]; //set eye holes switch to user default
+        [_eyeHolesSwitch setSelectedSegmentIndex:1]; //set eye holes switch to user default
     }
     
     
@@ -45,6 +45,10 @@
         [_maskDisplaySwitch setSelectedSegmentIndex:0];
     }
 
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait]forKey:@"orientation"];//set the controller to be portrait
 }
 
 - (void)resetButtonPressed:(nonnull id)sender __attribute__((ibaction)) { //make a yes no confirm alert for deleting everything
@@ -118,19 +122,19 @@
 
 - (void)eyeHolesSwitchSwitched:(nonnull id)sender __attribute__((ibaction)) {
     if(_eyeHolesSwitch.selectedSegmentIndex == 0){
-        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"ShowKanohiEyeHolesSetting"];
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"ShowKanohiEyeHolesSetting"];
     }
     else{
-        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"ShowKanohiEyeHolesSetting"];
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"ShowKanohiEyeHolesSetting"];
     }
 }
 
 - (void)cameraSwitchSwitched:(nonnull id)sender __attribute__((ibaction)) {
     if(_cameraSwitch.selectedSegmentIndex == 0){
-        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"ShowCameraBackgroundSetting"];
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"ShowCameraBackgroundSetting"];
     }
     else{
-        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"ShowCameraBackgroundSetting"];
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"ShowCameraBackgroundSetting"];
     }
 }
 

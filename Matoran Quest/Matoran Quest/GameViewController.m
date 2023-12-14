@@ -41,7 +41,9 @@ GameScene *scene;
     [self.gamePresentationView presentScene:scene];
     //skView.showsFPS = YES;
     //skView.showsNodeCount = YES;
-    //[[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeLeft) forKey:@"orientation"]; //set the controller to be landscape
+
+    //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft]forKey:@"orientation"];//set the controller to be portrait
+
     //[UINavigationController attemptRotationToDeviceOrientation];
     
     //set up rahi fighting flags
@@ -51,7 +53,7 @@ GameScene *scene;
     
     //get the camera running in the background
     int cameraCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowCameraBackgroundSetting"];
-    if(cameraCheck == 1){
+    if(cameraCheck == 0){
         //start setting up the camera
         self.captureSession = [AVCaptureSession new];
         self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
@@ -64,11 +66,12 @@ GameScene *scene;
             
             UIAlertAction* defaultAction10 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                                    handler:^(UIAlertAction * action) {
-                [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"ShowCameraBackgroundSetting"];
+                [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"ShowCameraBackgroundSetting"];
             }];
             [cameraErrorAlert1 addAction:defaultAction10];
             
             [self presentViewController:cameraErrorAlert1 animated:YES completion:nil]; //run the alert
+            [_cameraView1 setImage:[UIImage imageNamed:@"genericBackdrop.png"]]; //put on a generic background
             return;
         }
         
@@ -93,22 +96,29 @@ GameScene *scene;
             
             UIAlertAction* defaultAction10 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                                    handler:^(UIAlertAction * action) {
-                [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"ShowCameraBackgroundSetting"];
+                [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"ShowCameraBackgroundSetting"];
             }];
             [cameraErrorAlert1 addAction:defaultAction10];
             
             [self presentViewController:cameraErrorAlert1 animated:YES completion:nil]; //run the alert
+            [_cameraView1 setImage:[UIImage imageNamed:@"genericBackdrop.png"]]; //put on a generic background
         }
         //once checks have been made...
         
     }
-    else{ //if we don't want a camera it will just show a green background
-        
+    else{ //if we don't want a camera it will just show a generic background
+        [_cameraView1 setImage:[UIImage imageNamed:@"genericBackdrop.png"]]; //put on a generic background
     }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         while(scene.winLoss == 0){
-            //wait
+            //check for inventory opening here
+            if(scene.gotoBackPack == 1){
+                scene.gotoBackPack = 0;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self performSegueWithIdentifier:@"GoToBackPackBattle1" sender:self];
+                });
+            }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             MapController *parentVC = (MapController *)self.presentingViewController; //get a handle on our parent map controller
@@ -165,9 +175,6 @@ GameScene *scene;
 
 
 
--(void)rahiDefeated{
-
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     //make sure to tie up any loose ends and properly close this controller so it doesn't use up extra RAM and CPU.

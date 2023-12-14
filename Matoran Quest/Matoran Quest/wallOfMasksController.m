@@ -486,6 +486,7 @@ int maskDisplayingCheck2 = 1;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait] forKey:@"orientation"];//set the controller to be portrait
     if(collectedMasks2.count == totalMasksInGame){
         UIAlertController *completionAlert = [UIAlertController alertControllerWithTitle:@"Congratulations!"
                                                                                  message:[NSString stringWithFormat: @"You have collected all %d kanohi masks and completed the game!\nYou can now return to your village and retire in peace.", totalMasksInGame]

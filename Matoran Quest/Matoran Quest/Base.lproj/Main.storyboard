@@ -830,17 +830,209 @@
                             </skView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UE0-3U-PIn"/>
-                        <color key="backgroundColor" red="0.41650280497095005" green="0.66304863823784721" blue="0.2695683796015203" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="9gX-M1-5OU"/>
                     <connections>
                         <outlet property="cameraView1" destination="Krv-rw-g0k" id="fV2-WK-vS1"/>
                         <outlet property="gamePresentationView" destination="9tJ-S1-th3" id="5bw-v7-PGX"/>
+                        <segue destination="rd6-nv-r5D" kind="show" identifier="GoToBackPackBattle1" id="zkV-cD-3z5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1589.8550724637682" y="2.4456521739130435"/>
+        </scene>
+        <!--Battle Inventory View Controller-->
+        <scene sceneID="sNI-dz-I2w">
+            <objects>
+                <viewController id="rd6-nv-r5D" customClass="BattleInventoryViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f41-PJ-bIu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhs-1V-vMb">
+                                <rect key="frame" x="294" y="349" width="100" height="18"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8se-uF-9i8">
+                                <rect key="frame" x="128" y="346.66666666666669" width="211" height="23"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Super Disk">
+                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="superButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="934-Gh-xxf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhg-wV-cW0">
+                                <rect key="frame" x="128" y="464.66666666666669" width="211" height="23"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Fire Disk">
+                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="fireButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="Nc4-hO-jKD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRn-ad-ZZy">
+                                <rect key="frame" x="91" y="608" width="284" height="26"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Energized Protodermis">
+                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="8"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="protodermisButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="N1u-Wg-JUU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orj-7Z-lqg">
+                                <rect key="frame" x="20" y="611" width="211" height="23"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Interesting Rock">
+                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="rockButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="w2K-Ke-AtU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-Af-RfE">
+                                <rect key="frame" x="20" y="464.66666666666669" width="211" height="23"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Ice Disk">
+                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="iceButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="nbd-Pm-NAn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqC-PH-MuF">
+                                <rect key="frame" x="20" y="345.66666666666669" width="211" height="23"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Vuata Maka Fruit">
+                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="fruitButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="FSe-Br-BkY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAM-M0-2OF">
+                                <rect key="frame" x="128" y="196" width="211" height="23"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Earth Disk">
+                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="earthButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="DNk-TF-MDA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pA-t0-mRz">
+                                <rect key="frame" x="128" y="83" width="211" height="23"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Water Disk">
+                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="waterButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="9EG-HZ-8HD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MwY-HJ-Tdm">
+                                <rect key="frame" x="20" y="83" width="211" height="23"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Stone Disk">
+                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="stoneButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="lES-1G-aOJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkq-4Y-ihX">
+                                <rect key="frame" x="20" y="196" width="211" height="23"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Air Disk">
+                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="airButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="VLl-va-ZaG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="a1N-br-mZg"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Fhs-1V-vMb" firstAttribute="trailing" secondItem="f41-PJ-bIu" secondAttribute="trailingMargin" id="32G-bI-PmX"/>
+                            <constraint firstItem="pkq-4Y-ihX" firstAttribute="top" secondItem="MwY-HJ-Tdm" secondAttribute="bottom" constant="90" id="4hq-FH-I3h"/>
+                            <constraint firstItem="8se-uF-9i8" firstAttribute="centerY" secondItem="f41-PJ-bIu" secondAttribute="centerY" id="9Gk-cw-1Zz"/>
+                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="trailing" secondItem="pkq-4Y-ihX" secondAttribute="trailing" id="EdJ-s5-O0m"/>
+                            <constraint firstItem="kM5-Af-RfE" firstAttribute="leading" secondItem="orj-7Z-lqg" secondAttribute="leading" id="FVn-nL-NEq"/>
+                            <constraint firstItem="fRn-ad-ZZy" firstAttribute="leading" secondItem="a1N-br-mZg" secondAttribute="leading" constant="91" id="G3o-a4-Uep"/>
+                            <constraint firstItem="a1N-br-mZg" firstAttribute="bottom" secondItem="orj-7Z-lqg" secondAttribute="bottom" constant="82" id="GRg-Vk-WNf"/>
+                            <constraint firstItem="XAM-M0-2OF" firstAttribute="trailing" secondItem="8se-uF-9i8" secondAttribute="trailing" id="HcK-ft-uJY"/>
+                            <constraint firstItem="a1N-br-mZg" firstAttribute="trailing" secondItem="MwY-HJ-Tdm" secondAttribute="trailing" constant="183" id="IRi-hH-OJi"/>
+                            <constraint firstItem="kM5-Af-RfE" firstAttribute="trailing" secondItem="orj-7Z-lqg" secondAttribute="trailing" id="K5E-ZR-IMN"/>
+                            <constraint firstItem="8se-uF-9i8" firstAttribute="trailing" secondItem="Lhg-wV-cW0" secondAttribute="trailing" id="K6i-Tq-jEo"/>
+                            <constraint firstItem="2pA-t0-mRz" firstAttribute="trailing" secondItem="XAM-M0-2OF" secondAttribute="trailing" id="L74-W4-pQY"/>
+                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="baseline" secondItem="2pA-t0-mRz" secondAttribute="baseline" id="LMl-a7-zig"/>
+                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="leading" secondItem="f41-PJ-bIu" secondAttribute="leadingMargin" id="LSd-lN-eAB"/>
+                            <constraint firstItem="pkq-4Y-ihX" firstAttribute="leading" secondItem="MqC-PH-MuF" secondAttribute="leading" id="NA2-o2-Pa7"/>
+                            <constraint firstItem="XAM-M0-2OF" firstAttribute="leading" secondItem="8se-uF-9i8" secondAttribute="leading" id="Nzm-ss-Nys"/>
+                            <constraint firstItem="8se-uF-9i8" firstAttribute="leading" secondItem="Lhg-wV-cW0" secondAttribute="leading" id="P1I-8L-baz"/>
+                            <constraint firstItem="kM5-Af-RfE" firstAttribute="top" secondItem="8se-uF-9i8" secondAttribute="bottom" constant="95" id="QxL-1u-XoL"/>
+                            <constraint firstItem="pkq-4Y-ihX" firstAttribute="trailing" secondItem="MqC-PH-MuF" secondAttribute="trailing" id="SRT-zl-b64"/>
+                            <constraint firstItem="8se-uF-9i8" firstAttribute="centerY" secondItem="Fhs-1V-vMb" secondAttribute="centerY" id="Spy-MM-80R"/>
+                            <constraint firstItem="a1N-br-mZg" firstAttribute="trailing" secondItem="2pA-t0-mRz" secondAttribute="trailing" constant="75" id="Vz7-1C-JOF"/>
+                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="top" secondItem="a1N-br-mZg" secondAttribute="top" constant="83" id="dgh-mI-I06"/>
+                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="leading" secondItem="pkq-4Y-ihX" secondAttribute="leading" id="jwK-TT-JXG"/>
+                            <constraint firstItem="MqC-PH-MuF" firstAttribute="trailing" secondItem="kM5-Af-RfE" secondAttribute="trailing" id="obA-bP-Dqq"/>
+                            <constraint firstItem="2pA-t0-mRz" firstAttribute="leading" secondItem="XAM-M0-2OF" secondAttribute="leading" id="s8h-Jw-nES"/>
+                            <constraint firstItem="pkq-4Y-ihX" firstAttribute="baseline" secondItem="XAM-M0-2OF" secondAttribute="baseline" id="sh8-96-xee"/>
+                            <constraint firstItem="orj-7Z-lqg" firstAttribute="baseline" secondItem="fRn-ad-ZZy" secondAttribute="baseline" constant="2.3333333333333712" id="ubg-I8-OzR"/>
+                            <constraint firstItem="MqC-PH-MuF" firstAttribute="leading" secondItem="kM5-Af-RfE" secondAttribute="leading" id="vVH-Wi-zWc"/>
+                            <constraint firstItem="Lhg-wV-cW0" firstAttribute="centerX" secondItem="fRn-ad-ZZy" secondAttribute="centerX" id="w2B-A5-4b6"/>
+                            <constraint firstItem="Lhg-wV-cW0" firstAttribute="top" secondItem="MqC-PH-MuF" secondAttribute="bottom" constant="96" id="xMK-Zv-4b9"/>
+                            <constraint firstItem="2pA-t0-mRz" firstAttribute="leading" secondItem="a1N-br-mZg" secondAttribute="leading" constant="128" id="yRo-Lr-aJh"/>
+                            <constraint firstItem="kM5-Af-RfE" firstAttribute="baseline" secondItem="Lhg-wV-cW0" secondAttribute="baseline" id="zcM-vL-SSc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0ii-es-cld"/>
+                    <connections>
+                        <outlet property="airButton" destination="pkq-4Y-ihX" id="R3b-ok-vyO"/>
+                        <outlet property="earthButton" destination="XAM-M0-2OF" id="jH1-xD-dkD"/>
+                        <outlet property="fireButton" destination="Lhg-wV-cW0" id="Bsu-h2-sVw"/>
+                        <outlet property="fruitButton" destination="MqC-PH-MuF" id="ktE-0F-va7"/>
+                        <outlet property="iceButton" destination="kM5-Af-RfE" id="o9D-iA-hOZ"/>
+                        <outlet property="protodermisButton" destination="fRn-ad-ZZy" id="dZr-z6-SiQ"/>
+                        <outlet property="rockButton" destination="orj-7Z-lqg" id="ikA-kh-tBw"/>
+                        <outlet property="stoneButton" destination="MwY-HJ-Tdm" id="HNL-QF-u3m"/>
+                        <outlet property="superButton" destination="8se-uF-9i8" id="z5f-rc-Gx4"/>
+                        <outlet property="titleEnglish" destination="Fhs-1V-vMb" id="TdC-eW-Wv5"/>
+                        <outlet property="waterButton" destination="2pA-t0-mRz" id="nkd-0z-jxv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eNF-lv-rYj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2444.9275362318845" y="2.4456521739130435"/>
         </scene>
         <!--Options View Controller-->
         <scene sceneID="3pM-j1-zzo">
@@ -893,7 +1085,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Owv-oL-hzM">
-                                <rect key="frame" x="253" y="283" width="77" height="32"/>
+                                <rect key="frame" x="251.66666666666663" y="283" width="77" height="32"/>
                                 <segments>
                                     <segment title="Off"/>
                                     <segment title="On"/>
@@ -912,7 +1104,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="o8g-kl-jqP">
-                                <rect key="frame" x="253" y="335" width="77" height="31"/>
+                                <rect key="frame" x="251.66666666666663" y="335" width="77" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="341-vZ-z6y"/>
                                 </constraints>
@@ -936,23 +1128,14 @@
                                     <action selector="resetButtonPressed:" destination="Wef-nB-vT9" eventType="touchUpInside" id="Ism-3T-nyl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Eyeholes in Battles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzF-UX-KxX">
-                                <rect key="frame" x="27" y="398" width="197" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="YFC-wd-xIR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-XB-1tg">
-                                <rect key="frame" x="253" y="387" width="77" height="35"/>
+                                <rect key="frame" x="251.66666666666663" y="387" width="77" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="wgS-8f-YzF"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="On"/>
                                     <segment title="Off"/>
+                                    <segment title="On"/>
                                 </segments>
                                 <connections>
                                     <action selector="MaskSwitchSwitched:" destination="Wef-nB-vT9" eventType="valueChanged" id="kao-z0-Iav"/>
@@ -961,7 +1144,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Ma-hj-oDM">
-                                <rect key="frame" x="253" y="448" width="77" height="28.333333333333314"/>
+                                <rect key="frame" x="251.66666666666663" y="448" width="77" height="28.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27.333333333333314" id="FoQ-CK-Xq0"/>
                                 </constraints>
@@ -981,6 +1164,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide Eyeholes in Battles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzF-UX-KxX">
+                                <rect key="frame" x="20" y="397" width="195.66666666666666" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="YFC-wd-xIR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fuk-6y-ccd"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -991,7 +1183,7 @@
                             <constraint firstItem="C2w-XB-1tg" firstAttribute="leading" secondItem="6Ma-hj-oDM" secondAttribute="leading" id="6Kg-hn-eqo"/>
                             <constraint firstItem="o8g-kl-jqP" firstAttribute="leading" secondItem="C2w-XB-1tg" secondAttribute="leading" id="7aT-zW-J9L"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="trailing" secondItem="jtd-Dp-E2K" secondAttribute="trailing" id="8Tq-Gq-ZhT"/>
-                            <constraint firstItem="RzF-UX-KxX" firstAttribute="leading" secondItem="VUS-9e-Xhe" secondAttribute="leading" id="8jW-Ua-Mv2"/>
+                            <constraint firstItem="RzF-UX-KxX" firstAttribute="leading" secondItem="VUS-9e-Xhe" secondAttribute="leading" constant="-7" id="8jW-Ua-Mv2"/>
                             <constraint firstItem="VUS-9e-Xhe" firstAttribute="centerY" secondItem="6Ma-hj-oDM" secondAttribute="centerY" id="9jP-6t-Jko"/>
                             <constraint firstItem="Owv-oL-hzM" firstAttribute="top" secondItem="udZ-Du-V5l" secondAttribute="bottom" constant="8" id="9zk-xO-GIZ"/>
                             <constraint firstItem="coA-tL-8Hr" firstAttribute="top" secondItem="udZ-Du-V5l" secondAttribute="bottom" constant="13" id="B6W-ES-c9I"/>
@@ -999,20 +1191,20 @@
                             <constraint firstItem="6Ma-hj-oDM" firstAttribute="leading" secondItem="VUS-9e-Xhe" secondAttribute="trailing" constant="56.666666666666657" id="EB7-c2-dt0"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="leading" secondItem="coA-tL-8Hr" secondAttribute="leading" id="H1u-Kn-Kwf"/>
                             <constraint firstItem="C2w-XB-1tg" firstAttribute="top" secondItem="o8g-kl-jqP" secondAttribute="bottom" constant="22" id="H2Y-tG-LDL"/>
-                            <constraint firstItem="RzF-UX-KxX" firstAttribute="top" secondItem="hEk-5n-QDu" secondAttribute="bottom" constant="39" id="LmP-0i-DER"/>
+                            <constraint firstItem="RzF-UX-KxX" firstAttribute="top" secondItem="hEk-5n-QDu" secondAttribute="bottom" constant="38" id="LmP-0i-DER"/>
                             <constraint firstItem="hEk-5n-QDu" firstAttribute="top" secondItem="coA-tL-8Hr" secondAttribute="bottom" constant="34.333333333333314" id="P3n-ao-Vd0"/>
                             <constraint firstItem="hEk-5n-QDu" firstAttribute="centerY" secondItem="o8g-kl-jqP" secondAttribute="centerY" id="Stf-6P-2B2"/>
                             <constraint firstItem="udZ-Du-V5l" firstAttribute="top" secondItem="zC3-qI-Vze" secondAttribute="bottom" constant="8" id="X3A-tJ-dE8"/>
                             <constraint firstItem="coA-tL-8Hr" firstAttribute="leading" secondItem="hEk-5n-QDu" secondAttribute="leading" id="aYo-Rp-1cG"/>
-                            <constraint firstItem="hEk-5n-QDu" firstAttribute="leading" secondItem="RzF-UX-KxX" secondAttribute="leading" id="dhX-xT-tri"/>
-                            <constraint firstItem="C2w-XB-1tg" firstAttribute="leading" secondItem="RzF-UX-KxX" secondAttribute="trailing" constant="29" id="epE-Ag-4ks"/>
+                            <constraint firstItem="hEk-5n-QDu" firstAttribute="leading" secondItem="RzF-UX-KxX" secondAttribute="leading" constant="7" id="dhX-xT-tri"/>
+                            <constraint firstItem="C2w-XB-1tg" firstAttribute="leading" secondItem="RzF-UX-KxX" secondAttribute="trailing" constant="35.999999999999972" id="epE-Ag-4ks"/>
                             <constraint firstItem="VUS-9e-Xhe" firstAttribute="leading" secondItem="jtd-Dp-E2K" secondAttribute="leading" id="fVb-jE-1Aa"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="top" secondItem="fuk-6y-ccd" secondAttribute="top" constant="35" id="kER-DA-YWX"/>
                             <constraint firstItem="jtd-Dp-E2K" firstAttribute="centerX" secondItem="hMh-Cq-isk" secondAttribute="centerX" id="kwV-qC-zA0"/>
                             <constraint firstItem="zC3-qI-Vze" firstAttribute="top" secondItem="lY3-qb-gbN" secondAttribute="bottom" constant="8" id="lZF-bV-X63"/>
                             <constraint firstItem="zC3-qI-Vze" firstAttribute="trailing" secondItem="udZ-Du-V5l" secondAttribute="trailing" id="mum-ae-ajh"/>
                             <constraint firstItem="lY3-qb-gbN" firstAttribute="trailing" secondItem="zC3-qI-Vze" secondAttribute="trailing" id="noA-al-Qfb"/>
-                            <constraint firstItem="VUS-9e-Xhe" firstAttribute="top" secondItem="RzF-UX-KxX" secondAttribute="bottom" constant="36" id="oCt-4b-JBO"/>
+                            <constraint firstItem="VUS-9e-Xhe" firstAttribute="top" secondItem="RzF-UX-KxX" secondAttribute="bottom" constant="37" id="oCt-4b-JBO"/>
                             <constraint firstItem="hMh-Cq-isk" firstAttribute="trailing" secondItem="EnF-3t-4vP" secondAttribute="trailingMargin" id="qTv-K5-8MU"/>
                             <constraint firstItem="6Ma-hj-oDM" firstAttribute="top" secondItem="C2w-XB-1tg" secondAttribute="bottom" constant="27" id="qlB-9Q-caV"/>
                             <constraint firstItem="fuk-6y-ccd" firstAttribute="bottom" secondItem="hMh-Cq-isk" secondAttribute="bottom" constant="35" id="sAy-1Q-prF"/>
