@@ -881,7 +881,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         return itemList[randomItem]; //return a random greater rahi
     }
     else if (randomItem < 18){ //power disks
-        itemList = [NSArray arrayWithObjects: @"Super Disk", @"Charged Fire Disk", @"Charged Water Disk", @"Charged Earth Disk", @"Charged Rock Disk", @"Charged Air Disk", @"Charged Ice Disk",nil]; //load up a list of rahi the player can encounter
+        itemList = [NSArray arrayWithObjects: @"Super Disk", @"Charged Fire Disk", @"Charged Water Disk", @"Charged Earth Disk", @"Charged Stone Disk", @"Charged Air Disk", @"Charged Ice Disk",nil]; //load up a list of rahi the player can encounter
         randomItem = arc4random_uniform((int)itemList.count);
         return itemList[randomItem]; //return a random greater rahi
     }
@@ -1065,6 +1065,8 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         GameViewController *controller = (GameViewController *)segue.destinationViewController;
         controller.rahiName2 = rahiName;
         //controller.rahiFightFlag3 = 1;
+        //NSLog(@"RahiName0: %@", rahiName);
+        //NSLog(@"RahiName1: %@", controller.rahiName2);
         self.screenFade = 1.0;
         
         

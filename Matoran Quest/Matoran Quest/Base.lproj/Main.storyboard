@@ -172,7 +172,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="134" id="7gS-on-5hz"/>
                                 </constraints>
-                                <string key="text">This game was made by Eternity Ware Studios, AKA, Job Dyer in 2023. The origonal idea came from Ezra Haren (though who knows how many others also had it. Special thanks to all my testers who helped make this game possible.</string>
+                                <string key="text">This game was made by Eternity Ware Studios, AKA, Job Dyer in 2023. The origonal idea came from Ezra Haren (though who knows how many others also had it. Special thanks to all my testers who helped make this game possible. Special thanks to Zachary Lorenzini for his work on some of the 3d models.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -851,168 +851,414 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inW-HC-IaB">
+                                <rect key="frame" x="20" y="20" width="336" height="686"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fC-fm-ifS">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAM-M0-2OF">
+                                                <rect key="frame" x="1" y="41" width="128" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="XAM-M0-2OF" secondAttribute="height" multiplier="128:23" constant="-139.13043478260869" id="wir-JG-gTL"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Earth Disk" subtitle="">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="11"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="earthButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="DNk-TF-MDA"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="XAM-M0-2OF" firstAttribute="leading" secondItem="1fC-fm-ifS" secondAttribute="leading" constant="1" id="9rJ-Pr-xeM"/>
+                                            <constraint firstAttribute="trailing" secondItem="XAM-M0-2OF" secondAttribute="trailing" constant="1" id="Aw6-Ol-TTw"/>
+                                            <constraint firstItem="XAM-M0-2OF" firstAttribute="top" secondItem="1fC-fm-ifS" secondAttribute="top" constant="41" id="Nt6-7q-cxe"/>
+                                            <constraint firstAttribute="bottom" secondItem="XAM-M0-2OF" secondAttribute="bottom" constant="41" id="Xnr-4q-4bF"/>
+                                            <constraint firstAttribute="width" secondItem="1fC-fm-ifS" secondAttribute="height" multiplier="1:1" id="qRK-Fo-AYG"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hvw-P2-LBE">
+                                        <rect key="frame" x="206" y="0.0" width="130" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhg-wV-cW0">
+                                                <rect key="frame" x="-2" y="40" width="134" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Lhg-wV-cW0" secondAttribute="height" multiplier="67:23" constant="-11.65217391304347" id="Hy3-dZ-3Eg"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Fire Disk" subtitle="">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="11"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="fireButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="Nc4-hO-jKD"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Lhg-wV-cW0" secondAttribute="trailing" constant="-2" id="6DF-pi-Wqc"/>
+                                            <constraint firstItem="Lhg-wV-cW0" firstAttribute="leading" secondItem="Hvw-P2-LBE" secondAttribute="leading" constant="-2" id="Ban-4h-uX8"/>
+                                            <constraint firstAttribute="width" secondItem="Hvw-P2-LBE" secondAttribute="height" multiplier="1:1" id="Kyf-eh-CFR"/>
+                                            <constraint firstItem="Lhg-wV-cW0" firstAttribute="top" secondItem="Hvw-P2-LBE" secondAttribute="top" constant="40" id="Pja-a4-jAY"/>
+                                            <constraint firstAttribute="bottom" secondItem="Lhg-wV-cW0" secondAttribute="bottom" constant="40" id="uFU-ya-ytR"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mud-jv-Lq6">
+                                        <rect key="frame" x="0.0" y="277" width="130" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkq-4Y-ihX">
+                                                <rect key="frame" x="1" y="41" width="128" height="49"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="pkq-4Y-ihX" secondAttribute="height" multiplier="128:23" constant="-144.69565217391306" id="NFT-Nw-YJ2"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Air Disk" subtitle="">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="11"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="airButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="VLl-va-ZaG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="pkq-4Y-ihX" firstAttribute="leading" secondItem="Mud-jv-Lq6" secondAttribute="leading" constant="1" id="ITL-F5-Rcb"/>
+                                            <constraint firstAttribute="width" secondItem="Mud-jv-Lq6" secondAttribute="height" multiplier="1:1" id="ZOz-mZ-hV1"/>
+                                            <constraint firstAttribute="bottom" secondItem="pkq-4Y-ihX" secondAttribute="bottom" constant="40" id="hy1-gN-cnz"/>
+                                            <constraint firstAttribute="trailing" secondItem="pkq-4Y-ihX" secondAttribute="trailing" constant="1" id="i2R-cQ-Mh2"/>
+                                            <constraint firstItem="pkq-4Y-ihX" firstAttribute="top" secondItem="Mud-jv-Lq6" secondAttribute="top" constant="41" id="iff-n5-SBr"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Owx-MP-aWY">
+                                        <rect key="frame" x="206" y="278" width="130" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MwY-HJ-Tdm">
+                                                <rect key="frame" x="1" y="39" width="128" height="53"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="MwY-HJ-Tdm" secondAttribute="height" multiplier="128:23" constant="-166.95652173913044" id="Fq4-TV-HeZ"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Stone Disk" subtitle="">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="11"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="stoneButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="lES-1G-aOJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="MwY-HJ-Tdm" secondAttribute="trailing" constant="1" id="0IO-Ne-KaD"/>
+                                            <constraint firstAttribute="width" secondItem="Owx-MP-aWY" secondAttribute="height" multiplier="1:1" id="Qnd-td-bHd"/>
+                                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="top" secondItem="Owx-MP-aWY" secondAttribute="top" constant="39" id="RAh-YK-7wV"/>
+                                            <constraint firstAttribute="bottom" secondItem="MwY-HJ-Tdm" secondAttribute="bottom" constant="38" id="uu4-CQ-MU8"/>
+                                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="leading" secondItem="Owx-MP-aWY" secondAttribute="leading" constant="1" id="xXx-m8-Na1"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQR-Xs-Une">
+                                        <rect key="frame" x="0.0" y="416" width="130" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8se-uF-9i8">
+                                                <rect key="frame" x="1" y="44" width="128" height="42"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="8se-uF-9i8" secondAttribute="height" multiplier="128:23" constant="-105.7391304347826" id="Llv-Dt-5ny"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Super Disk" subtitle="">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="11"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="superButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="934-Gh-xxf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="8se-uF-9i8" secondAttribute="bottom" constant="44" id="4cD-4o-PoI"/>
+                                            <constraint firstItem="8se-uF-9i8" firstAttribute="top" secondItem="bQR-Xs-Une" secondAttribute="top" constant="44" id="5GC-Qh-yyU"/>
+                                            <constraint firstAttribute="trailing" secondItem="8se-uF-9i8" secondAttribute="trailing" constant="1" id="bxH-W2-1YB"/>
+                                            <constraint firstAttribute="width" secondItem="bQR-Xs-Une" secondAttribute="height" multiplier="1:1" id="hd5-hg-2LJ"/>
+                                            <constraint firstItem="8se-uF-9i8" firstAttribute="leading" secondItem="bQR-Xs-Une" secondAttribute="leading" constant="1" id="tu0-Iw-Y5C"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ktf-aw-IvK">
+                                        <rect key="frame" x="206" y="416" width="130" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orj-7Z-lqg">
+                                                <rect key="frame" x="1" y="38" width="128" height="55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="orj-7Z-lqg" secondAttribute="height" multiplier="128:23" constant="-178.08695652173913" id="Wcl-Nw-4se"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Interesting Rock" subtitle="">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="8"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="rockButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="w2K-Ke-AtU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="orj-7Z-lqg" firstAttribute="leading" secondItem="Ktf-aw-IvK" secondAttribute="leading" constant="1" id="1TN-0p-Qav"/>
+                                            <constraint firstAttribute="bottom" secondItem="orj-7Z-lqg" secondAttribute="bottom" constant="37" id="3pJ-LJ-lgv"/>
+                                            <constraint firstAttribute="trailing" secondItem="orj-7Z-lqg" secondAttribute="trailing" constant="1" id="D22-8k-kRy"/>
+                                            <constraint firstAttribute="width" secondItem="Ktf-aw-IvK" secondAttribute="height" multiplier="1:1" id="qak-Nb-c0c"/>
+                                            <constraint firstItem="orj-7Z-lqg" firstAttribute="top" secondItem="Ktf-aw-IvK" secondAttribute="top" constant="38" id="vxZ-qj-ZJ9"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9B-vH-vRU">
+                                        <rect key="frame" x="0.0" y="556" width="130" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRn-ad-ZZy">
+                                                <rect key="frame" x="-25" y="40" width="180" height="51"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="fRn-ad-ZZy" secondAttribute="height" multiplier="128:21" constant="-130.85714285714283" id="Lmo-RJ-VeT"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Energized Protodermis" subtitle="">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="8"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="protodermisButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="N1u-Wg-JUU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="fRn-ad-ZZy" secondAttribute="trailing" constant="-25" id="4ht-NC-bNv"/>
+                                            <constraint firstItem="fRn-ad-ZZy" firstAttribute="top" secondItem="S9B-vH-vRU" secondAttribute="top" constant="40" id="8Ts-E5-E1g"/>
+                                            <constraint firstAttribute="width" secondItem="S9B-vH-vRU" secondAttribute="height" multiplier="1:1" id="VTh-qV-oOy"/>
+                                            <constraint firstItem="fRn-ad-ZZy" firstAttribute="leading" secondItem="S9B-vH-vRU" secondAttribute="leading" constant="-25" id="jT6-Lq-kQS"/>
+                                            <constraint firstAttribute="bottom" secondItem="fRn-ad-ZZy" secondAttribute="bottom" constant="39" id="xyu-xb-j4Z"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oB7-2K-hzh">
+                                        <rect key="frame" x="206" y="556" width="130" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqC-PH-MuF">
+                                                <rect key="frame" x="-16" y="39" width="162" height="53"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="MqC-PH-MuF" secondAttribute="height" multiplier="64:11" constant="-146.36363636363637" id="91f-K4-7Lj"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Vuata Maka Fruit" subtitle="">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="8"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="fruitButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="FSe-Br-BkY"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="MqC-PH-MuF" firstAttribute="leading" secondItem="oB7-2K-hzh" secondAttribute="leading" constant="-16" id="EEY-Kn-uVa"/>
+                                            <constraint firstAttribute="width" secondItem="oB7-2K-hzh" secondAttribute="height" multiplier="1:1" id="g5Y-xW-Tol"/>
+                                            <constraint firstItem="MqC-PH-MuF" firstAttribute="top" secondItem="oB7-2K-hzh" secondAttribute="top" constant="39" id="kJL-4D-UZz"/>
+                                            <constraint firstAttribute="bottom" secondItem="MqC-PH-MuF" secondAttribute="bottom" constant="38" id="qaw-jG-ht1"/>
+                                            <constraint firstAttribute="trailing" secondItem="MqC-PH-MuF" secondAttribute="trailing" constant="-16" id="xeZ-pd-GqS"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siP-Xl-pWg">
+                                        <rect key="frame" x="206" y="138" width="130" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-Af-RfE">
+                                                <rect key="frame" x="1" y="42" width="128" height="47"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="kM5-Af-RfE" secondAttribute="height" multiplier="128:23" constant="-133.56521739130432" id="0Vl-yt-wZG"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Ice Disk" subtitle="">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="11"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="iceButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="nbd-Pm-NAn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="kM5-Af-RfE" secondAttribute="trailing" constant="1" id="3lR-JJ-svp"/>
+                                            <constraint firstItem="kM5-Af-RfE" firstAttribute="leading" secondItem="siP-Xl-pWg" secondAttribute="leading" constant="1" id="9Sh-zv-Eku"/>
+                                            <constraint firstAttribute="width" secondItem="siP-Xl-pWg" secondAttribute="height" multiplier="1:1" id="W32-1W-jXe"/>
+                                            <constraint firstAttribute="bottom" secondItem="kM5-Af-RfE" secondAttribute="bottom" constant="41" id="s8W-KN-pbQ"/>
+                                            <constraint firstItem="kM5-Af-RfE" firstAttribute="top" secondItem="siP-Xl-pWg" secondAttribute="top" constant="42" id="vcA-Gx-yH2"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCX-EU-DBM">
+                                        <rect key="frame" x="0.0" y="138" width="130" height="130"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pA-t0-mRz">
+                                                <rect key="frame" x="1" y="43" width="128" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="2pA-t0-mRz" secondAttribute="height" multiplier="128:23" constant="-122.43478260869566" id="vYY-wV-NWX"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Water Disk" subtitle="">
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="11"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="waterButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="9EG-HZ-8HD"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="2pA-t0-mRz" firstAttribute="leading" secondItem="aCX-EU-DBM" secondAttribute="leading" constant="1" id="4FC-YC-4DC"/>
+                                            <constraint firstAttribute="trailing" secondItem="2pA-t0-mRz" secondAttribute="trailing" constant="1" id="Rbz-lO-g86"/>
+                                            <constraint firstItem="2pA-t0-mRz" firstAttribute="top" secondItem="aCX-EU-DBM" secondAttribute="top" constant="43" id="hhO-EN-7Es"/>
+                                            <constraint firstAttribute="bottom" secondItem="2pA-t0-mRz" secondAttribute="bottom" constant="42" id="lX0-3b-Wr6"/>
+                                            <constraint firstAttribute="width" secondItem="aCX-EU-DBM" secondAttribute="height" multiplier="1:1" id="tUp-E7-Pj3"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="aCX-EU-DBM" firstAttribute="width" secondItem="1fC-fm-ifS" secondAttribute="width" id="03S-p2-OIo"/>
+                                    <constraint firstItem="S9B-vH-vRU" firstAttribute="width" secondItem="1fC-fm-ifS" secondAttribute="width" id="0QG-1i-7e0"/>
+                                    <constraint firstItem="Owx-MP-aWY" firstAttribute="height" secondItem="1fC-fm-ifS" secondAttribute="height" id="4xs-NP-xYF"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hvw-P2-LBE" secondAttribute="trailing" id="5Sx-qL-1qD"/>
+                                    <constraint firstItem="aCX-EU-DBM" firstAttribute="height" secondItem="1fC-fm-ifS" secondAttribute="height" id="7pU-cN-Wfw"/>
+                                    <constraint firstItem="siP-Xl-pWg" firstAttribute="top" secondItem="Hvw-P2-LBE" secondAttribute="bottom" constant="8" symbolic="YES" id="8C6-d4-yGR"/>
+                                    <constraint firstItem="Mud-jv-Lq6" firstAttribute="leading" secondItem="inW-HC-IaB" secondAttribute="leading" id="9kh-km-x6r"/>
+                                    <constraint firstItem="S9B-vH-vRU" firstAttribute="height" secondItem="1fC-fm-ifS" secondAttribute="height" id="Ayu-qL-SV2"/>
+                                    <constraint firstItem="Ktf-aw-IvK" firstAttribute="height" secondItem="1fC-fm-ifS" secondAttribute="height" id="Df6-xa-05i"/>
+                                    <constraint firstItem="Ktf-aw-IvK" firstAttribute="top" secondItem="Owx-MP-aWY" secondAttribute="bottom" constant="8" symbolic="YES" id="IlB-uz-6FM"/>
+                                    <constraint firstItem="Mud-jv-Lq6" firstAttribute="height" secondItem="1fC-fm-ifS" secondAttribute="height" id="JV1-dm-rbB"/>
+                                    <constraint firstItem="siP-Xl-pWg" firstAttribute="leading" secondItem="aCX-EU-DBM" secondAttribute="trailing" constant="76" id="JWf-sf-69Z"/>
+                                    <constraint firstItem="Owx-MP-aWY" firstAttribute="top" secondItem="siP-Xl-pWg" secondAttribute="bottom" constant="10" id="KNN-OS-bjz"/>
+                                    <constraint firstItem="aCX-EU-DBM" firstAttribute="top" secondItem="1fC-fm-ifS" secondAttribute="bottom" constant="8" symbolic="YES" id="MFZ-cD-hLS"/>
+                                    <constraint firstItem="Mud-jv-Lq6" firstAttribute="width" secondItem="1fC-fm-ifS" secondAttribute="width" id="MKU-X7-x6g"/>
+                                    <constraint firstItem="S9B-vH-vRU" firstAttribute="top" secondItem="bQR-Xs-Une" secondAttribute="bottom" constant="10" id="Neb-1D-OjZ"/>
+                                    <constraint firstItem="bQR-Xs-Une" firstAttribute="height" secondItem="1fC-fm-ifS" secondAttribute="height" id="OHw-23-iuC"/>
+                                    <constraint firstItem="S9B-vH-vRU" firstAttribute="leading" secondItem="inW-HC-IaB" secondAttribute="leading" id="Pjj-n4-LmY"/>
+                                    <constraint firstItem="Hvw-P2-LBE" firstAttribute="leading" secondItem="1fC-fm-ifS" secondAttribute="trailing" constant="76" id="PkP-eb-Dec"/>
+                                    <constraint firstItem="siP-Xl-pWg" firstAttribute="height" secondItem="1fC-fm-ifS" secondAttribute="height" id="Thw-zk-HHV"/>
+                                    <constraint firstItem="aCX-EU-DBM" firstAttribute="leading" secondItem="inW-HC-IaB" secondAttribute="leading" id="UJo-WJ-2tC"/>
+                                    <constraint firstItem="Ktf-aw-IvK" firstAttribute="leading" secondItem="bQR-Xs-Une" secondAttribute="trailing" constant="76" id="ZRj-Cw-1Jg"/>
+                                    <constraint firstAttribute="trailing" secondItem="Owx-MP-aWY" secondAttribute="trailing" id="atK-rg-jaT"/>
+                                    <constraint firstAttribute="bottom" secondItem="oB7-2K-hzh" secondAttribute="bottom" id="byH-Gl-Lc6"/>
+                                    <constraint firstItem="1fC-fm-ifS" firstAttribute="top" secondItem="inW-HC-IaB" secondAttribute="top" id="de3-yp-phg"/>
+                                    <constraint firstItem="1fC-fm-ifS" firstAttribute="leading" secondItem="inW-HC-IaB" secondAttribute="leading" id="dj4-np-Lr0"/>
+                                    <constraint firstAttribute="trailing" secondItem="oB7-2K-hzh" secondAttribute="trailing" id="ebm-rE-Ikd"/>
+                                    <constraint firstItem="Ktf-aw-IvK" firstAttribute="width" secondItem="1fC-fm-ifS" secondAttribute="width" id="fee-gf-B4F"/>
+                                    <constraint firstAttribute="trailing" secondItem="siP-Xl-pWg" secondAttribute="trailing" id="h8f-eK-c3i"/>
+                                    <constraint firstItem="oB7-2K-hzh" firstAttribute="top" secondItem="Ktf-aw-IvK" secondAttribute="bottom" constant="10" id="hHm-sK-1vD"/>
+                                    <constraint firstItem="Owx-MP-aWY" firstAttribute="width" secondItem="1fC-fm-ifS" secondAttribute="width" id="kv6-VA-8j6"/>
+                                    <constraint firstItem="siP-Xl-pWg" firstAttribute="width" secondItem="1fC-fm-ifS" secondAttribute="width" id="lBB-2h-7dd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ktf-aw-IvK" secondAttribute="trailing" id="m7k-dr-OgL"/>
+                                    <constraint firstItem="oB7-2K-hzh" firstAttribute="width" secondItem="1fC-fm-ifS" secondAttribute="width" id="nGQ-IT-Ug9"/>
+                                    <constraint firstAttribute="bottom" secondItem="S9B-vH-vRU" secondAttribute="bottom" id="nf8-lK-TB3"/>
+                                    <constraint firstItem="Hvw-P2-LBE" firstAttribute="height" secondItem="1fC-fm-ifS" secondAttribute="height" id="op7-wW-CHf"/>
+                                    <constraint firstItem="Hvw-P2-LBE" firstAttribute="top" secondItem="inW-HC-IaB" secondAttribute="top" id="p9l-3H-iaM"/>
+                                    <constraint firstItem="oB7-2K-hzh" firstAttribute="height" secondItem="1fC-fm-ifS" secondAttribute="height" id="qHf-NO-bWB"/>
+                                    <constraint firstItem="oB7-2K-hzh" firstAttribute="leading" secondItem="S9B-vH-vRU" secondAttribute="trailing" constant="76" id="qWl-Su-Jf4"/>
+                                    <constraint firstItem="Hvw-P2-LBE" firstAttribute="width" secondItem="1fC-fm-ifS" secondAttribute="width" id="tT8-So-GfK"/>
+                                    <constraint firstItem="bQR-Xs-Une" firstAttribute="top" secondItem="Mud-jv-Lq6" secondAttribute="bottom" constant="9" id="uxa-hT-I77"/>
+                                    <constraint firstItem="Mud-jv-Lq6" firstAttribute="top" secondItem="aCX-EU-DBM" secondAttribute="bottom" constant="9" id="wVk-j4-Re7"/>
+                                    <constraint firstItem="bQR-Xs-Une" firstAttribute="width" secondItem="1fC-fm-ifS" secondAttribute="width" id="yTW-Tj-L8O"/>
+                                    <constraint firstItem="bQR-Xs-Une" firstAttribute="leading" secondItem="inW-HC-IaB" secondAttribute="leading" id="zBE-I1-Va8"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhs-1V-vMb">
-                                <rect key="frame" x="294" y="349" width="100" height="18"/>
+                                <rect key="frame" x="333" y="354" width="100" height="18"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8se-uF-9i8">
-                                <rect key="frame" x="128" y="346.66666666666669" width="211" height="23"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Super Disk">
-                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
-                                    <attributedString key="attributedSubtitle"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="superButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="934-Gh-xxf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhg-wV-cW0">
-                                <rect key="frame" x="128" y="464.66666666666669" width="211" height="23"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Fire Disk">
-                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
-                                    <attributedString key="attributedSubtitle"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="fireButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="Nc4-hO-jKD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRn-ad-ZZy">
-                                <rect key="frame" x="91" y="608" width="284" height="26"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Energized Protodermis">
-                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="8"/>
-                                    <attributedString key="attributedSubtitle"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="protodermisButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="N1u-Wg-JUU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orj-7Z-lqg">
-                                <rect key="frame" x="20" y="611" width="211" height="23"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Interesting Rock">
-                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
-                                    <attributedString key="attributedSubtitle"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="rockButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="w2K-Ke-AtU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-Af-RfE">
-                                <rect key="frame" x="20" y="464.66666666666669" width="211" height="23"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Ice Disk">
-                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
-                                    <attributedString key="attributedSubtitle"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="iceButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="nbd-Pm-NAn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqC-PH-MuF">
-                                <rect key="frame" x="20" y="345.66666666666669" width="211" height="23"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Vuata Maka Fruit">
-                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
-                                    <attributedString key="attributedSubtitle"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="fruitButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="FSe-Br-BkY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAM-M0-2OF">
-                                <rect key="frame" x="128" y="196" width="211" height="23"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Earth Disk">
-                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
-                                    <attributedString key="attributedSubtitle"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="earthButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="DNk-TF-MDA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pA-t0-mRz">
-                                <rect key="frame" x="128" y="83" width="211" height="23"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Water Disk">
-                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
-                                    <attributedString key="attributedSubtitle"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="waterButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="9EG-HZ-8HD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MwY-HJ-Tdm">
-                                <rect key="frame" x="20" y="83" width="211" height="23"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Stone Disk">
-                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
-                                    <attributedString key="attributedSubtitle"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="stoneButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="lES-1G-aOJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkq-4Y-ihX">
-                                <rect key="frame" x="20" y="196" width="211" height="23"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Air Disk">
-                                    <fontDescription key="titleFontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="9"/>
-                                    <attributedString key="attributedSubtitle"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="airButtonP:" destination="rd6-nv-r5D" eventType="touchUpInside" id="VLl-va-ZaG"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a1N-br-mZg"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Fhs-1V-vMb" firstAttribute="trailing" secondItem="f41-PJ-bIu" secondAttribute="trailingMargin" id="32G-bI-PmX"/>
-                            <constraint firstItem="pkq-4Y-ihX" firstAttribute="top" secondItem="MwY-HJ-Tdm" secondAttribute="bottom" constant="90" id="4hq-FH-I3h"/>
-                            <constraint firstItem="8se-uF-9i8" firstAttribute="centerY" secondItem="f41-PJ-bIu" secondAttribute="centerY" id="9Gk-cw-1Zz"/>
-                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="trailing" secondItem="pkq-4Y-ihX" secondAttribute="trailing" id="EdJ-s5-O0m"/>
-                            <constraint firstItem="kM5-Af-RfE" firstAttribute="leading" secondItem="orj-7Z-lqg" secondAttribute="leading" id="FVn-nL-NEq"/>
-                            <constraint firstItem="fRn-ad-ZZy" firstAttribute="leading" secondItem="a1N-br-mZg" secondAttribute="leading" constant="91" id="G3o-a4-Uep"/>
-                            <constraint firstItem="a1N-br-mZg" firstAttribute="bottom" secondItem="orj-7Z-lqg" secondAttribute="bottom" constant="82" id="GRg-Vk-WNf"/>
-                            <constraint firstItem="XAM-M0-2OF" firstAttribute="trailing" secondItem="8se-uF-9i8" secondAttribute="trailing" id="HcK-ft-uJY"/>
-                            <constraint firstItem="a1N-br-mZg" firstAttribute="trailing" secondItem="MwY-HJ-Tdm" secondAttribute="trailing" constant="183" id="IRi-hH-OJi"/>
-                            <constraint firstItem="kM5-Af-RfE" firstAttribute="trailing" secondItem="orj-7Z-lqg" secondAttribute="trailing" id="K5E-ZR-IMN"/>
-                            <constraint firstItem="8se-uF-9i8" firstAttribute="trailing" secondItem="Lhg-wV-cW0" secondAttribute="trailing" id="K6i-Tq-jEo"/>
-                            <constraint firstItem="2pA-t0-mRz" firstAttribute="trailing" secondItem="XAM-M0-2OF" secondAttribute="trailing" id="L74-W4-pQY"/>
-                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="baseline" secondItem="2pA-t0-mRz" secondAttribute="baseline" id="LMl-a7-zig"/>
-                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="leading" secondItem="f41-PJ-bIu" secondAttribute="leadingMargin" id="LSd-lN-eAB"/>
-                            <constraint firstItem="pkq-4Y-ihX" firstAttribute="leading" secondItem="MqC-PH-MuF" secondAttribute="leading" id="NA2-o2-Pa7"/>
-                            <constraint firstItem="XAM-M0-2OF" firstAttribute="leading" secondItem="8se-uF-9i8" secondAttribute="leading" id="Nzm-ss-Nys"/>
-                            <constraint firstItem="8se-uF-9i8" firstAttribute="leading" secondItem="Lhg-wV-cW0" secondAttribute="leading" id="P1I-8L-baz"/>
-                            <constraint firstItem="kM5-Af-RfE" firstAttribute="top" secondItem="8se-uF-9i8" secondAttribute="bottom" constant="95" id="QxL-1u-XoL"/>
-                            <constraint firstItem="pkq-4Y-ihX" firstAttribute="trailing" secondItem="MqC-PH-MuF" secondAttribute="trailing" id="SRT-zl-b64"/>
-                            <constraint firstItem="8se-uF-9i8" firstAttribute="centerY" secondItem="Fhs-1V-vMb" secondAttribute="centerY" id="Spy-MM-80R"/>
-                            <constraint firstItem="a1N-br-mZg" firstAttribute="trailing" secondItem="2pA-t0-mRz" secondAttribute="trailing" constant="75" id="Vz7-1C-JOF"/>
-                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="top" secondItem="a1N-br-mZg" secondAttribute="top" constant="83" id="dgh-mI-I06"/>
-                            <constraint firstItem="MwY-HJ-Tdm" firstAttribute="leading" secondItem="pkq-4Y-ihX" secondAttribute="leading" id="jwK-TT-JXG"/>
-                            <constraint firstItem="MqC-PH-MuF" firstAttribute="trailing" secondItem="kM5-Af-RfE" secondAttribute="trailing" id="obA-bP-Dqq"/>
-                            <constraint firstItem="2pA-t0-mRz" firstAttribute="leading" secondItem="XAM-M0-2OF" secondAttribute="leading" id="s8h-Jw-nES"/>
-                            <constraint firstItem="pkq-4Y-ihX" firstAttribute="baseline" secondItem="XAM-M0-2OF" secondAttribute="baseline" id="sh8-96-xee"/>
-                            <constraint firstItem="orj-7Z-lqg" firstAttribute="baseline" secondItem="fRn-ad-ZZy" secondAttribute="baseline" constant="2.3333333333333712" id="ubg-I8-OzR"/>
-                            <constraint firstItem="MqC-PH-MuF" firstAttribute="leading" secondItem="kM5-Af-RfE" secondAttribute="leading" id="vVH-Wi-zWc"/>
-                            <constraint firstItem="Lhg-wV-cW0" firstAttribute="centerX" secondItem="fRn-ad-ZZy" secondAttribute="centerX" id="w2B-A5-4b6"/>
-                            <constraint firstItem="Lhg-wV-cW0" firstAttribute="top" secondItem="MqC-PH-MuF" secondAttribute="bottom" constant="96" id="xMK-Zv-4b9"/>
-                            <constraint firstItem="2pA-t0-mRz" firstAttribute="leading" secondItem="a1N-br-mZg" secondAttribute="leading" constant="128" id="yRo-Lr-aJh"/>
-                            <constraint firstItem="kM5-Af-RfE" firstAttribute="baseline" secondItem="Lhg-wV-cW0" secondAttribute="baseline" id="zcM-vL-SSc"/>
+                            <constraint firstItem="Fhs-1V-vMb" firstAttribute="trailing" secondItem="f41-PJ-bIu" secondAttribute="trailingMargin" constant="35" id="7Jz-Ko-MZT"/>
+                            <constraint firstItem="inW-HC-IaB" firstAttribute="top" secondItem="a1N-br-mZg" secondAttribute="top" constant="20" id="8LI-6x-yKJ"/>
+                            <constraint firstItem="a1N-br-mZg" firstAttribute="bottom" secondItem="inW-HC-IaB" secondAttribute="bottom" constant="20" id="HFM-JD-yqj"/>
+                            <constraint firstItem="Fhs-1V-vMb" firstAttribute="centerY" secondItem="inW-HC-IaB" secondAttribute="centerY" id="JAd-LO-hLe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="inW-HC-IaB" secondAttribute="trailing" constant="42" id="N3l-VT-myq"/>
+                            <constraint firstItem="inW-HC-IaB" firstAttribute="leading" secondItem="a1N-br-mZg" secondAttribute="leading" constant="20" id="tkO-uW-QTg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0ii-es-cld"/>
@@ -1418,7 +1664,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ruM-g3-Qas"/>
+        <segue reference="NFs-HN-tdf"/>
         <segue reference="KGm-Ov-KRg"/>
         <segue reference="wVj-0P-oDj"/>
     </inferredMetricsTieBreakers>
@@ -1427,16 +1673,16 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

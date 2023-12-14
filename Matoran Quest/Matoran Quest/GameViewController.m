@@ -28,10 +28,11 @@ GameScene *scene;
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     // Load the SKScene from 'GameScene.sks'
+    //NSLog(@"RahiName1: %@", _rahiName2);
     scene = (GameScene *)[SKScene nodeWithFileNamed:@"rahiScene"];
-    scene.presenterController = self; //give the game view a link to this controller
-    // Set the scale mode to scale to fit the window
     scene.rahiType = self.rahiName2; //give the gamescene a copy of the rahi name to work out correct sprites, ect
+    // Set the scale mode to scale to fit the window
+
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     //SKView *skView = (SKView *)self.gamePresentationView;
@@ -39,6 +40,8 @@ GameScene *scene;
     // Present the scene
     //[skView presentScene:scene];
     [self.gamePresentationView presentScene:scene];
+    //
+    //NSLog(@"RahiName2: %@", scene.rahiType);
     //skView.showsFPS = YES;
     //skView.showsNodeCount = YES;
 
