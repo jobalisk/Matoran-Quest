@@ -71,7 +71,7 @@ GameScene *scene;
             [cameraErrorAlert1 addAction:defaultAction10];
             
             [self presentViewController:cameraErrorAlert1 animated:YES completion:nil]; //run the alert
-            [_cameraView1 setImage:[UIImage imageNamed:@"genericBackdrop.png"]]; //put on a generic background
+            [self setBlandBackground];
             return;
         }
         
@@ -101,13 +101,13 @@ GameScene *scene;
             [cameraErrorAlert1 addAction:defaultAction10];
             
             [self presentViewController:cameraErrorAlert1 animated:YES completion:nil]; //run the alert
-            [_cameraView1 setImage:[UIImage imageNamed:@"genericBackdrop.png"]]; //put on a generic background
+            [self setBlandBackground];
         }
         //once checks have been made...
         
     }
     else{ //if we don't want a camera it will just show a generic background
-        [_cameraView1 setImage:[UIImage imageNamed:@"genericBackdrop.png"]]; //put on a generic background
+        [self setBlandBackground];
     }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -174,6 +174,10 @@ GameScene *scene;
 }
 
 
+-(void)setBlandBackground{ //sets the background if the camera is off
+    [_cameraView1 setImage:[UIImage imageNamed:@"genericBackdrop.png"]]; //put on a generic background
+    [_cameraView1 setContentMode: UIViewContentModeScaleToFill];
+}
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
