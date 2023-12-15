@@ -106,9 +106,17 @@
         [kanohiMaskEyeHoles setHidden:FALSE];
         //NSLog(@"eyeholes2: %d", kanohiMaskEyeHoles.hidden);
     }
+    
+    //colourize player sprite
+    UIColor *playerColour = [UIColor colorWithRed:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerRed"] green:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerGreen"] blue:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerBlue"] alpha:[[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerAlpha"]];
 
+    [playerArm runAction:[SKAction colorizeWithColor:playerColour colorBlendFactor:1.0 duration:0.0]];
+    
     //set up rahi
-
+    if([rahiActualName isEqualToString:@"hoi"]){ //this sprite is a little large and needs resizing constantly.
+        [rahiSprite setXScale:(rahiSprite.xScale * 0.75)];
+        [rahiSprite setYScale:(rahiSprite.yScale * 0.75)];
+    }
 
 }
 
@@ -166,6 +174,8 @@
         [rahiSprite runAction: [SKAction repeatActionForever:[SKAction animateWithTextures:rahiIdleArray timePerFrame:0.2]]];
         //[playerArm runAction:armThrowAction];
     }
+
+    
 }
 
 -(void)chooseRahiImage{ //sort out getting the correct rahi images
