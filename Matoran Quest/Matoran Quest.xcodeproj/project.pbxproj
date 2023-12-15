@@ -28,6 +28,7 @@
 		B88CE67C2B2BA99D00160432 /* kanohiDisk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B88CE67A2B2BA99D00160432 /* kanohiDisk.atlas */; };
 		B8B1255F2B0C44C200738447 /* Celler1.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B1255E2B0C44C200738447 /* Celler1.m */; };
 		B8B125612B0C5FD200738447 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B125602B0C5FD200738447 /* LaunchScreen.storyboard */; };
+		B8BA30CB2B2CF54300BCF4A7 /* maskLenses.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B8BA30CA2B2CF54300BCF4A7 /* maskLenses.atlas */; };
 		B8C255412B0BD7CA000B2124 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C255402B0BD7CA000B2124 /* Launch Screen.storyboard */; };
 		B8DC7DC12AFFFE69003BF68C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DC02AFFFE69003BF68C /* AppDelegate.m */; };
 		B8DC7DC82AFFFE69003BF68C /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DC7DC72AFFFE69003BF68C /* GameScene.m */; };
@@ -91,6 +92,7 @@
 		B8B1255D2B0C44C200738447 /* Celler1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Celler1.h; sourceTree = "<group>"; };
 		B8B1255E2B0C44C200738447 /* Celler1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Celler1.m; sourceTree = "<group>"; };
 		B8B125602B0C5FD200738447 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B8BA30CA2B2CF54300BCF4A7 /* maskLenses.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = maskLenses.atlas; path = assets/misc/maskLenses.atlas; sourceTree = "<group>"; };
 		B8C255402B0BD7CA000B2124 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B8DC7DBC2AFFFE69003BF68C /* Matoran Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Matoran Quest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DC7DBF2AFFFE69003BF68C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				B8B125602B0C5FD200738447 /* LaunchScreen.storyboard */,
 				B8DC7DCC2AFFFE69003BF68C /* Main.storyboard */,
 				B8DC7DCF2AFFFE6C003BF68C /* Assets.xcassets */,
+				B8BA30CA2B2CF54300BCF4A7 /* maskLenses.atlas */,
 				B88CE6722B2BA64700160432 /* fikou.atlas */,
 				B88CE6702B2BA64700160432 /* hoi.atlas */,
 				B88CE66F2B2BA64700160432 /* jaga.atlas */,
@@ -334,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B836BE192B264E0200CE7148 /* rahiActions.sks in Resources */,
+				B8BA30CB2B2CF54300BCF4A7 /* maskLenses.atlas in Resources */,
 				B88CE6772B2BA64700160432 /* fikou.atlas in Resources */,
 				B85FC9552B12BC2300AAF7D1 /* Goudy Trajan Regular.otf in Resources */,
 				B88CE6782B2BA64700160432 /* pekapeka.atlas in Resources */,
@@ -557,7 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = M2GX896VLW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Matoran-Quest-Info.plist";
@@ -593,7 +597,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = M2GX896VLW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Matoran-Quest-Info.plist";

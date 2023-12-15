@@ -29,6 +29,7 @@
     //player
     SKTextureAtlas *armThrowAtlas;
     SKTextureAtlas *diskThrowAtlas;
+    SKTextureAtlas *maskEyeHoleAtlas;
     NSArray *armThrowArray;
     NSArray *diskThrowArray;
     SKAction *armThrowAction; //throw a disk
@@ -45,6 +46,7 @@
     //set up player
     armThrowAtlas = [SKTextureAtlas atlasNamed: @"throwingArm.atlas"];
     diskThrowAtlas = [SKTextureAtlas atlasNamed: @"kanohiDisk.atlas"];
+    maskEyeHoleAtlas = [SKTextureAtlas atlasNamed:@"maskLenses.atlas"];
     armThrowArray = @[[armThrowAtlas textureNamed:@"throwing_arm00"], [armThrowAtlas textureNamed:@"throwing_arm01"], [armThrowAtlas textureNamed:@"throwing_arm02"], [armThrowAtlas textureNamed:@"throwing_arm03"], [armThrowAtlas textureNamed:@"throwing_arm04"], [armThrowAtlas textureNamed:@"throwing_arm05"], [armThrowAtlas textureNamed:@"throwing_arm06"], [armThrowAtlas textureNamed:@"throwing_arm07"], [armThrowAtlas textureNamed:@"throwing_arm08"], [armThrowAtlas textureNamed:@"throwing_arm09"]];
     
     diskThrowArray = @[[armThrowAtlas textureNamed:@"kanohiDisk0"], [armThrowAtlas textureNamed:@"kanohiDisk1"]];
@@ -112,6 +114,8 @@
 
     [playerArm runAction:[SKAction colorizeWithColor:playerColour colorBlendFactor:1.0 duration:0.0]];
     
+
+    
     //set up rahi
     if([rahiActualName isEqualToString:@"hoi"]){ //this sprite is a little large and needs resizing constantly.
         [rahiSprite setXScale:(rahiSprite.xScale * 0.75)];
@@ -173,6 +177,25 @@
         isRunningAnimation = 1;
         [rahiSprite runAction: [SKAction repeatActionForever:[SKAction animateWithTextures:rahiIdleArray timePerFrame:0.2]]];
         //[playerArm runAction:armThrowAction];
+        
+        //work out mask lenses
+        NSString *playersMask1 = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"]; //round eyeholes
+        playersMask1 = [playersMask1 lowercaseString];
+        //NSLog(@"%@",playersMask1);
+        if([playersMask1 containsString:@"akaku"] || [playersMask1 containsString:@"hau"] || [playersMask1 containsString:@"rau"]){
+            [kanohiMaskEyeHoles runAction:[SKAction setTexture:[maskEyeHoleAtlas textureNamed:@"KanohiMaskEyeHolesRound"]]];
+        }
+        else if([playersMask1 containsString:@"vahi"]){ //vahi has no eye holes
+            [kanohiMaskEyeHoles setHidden:TRUE];
+        }
+        else{
+            [kanohiMaskEyeHoles runAction:[SKAction setTexture:[maskEyeHoleAtlas textureNamed:@"KanohiMaskEyeHolesTrapzoid"]]];
+        }
+        if([playersMask1 containsString:@"akaku"]){
+            [self setBackgroundColor: [UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.2]]; //give the akaku view a red tint
+            
+        }
+        
     }
 
     
