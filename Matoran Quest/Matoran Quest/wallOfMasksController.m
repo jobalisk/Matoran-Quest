@@ -120,8 +120,8 @@ int maskDisplayingCheck2 = 1;
     //fix colour name issues by replacing old colour names with new ones:
     
     maskColourAndName = [maskNameAndColour componentsSeparatedByString:@" "];
-    NSMutableArray *maskColourAndName2 = [maskColourAndName mutableCopy];
     /*
+    NSMutableArray *maskColourAndName2 = [maskColourAndName mutableCopy];
     if([maskColourAndName2[0] isEqualToString: @"kaukau"]){
         maskInterior[0] = [NSString stringWithFormat: @"bronze %@", maskColourAndName[0]];
         NSLog(@"%@", maskInterior);

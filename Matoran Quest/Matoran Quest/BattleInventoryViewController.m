@@ -15,6 +15,7 @@
 
 float rotationCostant1 = 90.0; //what values are we rotating the buttons by
 float rotationCostant2 = 180.0;
+
 NSMutableArray *itemsArray; //holds all items in the players inventory
 
 
@@ -22,6 +23,7 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
     [super viewDidLoad];
     //rotate all buttons correctly
     self.titleEnglish.transform = CGAffineTransformMakeRotation( ( rotationCostant1 * M_PI ) / rotationCostant2 );
+    self.returnButton.transform = CGAffineTransformMakeRotation( ( rotationCostant1 * M_PI ) / rotationCostant2 );
     self.earthButton.transform = CGAffineTransformMakeRotation( ( rotationCostant1 * M_PI ) / rotationCostant2 );
     self.stoneButton.transform = CGAffineTransformMakeRotation( ( rotationCostant1 * M_PI ) / rotationCostant2 );
     self.rockButton.transform = CGAffineTransformMakeRotation( ( rotationCostant1 * M_PI ) / rotationCostant2 );
@@ -37,6 +39,9 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
     itemsArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerItems"];
     itemsArray = [itemsArray mutableCopy];
     [self enableOrDissableButtons]; //work out what we have
+    
+    //sort out what items we will be using variable
+    self.itemUsed2 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BackPackItemUsed"];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -54,51 +59,62 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
 */
 
 - (void)airButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 1; //1 is air disk
     [self returnToBattle];
 }
 
 - (void)earthButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 2; //2 is earth disk
     [self returnToBattle];
 }
 
 - (void)fireButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 3; //3 is fire disk
     [self returnToBattle];
 }
 
 - (void)fruitButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 9; //9 is vuata maka fruit
     [self returnToBattle];
 }
 
 - (void)iceButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 4; //4 is ice disk
     [self returnToBattle];
 }
 
 - (void)protodermisButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 10; //10 is energized protodermis
     [self returnToBattle];
 }
 
 - (void)rockButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 8; //8 is interesting rock
     [self returnToBattle];
 }
 
 - (void)stoneButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 5; //5 is rock disk
     [self returnToBattle];
 }
 
 - (void)superButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 7; //7 is super disk
     [self returnToBattle];
 }
 
 - (void)waterButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 6; //1 is super disk
     [self returnToBattle];
 }
 
 -(void)returnToBattle{
+    [[NSUserDefaults standardUserDefaults] setInteger: self.itemUsed2 forKey:@"BackPackItemUsed"]; //had to do it this way cause the nice way didn't work
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)enableOrDissableButtons{ //work out which buttons are enabled depending on whats in the players inventory
-    NSLog(@"items: %@", itemsArray);
+    //NSLog(@"items: %@", itemsArray);
     if([itemsArray indexOfObject:@"Vuata Maca fruit"]==NSNotFound){ //check if the inventory contains this item
         //NSLog(@"fruit not here");
         [_fruitButton setEnabled:FALSE]; //if it does not, dissable the button
@@ -131,6 +147,12 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
     if([itemsArray indexOfObject:@"Cool looking rock"]==NSNotFound){ //check if the inventory contains this item
         [_rockButton setEnabled:FALSE]; //if it does not, dissable the button
     }
+}
+
+- (void)returnButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    self.itemUsed2 = 0; //0 is nothing
+    NSLog(@"Return Pressed");
+    [self returnToBattle];
 }
 
 @end

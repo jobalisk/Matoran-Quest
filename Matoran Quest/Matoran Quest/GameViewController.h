@@ -9,6 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "GameScene.h"
 #import "MapController.h"
+#import "BattleInventoryViewController.h"
 #import <GameplayKit/GameplayKit.h>
 #import <AVFoundation/AVCaptureSession.h>
 #import <AVFoundation/AVCapturePhotoOutput.h>
@@ -25,5 +26,6 @@
 @property (nonatomic) AVCaptureSession *captureSession; //set up the camera variables
 @property (nonatomic) AVCapturePhotoOutput *stillImageOutput;
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
+//@property (nonatomic) GameScene *scene; //the game scene used in this controller
 
 @end

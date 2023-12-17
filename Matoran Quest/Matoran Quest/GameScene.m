@@ -30,8 +30,7 @@
     int doubleTapp;
     int isRunningAnimation; //flag for have we started animating yet
     NSString*rahiActualName; //name of rahi formatted correctly
-    bool bagAccessed;
-    bool runTapped;
+
 
     
     //arrays and atlas's for animations
@@ -52,10 +51,13 @@
 
 - (void)didMoveToView:(SKView *)view {
     //set up variables
-    bagAccessed = FALSE;
-    runTapped = FALSE;
+    self.bagAccessed = FALSE;
+    self.runTapped = FALSE;
     isRunningAnimation = 0;
     doubleTapp = 0;
+    [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"BackPackItemUsed"]; //set it to 0 by default
+    self.itemUsed = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BackPackItemUsed"];
+    
     //set up player
     armThrowAtlas = [SKTextureAtlas atlasNamed: @"throwingArm.atlas"];
     diskThrowAtlas = [SKTextureAtlas atlasNamed: @"kanohiDisk.atlas"];
@@ -182,7 +184,7 @@
     if([touchedNode.name isEqualToString:@"runButton"] || [touchedNode.name isEqualToString:@"runLabel"]){
         //NSLog(@"run selected");
         //[runButton setHidden:true];
-        runTapped = TRUE;
+        self.runTapped = TRUE;
         self.winLoss = 5;
     }
     else if([touchedNode.name isEqualToString:@"fightButton"] || [touchedNode.name isEqualToString:@"fightLabel"]){
@@ -191,7 +193,7 @@
     }
     else if([touchedNode.name isEqualToString:@"bagButton"] || [touchedNode.name isEqualToString:@"bagLabel"]){
         //NSLog(@"bag selected");
-        bagAccessed = TRUE;
+        self.bagAccessed = TRUE;
         //[bagButton setHidden:true];
         self.gotoBackPack = 1;
     }
@@ -227,6 +229,8 @@
 -(void)update:(CFTimeInterval)currentTime {
     // Called before each frame is rendered
     //NSLog(@"updating");
+    self.itemUsed = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BackPackItemUsed"];
+    //NSLog(@"Item used: %d", self.itemUsed);
     if(isRunningAnimation == 0){ //start animating
         isRunningAnimation = 1;
         [rahiSprite runAction: [SKAction repeatActionForever:[SKAction animateWithTextures:rahiIdleArray timePerFrame:0.15]]];

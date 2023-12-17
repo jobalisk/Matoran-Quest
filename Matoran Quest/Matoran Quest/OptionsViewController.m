@@ -74,6 +74,7 @@
         [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"PlayerRares"];
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"maskChosen"];
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"UniquePhoneIdentifier"];
+        [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"BackPackItemUsed"];
         NSLog(@"DELETED");
         
         

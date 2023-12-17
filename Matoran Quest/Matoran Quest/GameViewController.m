@@ -185,6 +185,13 @@ GameScene *scene;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     //make sure to tie up any loose ends and properly close this controller so it doesn't use up extra RAM and CPU.
+    if([segue.identifier isEqualToString:@"GoToBackPackBattle1"]){
+        //NSLog(@"%@", selectedMaskArray);
+        BattleInventoryViewController *controller = (BattleInventoryViewController *)segue.destinationViewController;
+        //controller.currentFight = self.scene;
+
+
+    }
 
 }
 

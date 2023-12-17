@@ -50,9 +50,25 @@ int maskChosenFlag2; //have we chosen a mask and player name, ect yet?
                                    preferredStyle:UIAlertControllerStyleAlert];
      
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-       handler:^(UIAlertAction * action) {}];
+       handler:^(UIAlertAction * action) {
+        
+    }];
+    
+    UIAlertAction* continueAction = [UIAlertAction actionWithTitle:@"Rahi battles" style:UIAlertActionStyleDefault
+       handler:^(UIAlertAction * action) {
+        UIAlertController* help2Alert = [UIAlertController alertControllerWithTitle:@"Rahi Battles"
+                                       message:@"There are many rahi living on the island of Mata Nui. Should you encounter one, there are three things you can do:\nFirst, you can try to run. This doesn't always work but its an easy way out.\nThe second option is the contents of your bag. Here you can find things that will heal you, help you, or aid your escape.\n Different Rahi are weak to different elements so an elemental disk is a nice thing to have.\nFinally, you can try fighting the Rahi. Tap and hold your arm to throw a disk, or tap the screen at the right time to dodge the Rahi's attack.\nIf you defeat the Rahi, you might get something nice in return!"
+                                       preferredStyle:UIAlertControllerStyleAlert];
+         
+        UIAlertAction* defaultAction2 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {
+        }];
+        [help2Alert addAction:defaultAction2];
+        [self presentViewController:help2Alert animated:YES completion:nil];
+    }];
      
     [helpAlert addAction:defaultAction];
+    [helpAlert addAction:continueAction];
     
     
     /*

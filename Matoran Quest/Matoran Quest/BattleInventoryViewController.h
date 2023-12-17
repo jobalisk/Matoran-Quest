@@ -6,11 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameScene.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BattleInventoryViewController : UIViewController
+//outlets
 @property (nonatomic, weak) IBOutlet UILabel *titleEnglish; //the screen title
+@property (nonatomic, weak) IBOutlet UIButton *returnButton; //return to the battle
 @property (nonatomic, weak) IBOutlet UIButton *fruitButton; //item
 @property (nonatomic, weak) IBOutlet UIButton *protodermisButton; //item
 @property (nonatomic, weak) IBOutlet UIButton *superButton; //item
@@ -26,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 //actions
 
+-(IBAction) returnButtonP: (id) sender; //return to the battle
 -(IBAction) fruitButtonP: (id) sender; //the getter for the players name text feild
 -(IBAction) protodermisButtonP: (id) sender; //the getter for the players name text feild
 -(IBAction) superButtonP: (id) sender; //the getter for the players name text feild
@@ -37,6 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(IBAction) earthButtonP: (id) sender; //the getter for the players name text feild
 -(IBAction) rockButtonP: (id) sender; //the getter for the players name text feild
 
+
+//variables
+@property (nonatomic) int itemUsed2; //the item we are using
 
 @end
 
