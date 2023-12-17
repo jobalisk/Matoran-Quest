@@ -23,6 +23,10 @@
     SKNode *bagLabel;
     SKNode *fightLabel;
     SKNode *runLabel;
+    SKNode *fightLabel2;
+    SKNode *armSliderArea; //this is an area placed over the lense that is invisible but allows one to basically drag the arm back to shoot.
+    SKLabelNode *RHPLabel;
+    SKLabelNode *PHPLabel;
     
     
     //int winLoss; //0 undecided, 1 win, 2 loss
@@ -30,7 +34,9 @@
     int doubleTapp;
     int isRunningAnimation; //flag for have we started animating yet
     NSString*rahiActualName; //name of rahi formatted correctly
-
+    int playerHPFight; //how much health the player has (default is 1, so alive and not well.)
+    int rahiHPFight; //rahi HP, it will change depending on the rahi.
+    int rahiDifficulty; //this number will change depending on the kind of rahi. By default the value is 2, meaning there is a 50/50 chance you will get to attack or dodge first.
 
     
     //arrays and atlas's for animations
@@ -44,6 +50,8 @@
     SKTextureAtlas *rahiAtlas;
     NSArray *rahiIdleArray;
     SKAction *rahiIdleAnimation; //just standing around animation
+    SKTextureAtlas *fightLabelsAtlas; //for the count down labels
+    NSArray *fightLabelsArray;
     
     
     
@@ -55,16 +63,25 @@
     self.runTapped = FALSE;
     isRunningAnimation = 0;
     doubleTapp = 0;
+    rahiDifficulty = 2;
     [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"BackPackItemUsed"]; //set it to 0 by default
     self.itemUsed = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BackPackItemUsed"];
+    
+    playerHPFight = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"]; //load player HP
+    if(playerHPFight == 0){
+        playerHPFight = 1; //make sure we're at least somewhat alive regardless of what happens
+    }
     
     //set up player
     armThrowAtlas = [SKTextureAtlas atlasNamed: @"throwingArm.atlas"];
     diskThrowAtlas = [SKTextureAtlas atlasNamed: @"kanohiDisk.atlas"];
     maskEyeHoleAtlas = [SKTextureAtlas atlasNamed:@"maskLenses.atlas"];
+    fightLabelsAtlas = [SKTextureAtlas atlasNamed:@"fightingNumbers.atlas"];
     armThrowArray = @[[armThrowAtlas textureNamed:@"throwing_arm00"], [armThrowAtlas textureNamed:@"throwing_arm01"], [armThrowAtlas textureNamed:@"throwing_arm02"], [armThrowAtlas textureNamed:@"throwing_arm03"], [armThrowAtlas textureNamed:@"throwing_arm04"], [armThrowAtlas textureNamed:@"throwing_arm05"], [armThrowAtlas textureNamed:@"throwing_arm06"], [armThrowAtlas textureNamed:@"throwing_arm07"], [armThrowAtlas textureNamed:@"throwing_arm08"], [armThrowAtlas textureNamed:@"throwing_arm09"]];
     
     diskThrowArray = @[[armThrowAtlas textureNamed:@"kanohiDisk0"], [armThrowAtlas textureNamed:@"kanohiDisk1"]];
+    
+    fightLabelsArray = @[[fightLabelsAtlas textureNamed:@"toru"], [fightLabelsAtlas textureNamed:@"rua"], [fightLabelsAtlas textureNamed:@"tahi"], [fightLabelsAtlas textureNamed:@"fight"]]; //in the order of counting down
     
     [playerArm runAction:[SKAction setTexture:armThrowArray[0]]];
     kanohiDisk = [SKSpriteNode spriteNodeWithTexture:diskThrowArray[0]size:CGSizeMake(128, 128)];
@@ -106,12 +123,19 @@
     bagLabel = (SKSpriteNode *)[self childNodeWithName:@"//bagLabel"];
     runLabel = (SKSpriteNode *)[self childNodeWithName:@"//runLabel"];
     fightLabel = (SKSpriteNode *)[self childNodeWithName:@"//fightLabel"];
+    fightLabel2 = (SKSpriteNode *)[self childNodeWithName:@"//fightLabel2"];
+    fightLabel2 = (SKSpriteNode *)[self childNodeWithName:@"//armSliderArea"];
+    RHPLabel = (SKLabelNode *)[self childNodeWithName:@"//RHPLabel"];
+    PHPLabel = (SKLabelNode *)[self childNodeWithName:@"//PHPLabel"];
     _winLoss = 0; //start of neutral
     _gotoBackPack = 0; //we don't need to go to the back pack yet...
     //cameraARNode = [self childNodeWithName:@"camera4AR"];
+    
     //hide things that should always be hidden at the start...
     
-
+    [fightLabel2 setHidden:true];
+    [PHPLabel setHidden:true];
+    [RHPLabel setHidden:true];
     [backGroundBox1 setHidden:FALSE];
     [escapeSliderBar setHidden:TRUE];
     [aimSliderBar setHidden:TRUE];
@@ -146,6 +170,10 @@
     //[bagLabel setUserInteractionEnabled:FALSE];
     //[runLabel setYScale:(runLabel.yScale *2)];
     //[bagLabel setYScale:(bagLabel.yScale *2)];
+    
+    //set up HP
+    [PHPLabel setText:[NSString stringWithFormat:@"HP: %d", playerHPFight]];
+    [RHPLabel setText:[NSString stringWithFormat:@"Rahi: %d", 1]]; //make sure the rahi has at least 1 health
     
     //set up rahi
     if([rahiActualName isEqualToString:@"hoi"]){ //this sprite is a little large and needs resizing constantly.
@@ -188,8 +216,24 @@
         self.winLoss = 5;
     }
     else if([touchedNode.name isEqualToString:@"fightButton"] || [touchedNode.name isEqualToString:@"fightLabel"]){
-        NSLog(@"fight selected");
-        //[fightButton setHidden:true];
+        //NSLog(@"fight selected");
+        [fightButton setHidden:true]; //hide the menu
+        [bagButton setHidden:true];
+        [runButton setHidden:true];
+        [fightLabel2 setHidden: false]; //show the count down
+        [fightLabel2 runAction:[SKAction animateWithTextures:fightLabelsArray timePerFrame:1.0] completion:^(void){ //run the countdown
+            [self->fightLabel2 setHidden: true]; //hide the count down upon completion and show the HP trackers
+            [self->PHPLabel setHidden: false];
+            [self->RHPLabel setHidden: false];
+            int randomRahiAI = arc4random_uniform(self->rahiDifficulty); //oh no, the Rahi has got AI!
+            if(randomRahiAI == 0){
+                [self rahiAttack];
+            }
+            else{
+                [self rahiDodge];
+            }
+            
+        }];
     }
     else if([touchedNode.name isEqualToString:@"bagButton"] || [touchedNode.name isEqualToString:@"bagLabel"]){
         //NSLog(@"bag selected");
@@ -287,9 +331,14 @@
 
 }
 
--(void)atlasSetup{
-    //set up sprites for rahi, ect
-    
+-(void)rahiAttack{ //what to do if its your turn to attack the rahi
+    [aimSliderBar setHidden:false];
+    [slideBarSlider setHidden:false];
+}
+
+-(void)rahiDodge{ //what to do if its the rahi's turn to attack you!
+    [escapeSliderBar setHidden:false];
+    [slideBarSlider setHidden:false];
 }
 
 @end
