@@ -395,6 +395,25 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         [loserLoserAlert addAction:defaultAction73];
         [self presentViewController:loserLoserAlert animated:YES completion:nil];
     }
+    else if(_rahiFightFlag4 == 5){ //if we ran away successfully
+        _rahiFightFlag4 = 0;
+        rahiFightFlag = 0;
+        if(_rahiType3 == NULL){
+            NSLog(@"This shouldn't happen");
+            _rahiType3 = @"unnamed";
+        }
+        UIAlertController *runnerAlert = [UIAlertController alertControllerWithTitle:@"That was close!"
+                                                                                 message:[NSString stringWithFormat: @"You have successfully escaped the %@.", _rahiType3]
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction74 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {
+            
+        }];
+        
+        [runnerAlert addAction:defaultAction74];
+        [self presentViewController:runnerAlert animated:YES completion:nil];
+    }
     
     
     

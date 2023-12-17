@@ -30,6 +30,8 @@
     int doubleTapp;
     int isRunningAnimation; //flag for have we started animating yet
     NSString*rahiActualName; //name of rahi formatted correctly
+    bool bagAccessed;
+    bool runTapped;
 
     
     //arrays and atlas's for animations
@@ -49,7 +51,11 @@
 }
 
 - (void)didMoveToView:(SKView *)view {
-    
+    //set up variables
+    bagAccessed = FALSE;
+    runTapped = FALSE;
+    isRunningAnimation = 0;
+    doubleTapp = 0;
     //set up player
     armThrowAtlas = [SKTextureAtlas atlasNamed: @"throwingArm.atlas"];
     diskThrowAtlas = [SKTextureAtlas atlasNamed: @"kanohiDisk.atlas"];
@@ -103,8 +109,7 @@
     //cameraARNode = [self childNodeWithName:@"camera4AR"];
     //hide things that should always be hidden at the start...
     
-    isRunningAnimation = 0;
-    doubleTapp = 0;
+
     [backGroundBox1 setHidden:FALSE];
     [escapeSliderBar setHidden:TRUE];
     [aimSliderBar setHidden:TRUE];
@@ -134,9 +139,9 @@
     
     //fightButton = [SKShapeNode shapeNodeWithRect:CGRectMake(fightButton.position.x, fightButton.position.x, fightButton.frame.size.width, fightButton.frame.size.height) cornerRadius:0.25];
     //[fightLabel setYScale:(fightLabel.yScale *2)];
-    [fightLabel setUserInteractionEnabled:FALSE];
-    [runLabel setUserInteractionEnabled:FALSE];
-    [bagLabel setUserInteractionEnabled:FALSE];
+    //[fightLabel setUserInteractionEnabled:FALSE];
+    //[runLabel setUserInteractionEnabled:FALSE];
+    //[bagLabel setUserInteractionEnabled:FALSE];
     //[runLabel setYScale:(runLabel.yScale *2)];
     //[bagLabel setYScale:(bagLabel.yScale *2)];
     
@@ -150,16 +155,11 @@
 
 
 - (void)touchDownAtPoint:(CGPoint)pos {
-    doubleTapp += 1;
-    if(doubleTapp == 2){
-        self.winLoss = 3;
-    }
+
 }
 
 - (void)touchMovedToPoint:(CGPoint)pos {
-    if(self.winLoss == 0){
-        self.gotoBackPack = 1;
-    }
+
 }
 
 - (void)touchUpAtPoint:(CGPoint)pos {
@@ -179,20 +179,24 @@
     CGPoint posTouched = [somethingTouched locationInNode:self];
     SKNode *touchedNode = [self nodeAtPoint:posTouched]; //get the node at the point touched
     //begin tests
-    if([touchedNode.name isEqualToString:@"runButton"]){
+    if([touchedNode.name isEqualToString:@"runButton"] || [touchedNode.name isEqualToString:@"runLabel"]){
         //NSLog(@"run selected");
-        [runButton setHidden:true];
+        //[runButton setHidden:true];
+        runTapped = TRUE;
+        self.winLoss = 5;
     }
-    else if([touchedNode.name isEqualToString:@"fightButton"]){
-        //NSLog(@"fight selected");
-        [fightButton setHidden:true];
+    else if([touchedNode.name isEqualToString:@"fightButton"] || [touchedNode.name isEqualToString:@"fightLabel"]){
+        NSLog(@"fight selected");
+        //[fightButton setHidden:true];
     }
-    else if([touchedNode.name isEqualToString:@"bagButton"]){
+    else if([touchedNode.name isEqualToString:@"bagButton"] || [touchedNode.name isEqualToString:@"bagLabel"]){
         //NSLog(@"bag selected");
-        [bagButton setHidden:true];
+        bagAccessed = TRUE;
+        //[bagButton setHidden:true];
+        self.gotoBackPack = 1;
     }
     else if([touchedNode.name isEqualToString:@"rahi1"]){
-        //NSLog(@"rahi touched");
+        NSLog(@"rahi touched");
         [rahiSprite setHidden:true];
     }
     else if([touchedNode.name isEqualToString:@"sliderBarSlider1"]){
