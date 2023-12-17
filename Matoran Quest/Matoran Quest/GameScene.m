@@ -17,6 +17,13 @@
     SKNode *playerArm;
     SKNode *kanohiDisk;
     SKNode *rahiSprite;
+    SKNode *bagButton;
+    SKNode *fightButton;
+    SKNode *runButton;
+    SKNode *bagLabel;
+    SKNode *fightLabel;
+    SKNode *runLabel;
+    
     
     //int winLoss; //0 undecided, 1 win, 2 loss
     //SKNode *cameraARNode;
@@ -85,6 +92,12 @@
     kanohiDisk = (SKSpriteNode *)[self childNodeWithName:@"//kanohiDisk"];
     //rahiSprite = [self childNodeWithName:@"rahi1"];
     rahiSprite = (SKSpriteNode *)[self childNodeWithName:@"//rahi1"];
+    bagButton = (SKSpriteNode *)[self childNodeWithName:@"//bagButton"];
+    runButton = (SKSpriteNode *)[self childNodeWithName:@"//runButton"];
+    fightButton = (SKSpriteNode *)[self childNodeWithName:@"//fightButton"];
+    bagLabel = (SKSpriteNode *)[self childNodeWithName:@"//bagLabel"];
+    runLabel = (SKSpriteNode *)[self childNodeWithName:@"//runLabel"];
+    fightLabel = (SKSpriteNode *)[self childNodeWithName:@"//fightLabel"];
     _winLoss = 0; //start of neutral
     _gotoBackPack = 0; //we don't need to go to the back pack yet...
     //cameraARNode = [self childNodeWithName:@"camera4AR"];
@@ -96,6 +109,9 @@
     [escapeSliderBar setHidden:TRUE];
     [aimSliderBar setHidden:TRUE];
     [slideBarSlider setHidden:TRUE];
+    [bagButton setHidden:FALSE];
+    [runButton setHidden:FALSE];
+    [fightButton setHidden:FALSE];
     
     //sort out visuals based on user option settings
     int eyeHolesCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowKanohiEyeHolesSetting"];
@@ -114,7 +130,15 @@
 
     [playerArm runAction:[SKAction colorizeWithColor:playerColour colorBlendFactor:1.0 duration:0.0]];
     
-
+    //set up buttons
+    
+    //fightButton = [SKShapeNode shapeNodeWithRect:CGRectMake(fightButton.position.x, fightButton.position.x, fightButton.frame.size.width, fightButton.frame.size.height) cornerRadius:0.25];
+    //[fightLabel setYScale:(fightLabel.yScale *2)];
+    [fightLabel setUserInteractionEnabled:FALSE];
+    [runLabel setUserInteractionEnabled:FALSE];
+    [bagLabel setUserInteractionEnabled:FALSE];
+    //[runLabel setYScale:(runLabel.yScale *2)];
+    //[bagLabel setYScale:(bagLabel.yScale *2)];
     
     //set up rahi
     if([rahiActualName isEqualToString:@"hoi"]){ //this sprite is a little large and needs resizing constantly.
@@ -150,6 +174,32 @@
     //NSLog(@"touching begins...");
     //[[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"rahiFightingFlags"];
     //run an alert and prepare to close the controller
+    //NSLog(@"touched something!");
+    UITouch *somethingTouched = [touches anyObject]; //whenever a sprite is touched...
+    CGPoint posTouched = [somethingTouched locationInNode:self];
+    SKNode *touchedNode = [self nodeAtPoint:posTouched]; //get the node at the point touched
+    //begin tests
+    if([touchedNode.name isEqualToString:@"runButton"]){
+        //NSLog(@"run selected");
+        [runButton setHidden:true];
+    }
+    else if([touchedNode.name isEqualToString:@"fightButton"]){
+        //NSLog(@"fight selected");
+        [fightButton setHidden:true];
+    }
+    else if([touchedNode.name isEqualToString:@"bagButton"]){
+        //NSLog(@"bag selected");
+        [bagButton setHidden:true];
+    }
+    else if([touchedNode.name isEqualToString:@"rahi1"]){
+        //NSLog(@"rahi touched");
+        [rahiSprite setHidden:true];
+    }
+    else if([touchedNode.name isEqualToString:@"sliderBarSlider1"]){
+        //NSLog(@"slider touched");
+    }
+    
+    
     
     for (UITouch *t in touches) {[self touchDownAtPoint:[t locationInNode:self]];}
 }
@@ -175,7 +225,7 @@
     //NSLog(@"updating");
     if(isRunningAnimation == 0){ //start animating
         isRunningAnimation = 1;
-        [rahiSprite runAction: [SKAction repeatActionForever:[SKAction animateWithTextures:rahiIdleArray timePerFrame:0.2]]];
+        [rahiSprite runAction: [SKAction repeatActionForever:[SKAction animateWithTextures:rahiIdleArray timePerFrame:0.15]]];
         //[playerArm runAction:armThrowAction];
         
         //work out mask lenses
