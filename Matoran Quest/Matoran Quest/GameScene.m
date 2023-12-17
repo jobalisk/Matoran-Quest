@@ -64,10 +64,12 @@
     isRunningAnimation = 0;
     doubleTapp = 0;
     rahiDifficulty = 2;
+    rahiHPFight = 1;
     [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"BackPackItemUsed"]; //set it to 0 by default
     self.itemUsed = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BackPackItemUsed"];
     
     playerHPFight = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"]; //load player HP
+    //NSLog(@"HP: %d", playerHPFight);
     if(playerHPFight == 0){
         playerHPFight = 1; //make sure we're at least somewhat alive regardless of what happens
     }
@@ -124,7 +126,7 @@
     runLabel = (SKSpriteNode *)[self childNodeWithName:@"//runLabel"];
     fightLabel = (SKSpriteNode *)[self childNodeWithName:@"//fightLabel"];
     fightLabel2 = (SKSpriteNode *)[self childNodeWithName:@"//fightLabel2"];
-    fightLabel2 = (SKSpriteNode *)[self childNodeWithName:@"//armSliderArea"];
+    armSliderArea = (SKSpriteNode *)[self childNodeWithName:@"//armSliderArea"];
     RHPLabel = (SKLabelNode *)[self childNodeWithName:@"//RHPLabel"];
     PHPLabel = (SKLabelNode *)[self childNodeWithName:@"//PHPLabel"];
     _winLoss = 0; //start of neutral
@@ -173,7 +175,7 @@
     
     //set up HP
     [PHPLabel setText:[NSString stringWithFormat:@"HP: %d", playerHPFight]];
-    [RHPLabel setText:[NSString stringWithFormat:@"Rahi: %d", 1]]; //make sure the rahi has at least 1 health
+    [RHPLabel setText:[NSString stringWithFormat:@"Rahi: %d", rahiHPFight]]; //make sure the rahi has at least 1 health
     
     //set up rahi
     if([rahiActualName isEqualToString:@"hoi"]){ //this sprite is a little large and needs resizing constantly.
@@ -226,6 +228,7 @@
             [self->PHPLabel setHidden: false];
             [self->RHPLabel setHidden: false];
             int randomRahiAI = arc4random_uniform(self->rahiDifficulty); //oh no, the Rahi has got AI!
+            //NSLog(@"Difficulty: %d", self->rahiDifficulty);
             if(randomRahiAI == 0){
                 [self rahiAttack];
             }
@@ -294,11 +297,15 @@
             [kanohiMaskEyeHoles runAction:[SKAction setTexture:[maskEyeHoleAtlas textureNamed:@"KanohiMaskEyeHolesTrapzoid"]]];
         }
         if([playersMask1 containsString:@"akaku"]){
-            [self setBackgroundColor: [UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.2]]; //give the akaku view a red tint
+            [self setBackgroundColor: [UIColor colorWithRed:1.0 green:0.2 blue:0.2 alpha:0.2]]; //give the akaku view a red tint
             
         }
         
     }
+    
+    //update HP
+    [PHPLabel setText:[NSString stringWithFormat:@"HP: %d", playerHPFight]];
+    [RHPLabel setText:[NSString stringWithFormat:@"Rahi: %d", rahiHPFight]]; //make sure the rahi has at least 1 health
 
     
 }
