@@ -59,52 +59,62 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
 */
 
 - (void)airButtonP:(nonnull id)sender __attribute__((ibaction)) {
+    [self removeItemFromBag:@"Charged Air Disk"];
     self.itemUsed2 = 1; //1 is air disk
     [self returnToBattle];
 }
 
 - (void)earthButtonP:(nonnull id)sender __attribute__((ibaction)) {
     self.itemUsed2 = 2; //2 is earth disk
+    [self removeItemFromBag:@"Charged Earth Disk"];
     [self returnToBattle];
 }
 
 - (void)fireButtonP:(nonnull id)sender __attribute__((ibaction)) {
     self.itemUsed2 = 3; //3 is fire disk
+    [self removeItemFromBag:@"Charged Fire Disk"];
     [self returnToBattle];
 }
 
 - (void)fruitButtonP:(nonnull id)sender __attribute__((ibaction)) {
     self.itemUsed2 = 9; //9 is vuata maka fruit
+    [self removeItemFromBag:@"Vuata Maca fruit"];
     [self returnToBattle];
 }
 
 - (void)iceButtonP:(nonnull id)sender __attribute__((ibaction)) {
     self.itemUsed2 = 4; //4 is ice disk
+    [self removeItemFromBag:@"Charged Ice Disk"];
     [self returnToBattle];
 }
 
 - (void)protodermisButtonP:(nonnull id)sender __attribute__((ibaction)) {
     self.itemUsed2 = 10; //10 is energized protodermis
+    [self removeItemFromBag:@"Energised Protodermis"];
     [self returnToBattle];
 }
 
 - (void)rockButtonP:(nonnull id)sender __attribute__((ibaction)) {
     self.itemUsed2 = 8; //8 is interesting rock
+    [self removeItemFromBag:@"Cool looking rock"];
     [self returnToBattle];
 }
 
 - (void)stoneButtonP:(nonnull id)sender __attribute__((ibaction)) {
-    self.itemUsed2 = 5; //5 is rock disk
+    self.itemUsed2 = 5; //5 is stone disk
+    [self removeItemFromBag:@"Charged Stone Disk"];
     [self returnToBattle];
 }
 
 - (void)superButtonP:(nonnull id)sender __attribute__((ibaction)) {
     self.itemUsed2 = 7; //7 is super disk
+    [self removeItemFromBag:@"Super Disk"];
     [self returnToBattle];
 }
 
 - (void)waterButtonP:(nonnull id)sender __attribute__((ibaction)) {
-    self.itemUsed2 = 6; //1 is super disk
+    self.itemUsed2 = 6; //6 is water disk
+    [self removeItemFromBag:@"Charged Water Disk"];
     [self returnToBattle];
 }
 
@@ -117,10 +127,20 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
     //NSLog(@"items: %@", itemsArray);
     if([itemsArray indexOfObject:@"Vuata Maca fruit"]==NSNotFound){ //check if the inventory contains this item
         //NSLog(@"fruit not here");
+        int playerHPFight23 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"]; //load player HP
+        if(playerHPFight23 > 6){ //heal the player 3 (or full health if they're on 7 or more.)
+            [[NSUserDefaults standardUserDefaults] setInteger: 10 forKey:@"PlayerHP"];
+        }
+        else{
+            playerHPFight23 += 3;
+            [[NSUserDefaults standardUserDefaults] setInteger: playerHPFight23 forKey:@"PlayerHP"];
+        }
+        
         [_fruitButton setEnabled:FALSE]; //if it does not, dissable the button
     }
     if([itemsArray indexOfObject:@"Energised Protodermis"]==NSNotFound){ //check if the inventory contains this item
         //NSLog(@"protodermis not here");
+        [[NSUserDefaults standardUserDefaults] setInteger: 10 forKey:@"PlayerHP"]; //full heal the player
         [_protodermisButton setEnabled:FALSE]; //if it does not, dissable the button
     }
     if([itemsArray indexOfObject:@"Super Disk"]==NSNotFound){ //check if the inventory contains this item
@@ -153,6 +173,17 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
     self.itemUsed2 = 0; //0 is nothing
     NSLog(@"Return Pressed");
     [self returnToBattle];
+}
+
+-(void)removeItemFromBag:(NSString *)item1{ //remove the selected item from the inventory
+    for (int i = 0; i <= (itemsArray.count -1); i++)
+    {
+        if([itemsArray[i]isEqualToString:item1]){
+            [itemsArray removeObjectAtIndex:i];
+            [[NSUserDefaults standardUserDefaults] setObject: itemsArray forKey:@"PlayerItems"];
+            break; //stop the loop here
+        }
+    }
 }
 
 @end
