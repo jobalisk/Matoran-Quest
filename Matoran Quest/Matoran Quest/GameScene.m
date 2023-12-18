@@ -58,7 +58,7 @@
     bool playerRecentlyLostHealth; //to make sure we only lose a bit of health at a time
     int fightProgressCounter; //counts how far through a fight cycle we are. 0 is just started, 1 is finished one part, 2 is finished it all
     float playerDefaultArmRotation;
-    bool rahiRunningAnimation; //is the rahi currently animating?
+    //bool rahiRunningAnimation; //is the rahi currently animating?
     float growShrinkTimeInterval; //how long it takes the rahi to grow and shrink
 
 
@@ -121,7 +121,7 @@
     playerRecentlyLostHealth = false;
     fightProgressCounter = 0;
     playerDefaultArmRotation = -1.570796;
-    rahiRunningAnimation = false;
+    //rahiRunningAnimation = false;
     growShrinkTimeInterval = 0.4;
     
     [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"BackPackItemUsed"]; //set it to 0 by default
@@ -387,28 +387,22 @@
     }
     
     if(rahiDodgeFlag == true){
-        //work out rahi animations
-        //NSLog(@"animations: %d", rahiRunningAnimation);
-        if(rahiRunningAnimation == false){
+        if([rahiSprite actionForKey:@"attackAction"] == nil){
+            //work out rahi animations
             [rahiSprite removeAllActions];
-            rahiRunningAnimation = true;
-            //[rahiSprite runAction: [SKAction colorizeWithColor:[UIColor blueColor] colorBlendFactor:1.0 duration:0.1]];
-            
-            //the code pyrimade. The only way I could get it to grow and shrink 10 times
-            
-            [rahiSprite runAction:[SKAction repeatActionForever:rahiAttackAction]];
+
+            [rahiSprite runAction:[SKAction repeatActionForever:rahiAttackAction] withKey:@"attackAction"];
             //NSLog(@"enlarging");
-            [rahiSprite runAction: rahiEnlarge];
-        };
+            [rahiSprite runAction: rahiEnlarge withKey:@"enlargeAction"];
+        }
+
     }
     if(rahiAttackFlag == true){
         //work out rahi animations
-        if(rahiRunningAnimation == false){
+        if([rahiSprite actionForKey:@"idleAction"] == nil){
             [rahiSprite removeAllActions];
-            rahiRunningAnimation = true;
-            [rahiSprite runAction: rahiShrink];
-            //[rahiSprite runAction: [SKAction colorizeWithColor:[UIColor blueColor] colorBlendFactor:1.0 duration:0.1]];
-            [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction]];
+            [rahiSprite runAction: rahiShrink withKey:@"shrinkAction"];
+            [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction] withKey:@"idleAction"];
         }
     }
     
@@ -429,13 +423,11 @@
 
             //[rahiSprite runAction: [SKAction repeatActionForever: rahiIdleAnimation]];
             //[rahiSprite runAction:[SKAction stop]];
-            rahiRunningAnimation = false;
-            if(rahiRunningAnimation == false){
+            if([rahiSprite actionForKey:@"idleAction"] == nil){
                 [rahiSprite removeAllActions];
-                [rahiSprite runAction:rahiShrink];
-                rahiRunningAnimation = true;
-                [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction]];
-                //[rahiSprite runAction: [SKAction colorizeWithColor:[UIColor redColor] colorBlendFactor:1.0 duration:0.1]];
+                [rahiSprite runAction:rahiShrink withKey:@"shrinkAction"];
+                [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction] withKey:@"idleAction"];
+
             }
             fightProgressCounter = 0;
             [resultLabel setHidden: true];
@@ -459,12 +451,10 @@
             //[rahiSprite runAction:[SKAction stop]];
 
             //NSLog(@"here 2");
-            if(rahiRunningAnimation == false){
+            if([rahiSprite actionForKey:@"idleAction"] == nil){
                 [rahiSprite removeAllActions];
-                [rahiSprite runAction:rahiShrink];
-                rahiRunningAnimation = true;
-                //[rahiSprite runAction: [SKAction colorizeWithColor:[UIColor blueColor] colorBlendFactor:1.0 duration:0.1]];
-                [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction]];
+                [rahiSprite runAction:rahiShrink withKey:@"shrinkAction"];
+                [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction] withKey:@"idleAction"];
             }
             if(timerCounter > 0){ //give 2 secs to read any messages
                 timerCounter -=1;
@@ -473,18 +463,18 @@
                         [resultLabel setText:[NSString stringWithFormat:@"The Rahi is about to attack!"]];
                     }
                     else{
-                        [resultLabel setText:[NSString stringWithFormat:@"Quick, strike!\nBefore it recovers!"]];
+                        [resultLabel setText:[NSString stringWithFormat:@"Quick, strike! Before it recovers!"]];
                     }
                 }
             }
             else{
                 if(randomRahiAI == 0){ //if we attacked first, we need to now dodge
-                    rahiRunningAnimation = false;
+                    [rahiSprite removeAllActions];
                     [self rahiDodge];
                     
                 }
                 if(randomRahiAI == 1){ //if we dodged first, we need to now attack
-                    rahiRunningAnimation = false;
+                    [rahiSprite removeAllActions];
                     [self rahiAttack];
                     
                 }
@@ -498,10 +488,8 @@
     if(isRunningAnimation == 0){ //start animating
         isRunningAnimation = 1;
         //NSLog(@"here 5");
-        if(rahiRunningAnimation == false){
-            [rahiSprite removeAllActions];
-            //[rahiSprite runAction: [SKAction colorizeWithColor:[UIColor blueColor] colorBlendFactor:1.0 duration:0.1]];
-            [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction]];
+        if([rahiSprite actionForKey:@"idleAction"] == nil){
+            [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction] withKey:@"idleAction"];
         }
         
         //work out mask lenses
@@ -609,8 +597,8 @@
             [slideBarSlider setPosition:defaultSliderPos]; //put the slider back where it belongs in the middle
             [playerArm runAction:[SKAction moveToY:-996 duration:0.5] completion:^(void){ //if we still have the disk, withdraw the arm briefly and hide it
                 //make the disk "appear"
-                self->rahiRunningAnimation = true;
-                [self->rahiSprite runAction:self->rahiIdleAction];
+                //self->rahiRunningAnimation = true;
+                //[self->rahiSprite runAction:self->rahiIdleAction withKey:@"idleAction"];
                 [self->kanohiDisk setHidden:true];
                 //NSLog(@"part 1: %d", self->rahiAttackFlag);
                 [self->playerArm runAction:[SKAction moveToY:-283 duration:0.5] completion:^(void){
@@ -708,7 +696,6 @@
     }
     rahiEnlarge = [SKAction scaleTo:2.0 duration:growShrinkTimeInterval];
     rahiShrink = [SKAction scaleTo:1.0 duration:growShrinkTimeInterval];
-    
 
     
     
@@ -730,7 +717,7 @@
     [playerArm runAction:[SKAction moveToY:-996 duration:0.7] completion:^(void){
          //make the disk "appear"
         [self->kanohiDisk setHidden:false];
-        [self->rahiSprite runAction:self->rahiIdleAction];
+        //[self->rahiSprite runAction:self->rahiIdleAction withKey:@"idleAction"];
         //NSLog(@"part 1: %d", self->rahiAttackFlag);
         [self->playerArm runAction:[SKAction moveToY:-283 duration:0.5] completion:^(void){
             self->rahiAttackFlag = true;
