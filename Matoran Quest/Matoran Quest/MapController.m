@@ -306,7 +306,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     
     //make sure that if we are no longer in a rahi fight, the screen is not black:
     if(rahiFightFlag == 0){
-        [self.blackOutView setAlpha:0.0]; //reset the fadeout screen
+        [self.blackOutView setAlpha:0.0]; //reset alpha to 0.0 (clear)
     }
     
     

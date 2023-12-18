@@ -52,6 +52,7 @@
     int fightProgressCounter; //counts how far through a fight cycle we are. 0 is just started, 1 is finished one part, 2 is finished it all
     float playerDefaultArmRotation;
 
+
     
     //arrays and atlas's for animations
     //player
@@ -67,7 +68,29 @@
     SKTextureAtlas *fightLabelsAtlas; //for the count down labels
     NSArray *fightLabelsArray;
     
+    //atlases and arrays for rahi
     
+    //small rahi
+    //idle arrays and atlas's are generated later
+
+    NSArray *fikouAttackArray;
+    NSArray *fikouKOArray;
+    
+
+    NSArray *hoiAttackArray;
+    NSArray *hoiKOArray;
+    
+
+    NSArray *jagaAttackArray;
+    NSArray *jagaKOArray;
+    
+
+    NSArray *ngararaAttackArray;
+    NSArray *ngararaKOArray;
+    
+
+    NSArray *pekapekaAttackArray;
+    NSArray *pekapekaKOArray;
     
 }
 
@@ -120,7 +143,7 @@
 
     [self chooseRahiImage];
     
-
+    
 
     
     
@@ -520,6 +543,7 @@
 }
 
 -(void)chooseRahiImage{ //sort out getting the correct rahi images
+    rahiAtlas = [SKTextureAtlas atlasNamed: [NSString stringWithFormat: @"%@.atlas", rahiActualName]];
     if(_rahiType == NULL){ //give a more pleasent name for rahi if the type is null.
         _rahiType = @"unnamed";
     }
@@ -527,6 +551,26 @@
     if([rahiActualName isEqualToString:@"pekapeka"] || [rahiActualName isEqualToString:@"ngarara"] || [rahiActualName isEqualToString:@"fikou"] || [rahiActualName isEqualToString:@"jaga"] || [rahiActualName isEqualToString:@"hoi"]){
         //small rahi...
         
+        //fikou
+        fikouKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@3", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]]];
+        fikouAttackArray = rahiIdleArray;
+        
+        //hoi
+        hoiAttackArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@3", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]]];
+        hoiKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@7", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@8", rahiActualName]]];
+        
+        //jaga
+        
+        jagaKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@7", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@8", rahiActualName]]];
+        jagaAttackArray = rahiIdleArray;
+        
+        //ngarara
+        ngararaKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@0", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@3", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]]];
+        ngararaAttackArray = rahiIdleArray;
+        
+        //pekapeka
+        pekapekaKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@7", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@8", rahiActualName]]];
+        pekapekaAttackArray = rahiIdleArray;
         
         
     }
@@ -537,7 +581,7 @@
 
     }
     //assign names to a array of idle sprites to create an animation
-    rahiAtlas = [SKTextureAtlas atlasNamed: [NSString stringWithFormat: @"%@.atlas", rahiActualName]];
+    
     rahiIdleArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@0", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@1", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@2", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@1", rahiActualName]]];
     
     //assign a starting sprite
@@ -598,8 +642,154 @@
 -(void)playerLostHealth{
     [playerArm setZRotation:124.476];
     timerCounter = 240; //set this so that we can display messages for 1 second
+    //work out player resistances
+    int playerResistance1 = 0;
+    int rahiResistance1 = 0;
+    if([[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"rau"] || [[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"kaukau"]){
+        if([_rahiType isEqualToString:@"hoi"]){
+            playerResistance1 += 2;
+        }
+        else if([_rahiType isEqualToString:@"ngarara"]){
+            playerResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"pekapeka"]){
+            playerResistance1 -= 2;
+        }
+    }
+    else if([[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"akaku"] || [[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"matatu"]){
+        if([_rahiType isEqualToString:@"ngarara"]){
+            playerResistance1 += 2;
+        }
+        else if([_rahiType isEqualToString:@"hoi"]){
+            playerResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"fikou"]){
+            playerResistance1 -= 2;
+        }
+    }
+    else if([[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"hau"] || [[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"huna"]){
+        if([_rahiType isEqualToString:@"ngarara"]){
+            playerResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"hoi"]){
+            playerResistance1 -= 2;
+        }
+        else if([_rahiType isEqualToString:@"fikou"]){
+            playerResistance1 += 2;
+        }
+    }
+    else if([[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"miru"] || [[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"mahiki"]){
+        if([_rahiType isEqualToString:@"ngarara"]){
+            playerResistance1 += 2;
+        }
+        else if([_rahiType isEqualToString:@"jaga"]){
+            playerResistance1 -= 2;
+        }
+    }
+    else if([[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"kakama"] || [[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"komau"]){
+        if([_rahiType isEqualToString:@"jaga"]){
+            playerResistance1 += 2;
+        }
+        else if([_rahiType isEqualToString:@"hoi"]){
+            playerResistance1 -= 2;
+        }
+        else if([_rahiType isEqualToString:@"pekapeka"]){
+            playerResistance1 += 1;
+        }
+    }
+    else if([[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"ruru"] || [[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"pakari"]){
+        if([_rahiType isEqualToString:@"pekapeka"]){
+            playerResistance1 += 2;
+        }
+        else if([_rahiType isEqualToString:@"ngarara"]){
+            playerResistance1 -= 1;
+        }
+        else if([_rahiType isEqualToString:@"jaga"]){
+            playerResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"fikou"]){
+            playerResistance1 -= 1;
+        }
+    }
+    else if([[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"avohkii"] || [[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"vahi"]){
+        //no gain or loss in resistance, sort of a bonus?
+        
+    }
+    //these are somewhat arbatrary but they should work well
+    if(_itemUsed == 1){ //air
+        if([_rahiType isEqualToString:@"pekapeka"]){
+            rahiResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"ngarara"]){
+            rahiResistance1 -= 3;
+        }
+        else if([_rahiType isEqualToString:@"hoi"]){
+            rahiResistance1 -= 1;
+        }
+    }
+    else if(_itemUsed == 2){ //earth
+        if([_rahiType isEqualToString:@"ngarara"]){
+            rahiResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"jaga"]){
+            rahiResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"pekapeka"]){
+            rahiResistance1 -= 3;
+        }
+        
+    }
+    if(_itemUsed == 3){ //fire
+        if([_rahiType isEqualToString:@"jaga"]){
+            rahiResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"hoi"]){
+            rahiResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"ngarara"]){
+            rahiResistance1 -= 3;
+        }
+
+    }
+    if(_itemUsed == 4){ //ice
+        if([_rahiType isEqualToString:@"fikou"]){
+            rahiResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"hoi"]){
+            rahiResistance1 += 1;
+        }
+        if([_rahiType isEqualToString:@"ngarara"]){
+            rahiResistance1 -= 3;
+        }
+
+    }
+    if(_itemUsed == 5){ //stone
+        if([_rahiType isEqualToString:@"ngarara"]){
+            rahiResistance1 += 1;
+        }
+        else if([_rahiType isEqualToString:@"pekapeka"]){
+            rahiResistance1 -= 3;
+        }
+        else if([_rahiType isEqualToString:@"hoi"]){
+            rahiResistance1 -= 3;
+        }
+    }
+    if(_itemUsed == 6){ //water
+        if([_rahiType isEqualToString:@"jaga"]){
+            rahiResistance1 -= 3;
+        }
+        else if([_rahiType isEqualToString:@"hoi"]){
+            rahiResistance1 += 1;
+        }
+        
+    }
+    if(_itemUsed == 7){ //super disk
+        rahiResistance1 -= 3;
+
+    }
+    
     if(playerRecentlyLostHealth != true){
-        playerHPFight -= rahiDifficulty; //remove player health
+        playerHPFight -= (rahiDifficulty + playerResistance1); //remove player health minus or added to any bonuses or penalties from resistances
         playerRecentlyLostHealth = true;
         [[NSUserDefaults standardUserDefaults] setInteger: playerHPFight forKey:@"PlayerHP"];
     }
