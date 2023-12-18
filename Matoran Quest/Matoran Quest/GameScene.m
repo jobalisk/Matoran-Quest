@@ -316,7 +316,7 @@
                 
             }
             fightProgressCounter += 1;
-            timerCounter = 120;
+            timerCounter = 240;
         }
     }
     
@@ -347,11 +347,16 @@
     //NSLog(@"dodge: %d", rahiDodgeFlag);
     //NSLog(@"attack: %d", rahiAttackFlag);
     //NSLog(@"FPC: %d", fightProgressCounter);
-    
+    if(playerHPFight == 0){ //if we run out of life we lose!
+        self.winLoss = 4;
+    }
     //NSLog(@"WW: %d", whichWay1);
     if(fightProgressCounter == 2){ //if we have finished this fight round...
         if(timerCounter > 0){ //give 2 secs to read any messages
             timerCounter -=1;
+            if(timerCounter > 61){ //make sure to only do this one for 60 sec
+                timerCounter = 60;
+            }
         }
         else{
             [playerArm setZRotation:playerDefaultArmRotation];
@@ -375,12 +380,22 @@
             [playerArm setZRotation:playerDefaultArmRotation];
             if(timerCounter > 0){ //give 2 secs to read any messages
                 timerCounter -=1;
+                if(timerCounter < 121){ //make sure to only do this one for 60 sec
+                    if(randomRahiAI == 0){ //prepare messages
+                        [resultLabel setText:[NSString stringWithFormat:@"The Rahi is about to attack!"]];
+                    }
+                    else{
+                        [resultLabel setText:[NSString stringWithFormat:@"Quick, strike!\nBefore it recovers!"]];
+                    }
+                }
             }
             else{
                 if(randomRahiAI == 0){ //if we attacked first, we need to now dodge
+                    
                     [self rahiDodge];
                 }
                 if(randomRahiAI == 1){ //if we dodged first, we need to now attack
+                    
                     [self rahiAttack];
                 }
             }
@@ -497,7 +512,7 @@
             }
             rahiDodgeFlag = false;
             rahiAttackFlag = false; //reset these back to false at the end of this
-            timerCounter = 120;
+            timerCounter = 240;
             
         }
         
@@ -582,7 +597,7 @@
 
 -(void)playerLostHealth{
     [playerArm setZRotation:124.476];
-    timerCounter = 120; //set this so that we can display messages for 1 second
+    timerCounter = 240; //set this so that we can display messages for 1 second
     if(playerRecentlyLostHealth != true){
         playerHPFight -= rahiDifficulty; //remove player health
         playerRecentlyLostHealth = true;
