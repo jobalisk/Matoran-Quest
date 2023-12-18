@@ -22,7 +22,7 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 2;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 2), 24 is a good time
+int playerUpdateTimerMax = 0;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 2), 24 is a good time
 int walkingTimer = 0; //this is for working out walking intervals
 int randomThing; //a random number for item placement purposes
 NSArray *kanohiList2;
@@ -359,6 +359,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     if(_rahiFightFlag4 == 3){ //if we won
         _rahiFightFlag4 = 0;
         rahiFightFlag = 0;
+        playerHP = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"];
         if(_rahiType3 == NULL){
             NSLog(@"This shouldn't happen");
             _rahiType3 = @"unnamed";
@@ -379,6 +380,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     else if(_rahiFightFlag4 == 4){ //if we lost
         _rahiFightFlag4 = 0;
         rahiFightFlag = 0;
+        playerHP = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"];
         if(_rahiType3 == NULL){
             NSLog(@"This shouldn't happen");
             _rahiType3 = @"unnamed";
@@ -397,6 +399,7 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
     }
     else if(_rahiFightFlag4 == 5){ //if we ran away successfully
         _rahiFightFlag4 = 0;
+        playerHP = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"];
         rahiFightFlag = 0;
         if(_rahiType3 == NULL){
             NSLog(@"This shouldn't happen");

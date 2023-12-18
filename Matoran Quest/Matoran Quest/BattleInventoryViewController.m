@@ -79,6 +79,14 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
 - (void)fruitButtonP:(nonnull id)sender __attribute__((ibaction)) {
     self.itemUsed2 = 9; //9 is vuata maka fruit
     [self removeItemFromBag:@"Vuata Maca fruit"];
+    int playerHPFight23 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"]; //load player HP
+    if(playerHPFight23 > 6){ //heal the player 3 (or full health if they're on 7 or more.)
+        [[NSUserDefaults standardUserDefaults] setInteger: 10 forKey:@"PlayerHP"];
+    }
+    else{
+        playerHPFight23 += 3;
+        [[NSUserDefaults standardUserDefaults] setInteger: playerHPFight23 forKey:@"PlayerHP"];
+    }
     [self returnToBattle];
 }
 
@@ -90,6 +98,7 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
 
 - (void)protodermisButtonP:(nonnull id)sender __attribute__((ibaction)) {
     self.itemUsed2 = 10; //10 is energized protodermis
+    [[NSUserDefaults standardUserDefaults] setInteger: 10 forKey:@"PlayerHP"]; //full heal the player
     [self removeItemFromBag:@"Energised Protodermis"];
     [self returnToBattle];
 }
@@ -125,22 +134,20 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
 
 -(void)enableOrDissableButtons{ //work out which buttons are enabled depending on whats in the players inventory
     //NSLog(@"items: %@", itemsArray);
+    
+    //first check health of player
+    int playerHPFight23 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"]; //load player HP
+    if(playerHPFight23 > 9){ //heal the player 3 (or full health if they're on 7 or more.)
+        [_fruitButton setEnabled:FALSE];
+        [_protodermisButton setEnabled:FALSE]; //these buttons are not availible if the player is at full health
+    }
+    
     if([itemsArray indexOfObject:@"Vuata Maca fruit"]==NSNotFound){ //check if the inventory contains this item
         //NSLog(@"fruit not here");
-        int playerHPFight23 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"]; //load player HP
-        if(playerHPFight23 > 6){ //heal the player 3 (or full health if they're on 7 or more.)
-            [[NSUserDefaults standardUserDefaults] setInteger: 10 forKey:@"PlayerHP"];
-        }
-        else{
-            playerHPFight23 += 3;
-            [[NSUserDefaults standardUserDefaults] setInteger: playerHPFight23 forKey:@"PlayerHP"];
-        }
-        
         [_fruitButton setEnabled:FALSE]; //if it does not, dissable the button
     }
     if([itemsArray indexOfObject:@"Energised Protodermis"]==NSNotFound){ //check if the inventory contains this item
         //NSLog(@"protodermis not here");
-        [[NSUserDefaults standardUserDefaults] setInteger: 10 forKey:@"PlayerHP"]; //full heal the player
         [_protodermisButton setEnabled:FALSE]; //if it does not, dissable the button
     }
     if([itemsArray indexOfObject:@"Super Disk"]==NSNotFound){ //check if the inventory contains this item
