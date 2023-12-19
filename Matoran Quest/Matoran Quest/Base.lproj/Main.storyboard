@@ -172,7 +172,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="134" id="7gS-on-5hz"/>
                                 </constraints>
-                                <string key="text">This game was made by Eternity Ware Studios, AKA, Job Dyer in 2023. The origonal idea came from Ezra Haren (though who knows how many others also had it. Special thanks to all my testers who helped make this game possible. Special thanks to Zachary Lorenzini for his work on some of the 3d models.</string>
+                                <string key="text">This game was made by Eternity Ware Studios, AKA, Job Dyer in 2023. The origonal idea came from Ezra Haren (though who knows how many others also had it. Special thanks to all my testers who helped make this game possible. Special thanks to Trevor Graham for his work on some of the 3d models.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -852,13 +852,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inW-HC-IaB">
-                                <rect key="frame" x="50" y="0.0" width="292.33333333333331" height="684.33333333333337"/>
+                                <rect key="frame" x="50" y="0.0" width="269.33333333333331" height="626.66666666666663"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fC-fm-ifS">
-                                        <rect key="frame" x="23.000000000000007" y="22.000000000000007" width="121.66666666666669" height="121.66666666666669"/>
+                                        <rect key="frame" x="23" y="22" width="110" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAM-M0-2OF">
-                                                <rect key="frame" x="1" y="0.0" width="118.33333333333333" height="119.33333333333333"/>
+                                                <rect key="frame" x="1" y="0.0" width="107" height="107.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="XAM-M0-2OF" secondAttribute="height" multiplier="124:125" id="nOo-OL-Ade"/>
                                                     <constraint firstAttribute="width" secondItem="XAM-M0-2OF" secondAttribute="height" multiplier="128:23" constant="-575.21739130434776" id="wir-JG-gTL"/>
@@ -890,10 +890,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mud-jv-Lq6">
-                                        <rect key="frame" x="23.000000000000007" y="281.33333333333331" width="121.66666666666669" height="121.66666666666669"/>
+                                        <rect key="frame" x="23" y="258.33333333333331" width="110" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkq-4Y-ihX">
-                                                <rect key="frame" x="1" y="0.0" width="90.666666666666671" height="123.33333333333333"/>
+                                                <rect key="frame" x="1" y="0.0" width="109.33333333333333" height="111.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pkq-4Y-ihX" secondAttribute="height" multiplier="128:23" constant="-595.47826086956525" id="NFT-Nw-YJ2"/>
                                                     <constraint firstAttribute="width" secondItem="pkq-4Y-ihX" secondAttribute="height" multiplier="42:43" id="TLv-QA-pbD"/>
@@ -925,10 +925,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQR-Xs-Une">
-                                        <rect key="frame" x="23.000000000000007" y="413" width="121.66666666666669" height="121.66666666666663"/>
+                                        <rect key="frame" x="23" y="378.33333333333331" width="110" height="110.33333333333331"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8se-uF-9i8">
-                                                <rect key="frame" x="1" y="0.0" width="122.66666666666667" height="122.66666666666667"/>
+                                                <rect key="frame" x="1" y="0.0" width="111" height="111.33333333333333"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="8se-uF-9i8" secondAttribute="height" multiplier="1:1" id="Yv6-6f-1os"/>
                                                 </constraints>
@@ -959,10 +959,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ktf-aw-IvK">
-                                        <rect key="frame" x="150.66666666666666" y="413" width="121.66666666666666" height="121.66666666666663"/>
+                                        <rect key="frame" x="139" y="378.33333333333331" width="110.33333333333331" height="110.33333333333331"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orj-7Z-lqg">
-                                                <rect key="frame" x="1" y="0.0" width="123.66666666666667" height="123.66666666666667"/>
+                                                <rect key="frame" x="1" y="0.0" width="112.33333333333333" height="112.33333333333333"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="orj-7Z-lqg" secondAttribute="height" multiplier="128:23" constant="-594.47826086956525" id="Wcl-Nw-4se"/>
                                                     <constraint firstAttribute="width" secondItem="orj-7Z-lqg" secondAttribute="height" multiplier="1:1" id="fya-ve-RmM"/>
@@ -994,10 +994,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9B-vH-vRU">
-                                        <rect key="frame" x="23.000000000000007" y="542.66666666666663" width="121.66666666666669" height="121.66666666666663"/>
+                                        <rect key="frame" x="23" y="496.66666666666674" width="110" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRn-ad-ZZy">
-                                                <rect key="frame" x="0.0" y="0.0" width="122" height="123"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="110.66666666666667" height="111.33333333333333"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="fRn-ad-ZZy" secondAttribute="height" multiplier="122:123" id="a1t-eC-PfY"/>
                                                 </constraints>
@@ -1028,10 +1028,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siP-Xl-pWg">
-                                        <rect key="frame" x="150.66666666666666" y="151.66666666666666" width="121.66666666666666" height="121.66666666666666"/>
+                                        <rect key="frame" x="139" y="140" width="110.33333333333331" height="110.33333333333331"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-Af-RfE">
-                                                <rect key="frame" x="1" y="0.0" width="122.66666666666667" height="123.66666666666667"/>
+                                                <rect key="frame" x="1" y="0.0" width="111.33333333333333" height="112.33333333333333"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="kM5-Af-RfE" secondAttribute="height" multiplier="128:23" constant="-594.47826086956525" id="0Vl-yt-wZG"/>
                                                     <constraint firstAttribute="width" secondItem="kM5-Af-RfE" secondAttribute="height" multiplier="129:130" id="QY8-aJ-Qat"/>
@@ -1063,10 +1063,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCX-EU-DBM">
-                                        <rect key="frame" x="23.000000000000007" y="151.66666666666666" width="121.66666666666669" height="121.66666666666666"/>
+                                        <rect key="frame" x="23" y="140" width="110" height="110.33333333333331"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pA-t0-mRz">
-                                                <rect key="frame" x="1" y="0.0" width="90.666666666666671" height="120.66666666666667"/>
+                                                <rect key="frame" x="1" y="0.0" width="108.33333333333333" height="109.33333333333333"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="2pA-t0-mRz" secondAttribute="height" multiplier="126:127" id="UBO-6S-N93"/>
                                                     <constraint firstAttribute="width" secondItem="2pA-t0-mRz" secondAttribute="height" multiplier="128:23" constant="-580.78260869565213" id="vYY-wV-NWX"/>
@@ -1098,10 +1098,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oB7-2K-hzh">
-                                        <rect key="frame" x="150.66666666666666" y="542.66666666666663" width="121.66666666666666" height="121.66666666666663"/>
+                                        <rect key="frame" x="139" y="496.66666666666674" width="110.33333333333331" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqC-PH-MuF">
-                                                <rect key="frame" x="0.0" y="0.0" width="123" height="124"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="111.66666666666667" height="112.33333333333333"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="MqC-PH-MuF" secondAttribute="height" multiplier="123:124" id="Onz-Lp-NEk"/>
                                                 </constraints>
@@ -1132,10 +1132,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Owx-MP-aWY">
-                                        <rect key="frame" x="150.66666666666666" y="281.33333333333331" width="121.66666666666666" height="121.66666666666669"/>
+                                        <rect key="frame" x="139" y="258.33333333333331" width="110.33333333333331" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MwY-HJ-Tdm">
-                                                <rect key="frame" x="1" y="0.0" width="119.66666666666667" height="123.66666666666667"/>
+                                                <rect key="frame" x="1" y="0.0" width="108.66666666666667" height="112"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="MwY-HJ-Tdm" secondAttribute="height" multiplier="128:23" constant="-597.47826086956525" id="Fq4-TV-HeZ"/>
                                                     <constraint firstAttribute="width" secondItem="MwY-HJ-Tdm" secondAttribute="height" multiplier="63:65" id="y05-iB-sG6"/>
@@ -1167,10 +1167,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hvw-P2-LBE">
-                                        <rect key="frame" x="150.66666666666666" y="22.000000000000007" width="121.66666666666666" height="121.66666666666669"/>
+                                        <rect key="frame" x="139" y="22" width="110.33333333333331" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhg-wV-cW0">
-                                                <rect key="frame" x="-2" y="0.0" width="123.33333333333333" height="123.33333333333333"/>
+                                                <rect key="frame" x="-2" y="0.0" width="77" height="111.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Lhg-wV-cW0" secondAttribute="height" multiplier="67:23" constant="-248.69565217391306" id="Hy3-dZ-3Eg"/>
                                                     <constraint firstAttribute="width" secondItem="Lhg-wV-cW0" secondAttribute="height" multiplier="1:1" id="yBB-3B-PHO"/>
@@ -1266,13 +1266,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhs-1V-vMb">
-                                <rect key="frame" x="316.33333333333331" y="333" width="100" height="18"/>
+                                <rect key="frame" x="293.33333333333331" y="304.33333333333331" width="100" height="18"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pqb-Mj-nRA">
-                                <rect key="frame" x="20" y="621.33333333333337" width="69" height="28"/>
+                                <rect key="frame" x="20" y="563.66666666666663" width="69" height="28"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Return">
