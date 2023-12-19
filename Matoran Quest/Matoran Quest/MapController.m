@@ -22,7 +22,7 @@ int playerWalkingSprite = 0; //the sprite number we're on
 float playerOldLong = 0.0; //keep these two to know where we've been for working out how far we recently moved
 float playerOldLat = 0.0;
 int playerUpdateTimer = 0; //use this to check for player movement at regular intervals
-int playerUpdateTimerMax = 2;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 2), 24 is a good time
+int playerUpdateTimerMax = 24;//the player timer updates roughly every half a second, this max timer means that the minimum time before we potentually get a new item will be 20 seconds (for tests use 2), 24 is a good time
 int walkingTimer = 0; //this is for working out walking intervals
 int randomThing; //a random number for item placement purposes
 NSArray *kanohiList2;
@@ -30,7 +30,7 @@ NSArray *itemList;
 NSArray *rahiList;
 int rareMaskIdentifyier = 0; //this is here so that I can raise a flag when a rare mask has been found to stop crashes in the player edit controller
 float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
-float spawnWalkDistance = 0.0000005; //how far you need to walk to trigger a spawn chance (normally  0.000005) (test 0.0000005) I change this to 1 more 0 when testing to dramatically increase the spawn rate.
+float spawnWalkDistance = 0.000005; //how far you need to walk to trigger a spawn chance (normally  0.000005) (test 0.0000005) I change this to 1 more 0 when testing to dramatically increase the spawn rate.
 int spawnRate = 3; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
@@ -39,7 +39,7 @@ int widgetCount = 0;
 int rahiFightFlag = 0; //are you encountering a rahi (in a fight)
 NSString *rahiName = @""; //the name of the rahi we will be fighting...
 float fadeToRahiDuration = 1.0;
-bool rahiTestingFlag = true; //this is for auto setting it to rahi only spawning. Very useful when testing rahi UI
+bool rahiTestingFlag = false; //this is for auto setting it to rahi only spawning. Very useful when testing rahi UI
 NSMutableArray *collectedMasks; //a list of the kinds of masks the player has collected. 1 entry for each unique kind of mask (colour as well as type)
 
 
@@ -370,7 +370,61 @@ NSMutableArray *collectedMasks; //a list of the kinds of masks the player has co
         
         UIAlertAction* defaultAction72 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * action) {
-            
+            int q = arc4random_uniform(3);
+            if(q == 0){ //random chance of finding a mask
+                //make a mask
+                
+                
+                NSArray *maskDetails; //the holding container for the mask and its info
+                NSMutableArray *maskArray2;
+                NSString *theMask = [self randomMaskMaker];
+                NSArray *maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"];
+                
+                //reduce down the accuracy of the lat and long by removing the decimal point
+                float long3 = (float)self->_theMap.userLocation.location.coordinate.longitude;
+                float lat3 = (float)self->_theMap.userLocation.location.coordinate.latitude;
+                int long2 = (int)long3;
+                int lat2 = (int)lat3;
+                NSString *long1 = [NSString stringWithFormat:@"%d",long2];
+                NSString *lat1  = [NSString stringWithFormat:@"%d", lat2];
+                //bit messy but need to first convert to float to convert to int as just straight int conversion causes a crash
+                
+                //sort out mask details
+                maskDetails = [NSArray arrayWithObjects: theMask, [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerName"], lat1, long1, nil]; //give player name, location and mask details
+
+                if(maskArray != NULL){ //check to see if the list exists first
+                    
+                    maskArray2 = [maskArray mutableCopy];
+                    [maskArray2 addObject: maskDetails]; //add it to the array
+                    [[NSUserDefaults standardUserDefaults] setObject: maskArray2 forKey:@"PlayerMasks"];
+                    //NSLog(@"MList2: %@", maskArray2);
+                }
+                else{ //make a new array
+                    maskArray = [NSArray arrayWithObjects: maskDetails, nil];
+                    [[NSUserDefaults standardUserDefaults] setObject: maskArray forKey:@"PlayerMasks"]; //save the new mask array back to user defaults
+                    //NSLog(@"MList1: %@", maskArray);
+                }
+                if([collectedMasks indexOfObject:theMask]==NSNotFound){ //if the mask is not in the list of collected masks, add it!
+                    //NSLog(@"adding: %@", theMask);
+                    [collectedMasks addObject:theMask];
+                    //NSLog(@"list1: %@", collectedMasks);
+                    [[NSUserDefaults standardUserDefaults] setObject:collectedMasks forKey:@"PlayerMaskCollectionList"]; //add the mask to the collection
+                }
+                else{
+                    //NSLog(@"not adding: %@", theMask);
+                    //NSLog(@"list2: %@", collectedMasks);
+                }
+                
+                UIAlertController *andAMaskTooController = [UIAlertController alertControllerWithTitle:@"You found a kanohi!"
+                                                                                         message:[NSString stringWithFormat: @"You recovered a %@ kanohi from the Rahi!", theMask]
+                                                                                  preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* defaultAction73 = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                        handler:^(UIAlertAction * action) {}];
+                [andAMaskTooController addAction:defaultAction73];
+                [self presentViewController:andAMaskTooController animated:YES completion:nil];
+                
+            }
         }];
         
         [winnerWinnerAlert addAction:defaultAction72];
