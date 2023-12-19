@@ -390,6 +390,8 @@
                                 self->rahiHPFight -= (1 + self->rahiResistance1);
                                 self->rahiAttackFlag = false;
                                 [self->resultLabel setText:@"You hit it!"];
+                                [self->rahiSprite removeAllActions];
+                                [self->rahiSprite runAction:[SKAction setTexture:[self->rahiAtlas textureNamed:[NSString stringWithFormat:@"%@3", self->rahiActualName]]] withKey:@"hitRahi"]; //give the rahi a dammaged pose texture
                                 [self->slideBarSlider setHidden:true];
                                 [self->aimSliderBar setHidden:true];
                                 [self->resultLabel setHidden:false];
@@ -465,7 +467,7 @@
     //NSLog(@"attack: %d", rahiAttackFlag);
     //NSLog(@"FPC: %d", fightProgressCounter);
     if(playerHPFight == 0){ //if we run out of life we lose!
-        [kanohiDisk runAction:[SKAction waitForDuration:1.0]completion:^(void){
+        [kanohiDisk runAction:[SKAction waitForDuration:1.3]completion:^(void){
             self.winLoss = 4;
         }];
         
@@ -476,7 +478,7 @@
         [slideBarSlider setHidden:true];
         [escapeSliderBar setHidden:true];
         //[resultLabel setHidden:true];
-        [kanohiDisk runAction:[SKAction waitForDuration:1.0]completion:^(void){
+        [kanohiDisk runAction:[SKAction waitForDuration:1.3]completion:^(void){
             self.winLoss = 3;
         }];
     }
@@ -519,9 +521,19 @@
             //[rahiSprite runAction: [SKAction repeatActionForever: rahiIdleAnimation]];
             //[rahiSprite runAction:[SKAction stop]];
             if([rahiSprite actionForKey:@"idleAction"] == nil){
-                [rahiSprite removeAllActions];
-                [rahiSprite runAction:rahiShrink withKey:@"shrinkAction"];
-                [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction] withKey:@"idleAction"];
+                if([rahiSprite actionForKey:@"hitRahi"]){
+                    [rahiSprite runAction:[SKAction waitForDuration:0.5] completion:^(void){
+                        [self->rahiSprite removeAllActions];
+                        [self->rahiSprite runAction:self->rahiShrink withKey:@"shrinkAction"];
+                        [self->rahiSprite runAction:[SKAction repeatActionForever:self->rahiIdleAction] withKey:@"idleAction"];
+                    }];
+                }
+                else{
+                    [rahiSprite removeAllActions];
+                    [rahiSprite runAction:rahiShrink withKey:@"shrinkAction"];
+                    [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction] withKey:@"idleAction"];
+                }
+
 
             }
             fightProgressCounter = 0;
@@ -547,9 +559,18 @@
 
             //NSLog(@"here 2");
             if([rahiSprite actionForKey:@"idleAction"] == nil){
-                [rahiSprite removeAllActions];
-                [rahiSprite runAction:rahiShrink withKey:@"shrinkAction"];
-                [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction] withKey:@"idleAction"];
+                if([rahiSprite actionForKey:@"hitRahi"]){
+                    [rahiSprite runAction:[SKAction waitForDuration:0.5] completion:^(void){
+                        [self->rahiSprite removeAllActions];
+                        [self->rahiSprite runAction:self->rahiShrink withKey:@"shrinkAction"];
+                        [self->rahiSprite runAction:[SKAction repeatActionForever:self->rahiIdleAction] withKey:@"idleAction"];
+                    }];
+                }
+                else{
+                    [rahiSprite removeAllActions];
+                    [rahiSprite runAction:rahiShrink withKey:@"shrinkAction"];
+                    [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction] withKey:@"idleAction"];
+                }
             }
             if(timerCounter > 0){ //give 2 secs to read any messages
                 timerCounter -=1;
@@ -751,7 +772,7 @@
     //small rahi
     if([rahiActualName isEqualToString:@"pekapeka"]){
         //pekapeka
-        pekapekaKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@7", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@8", rahiActualName]]];
+        pekapekaKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@7", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@8", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@9", rahiActualName]]];
         pekapekaAttackArray = rahiIdleArray;
         //NSLog(@"pekapeka");
         rahiAttackAction = [SKAction animateWithTextures:pekapekaAttackArray timePerFrame:0.15];
@@ -760,7 +781,7 @@
     
     else if([rahiActualName isEqualToString:@"ngarara"]){
         //ngarara
-        ngararaKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@0", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@3", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]]];
+        ngararaKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@0", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]]];
         ngararaAttackArray = rahiIdleArray;
         //NSLog(@"ngarara");
         rahiAttackAction = [SKAction animateWithTextures:ngararaAttackArray timePerFrame:0.15];
@@ -769,7 +790,7 @@
     
     else if([rahiActualName isEqualToString:@"fikou"]){
         //fikou
-        fikouKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@3", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]]];
+        fikouKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@7", rahiActualName]]];
         fikouAttackArray = rahiIdleArray;
         //NSLog(@"fikou");
         rahiAttackAction = [SKAction animateWithTextures:fikouAttackArray timePerFrame:0.15];
@@ -779,7 +800,7 @@
     else if([rahiActualName isEqualToString:@"jaga"]){
         //jaga
         
-        jagaKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@7", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@8", rahiActualName]]];
+        jagaKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@7", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@8", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@9", rahiActualName]]];
         jagaAttackArray = rahiIdleArray;
         //NSLog(@"jaga");
         rahiAttackAction = [SKAction animateWithTextures:jagaAttackArray timePerFrame:0.15];
@@ -788,8 +809,8 @@
     
     else if([rahiActualName isEqualToString:@"hoi"]){
         //hoi
-        hoiAttackArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@3", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]]];
-        hoiKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@7", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@8", rahiActualName]]];
+        hoiAttackArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@6", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@5", rahiActualName]],[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@4", rahiActualName]]];
+        hoiKOArray = @[[rahiAtlas textureNamed:[NSString stringWithFormat:@"%@7", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@8", rahiActualName]], [rahiAtlas textureNamed:[NSString stringWithFormat:@"%@9", rahiActualName]]];
         //NSLog(@"hoi");
         rahiAttackAction = [SKAction animateWithTextures:hoiAttackArray timePerFrame:0.15];
         rahiKOAction = [SKAction animateWithTextures:hoiKOArray timePerFrame:0.15];
