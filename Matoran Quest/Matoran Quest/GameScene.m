@@ -60,8 +60,11 @@
     float playerDefaultArmRotation;
     //bool rahiRunningAnimation; //is the rahi currently animating?
     float growShrinkTimeInterval; //how long it takes the rahi to grow and shrink
-
-
+    bool playerAttacked; //has the player just attacked?
+    int playerResistance1; //resistance modifiers for damage mitigation
+    int rahiResistance1;
+    float diskTravelSpeed; //how fast the disk shoots
+    CGPoint diskOrigin; //where the disk starts so that we can return it
     
     //arrays and atlas's for animations
     //player
@@ -115,7 +118,7 @@
     actionTimer = 10;
     timerCounterDefault = 60; //60 to 1 second
     timerCounter = timerCounterDefault;
-    rahiHPFight = 1;
+    //rahiHPFight = 1;
     whichWay1 = arc4random_uniform(2); //for the slider. 0 for right, 1 for left
     sliderSpeed = 7;
     playerRecentlyLostHealth = false;
@@ -123,6 +126,8 @@
     playerDefaultArmRotation = -1.570796;
     //rahiRunningAnimation = false;
     growShrinkTimeInterval = 0.4;
+    playerAttacked = false;
+    
     
     [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"BackPackItemUsed"]; //set it to 0 by default
     self.itemUsed = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BackPackItemUsed"];
@@ -140,7 +145,7 @@
     fightLabelsAtlas = [SKTextureAtlas atlasNamed:@"fightingNumbers.atlas"];
     armThrowArray = @[[armThrowAtlas textureNamed:@"throwing_arm00"], [armThrowAtlas textureNamed:@"throwing_arm01"], [armThrowAtlas textureNamed:@"throwing_arm02"], [armThrowAtlas textureNamed:@"throwing_arm03"], [armThrowAtlas textureNamed:@"throwing_arm04"], [armThrowAtlas textureNamed:@"throwing_arm05"], [armThrowAtlas textureNamed:@"throwing_arm06"], [armThrowAtlas textureNamed:@"throwing_arm07"], [armThrowAtlas textureNamed:@"throwing_arm08"], [armThrowAtlas textureNamed:@"throwing_arm09"]];
     
-    diskThrowArray = @[[armThrowAtlas textureNamed:@"kanohiDisk0"], [armThrowAtlas textureNamed:@"kanohiDisk1"]];
+    diskThrowArray = @[[diskThrowAtlas textureNamed:@"kanohiDisk0"], [diskThrowAtlas textureNamed:@"kanohiDisk1"]];
     
     fightLabelsArray = @[[fightLabelsAtlas textureNamed:@"toru"], [fightLabelsAtlas textureNamed:@"rua"], [fightLabelsAtlas textureNamed:@"tahi"], [fightLabelsAtlas textureNamed:@"fight"]]; //in the order of counting down
     
@@ -195,6 +200,9 @@
     _winLoss = 0; //start of neutral
     _gotoBackPack = 0; //we don't need to go to the back pack yet...
     defaultSliderPos = slideBarSlider.position; //set default position of slider based on screen size
+    rahiDifficulty = 2;
+    rahiHPFight = rahiDifficulty;
+    diskOrigin = kanohiDisk.position;
     
     //hide things that should always be hidden at the start...
     
@@ -300,9 +308,13 @@
         //NSLog(@"tapped");
         rahiAttackFlag = false; //reset these before the fight starts
         fightProgressCounter = 0;
+        playerAttacked = false;
         [fightButton setHidden:true]; //hide the menu
         [bagButton setHidden:true];
         [runButton setHidden:true];
+        [kanohiDisk setPosition:diskOrigin]; //do kanohi disk reset
+        [kanohiDisk setScale:0.50];
+        [kanohiDisk setHidden:true];
         [fightLabel2 setHidden: false]; //show the count down
         [fightLabel2 runAction:[SKAction animateWithTextures:fightLabelsArray timePerFrame:1.0] completion:^(void){ //run the countdown
             [self->fightLabel2 setHidden: true]; //hide the count down upon completion and show the HP trackers
@@ -327,18 +339,23 @@
         self.gotoBackPack = 1;
     }
     else if([touchedNode.name isEqualToString:@"rahi1"]){
-        NSLog(@"rahi touched");
+        //NSLog(@"rahi touched");
         [rahiSprite setHidden:true];
     }
     else if([touchedNode.name isEqualToString:@"sliderBarSlider1"]){
         //NSLog(@"slider touched");
         if(rahiDodgeFlag == true){ //if we touched the bar while trying to dodge, we have success (if it was within the correct area)
-            if(slideBarSlider.position.y < -193 || slideBarSlider.position.y > 193){
-                rahiDodgeFlag = false;
-                [resultLabel setText:@"You dodged the Rahi!"];
-                [resultLabel setHidden: false];
-                [slideBarSlider setHidden:true];
-                [escapeSliderBar setHidden:true];
+            if(slideBarSlider.position.y < -173 || slideBarSlider.position.y > 173){
+                [playerArm runAction:[SKAction moveToY:-996 duration:0.3] completion:^(void){ //hide the arm briefly to simulate dodging
+                    self->rahiDodgeFlag = false;
+                    [self->resultLabel setText:@"You dodged the Rahi!"];
+                    [self->resultLabel setHidden: false];
+                    [self->slideBarSlider setHidden:true];
+                    [self->escapeSliderBar setHidden:true];
+                    [self->playerArm runAction:[SKAction moveToY:-283 duration:0.3] completion:^(void){
+
+                    }];
+                }];
 
             }
             else{
@@ -346,15 +363,79 @@
                 [resultLabel setText:@"You were hit by the Rahi!"];
                 [slideBarSlider setHidden:true];
                 [escapeSliderBar setHidden:true];
-                [resultLabel setHidden:true];
+                [resultLabel setHidden:false];
                 [self playerLostHealth];
                 
             }
             fightProgressCounter += 1;
             timerCounter = 240;
         }
+        else if(rahiAttackFlag == true){ //if we touched the bar while trying to attack...
+            if(playerAttacked == false){ //only do this once per fight phase!
+                playerAttacked = true;
+                diskTravelSpeed = 0.5;
+                NSLog(@"POS: %f", slideBarSlider.position.y);
+                if(slideBarSlider.position.y > -173 && slideBarSlider.position.y < 173){ //if we are in the green area we hit...
+                    [playerArm removeAllActions];
+                    [playerArm runAction:[SKAction moveToY:-500 duration:0.25] completion:^(void){ //if we still have the disk, withdraw the arm briefly and hide it
+                        //make the disk "appear"
+                        //self->rahiRunningAnimation = true;
+                        //[self->rahiSprite runAction:self->rahiIdleAction withKey:@"idleAction"];
+                        [self->kanohiDisk setHidden:false];
+                        //NSLog(@"part 1: %d", self->rahiAttackFlag);
+                        //NSLog(@"hit");
+                        [self->playerArm runAction:[SKAction moveToY:-283 duration:0.25] completion:^(void){
+                            [self->kanohiDisk runAction:[SKAction moveTo: CGPointMake(-95, 2.3) duration:self->diskTravelSpeed]];
+                            [self->kanohiDisk runAction:[SKAction scaleTo:0.0 duration:self->diskTravelSpeed]completion:^(void){
+                                self->rahiHPFight -= (1 + self->rahiResistance1);
+                                self->rahiAttackFlag = false;
+                                [self->resultLabel setText:@"You hit it!"];
+                                [self->slideBarSlider setHidden:true];
+                                [self->aimSliderBar setHidden:true];
+                                [self->resultLabel setHidden:false];
+                                [self->kanohiDisk setHidden:true];
+                                self->fightProgressCounter += 1;
+                                self->timerCounter = 240;
+                                
+                            }];
+                        }];
+                    }];
+                }
+                else{
+                    //...otherwise we miss
+                    [playerArm removeAllActions];
+                    //NSLog(@"miss");
+                    [playerArm runAction:[SKAction moveToY:-500 duration:0.25] completion:^(void){ //if we still have the disk, withdraw the arm briefly and hide it
+                        //make the disk "appear"
+                        //self->rahiRunningAnimation = true;
+                        //[self->rahiSprite runAction:self->rahiIdleAction withKey:@"idleAction"];
+                        [self->kanohiDisk setHidden:false];
+                        //NSLog(@"part 1: %d", self->rahiAttackFlag);
+                        [self->playerArm runAction:[SKAction moveToY:-283 duration:0.25] completion:^(void){
+                            [self->kanohiDisk runAction:[SKAction moveTo: CGPointMake(-214.213, 24) duration:self->diskTravelSpeed]];
+                            [self->kanohiDisk runAction:[SKAction scaleTo:0.0 duration:self->diskTravelSpeed]completion:^(void){
+                                //NSLog(@"called");
+                                self->rahiAttackFlag = false;
+                                [self->resultLabel setText:@"You missed!"];
+                                [self->slideBarSlider setHidden:true];
+                                [self->aimSliderBar setHidden:true];
+                                [self->resultLabel setHidden:false];
+                                [self->kanohiDisk setHidden:true];
+                                self->fightProgressCounter += 1;
+                                self->timerCounter = 240;
+                                
+                            }];
+
+                        }];
+                    }];
+
+                }
+                
+            }
+
+        }
     }
-    
+
     
     
     for (UITouch *t in touches) {[self touchDownAtPoint:[t locationInNode:self]];}
@@ -380,10 +461,24 @@
     // Called before each frame is rendered
     //NSLog(@"updating");
     //NSLog(@"dodge: %d", rahiDodgeFlag);
+    //NSLog(@"RHP: %d", rahiHPFight);
     //NSLog(@"attack: %d", rahiAttackFlag);
     //NSLog(@"FPC: %d", fightProgressCounter);
     if(playerHPFight == 0){ //if we run out of life we lose!
-        self.winLoss = 4;
+        [kanohiDisk runAction:[SKAction waitForDuration:1.0]completion:^(void){
+            self.winLoss = 4;
+        }];
+        
+    }
+    if(rahiHPFight == 0){ //if the rahi runs out of life we win!
+        rahiAttackFlag = false;
+        [resultLabel setText:@"You hit it!"];
+        [slideBarSlider setHidden:true];
+        [escapeSliderBar setHidden:true];
+        //[resultLabel setHidden:true];
+        [kanohiDisk runAction:[SKAction waitForDuration:1.0]completion:^(void){
+            self.winLoss = 3;
+        }];
     }
     
     if(rahiDodgeFlag == true){
@@ -615,6 +710,11 @@
         }
         
     }
+    
+    //work out player attacking animations
+    
+    
+    
 }
 
 -(void)chooseRahiImage{ //sort out getting the correct rahi images
@@ -758,11 +858,11 @@
 }
 
 -(void)playerLostHealth{
-    [playerArm setZRotation:124.476];
+    [playerArm setZRotation: -1.22173048]; //70 degrees
     timerCounter = 240; //set this so that we can display messages for 1 second
     //work out player resistances
-    int playerResistance1 = 0;
-    int rahiResistance1 = 0;
+    playerResistance1 = 0;
+    rahiResistance1 = 0;
     if([[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"rau"] || [[[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMask"] containsString:@"kaukau"]){
         if([_rahiType isEqualToString:@"hoi"]){
             playerResistance1 += 2;
