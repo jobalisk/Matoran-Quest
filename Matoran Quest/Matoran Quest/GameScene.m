@@ -115,7 +115,7 @@
     rahiDodgeFlag = false;
     isRunningAnimation = 0;
     doubleTapp = 0;
-    rahiDifficulty = 2;
+    //rahiDifficulty = 2;
     actionTimer = 7;
     timerCounterDefault = 60; //60 to 1 second
     timerCounter = timerCounterDefault;
@@ -202,8 +202,8 @@
     _winLoss = 0; //start of neutral
     _gotoBackPack = 0; //we don't need to go to the back pack yet...
     defaultSliderPos = slideBarSlider.position; //set default position of slider based on screen size
-    rahiDifficulty = 2;
-    rahiHPFight = rahiDifficulty;
+    //rahiDifficulty = 2;
+    //rahiHPFight = rahiDifficulty;
     diskOrigin = kanohiDisk.position;
     
     //hide things that should always be hidden at the start...
@@ -317,79 +317,82 @@
             if(_itemUsed == 1){ //air
                 [kanohiDisk runAction:[SKAction colorizeWithColor:[UIColor greenColor] colorBlendFactor:1.0 duration:0.0]];
                 if([_rahiType isEqualToString:@"pekapeka"]){
-                    rahiResistance1 += 1;
+                    //rahiResistance1 -= 1;
                 }
                 else if([_rahiType isEqualToString:@"ngarara"]){
-                    rahiResistance1 -= 3;
+                    rahiResistance1 += 3;
                 }
                 else if([_rahiType isEqualToString:@"hoi"]){
-                    rahiResistance1 -= 1;
+                    rahiResistance1 += 1;
                 }
             }
             else if(_itemUsed == 5){ //stone
                 [kanohiDisk runAction:[SKAction colorizeWithColor:[UIColor brownColor] colorBlendFactor:1.0 duration:0.0]];
                 if([_rahiType isEqualToString:@"ngarara"]){
-                    rahiResistance1 += 1;
+                    //rahiResistance1 -= 1;
                 }
                 else if([_rahiType isEqualToString:@"jaga"]){
-                    rahiResistance1 += 1;
+                    rahiResistance1 -= 1;
                 }
                 else if([_rahiType isEqualToString:@"pekapeka"]){
-                    rahiResistance1 -= 3;
+                    rahiResistance1 += 3;
                 }
                 
             }
             if(_itemUsed == 3){ //fire
                 [kanohiDisk runAction:[SKAction colorizeWithColor:[UIColor redColor] colorBlendFactor:1.0 duration:0.0]];
                 if([_rahiType isEqualToString:@"jaga"]){
-                    rahiResistance1 += 1;
+                    //rahiResistance1 -= 1;
                 }
                 else if([_rahiType isEqualToString:@"hoi"]){
-                    rahiResistance1 += 1;
+                    //rahiResistance1 -= 1;
                 }
                 else if([_rahiType isEqualToString:@"ngarara"]){
-                    rahiResistance1 -= 3;
+                    rahiResistance1 += 3;
+                }
+                else if([_rahiType isEqualToString:@"fikou"]){
+                    rahiResistance1 += 2;
                 }
 
             }
             if(_itemUsed == 4){ //ice
                 [kanohiDisk runAction:[SKAction colorizeWithColor:[UIColor whiteColor] colorBlendFactor:1.0 duration:0.0]];
                 if([_rahiType isEqualToString:@"fikou"]){
-                    rahiResistance1 += 1;
+                    //rahiResistance1 -= 1;
                 }
                 else if([_rahiType isEqualToString:@"hoi"]){
-                    rahiResistance1 += 1;
+                    //rahiResistance1 -= 1;
                 }
                 if([_rahiType isEqualToString:@"ngarara"]){
-                    rahiResistance1 -= 3;
+                    rahiResistance1 += 3;
                 }
 
             }
             if(_itemUsed == 2){ //earth
                 [kanohiDisk runAction:[SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:1.0 duration:0.0]];
                 if([_rahiType isEqualToString:@"ngarara"]){
-                    rahiResistance1 += 1;
+                    //rahiResistance1 -= 1;
                 }
                 else if([_rahiType isEqualToString:@"pekapeka"]){
-                    rahiResistance1 -= 3;
+                    rahiResistance1 += 3;
                 }
                 else if([_rahiType isEqualToString:@"hoi"]){
-                    rahiResistance1 -= 3;
+                    rahiResistance1 += 3;
                 }
             }
             if(_itemUsed == 6){ //water
                 [kanohiDisk runAction:[SKAction colorizeWithColor:[UIColor blueColor] colorBlendFactor:1.0 duration:0.0]];
                 if([_rahiType isEqualToString:@"jaga"]){
-                    rahiResistance1 -= 3;
+                    rahiResistance1 += 3;
                 }
                 else if([_rahiType isEqualToString:@"hoi"]){
-                    rahiResistance1 += 1;
+                    //rahiResistance1 -= 1;
                 }
                 
             }
             if(_itemUsed == 7){ //super disk
                 [kanohiDisk runAction:[SKAction colorizeWithColor:[UIColor colorWithRed:0.8 green:0.7 blue:0.0 alpha:1.0] colorBlendFactor:1.0 duration:0.0]]; //goldish
-                rahiResistance1 -= 3;
+                rahiResistance1 += 3;
 
             }
         }
@@ -474,16 +477,17 @@
                             [self->kanohiDisk runAction:[SKAction moveTo: CGPointMake(-95, 2.3) duration:self->diskTravelSpeed]];
                             [self->kanohiDisk runAction:[SKAction scaleTo:0.0 duration:self->diskTravelSpeed]completion:^(void){
                                 self->rahiHPFight -= (1 + self->rahiResistance1);
+                                //NSLog(@"resistance: %d", self->rahiResistance1);
                                 self->rahiAttackFlag = false;
                                 [self->resultLabel setText:@"You hit it!"];
                                 
                                 //[self->rahiSprite removeAllActions];
                                 //NSLog(@"RHP: %d", self->rahiHPFight);
                                 if(self->rahiHPFight > 0){
-                                    NSLog(@"health: %d", self->rahiHPFight);
+                                    //NSLog(@"health: %d", self->rahiHPFight);
                                     if([self->rahiSprite actionForKey:@"hitRahi"] == nil){
                                         [self->rahiSprite removeAllActions];
-                                        NSLog(@"hit1");
+                                        //NSLog(@"hit1");
                                         [self->rahiSprite runAction:[SKAction setTexture:[self->rahiAtlas textureNamed:[NSString stringWithFormat:@"%@3", self->rahiActualName]]]]; //give the rahi a dammaged pose texture
                                         [self->rahiSprite runAction: [SKAction waitForDuration:0.3] withKey: @"hitRahi"]; //give the program time to read it
                                     }
@@ -572,7 +576,7 @@
     //NSLog(@"RHP: %d", rahiHPFight);
     //NSLog(@"attack: %d", rahiAttackFlag);
     //NSLog(@"FPC: %d", fightProgressCounter);
-    if(playerHPFight == 0){ //if we run out of life we lose!
+    if(playerHPFight < 1){ //if we run out of life we lose!
         [playerArm setZRotation: -1.22173048]; //70 degrees
         
         //remove an item at random from the players inventory or mask stash
@@ -608,7 +612,7 @@
 
         
     }
-    if(rahiHPFight == 0){ //if the rahi runs out of life we win!
+    if(rahiHPFight < 1){ //if the rahi runs out of life we win!
         rahiAttackFlag = false;
         //[resultLabel setText:@"You hit it!"];
         [slideBarSlider setHidden:true];
@@ -718,6 +722,7 @@
                         [resultLabel setText:[NSString stringWithFormat:@"The Rahi is about to attack!"]];
                     }
                     else{
+                        NSLog(@"timer: %d", timerCounter);
                         [resultLabel setText:[NSString stringWithFormat:@"Quick, strike! Before it recovers!"]];
                     }
                 }
@@ -732,6 +737,11 @@
                     [rahiSprite removeAllActions];
                     [self rahiAttack];
                     
+                }
+                else{ //for more difficult ai, we're almost certainly going to have to dodge first... then we get to attack.
+                    NSLog(@"ai: %d", randomRahiAI);
+                    [rahiSprite removeAllActions];
+                    [self rahiAttack];
                 }
             }
         }
@@ -887,16 +897,17 @@
     
     //work out temporary sprites for larger rahi...
     if([rahiActualName isEqualToString:@"pekapeka"] || [rahiActualName isEqualToString:@"ngarara"] || [rahiActualName isEqualToString:@"fikou"] || [rahiActualName isEqualToString:@"jaga"] || [rahiActualName isEqualToString:@"hoi"]){
-        //do nothing
+        rahiDifficulty = 3;
     }
         
-    else{
+    else{//temporary until big rahi are properly added
         NSArray *randomSmallRahiArray = @[@"ngarara", @"pekapeka",@"jaga",@"hoi",@"fikou"];
         int i = arc4random_uniform(5);
         rahiActualName = randomSmallRahiArray[i];
         //assign names to a array of idle sprites to create an animation
         
     }
+    rahiHPFight = rahiDifficulty;
     rahiAtlas = [SKTextureAtlas atlasNamed: [NSString stringWithFormat: @"%@.atlas", rahiActualName]];
     //NSLog(@"atlas: %@", rahiAtlas);
     //NSLog(@"atlas name: %@", [NSString stringWithFormat: @"%@.atlas", rahiActualName]);
@@ -1098,7 +1109,9 @@
     
     
     if(playerRecentlyLostHealth != true){
-        playerHPFight -= (rahiDifficulty + playerResistance1); //remove player health minus or added to any bonuses or penalties from resistances
+        playerHPFight -= rahiDifficulty;
+        playerHPFight += playerResistance1; //remove player health minus or added to any bonuses or penalties from resistances
+        //playerHPFight + rahiResistance1;
         playerRecentlyLostHealth = true;
         [[NSUserDefaults standardUserDefaults] setInteger: playerHPFight forKey:@"PlayerHP"];
     }
