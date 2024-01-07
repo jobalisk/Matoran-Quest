@@ -22,11 +22,15 @@ NSMutableArray *availibleMasks; //what masks the player can choose to wear
 UIImage *playerSprite; //the image in the player portrait
 NSString *playerMask; //the mask the player has chosen
 int selectedMaskRow; //and int value for where in the picker we have current selected
-
+int viewIsRunning = 0; //is this the currently presented view
+CGFloat red1;
+CGFloat blue1;
+CGFloat green1;
+CGFloat alpha1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    viewIsRunning = 1;
     kanohiList = [NSMutableArray arrayWithObjects: @"unmasked", @"hau", @"miru", @"kakama", @"akaku", @"huna", @"rau", @"matatu", @"pakari", @"ruru", @"kaukau", @"mahiki", @"komau", nil]; //load up masks availible to player
     //NSArray *maskArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]; //get the players masks from the user defaults and make an array of them
     //NSLog(@"%@", maskArray);
@@ -89,7 +93,7 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
                 else{
                     
                     NSArray* maskColourAndName2 = [collectedMasks3[i] componentsSeparatedByString:@" "];
-                    NSLog(@"%@", maskColourAndName2);
+                    //NSLog(@"%@", maskColourAndName2);
                     if([availibleMasks containsObject:maskColourAndName2[1]] == false){
                         //NSLog(@"not found yet");
                         [availibleMasks addObject: maskColourAndName2[1]];
@@ -158,12 +162,49 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
     
     // set up the picker view
     [_playerMaskChooser setDataSource: self];
+    
+
 
   
 }
 
+-(void)listenForPickerView{ //a small method that updates the current player mask image to what the picker view has selected every 0.5 seconds.
+    while(viewIsRunning == 1){
+        //NSLog(@"running");
+        [NSThread sleepForTimeInterval:0.250];
+        dispatch_async(dispatch_get_main_queue(), ^{ //update the player mask on the main thread
+            @try{
+                //NSLog(@"selected row (normal): %ld", (long)[self->_playerMaskChooser selectedRowInComponent:0]);
+                playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@matoran0", kanohiList[[self->_playerMaskChooser selectedRowInComponent:0]]]];
+                
+                [self->_playerPortrait setImage:playerSprite];
+                [self colourWellPressed: playerSprite];
+                
+            }
+            @catch (NSException *exception) {
+                //NSLog(@"fail");
+                playerSprite = [UIImage imageNamed:[NSString stringWithFormat:@"%@matoran0", kanohiList[[self->_playerMaskChooser selectedRowInComponent:0]]]];
+                
+                [self->_playerPortrait setImage:playerSprite];
+                [self colourWellPressed: playerSprite];
+            }
+            @finally {
+                
+              //Display Alternative
+            }
+        });
+    }
+
+
+    
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [_playerMaskChooser selectRow:[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerMaskNumber"] inComponent:0 animated:true]; //go to the players selected mask on load up
+    
+    //make a picker view listener
+    [NSThread detachNewThreadSelector:@selector(listenForPickerView) toTarget:self withObject:nil];
+    
     //NSLog(@"row: %ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerMaskNumber"]);
     //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait] forKey:@"orientation"];//set the controller to be portrait
 }
@@ -177,15 +218,14 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
         
         //convert player colours to text for saving
         
-        CGFloat red1;
-        CGFloat blue1;
-        CGFloat green1;
-        CGFloat alpha1;
+
         [_playerColourPicker.selectedColor getRed:&red1 green:&green1 blue:&blue1 alpha:&alpha1];
+        /*
         [[NSUserDefaults standardUserDefaults] setFloat: red1 forKey:@"PlayerRed"];
         [[NSUserDefaults standardUserDefaults] setFloat: blue1 forKey:@"PlayerBlue"];
         [[NSUserDefaults standardUserDefaults] setFloat: green1 forKey:@"PlayerGreen"];
         [[NSUserDefaults standardUserDefaults] setFloat: alpha1 forKey:@"PlayerAlpha"];
+         */
         //NSLog(@"1R: %f", [[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerRed"]);
         //NSLog(@"1G: %f", [[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerGreen"]);
         //NSLog(@"1B: %f", [[NSUserDefaults standardUserDefaults] floatForKey:@"PlayerBlue"]);
@@ -202,6 +242,7 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    viewIsRunning = 0;
     return YES;
 }
 
@@ -219,6 +260,7 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
     
     [_playerPortrait setImage:playerSprite];
     [self colourWellPressed: playerSprite];
+    playerMask = [NSString stringWithFormat:@"%@matoran", kanohiList[[self->_playerMaskChooser selectedRowInComponent:0]]];
     if(maskChosenFlag == 0){ //set the availible masks list to include the mask the player has chosen at the start
         				UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure?"
 									   message:@"Press yes to select this as your starting mask. Press no to cancel. Once selected, you will have to find the other masks to wear them."
@@ -236,6 +278,11 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
             int uniqueIdentifier1 = arc4random_uniform(100000); //generate a random 5 digit number for this devices identifier (used when trading)
             [[NSUserDefaults standardUserDefaults] setInteger:uniqueIdentifier1 forKey:@"UniquePhoneIdentifier"]; //save the unique identifier for later, never reset this once its created
             
+            //set colour defaults
+            [[NSUserDefaults standardUserDefaults] setFloat: red1 forKey:@"PlayerRed"];
+            [[NSUserDefaults standardUserDefaults] setFloat: blue1 forKey:@"PlayerBlue"];
+            [[NSUserDefaults standardUserDefaults] setFloat: green1 forKey:@"PlayerGreen"];
+            [[NSUserDefaults standardUserDefaults] setFloat: alpha1 forKey:@"PlayerAlpha"];
             
             //BackToManagePlayer
             [self performSegueWithIdentifier:@"BackToManagePlayer" sender:self]; //return so we can't mess anything up
@@ -253,6 +300,11 @@ int selectedMaskRow; //and int value for where in the picker we have current sel
 
     }
     else{
+        //set colour defaults
+        [[NSUserDefaults standardUserDefaults] setFloat: red1 forKey:@"PlayerRed"];
+        [[NSUserDefaults standardUserDefaults] setFloat: blue1 forKey:@"PlayerBlue"];
+        [[NSUserDefaults standardUserDefaults] setFloat: green1 forKey:@"PlayerGreen"];
+        [[NSUserDefaults standardUserDefaults] setFloat: alpha1 forKey:@"PlayerAlpha"];
         [[NSUserDefaults standardUserDefaults] setObject: playerMask forKey:@"PlayerMask"]; //save the player mask choice
     }
     
@@ -326,6 +378,7 @@ numberOfRowsInComponent:(NSInteger)component {
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    viewIsRunning = 0;
     if([_playerNameField hasText] == NO){
         [playerDetails setObject: @"Rīwai" forKey:@"PlayerName"]; //set a default name to avoid a really weird bug
     }

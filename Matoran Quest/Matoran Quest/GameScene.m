@@ -66,6 +66,7 @@
     float diskTravelSpeed; //how fast the disk shoots
     CGPoint diskOrigin; //where the disk starts so that we can return it
     bool onlyDoThisOnce; //a variable to make sure we remove only 1 item from the players collection if they lose
+    bool rahiAttackCalledFlag; //a similar variable to above, to stop the rahi attack method being called several times at once
     
     //arrays and atlas's for animations
     //player
@@ -129,6 +130,7 @@
     growShrinkTimeInterval = 0.4;
     playerAttacked = false;
     onlyDoThisOnce = false;
+    rahiAttackCalledFlag = false;
     
     
     [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"BackPackItemUsed"]; //set it to 0 by default
@@ -412,7 +414,11 @@
             self->randomRahiAI = arc4random_uniform(self->rahiDifficulty); //oh no, the Rahi has got AI!
             //NSLog(@"Difficulty: %d", self->rahiDifficulty);
             if(self->randomRahiAI == 0){
-                [self rahiAttack];
+                //NSLog(@"called 3");
+                if(self->rahiAttackCalledFlag == false){
+                    [self rahiAttack];
+                }
+                
             }
             else{
                 [self rahiDodge];
@@ -494,9 +500,9 @@
 
                                 }
                                 else{
-                                    NSLog(@"KOed");
+                                    //NSLog(@"KOed");
                                     if([self->rahiSprite actionForKey:@"rahiKO"] == nil){
-                                        NSLog(@"KOed2");
+                                        //NSLog(@"KOed2");
                                         [self->rahiSprite removeAllActions];
                                         [self->rahiSprite runAction: self->rahiKOAction withKey:@"rahiKO"];
                                     }
@@ -722,7 +728,7 @@
                         [resultLabel setText:[NSString stringWithFormat:@"The Rahi is about to attack!"]];
                     }
                     else{
-                        NSLog(@"timer: %d", timerCounter);
+                        //NSLog(@"timer: %d", timerCounter);
                         [resultLabel setText:[NSString stringWithFormat:@"Quick, strike! Before it recovers!"]];
                     }
                 }
@@ -733,15 +739,19 @@
                     [self rahiDodge];
                     
                 }
+                /*
                 if(randomRahiAI == 1){ //if we dodged first, we need to now attack
                     [rahiSprite removeAllActions];
                     [self rahiAttack];
                     
                 }
+                 */
                 else{ //for more difficult ai, we're almost certainly going to have to dodge first... then we get to attack.
-                    NSLog(@"ai: %d", randomRahiAI);
-                    [rahiSprite removeAllActions];
-                    [self rahiAttack];
+                    //NSLog(@"ai: %d", randomRahiAI);
+                    //NSLog(@"called 2");
+                    if(rahiAttackCalledFlag == false){
+                        [self rahiAttack];
+                    }
                 }
             }
         }
@@ -980,12 +990,14 @@
 }
 
 -(void)rahiAttack{ //what to do if its your turn to attack the rahi
+    rahiAttackCalledFlag = true; //to stop this being called more than once at a time
     [timerLabel setHidden:false];
     [resultLabel setHidden:true];
     
     [playerArm setZRotation:playerDefaultArmRotation];
     //run action to make the players disk appear
     [rahiSprite removeAllActions];
+    //NSLog(@"called1");
     [rahiSprite runAction: [SKAction repeatActionForever:rahiIdleAction]];
     [playerArm runAction:[SKAction moveToY:-996 duration:0.7] completion:^(void){
          //make the disk "appear"
@@ -1002,6 +1014,7 @@
             self->playerRecentlyLostHealth = false;
             [self->aimSliderBar setHidden:false];
             [self->slideBarSlider setHidden:false];
+            self->rahiAttackCalledFlag = false;
         }];
 
     }];
