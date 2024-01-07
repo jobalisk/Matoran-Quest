@@ -217,10 +217,10 @@ int recoverHPCounter = 0; //counter for recovering HP, when this reaches 4, 1 hp
         //reset the timer every 30 seconds or so and update the new long and lat at current pos. before storing new long and lat, compare current with old old to see if the player has moved sufficently.
         //get the difference by adding or subtracing to a value and then comparing to the origonal value. for walking south which means the number decreases, we add a number to it
         
-        float compLat = _theMap.userLocation.location.coordinate.latitude - spawnWalkDistance;
-        float compLong = _theMap.userLocation.location.coordinate.longitude - spawnWalkDistance;
-        float compLatNeg = _theMap.userLocation.location.coordinate.latitude + spawnWalkDistance;
-        float compLongNeg = _theMap.userLocation.location.coordinate.longitude + spawnWalkDistance;
+        //float compLat = _theMap.userLocation.location.coordinate.latitude - spawnWalkDistance;
+        //float compLong = _theMap.userLocation.location.coordinate.longitude - spawnWalkDistance;
+        //float compLatNeg = _theMap.userLocation.location.coordinate.latitude + spawnWalkDistance;
+        //float compLongNeg = _theMap.userLocation.location.coordinate.longitude + spawnWalkDistance;
         float Lo = _theMap.userLocation.location.coordinate.longitude; //these two are required for getting a item drop spot
         float La = _theMap.userLocation.location.coordinate.latitude;
         //if we've moved more than around 5 meters...
