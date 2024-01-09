@@ -30,8 +30,8 @@ NSArray *itemList;
 NSArray *rahiList;
 int rareMaskIdentifyier = 0; //this is here so that I can raise a flag when a rare mask has been found to stop crashes in the player edit controller
 float spawnDistance = 0.0002; //how far away objects spawn from the player (0.0002 seems good)
-float spawnWalkDistance = 0.00001; //how far you need to walk to trigger a spawn chance (normally  0.000005) (test 0.0000005) I change this to 1 more 0 when testing to dramatically increase the spawn rate.
-int spawnRate = 3; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
+float spawnWalkDistance = 0.00001; //how far you need to walk to trigger a spawn chance (normally  0.00001) (test 0.0000005) I change this to 1 more 0 when testing to dramatically increase the spawn rate.
+int spawnRate = 4; //the rate at which masks spawn, 1 in whatever this number is is the rate at which they don't spawn
 bool initialZoom = false; //this is so that when we first zoom in on the player it doesnt animate
 NSString *maskColorString; //holds the found masks's colour
 int playerHP = 0; //this will later be loaded from the userdefaults and shared with the gameviewcontroller
@@ -235,7 +235,7 @@ int recoverHPCounter = 0; //counter for recovering HP, when this reaches 4, 1 hp
             //[_theTester setText: [NSString stringWithFormat: @"%f , %f", compLat, compLong]];
             randomThing = arc4random_uniform(spawnRate); //generate a random number for spawn rate
             [_theLabel setText: [NSString stringWithFormat: @"%d", randomThing]];
-            if(randomThing != 1){ //1 chance in 3 that the item does not spawn
+            if(randomThing != 1 && randomThing != 2){ //50% chance that the item does not spawn
                 if([[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerVibrate"] == 1){ //only do this if enabled in the options menu
                     
                     if(rahiFightFlag != 1){ //only vibrate when not in a rahi fight

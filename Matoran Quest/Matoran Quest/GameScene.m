@@ -117,12 +117,12 @@
     isRunningAnimation = 0;
     doubleTapp = 0;
     //rahiDifficulty = 2;
-    actionTimer = 7;
+    actionTimer = 3;
     timerCounterDefault = 60; //60 to 1 second
     timerCounter = timerCounterDefault;
     //rahiHPFight = 1;
     whichWay1 = arc4random_uniform(2); //for the slider. 0 for right, 1 for left
-    sliderSpeed = 10;
+    sliderSpeed = 15;
     playerRecentlyLostHealth = false;
     fightProgressCounter = 0;
     playerDefaultArmRotation = -1.570796;
@@ -991,6 +991,7 @@
 
 -(void)rahiAttack{ //what to do if its your turn to attack the rahi
     rahiAttackCalledFlag = true; //to stop this being called more than once at a time
+    actionTimer = 3;
     [timerLabel setHidden:false];
     [resultLabel setHidden:true];
     
@@ -1008,7 +1009,7 @@
             self->rahiAttackFlag = true;
             self->rahiDodgeFlag = false;
             self->timerCounter = self->timerCounterDefault;
-            self->actionTimer = 5;
+            
             //NSLog(@"part 2: %d", self->rahiAttackFlag);
             [self->slideBarSlider setPosition:CGPointMake(self->slideBarSlider.position.x, -448.36)]; //start on the left side and work towards the middle
             self->playerRecentlyLostHealth = false;
@@ -1028,12 +1029,13 @@
     [playerArm setZRotation:playerDefaultArmRotation];
     [escapeSliderBar setHidden:false];
     [slideBarSlider setHidden:false];
+    actionTimer = 3; //3 seconds
     [timerLabel setHidden:false];
     [resultLabel setHidden:true];
     rahiDodgeFlag = true;
     rahiAttackFlag = false;
     timerCounter = timerCounterDefault; //10000 microseconds, or 1 second
-    actionTimer = 5; //5 seconds
+    
     [kanohiDisk setHidden:true];
     [slideBarSlider setPosition:defaultSliderPos]; //start in the middle and work towards the sides
     playerRecentlyLostHealth = false;
