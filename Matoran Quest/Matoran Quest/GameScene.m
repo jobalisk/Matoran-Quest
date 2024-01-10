@@ -119,7 +119,7 @@
     isRunningAnimation = 0;
     doubleTapp = 0;
     //rahiDifficulty = 2;
-    actionTimerDefault = 4;
+    actionTimerDefault = 3;
     actionTimer = actionTimerDefault;
     timerCounterDefault = 60; //60 to 1 second
     timerCounter = timerCounterDefault;
