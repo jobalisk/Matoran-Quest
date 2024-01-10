@@ -44,6 +44,7 @@
     int timerCounter; //a counter that holds approximatly 1 sec worth of time in an interger format
     int timerCounterDefault; //whatever 1 second is to reset it
     int actionTimer; //a count down for how long you have to aim or dodge.
+    int actionTimerDefault; //usually 4 seconds
     int isRunningAnimation; //flag for have we started animating yet
     NSString*rahiActualName; //name of rahi formatted correctly
     int playerHPFight; //how much health the player has (default is 1, so alive and not well.)
@@ -67,6 +68,7 @@
     CGPoint diskOrigin; //where the disk starts so that we can return it
     bool onlyDoThisOnce; //a variable to make sure we remove only 1 item from the players collection if they lose
     bool rahiAttackCalledFlag; //a similar variable to above, to stop the rahi attack method being called several times at once
+    bool unresolvedAction; //a bool to make sure that if we do a tap on the slider just before the timer runs out the app wont crash and the action will still resolve.
     
     //arrays and atlas's for animations
     //player
@@ -117,7 +119,8 @@
     isRunningAnimation = 0;
     doubleTapp = 0;
     //rahiDifficulty = 2;
-    actionTimer = 3;
+    actionTimerDefault = 4;
+    actionTimer = actionTimerDefault;
     timerCounterDefault = 60; //60 to 1 second
     timerCounter = timerCounterDefault;
     //rahiHPFight = 1;
@@ -131,7 +134,7 @@
     playerAttacked = false;
     onlyDoThisOnce = false;
     rahiAttackCalledFlag = false;
-    
+    unresolvedAction = false;
     
     [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey:@"BackPackItemUsed"]; //set it to 0 by default
     self.itemUsed = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BackPackItemUsed"];
@@ -464,6 +467,7 @@
             }
             fightProgressCounter += 1;
             timerCounter = 240;
+            unresolvedAction = false;
         }
         else if(rahiAttackFlag == true){ //if we touched the bar while trying to attack...
             if(playerAttacked == false){ //only do this once per fight phase!
@@ -514,7 +518,7 @@
                                 [self->kanohiDisk setHidden:true];
                                 self->fightProgressCounter += 1;
                                 self->timerCounter = 240;
-                                
+                                self-> unresolvedAction = false;
                             }];
                         }];
                     }];
@@ -535,13 +539,14 @@
                                 //NSLog(@"called");
                                 self->rahiAttackFlag = false;
                                 [self->resultLabel setText:@"You missed!"];
+                                
                                 [self->slideBarSlider setHidden:true];
                                 [self->aimSliderBar setHidden:true];
                                 [self->resultLabel setHidden:false];
                                 [self->kanohiDisk setHidden:true];
                                 self->fightProgressCounter += 1;
                                 self->timerCounter = 240;
-                                
+                                self-> unresolvedAction = false;
                             }];
 
                         }];
@@ -804,6 +809,7 @@
     if(rahiDodgeFlag == true || rahiAttackFlag == true){ //if we are in an active fight...
         if(actionTimer > 0){ //as long as we have time to do it...
             //first work out the timer
+            
             [timerLabel setText:[NSString stringWithFormat:@"%d", actionTimer]]; //set the timer label
             timerCounter -= 1;
             //NSLog(@"Timer: %d", timerCounter);
@@ -862,31 +868,34 @@
             
         }
         else{ //otherwise reset the slider and hide it
-            [timerLabel setText:[NSString stringWithFormat:@"%d", actionTimer]]; //set the timer label
-            [resultLabel setText:[NSString stringWithFormat:@"Too slow!"]]; //set the timer label
-            [resultLabel setHidden:false];
-            fightProgressCounter += 1;
-            [slideBarSlider setHidden:true];
-            [escapeSliderBar setHidden:true];
-            [aimSliderBar setHidden:true];
-            [slideBarSlider setPosition:defaultSliderPos]; //put the slider back where it belongs in the middle
-            [playerArm runAction:[SKAction moveToY:-996 duration:0.5] completion:^(void){ //if we still have the disk, withdraw the arm briefly and hide it
-                //make the disk "appear"
-                //self->rahiRunningAnimation = true;
-                //[self->rahiSprite runAction:self->rahiIdleAction withKey:@"idleAction"];
-                [self->kanohiDisk setHidden:true];
-                //NSLog(@"part 1: %d", self->rahiAttackFlag);
-                [self->playerArm runAction:[SKAction moveToY:-283 duration:0.5] completion:^(void){
+            if(unresolvedAction != true){ //make sure if we've got an action through just in the nick of time it actually resolves
+                [timerLabel setText:[NSString stringWithFormat:@"%d", actionTimer]]; //set the timer label
+                [resultLabel setText:[NSString stringWithFormat:@"Too slow!"]]; //set the timer label
+                [resultLabel setHidden:false];
+                fightProgressCounter += 1;
+                [slideBarSlider setHidden:true];
+                [escapeSliderBar setHidden:true];
+                [aimSliderBar setHidden:true];
+                [slideBarSlider setPosition:defaultSliderPos]; //put the slider back where it belongs in the middle
+                [playerArm runAction:[SKAction moveToY:-996 duration:0.5] completion:^(void){ //if we still have the disk, withdraw the arm briefly and hide it
+                    //make the disk "appear"
+                    //self->rahiRunningAnimation = true;
+                    //[self->rahiSprite runAction:self->rahiIdleAction withKey:@"idleAction"];
+                    [self->kanohiDisk setHidden:true];
+                    //NSLog(@"part 1: %d", self->rahiAttackFlag);
+                    [self->playerArm runAction:[SKAction moveToY:-283 duration:0.5] completion:^(void){
+                    }];
                 }];
-            }];
-            if(rahiDodgeFlag == true){
-                [self playerLostHealth];
+                if(rahiDodgeFlag == true){
+                    [self playerLostHealth];
+                    
+                }
+                rahiDodgeFlag = false;
+                rahiAttackFlag = false; //reset these back to false at the end of this
+                timerCounter = 240;
                 
             }
-            rahiDodgeFlag = false;
-            rahiAttackFlag = false; //reset these back to false at the end of this
-            timerCounter = 240;
-            
+
         }
         
     }
@@ -991,7 +1000,7 @@
 
 -(void)rahiAttack{ //what to do if its your turn to attack the rahi
     rahiAttackCalledFlag = true; //to stop this being called more than once at a time
-    actionTimer = 3;
+    actionTimer = actionTimerDefault;
     [timerLabel setHidden:false];
     [resultLabel setHidden:true];
     
@@ -1029,7 +1038,7 @@
     [playerArm setZRotation:playerDefaultArmRotation];
     [escapeSliderBar setHidden:false];
     [slideBarSlider setHidden:false];
-    actionTimer = 3; //3 seconds
+    actionTimer = actionTimerDefault;
     [timerLabel setHidden:false];
     [resultLabel setHidden:true];
     rahiDodgeFlag = true;
