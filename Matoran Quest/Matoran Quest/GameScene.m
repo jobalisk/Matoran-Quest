@@ -451,7 +451,7 @@
                     [self->slideBarSlider setHidden:true];
                     [self->escapeSliderBar setHidden:true];
                     [self->playerArm runAction:[SKAction moveToY:-283 duration:0.3] completion:^(void){
-
+                        self-> unresolvedAction = false;
                     }];
                 }];
 
@@ -463,11 +463,14 @@
                 [escapeSliderBar setHidden:true];
                 [resultLabel setHidden:false];
                 [self playerLostHealth];
+                unresolvedAction = false;
                 
             }
             fightProgressCounter += 1;
             timerCounter = 240;
-            unresolvedAction = false;
+            //unresolvedAction = false;
+            actionTimer = actionTimerDefault;
+            
         }
         else if(rahiAttackFlag == true){ //if we touched the bar while trying to attack...
             if(playerAttacked == false){ //only do this once per fight phase!
@@ -500,6 +503,7 @@
                                         //NSLog(@"hit1");
                                         [self->rahiSprite runAction:[SKAction setTexture:[self->rahiAtlas textureNamed:[NSString stringWithFormat:@"%@3", self->rahiActualName]]]]; //give the rahi a dammaged pose texture
                                         [self->rahiSprite runAction: [SKAction waitForDuration:0.3] withKey: @"hitRahi"]; //give the program time to read it
+                                        self-> unresolvedAction = false;
                                     }
 
                                 }
@@ -509,6 +513,7 @@
                                         //NSLog(@"KOed2");
                                         [self->rahiSprite removeAllActions];
                                         [self->rahiSprite runAction: self->rahiKOAction withKey:@"rahiKO"];
+                                        self-> unresolvedAction = false;
                                     }
                                 }
 
@@ -518,7 +523,8 @@
                                 [self->kanohiDisk setHidden:true];
                                 self->fightProgressCounter += 1;
                                 self->timerCounter = 240;
-                                self-> unresolvedAction = false;
+                                self->actionTimer = self->actionTimerDefault;
+                                
                             }];
                         }];
                     }];
@@ -539,7 +545,7 @@
                                 //NSLog(@"called");
                                 self->rahiAttackFlag = false;
                                 [self->resultLabel setText:@"You missed!"];
-                                
+                                self-> unresolvedAction = false;
                                 [self->slideBarSlider setHidden:true];
                                 [self->aimSliderBar setHidden:true];
                                 [self->resultLabel setHidden:false];
