@@ -62,41 +62,45 @@ int maskDisplayingCheck2 = 1;
     //set up search bar
     _searchBar1.showsCancelButton=TRUE;
     _searchBar1.delegate = self;
-    
-    @try {
-        //check through collected masks and remove any that are no longer present in the masks array due to trading
-        int findersFlag = 0; //check to make sure we still have a mask of this type in our inventory
-        NSString *testMaskNameAndColour;
-        for (int i = 0; i <= (collectedMasks2.count -1); i++)
-        {
-            findersFlag = 0;
-            testMaskNameAndColour = collectedMasks2[i];
-            //NSLog(@"mask: %@", testMaskNameAndColour);
-            for (int j = 0; j <= (maskArray.count -1); j++)
+    if(maskArray.count != 0){
+        @try {
+            //check through collected masks and remove any that are no longer present in the masks array due to trading
+            int findersFlag = 0; //check to make sure we still have a mask of this type in our inventory
+            NSString *testMaskNameAndColour;
+            for (int i = 0; i <= (collectedMasks2.count -1); i++)
             {
-                NSArray *testMask2 = maskArray[j];
-                //NSLog(@"mask2: %@", testMask2[0]);
-                if([testMaskNameAndColour isEqualToString:testMask2[0]]){ //do we have the same name and colour
-                    findersFlag = 1;
-                    //NSLog(@"match!: %@", testMaskNameAndColour);
+                findersFlag = 0;
+                testMaskNameAndColour = collectedMasks2[i];
+                //NSLog(@"mask: %@", testMaskNameAndColour);
+                for (int j = 0; j <= (maskArray.count -1); j++)
+                {
+                    NSArray *testMask2 = maskArray[j];
+                    //NSLog(@"mask2: %@", testMask2[0]);
+                    if([testMaskNameAndColour isEqualToString:testMask2[0]]){ //do we have the same name and colour
+                        findersFlag = 1;
+                        //NSLog(@"match!: %@", testMaskNameAndColour);
+                    }
+                }
+                if(findersFlag == 0){
+                    //NSLog(@"%@ is not present", testMaskNameAndColour);
+                    
+                    [collectedMasks2 removeObjectAtIndex:i];
+                    [[NSUserDefaults standardUserDefaults] setObject: collectedMasks2 forKey:@"PlayerMaskCollectionList"]; //resave the array
+                    
                 }
             }
-            if(findersFlag == 0){
-                //NSLog(@"%@ is not present", testMaskNameAndColour);
-                
-                [collectedMasks2 removeObjectAtIndex:i];
-                [[NSUserDefaults standardUserDefaults] setObject: collectedMasks2 forKey:@"PlayerMaskCollectionList"]; //resave the array
-                 
-            }
         }
+        @catch (NSException *exception) {
+            NSLog(@"Could not find the mask to remove!");
+            //NSLog(@"mask array: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"]);
+        }
+        @finally {
+          //Display Alternative
+        }
+        [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/%d", (int)collectedMasks2.count, totalMasksInGame]];
     }
-    @catch (NSException *exception) {
-        NSLog(@"Could not find the mask to remove!");
-    }
-    @finally {
-      //Display Alternative
-    }
-    [_collectionCount setText:[NSString stringWithFormat: @"Collection: %d/%d", (int)collectedMasks2.count, totalMasksInGame]];
+
+
 
 }
 
@@ -104,129 +108,133 @@ int maskDisplayingCheck2 = 1;
 - (nonnull __kindof Celler1 *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     //NSLog(@"Got this far");
     Celler1 *cell3 = [_maskGrid dequeueReusableCellWithReuseIdentifier:@"Celler1" forIndexPath:indexPath];
-    //[cell1.customLabel setText:itemArray[indexPath.row]];
-    //make a label
-    //UILabel *itemName = [[UILabel alloc]initWithFrame:CGRectMake(91, 15, 0, 0)];
-    //
-    
-    NSMutableArray *maskInterior = [maskArray objectAtIndex:indexPath.row]; //get the mask list to get out the name of the mask
-    //NSLog(@"%@", maskInterior)
-    maskInterior = [maskInterior mutableCopy];
-    NSString *maskNameAndColour = maskInterior[0];
-    NSArray *maskColourAndName; //array of seperated name and colour
-    NSString *maskName;
-    int noColourFlag = 0; //check if mask is special and skip colourizing
-    
-    //fix colour name issues by replacing old colour names with new ones:
-    
-    maskColourAndName = [maskNameAndColour componentsSeparatedByString:@" "];
-    /*
-    NSMutableArray *maskColourAndName2 = [maskColourAndName mutableCopy];
-    if([maskColourAndName2[0] isEqualToString: @"kaukau"]){
-        maskInterior[0] = [NSString stringWithFormat: @"bronze %@", maskColourAndName[0]];
-        NSLog(@"%@", maskInterior);
-        maskArray[indexPath.row] = maskInterior;
-        
-        for (int i = 0; i <= (collectedMasks2.count -1); i++)
-        {
-            if([collectedMasks2[i] isEqualToString: @"yellow"]){
-                collectedMasks2[i] = @"tan";
-                [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMaskCollectionList"];
-            }
-        }
-        [[NSUserDefaults standardUserDefaults] setObject:maskArray forKey:@"PlayerMasks"];
-    }
-    
-    if([maskColourAndName2[0] isEqualToString: @"bright-yellow"]){
-        maskInterior[0] = [NSString stringWithFormat: @"yellow %@", maskColourAndName[1]];
-        NSLog(@"%@", maskInterior);
-        maskArray[indexPath.row] = maskInterior;
-        
-        for (int i = 0; i <= (collectedMasks2.count -1); i++)
-        {
-            if([collectedMasks2[i] isEqualToString: @"bright-yellow"]){
-                collectedMasks2[i] = @"yellow";
-                [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMasks"];
-            }
-        }
-        [[NSUserDefaults standardUserDefaults] setObject:maskArray forKey:@"PlayerMaskCollectionList"];
-        
-    }
-*/
-    //NSLog(@"masks: %@", collectedMasks2);
-      
-    
-    //continue on with the regularly scheduled program
-        
-    if([maskNameAndColour isEqualToString: @"vahi"]){ //seperate things out if needed
-        //NSLog(@"check");
-        maskName = @"vahi";
-        noColourFlag = 1;
-    }
-    else if([maskNameAndColour isEqualToString: @"avohkii"]){
-        //NSLog(@"check");
-        maskName = @"avohkii";
-        noColourFlag = 1;
-    }
-    else if([maskNameAndColour isEqualToString: @"infected hau"]){
-        //NSLog(@"check");
-        maskName = @"infected hau";
-        noColourFlag = 1;
-    }
+    if(maskArray.count != 0){
 
-    else{
-        //NSLog(@"then do");
+        //[cell1.customLabel setText:itemArray[indexPath.row]];
+        //make a label
+        //UILabel *itemName = [[UILabel alloc]initWithFrame:CGRectMake(91, 15, 0, 0)];
+        //
+        
+        NSMutableArray *maskInterior = [maskArray objectAtIndex:indexPath.row]; //get the mask list to get out the name of the mask
+        //NSLog(@"%@", maskInterior)
+        maskInterior = [maskInterior mutableCopy];
+        NSString *maskNameAndColour = maskInterior[0];
+        NSArray *maskColourAndName; //array of seperated name and colour
+        NSString *maskName;
+        int noColourFlag = 0; //check if mask is special and skip colourizing
+        
+        //fix colour name issues by replacing old colour names with new ones:
+        
         maskColourAndName = [maskNameAndColour componentsSeparatedByString:@" "];
-        maskName = maskColourAndName[1];
-    }
-    /*
-    //check and replace problem names (legacy). this will cause the app to crash if the string does not have a hyphen added
-    if([maskNameAndColour containsString:@"light green"]){
-        [maskInterior replaceObjectAtIndex:0 withObject:@"light green"];
-        [maskArray replaceObjectAtIndex:indexPath.row withObject:maskInterior];
-    }
+        /*
+        NSMutableArray *maskColourAndName2 = [maskColourAndName mutableCopy];
+        if([maskColourAndName2[0] isEqualToString: @"kaukau"]){
+            maskInterior[0] = [NSString stringWithFormat: @"bronze %@", maskColourAndName[0]];
+            NSLog(@"%@", maskInterior);
+            maskArray[indexPath.row] = maskInterior;
+            
+            for (int i = 0; i <= (collectedMasks2.count -1); i++)
+            {
+                if([collectedMasks2[i] isEqualToString: @"yellow"]){
+                    collectedMasks2[i] = @"tan";
+                    [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMaskCollectionList"];
+                }
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:maskArray forKey:@"PlayerMasks"];
+        }
+        
+        if([maskColourAndName2[0] isEqualToString: @"bright-yellow"]){
+            maskInterior[0] = [NSString stringWithFormat: @"yellow %@", maskColourAndName[1]];
+            NSLog(@"%@", maskInterior);
+            maskArray[indexPath.row] = maskInterior;
+            
+            for (int i = 0; i <= (collectedMasks2.count -1); i++)
+            {
+                if([collectedMasks2[i] isEqualToString: @"bright-yellow"]){
+                    collectedMasks2[i] = @"yellow";
+                    [[NSUserDefaults standardUserDefaults] setObject:collectedMasks2 forKey:@"PlayerMasks"];
+                }
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:maskArray forKey:@"PlayerMaskCollectionList"];
+            
+        }
     */
-    
-    
-    if(noColourFlag == 0){ //if its not a special flag, then colourize it
-        UIColor *tempColor = [self colourCaser: maskColourAndName[0]]; //colour the image
-        maskImage2 = [UIImage imageNamed:[NSString stringWithFormat: @"%@", maskName]];
-        //[maskImage2 imageWithTintColor:tempColor];
-        maskImage2 = [self colorizeImage:maskImage2 color:tempColor];
-        [cell3.maskImage5 setImage:maskImage2]; //set an image with a colour
-        [maskImage2 setAccessibilityIdentifier: maskNameAndColour];
-        if(maskImage2 != nil){
-            [imagesInCollection addObject: maskImage2];
+        //NSLog(@"masks: %@", collectedMasks2);
+          
+        
+        //continue on with the regularly scheduled program
+            
+        if([maskNameAndColour isEqualToString: @"vahi"]){ //seperate things out if needed
+            //NSLog(@"check");
+            maskName = @"vahi";
+            noColourFlag = 1;
+        }
+        else if([maskNameAndColour isEqualToString: @"avohkii"]){
+            //NSLog(@"check");
+            maskName = @"avohkii";
+            noColourFlag = 1;
+        }
+        else if([maskNameAndColour isEqualToString: @"infected hau"]){
+            //NSLog(@"check");
+            maskName = @"infected hau";
+            noColourFlag = 1;
+        }
+
+        else{
+            //NSLog(@"then do");
+            maskColourAndName = [maskNameAndColour componentsSeparatedByString:@" "];
+            maskName = maskColourAndName[1];
+        }
+        /*
+        //check and replace problem names (legacy). this will cause the app to crash if the string does not have a hyphen added
+        if([maskNameAndColour containsString:@"light green"]){
+            [maskInterior replaceObjectAtIndex:0 withObject:@"light green"];
+            [maskArray replaceObjectAtIndex:indexPath.row withObject:maskInterior];
+        }
+        */
+        
+        
+        if(noColourFlag == 0){ //if its not a special flag, then colourize it
+            UIColor *tempColor = [self colourCaser: maskColourAndName[0]]; //colour the image
+            maskImage2 = [UIImage imageNamed:[NSString stringWithFormat: @"%@", maskName]];
+            //[maskImage2 imageWithTintColor:tempColor];
+            maskImage2 = [self colorizeImage:maskImage2 color:tempColor];
+            [cell3.maskImage5 setImage:maskImage2]; //set an image with a colour
+            [maskImage2 setAccessibilityIdentifier: maskNameAndColour];
+            if(maskImage2 != nil){
+                [imagesInCollection addObject: maskImage2];
+            }
+            else{
+                NSLog(@"adding to collection error");
+            }
+            //NSLog(@"%@", imagesInCollection);
         }
         else{
-            NSLog(@"adding to collection error");
+            [cell3.maskImage5 setImage:[UIImage imageNamed:[NSString stringWithFormat: @"%@", maskName]]]; //get the image named the name of the mask without the colour
         }
-        //NSLog(@"%@", imagesInCollection);
-    }
-    else{
-        [cell3.maskImage5 setImage:[UIImage imageNamed:[NSString stringWithFormat: @"%@", maskName]]]; //get the image named the name of the mask without the colour
-    }
 
-    //[cell3 addSubview:cell3.maskImage];//Add it to the view of your choice.
-    
-   //cell3.maskName5 =[[UILabel alloc]initWithFrame:CGRectMake(25, 70, 50, 50)];//Set frame of label in your view
-    //[itemName setBackgroundColor:[UIColor lightGrayColor]];//Set background color of label.
+        //[cell3 addSubview:cell3.maskImage];//Add it to the view of your choice.
+        
+       //cell3.maskName5 =[[UILabel alloc]initWithFrame:CGRectMake(25, 70, 50, 50)];//Set frame of label in your view
+        //[itemName setBackgroundColor:[UIColor lightGrayColor]];//Set background color of label.
 
-    @try {
-        [cell3.maskName5  setText: [NSString stringWithFormat: @"%@",maskNameAndColour]];
-    }
-    @catch (NSException *exception) {
-        [cell3.maskName5  setText: @""];
-    }
-    @finally {
-      //Display Alternative
-    }
-    //NSLog(@"here: %@", maskArray);
-    
-    //[maskName setText: @"mask"];
+        @try {
+            [cell3.maskName5  setText: [NSString stringWithFormat: @"%@",maskNameAndColour]];
+        }
+        @catch (NSException *exception) {
+            [cell3.maskName5  setText: @""];
+        }
+        @finally {
+          //Display Alternative
+        }
+        //NSLog(@"here: %@", maskArray);
+        
+        //[maskName setText: @"mask"];
 
-     
-    
+         
+        
+        
+    }
     
     return cell3;
     
@@ -245,28 +253,31 @@ int maskDisplayingCheck2 = 1;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{ //tap brings up delete dialog
     //NSLog(@"Tapped %d", (int)indexPath.row);
-    selectedMaskArray = maskArray[indexPath.row]; //assign the new mask to a temporary holding cell
-    for (int i = 0; i <= (imagesInCollection.count -1); i++)
-    {
-        UIImage *tempImage = imagesInCollection[i]; //some technical wizardry to get the correct mask and colour displaying in the individual mask display screen
-        //NSLog(@"A: %@", maskName);
-        //NSLog(@"B: %@", tempImage.accessibilityIdentifier);
-        if([tempImage.accessibilityIdentifier isEqualToString: selectedMaskArray[0]] ){
-            outPutMask = tempImage;
-        }
-        if([selectedMaskArray[0]containsString:@"infected hau"]){
-            outPutMask = [UIImage imageNamed:@"infected hau"];
-        }
-        else if([selectedMaskArray[0]containsString:@"avohkii"]){
-            outPutMask = [UIImage imageNamed:@"avohkii"];
-        }
-        else if([selectedMaskArray[0]containsString:@"vahi"]){
-            outPutMask = [UIImage imageNamed:@"vahi"];
+    if(maskArray.count != 0){
+        selectedMaskArray = maskArray[indexPath.row]; //assign the new mask to a temporary holding cell
+        for (int i = 0; i <= (imagesInCollection.count -1); i++)
+        {
+            UIImage *tempImage = imagesInCollection[i]; //some technical wizardry to get the correct mask and colour displaying in the individual mask display screen
+            //NSLog(@"A: %@", maskName);
+            //NSLog(@"B: %@", tempImage.accessibilityIdentifier);
+            if([tempImage.accessibilityIdentifier isEqualToString: selectedMaskArray[0]] ){
+                outPutMask = tempImage;
+            }
+            if([selectedMaskArray[0]containsString:@"infected hau"]){
+                outPutMask = [UIImage imageNamed:@"infected hau"];
+            }
+            else if([selectedMaskArray[0]containsString:@"avohkii"]){
+                outPutMask = [UIImage imageNamed:@"avohkii"];
+            }
+            else if([selectedMaskArray[0]containsString:@"vahi"]){
+                outPutMask = [UIImage imageNamed:@"vahi"];
+            }
+            
         }
         
+        [self performSegueWithIdentifier:@"selectedMask" sender:self];
     }
     
-    [self performSegueWithIdentifier:@"selectedMask" sender:self];
 }
 
 //colourizing methods
@@ -428,107 +439,122 @@ int maskDisplayingCheck2 = 1;
 }
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    if(maskDisplayingCheck2 == 0){
-        maskArray = noDuplicateMasksList;
-    }
-    else{
-        maskArray = backUpMasksList;
-    }
-    [_maskGrid reloadData]; //refresh all the data back to origonal
-    [_searchBar1 resignFirstResponder];
-}
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    if(maskDisplayingCheck2 == 0){
-        maskArray = noDuplicateMasksList;
-    }
-    else{
-        maskArray = backUpMasksList;
-    }
     
-    NSMutableArray *searchArray = [[NSMutableArray alloc] init];
-    
-    [_maskGrid reloadData]; //refresh all the data back to origonal
-    //then compile a new mask array based on the search terms.
-    NSString *searchString1 = searchBar.text;
-    searchString1 = [searchString1 lowercaseString];
-    //NSLog(@"Text: %@", searchString1);
-    NSArray *tempMaskItems = [[NSArray alloc] init];
-    for (int i = 0; i <= (maskArray.count -1); i++) //check each mask in the array
-    {
-        tempMaskItems = maskArray[i];
-        //NSLog(@"check: %@",tempMaskItems[0]);
-        if([tempMaskItems[0] containsString:searchString1]){
-            [searchArray addObject:maskArray[i]];
-            //[_maskGrid reloadData]; //refresh the data with the new search results
-            //NSLog(@"Good: %@",tempMaskItems[0]);
+    if(maskArray.count != 0){
+        if(maskDisplayingCheck2 == 0){
+            maskArray = noDuplicateMasksList;
         }
         else{
-            
-            //[_maskGrid reloadData]; //refresh the data with the new search results
+            maskArray = backUpMasksList;
         }
+        [_maskGrid reloadData]; //refresh all the data back to origonal
+        [_searchBar1 resignFirstResponder];
     }
-    //NSLog(@"array: %@", maskArray);
-    maskArray = searchArray;
-    [_maskGrid reloadData]; //refresh the data with the new search results
-    [_searchBar1 resignFirstResponder];
+
+}
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    if(maskArray.count != 0){
+        if(maskDisplayingCheck2 == 0){
+            maskArray = noDuplicateMasksList;
+        }
+        else{
+            maskArray = backUpMasksList;
+        }
+        
+        NSMutableArray *searchArray = [[NSMutableArray alloc] init];
+        
+        [_maskGrid reloadData]; //refresh all the data back to origonal
+        //then compile a new mask array based on the search terms.
+        NSString *searchString1 = searchBar.text;
+        searchString1 = [searchString1 lowercaseString];
+        //NSLog(@"Text: %@", searchString1);
+        NSArray *tempMaskItems = [[NSArray alloc] init];
+        for (int i = 0; i <= (maskArray.count -1); i++) //check each mask in the array
+        {
+            tempMaskItems = maskArray[i];
+            //NSLog(@"check: %@",tempMaskItems[0]);
+            if([tempMaskItems[0] containsString:searchString1]){
+                [searchArray addObject:maskArray[i]];
+                //[_maskGrid reloadData]; //refresh the data with the new search results
+                //NSLog(@"Good: %@",tempMaskItems[0]);
+            }
+            else{
+                
+                //[_maskGrid reloadData]; //refresh the data with the new search results
+            }
+        }
+        //NSLog(@"array: %@", maskArray);
+        maskArray = searchArray;
+        [_maskGrid reloadData]; //refresh the data with the new search results
+        [_searchBar1 resignFirstResponder];
+    }
+
+    
+   
 }
     
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{ //for when the clear text button is pressed
-    if(maskDisplayingCheck2 == 0){
-        maskArray = noDuplicateMasksList;
-        [_maskGrid reloadData]; //refresh all the data back to origonal
+    if(maskArray.count != 0){
+        if(maskDisplayingCheck2 == 0){
+            maskArray = noDuplicateMasksList;
+            [_maskGrid reloadData]; //refresh all the data back to origonal
+        }
+        else{
+            maskArray = backUpMasksList;
+            [_maskGrid reloadData]; //refresh all the data back to origonal
+        }
     }
-    else{
-        maskArray = backUpMasksList;
-        [_maskGrid reloadData]; //refresh all the data back to origonal
-    }
+
 
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait] forKey:@"orientation"];//set the controller to be portrait
-    if(collectedMasks2.count == totalMasksInGame){
-        UIAlertController *completionAlert = [UIAlertController alertControllerWithTitle:@"Congratulations!"
-                                                                                 message:[NSString stringWithFormat: @"You have collected all %d kanohi masks and completed the game!\nYou can now return to your village and retire in peace.", totalMasksInGame]
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
+    if(maskArray.count != 0){
+        //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger: UIInterfaceOrientationPortrait] forKey:@"orientation"];//set the controller to be portrait
+        if(collectedMasks2.count == totalMasksInGame){
+            UIAlertController *completionAlert = [UIAlertController alertControllerWithTitle:@"Congratulations!"
+                                                                                     message:[NSString stringWithFormat: @"You have collected all %d kanohi masks and completed the game!\nYou can now return to your village and retire in peace.", totalMasksInGame]
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [completionAlert addAction:defaultAction];
+            [self presentViewController:completionAlert animated:YES completion:nil]; //show the completion alert if you have collected all masks.
+            //this alert will be presented later, once the view has fully loaded
+        }
         
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
-        
-        [completionAlert addAction:defaultAction];
-        [self presentViewController:completionAlert animated:YES completion:nil]; //show the completion alert if you have collected all masks.
-        //this alert will be presented later, once the view has fully loaded
-    }
-    
-    //if show all masks is switched off...
-    if(maskDisplayingCheck2 == 0){
-        int maskAlreadyThere = 0; //flag for if the mask has already been found in the list
-        for (int j = 0; j <= (collectedMasks2.count -1); j++) //go through each mask in the collected masks array
-        {
-            maskAlreadyThere = 0; //reset the flag to 0
-            for (int i = 0; i <= (noDuplicateMasksList.count -1); i++) //check it against each mask in the full mask list (this could take a while)
+        //if show all masks is switched off...
+        if(maskDisplayingCheck2 == 0){
+            int maskAlreadyThere = 0; //flag for if the mask has already been found in the list
+            for (int j = 0; j <= (collectedMasks2.count -1); j++) //go through each mask in the collected masks array
             {
-                NSArray *checkingArray2 = noDuplicateMasksList[i];
-                //NSLog(@"Mask Found: %d", maskAlreadyThere);
-                //NSLog(@"Currently searching for: %@", collectedMasks2[j]);
-                if([checkingArray2[0] isEqualToString: collectedMasks2[j]]){
-                    if(maskAlreadyThere == 0){ //if this is the first mask of its kind, keep it
-                        //NSLog(@"Found 1: %@", collectedMasks2[j]);
-                        maskAlreadyThere = 1;
-                    }
-                    else{
-                        //NSLog(@"Found more than 1: %@", collectedMasks2[j]);
-                        //NSLog(@"Mask Found status: %d", maskAlreadyThere);
-                        
-                        [noDuplicateMasksList removeObjectAtIndex:i]; //otherwise, get rid of it.
+                maskAlreadyThere = 0; //reset the flag to 0
+                for (int i = 0; i <= (noDuplicateMasksList.count -1); i++) //check it against each mask in the full mask list (this could take a while)
+                {
+                    NSArray *checkingArray2 = noDuplicateMasksList[i];
+                    //NSLog(@"Mask Found: %d", maskAlreadyThere);
+                    //NSLog(@"Currently searching for: %@", collectedMasks2[j]);
+                    if([checkingArray2[0] isEqualToString: collectedMasks2[j]]){
+                        if(maskAlreadyThere == 0){ //if this is the first mask of its kind, keep it
+                            //NSLog(@"Found 1: %@", collectedMasks2[j]);
+                            maskAlreadyThere = 1;
+                        }
+                        else{
+                            //NSLog(@"Found more than 1: %@", collectedMasks2[j]);
+                            //NSLog(@"Mask Found status: %d", maskAlreadyThere);
+                            
+                            [noDuplicateMasksList removeObjectAtIndex:i]; //otherwise, get rid of it.
+                        }
                     }
                 }
             }
+            maskArray = noDuplicateMasksList; //update the mask array
+            //NSLog(@"Slimmer grid: %@", noDuplicateMasksList);
+            [_maskGrid reloadData];
         }
-        maskArray = noDuplicateMasksList; //update the mask array
-        //NSLog(@"Slimmer grid: %@", noDuplicateMasksList);
-        [_maskGrid reloadData];
     }
+    
     
 }
     

@@ -20,15 +20,16 @@
     SKNode *bagButton;
     SKNode *fightButton;
     SKNode *runButton;
-    SKNode *bagLabel;
-    SKNode *fightLabel;
-    SKNode *runLabel;
-    SKNode *fightLabel2;
+    SKNode *bagLabel; //the bag button text
+    SKNode *fightLabel; //the fight button text
+    SKNode *runLabel; //the run button text
+    SKNode *fightLabel2; //the fight count down text
     SKNode *armSliderArea; //this is an area placed over the lense that is invisible but allows one to basically drag the arm back to shoot.
-    SKLabelNode *RHPLabel;
-    SKLabelNode *PHPLabel;
-    SKLabelNode *timerLabel;
-    SKLabelNode *resultLabel;
+    SKLabelNode *RHPLabel; //the rahi's health label
+    SKLabelNode *PHPLabel; //the players health label
+    SKLabelNode *timerLabel; //this label displays the current count down time to perform an action in
+    SKLabelNode *timerLabel2; //this label is in the same position as the first one, but is used purely to show the player how much time they had left when they performed the action
+    SKLabelNode *resultLabel; //this displays messages to the player when an action is completed (or not completed in time)
     
     //actions
     SKAction *rahiIdleAction;
@@ -201,6 +202,7 @@
     RHPLabel = (SKLabelNode *)[self childNodeWithName:@"//RHPLabel"];
     PHPLabel = (SKLabelNode *)[self childNodeWithName:@"//PHPLabel"];
     timerLabel = (SKLabelNode *)[self childNodeWithName:@"//timerLabel"];
+    timerLabel2 = (SKLabelNode *)[self childNodeWithName:@"//timerLabel2"];
     resultLabel = (SKLabelNode *)[self childNodeWithName:@"//resultLabel"];
     
     //set variables
@@ -226,6 +228,7 @@
     [fightButton setHidden:FALSE];
     [kanohiDisk setHidden:true];
     [resultLabel setHidden:TRUE];
+    [timerLabel2 setHidden:TRUE];
     
     //sort out visuals based on user option settings
     int eyeHolesCheck = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"ShowKanohiEyeHolesSetting"];
@@ -441,6 +444,9 @@
         [rahiSprite setHidden:true];
     }
     else if([touchedNode.name isEqualToString:@"sliderBarSlider1"]){
+        [timerLabel2 setText:timerLabel.text]; //set the 2nd timer label to the contents of the first timer label then hide the origonal one
+        [timerLabel2 setHidden:FALSE]; //this is done so that the time being displayed is the time at which the player performed an action
+        [timerLabel setHidden:TRUE]; //not the current time which has had to be updated to prevent crashes in the case of last minute actions.
         //NSLog(@"slider touched");
         if(rahiDodgeFlag == true){ //if we touched the bar while trying to dodge, we have success (if it was within the correct area)
             if(slideBarSlider.position.y < -183 || slideBarSlider.position.y > 183){
@@ -461,6 +467,7 @@
                 [resultLabel setText:@"You were hit by the Rahi!"];
                 [slideBarSlider setHidden:true];
                 [escapeSliderBar setHidden:true];
+                //[timerLabel setHidden: true];
                 [resultLabel setHidden:false];
                 [self playerLostHealth];
                 unresolvedAction = false;
@@ -469,6 +476,7 @@
             fightProgressCounter += 1;
             timerCounter = 240;
             //unresolvedAction = false;
+
             actionTimer = actionTimerDefault;
             
         }
@@ -476,6 +484,10 @@
             if(playerAttacked == false){ //only do this once per fight phase!
                 playerAttacked = true;
                 diskTravelSpeed = 0.5;
+                
+
+                self->timerCounter = 240;
+                self->actionTimer = self->actionTimerDefault;
                 //NSLog(@"POS: %f", slideBarSlider.position.y);
                 if(slideBarSlider.position.y > -153 && slideBarSlider.position.y < 153){ //if we are in the green area we hit...
                     [playerArm removeAllActions];
@@ -493,7 +505,7 @@
                                 //NSLog(@"resistance: %d", self->rahiResistance1);
                                 self->rahiAttackFlag = false;
                                 [self->resultLabel setText:@"You hit it!"];
-                                
+
                                 //[self->rahiSprite removeAllActions];
                                 //NSLog(@"RHP: %d", self->rahiHPFight);
                                 if(self->rahiHPFight > 0){
@@ -516,14 +528,13 @@
                                         self-> unresolvedAction = false;
                                     }
                                 }
-
+                                //[self->timerLabel setHidden: true];
                                 [self->slideBarSlider setHidden:true];
                                 [self->aimSliderBar setHidden:true];
                                 [self->resultLabel setHidden:false];
                                 [self->kanohiDisk setHidden:true];
                                 self->fightProgressCounter += 1;
-                                self->timerCounter = 240;
-                                self->actionTimer = self->actionTimerDefault;
+
                                 
                             }];
                         }];
@@ -546,10 +557,12 @@
                                 self->rahiAttackFlag = false;
                                 [self->resultLabel setText:@"You missed!"];
                                 self-> unresolvedAction = false;
+                                
                                 [self->slideBarSlider setHidden:true];
                                 [self->aimSliderBar setHidden:true];
                                 [self->resultLabel setHidden:false];
                                 [self->kanohiDisk setHidden:true];
+                                //[self->timerLabel setHidden: true];
                                 self->fightProgressCounter += 1;
                                 self->timerCounter = 240;
                                 self-> unresolvedAction = false;
@@ -589,6 +602,8 @@
 -(void)update:(CFTimeInterval)currentTime {
     // Called before each frame is rendered
     //NSLog(@"updating");
+    //NSLog(@"current AI value: %d", randomRahiAI);
+    //NSLog(@"current game progress: %d", fightProgressCounter);
     //NSLog(@"dodge: %d", rahiDodgeFlag);
     //NSLog(@"RHP: %d", rahiHPFight);
     //NSLog(@"attack: %d", rahiAttackFlag);
@@ -602,7 +617,7 @@
             NSMutableArray *itemArrayRemoval = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerItems"];
             itemArrayRemoval = [itemArrayRemoval mutableCopy];
             NSMutableArray *KanohiArrayRemoval = [[NSUserDefaults standardUserDefaults] objectForKey:@"PlayerMasks"];
-            KanohiArrayRemoval = [itemArrayRemoval mutableCopy];
+            KanohiArrayRemoval = [KanohiArrayRemoval mutableCopy];
             int q = arc4random_uniform(3); //select between items and masks
             if(q == 0){
                 if(itemArrayRemoval.count != 0){ //if there are items in the array
@@ -635,6 +650,9 @@
         [slideBarSlider setHidden:true];
         [escapeSliderBar setHidden:true];
         //[resultLabel setHidden:true];
+        [timerLabel2 setText:timerLabel.text];
+        [timerLabel2 setHidden:FALSE];
+        [timerLabel setHidden:TRUE];
         //[rahiSprite removeAllActions];
         [kanohiDisk runAction:[SKAction waitForDuration:1.1]completion:^(void){
             self.winLoss = 3;
@@ -645,7 +663,8 @@
         if([rahiSprite actionForKey:@"attackAction"] == nil && [rahiSprite actionForKey:@"rahiKO"] == nil){
             //work out rahi animations
             [rahiSprite removeAllActions];
-
+            [timerLabel setHidden:FALSE];
+            [timerLabel2 setHidden:TRUE];
             [rahiSprite runAction:[SKAction repeatActionForever:rahiAttackAction] withKey:@"attackAction"];
             //NSLog(@"enlarging");
             [rahiSprite runAction: rahiEnlarge withKey:@"enlargeAction"];
@@ -656,16 +675,21 @@
         //work out rahi animations
         if([rahiSprite actionForKey:@"idleAction"] == nil && [rahiSprite actionForKey:@"rahiKO"] == nil){
             [rahiSprite removeAllActions];
+            [timerLabel setHidden:FALSE];
+            [timerLabel2 setHidden:TRUE];
             [rahiSprite runAction: rahiShrink withKey:@"shrinkAction"];
             [rahiSprite runAction:[SKAction repeatActionForever:rahiIdleAction] withKey:@"idleAction"];
         }
     }
     
     //NSLog(@"WW: %d", whichWay1);
-    if(fightProgressCounter == 2){ //if we have finished this fight round...
+    if(fightProgressCounter > 1){ //if we have finished this fight round... (greater than 1 prevents a crash, rather than just 2)
+        [timerLabel setHidden:FALSE];
+        [timerLabel2 setHidden:TRUE];
         if(rahiHPFight > 0){
             if(timerCounter > 0){ //give 2 secs to read any messages
                 timerCounter -=1;
+                
                 if(timerCounter > 61){ //make sure to only do this one for 60 sec
                     timerCounter = 60;
                 }
@@ -735,6 +759,8 @@
             if(timerCounter > 0){ //give 2 secs to read any messages
                 timerCounter -=1;
                 if(timerCounter < 121){ //make sure to only do this one for 60 sec
+                    [timerLabel setHidden:FALSE];
+                    [timerLabel2 setHidden:TRUE];
                     if(randomRahiAI == 0){ //prepare messages
                         [resultLabel setText:[NSString stringWithFormat:@"The Rahi is about to attack!"]];
                     }
@@ -804,7 +830,21 @@
 
     //check to see if we used an interesting rock...
     if(self.itemUsed == 8){
+        //self.itemUsed = 20;
         self.winLoss = 5; //announce that we have gotten away safely!
+    }
+    else if(self.itemUsed == 9){ //if we used the fruit...
+        self.itemUsed = 20;
+        [[NSUserDefaults standardUserDefaults] setInteger: self.itemUsed forKey:@"BackPackItemUsed"];
+        playerHPFight += 3;
+        
+        [PHPLabel setText:[NSString stringWithFormat:@"HP: %d", playerHPFight]];
+    }
+    else if(self.itemUsed == 10){ //if we used the protodermis...
+        self.itemUsed = 20; //doing this stops us healing tons of health after the initial lot
+        playerHPFight = 10;
+        [[NSUserDefaults standardUserDefaults] setInteger: self.itemUsed forKey:@"BackPackItemUsed"];//doing this stops us healing tons of health after the initial lot
+        [PHPLabel setText:[NSString stringWithFormat:@"HP: %d", playerHPFight]];
     }
     
     

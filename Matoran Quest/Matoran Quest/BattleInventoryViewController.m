@@ -133,7 +133,7 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
 }
 
 -(void)enableOrDissableButtons{ //work out which buttons are enabled depending on whats in the players inventory
-    //NSLog(@"items: %@", itemsArray);
+    NSLog(@"items: %@", itemsArray);
     
     //first check health of player
     int playerHPFight23 = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"PlayerHP"]; //load player HP
@@ -143,7 +143,7 @@ NSMutableArray *itemsArray; //holds all items in the players inventory
     }
     
     if([itemsArray indexOfObject:@"Vuata Maca fruit"]==NSNotFound){ //check if the inventory contains this item
-        //NSLog(@"fruit not here");
+        NSLog(@"fruit not here");
         [_fruitButton setEnabled:FALSE]; //if it does not, dissable the button
     }
     if([itemsArray indexOfObject:@"Energised Protodermis"]==NSNotFound){ //check if the inventory contains this item
