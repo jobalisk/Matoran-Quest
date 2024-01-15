@@ -159,6 +159,190 @@
             </objects>
             <point key="canvasLocation" x="55.072463768115945" y="820.92391304347836"/>
         </scene>
+        <!--Credits Scene-->
+        <scene sceneID="l0w-uE-lUU">
+            <objects>
+                <viewController storyboardIdentifier="credidsViewController" title="Credits Scene" id="7iT-HR-MxQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NEo-vE-zvD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXV-Ry-TAk">
+                                <rect key="frame" x="20" y="671" width="374" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="r0b-7m-Kns"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Return">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="4OK-Ja-vhX" kind="show" id="lMt-Fa-gJz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Devalopment: Job Dyer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIv-R3-WB1">
+                                <rect key="frame" x="56" y="89" width="302" height="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Art: Job Dyer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxy-1i-6Xe">
+                                <rect key="frame" x="56" y="113" width="302" height="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDf-mF-FrT">
+                                <rect key="frame" x="20" y="43" width="374" height="18"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8R-F2-Ctw">
+                                <rect key="frame" x="20" y="20" width="374" height="15.333333333333336"/>
+                                <fontDescription key="fontDescription" name="MataNui" family="Mata Nui" pointSize="15"/>
+                                <color key="textColor" systemColor="systemBrownColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Thanks to: Ezra Haren" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvG-WD-p9E">
+                                <rect key="frame" x="56" y="607" width="302" height="16"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtH-o3-9Ck">
+                                <rect key="frame" x="20" y="137" width="374" height="378"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beta Testing:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiK-1G-Cix">
+                                        <rect key="frame" x="0.0" y="8" width="374" height="16"/>
+                                        <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                        <color key="textColor" systemColor="systemBrownColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Dyer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pv9-5A-GCH">
+                                        <rect key="frame" x="36" y="162" width="302" height="16"/>
+                                        <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Murali Kanji" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EL6-2N-SHh">
+                                        <rect key="frame" x="36" y="186" width="302" height="16"/>
+                                        <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Samuel Dyer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVp-dX-9sM">
+                                        <rect key="frame" x="36" y="210" width="302" height="16"/>
+                                        <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ben Turner" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gJ-9j-KJf">
+                                        <rect key="frame" x="36" y="234" width="302" height="16"/>
+                                        <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hunter Tysinger" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1f-Dd-l5L">
+                                        <rect key="frame" x="36" y="258" width="302" height="16"/>
+                                        <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ren Dangcil" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGJ-R4-mXG">
+                                        <rect key="frame" x="36" y="282" width="302" height="16"/>
+                                        <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trevor Graham" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVR-QA-1Uh">
+                                        <rect key="frame" x="36" y="306" width="302" height="16"/>
+                                        <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="William Sanchez" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CF1-72-cEN">
+                                        <rect key="frame" x="36" y="330" width="302" height="16"/>
+                                        <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zachary Lorenzini" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjT-xg-EWq">
+                                        <rect key="frame" x="36" y="354" width="302" height="16"/>
+                                        <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WVp-dX-9sM" secondAttribute="trailing" constant="36" id="0Ca-BO-K7i"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pv9-5A-GCH" secondAttribute="trailing" constant="36" id="0OR-3K-YUv"/>
+                                    <constraint firstItem="WVp-dX-9sM" firstAttribute="leading" secondItem="EtH-o3-9Ck" secondAttribute="leading" constant="36" id="380-jp-yd7"/>
+                                    <constraint firstItem="EL6-2N-SHh" firstAttribute="top" secondItem="Pv9-5A-GCH" secondAttribute="bottom" constant="8" symbolic="YES" id="7ai-ic-myd"/>
+                                    <constraint firstItem="EL6-2N-SHh" firstAttribute="leading" secondItem="EtH-o3-9Ck" secondAttribute="leading" constant="36" id="7h3-Ve-W8m"/>
+                                    <constraint firstItem="FGJ-R4-mXG" firstAttribute="top" secondItem="Q1f-Dd-l5L" secondAttribute="bottom" constant="8" symbolic="YES" id="8kh-Kg-fqb"/>
+                                    <constraint firstAttribute="trailing" secondItem="FGJ-R4-mXG" secondAttribute="trailing" constant="36" id="Bcn-x4-ul8"/>
+                                    <constraint firstItem="Q1f-Dd-l5L" firstAttribute="leading" secondItem="EtH-o3-9Ck" secondAttribute="leading" constant="36" id="BdJ-l7-yvH"/>
+                                    <constraint firstItem="WVp-dX-9sM" firstAttribute="top" secondItem="EL6-2N-SHh" secondAttribute="bottom" constant="8" symbolic="YES" id="CjJ-yk-0G9"/>
+                                    <constraint firstItem="fiK-1G-Cix" firstAttribute="top" secondItem="EtH-o3-9Ck" secondAttribute="top" constant="8" id="GXD-Cb-hah"/>
+                                    <constraint firstAttribute="trailing" secondItem="EL6-2N-SHh" secondAttribute="trailing" constant="36" id="KPA-xA-qhT"/>
+                                    <constraint firstItem="AjT-xg-EWq" firstAttribute="leading" secondItem="EtH-o3-9Ck" secondAttribute="leading" constant="36" id="VMl-yl-a8A"/>
+                                    <constraint firstItem="FGJ-R4-mXG" firstAttribute="leading" secondItem="EtH-o3-9Ck" secondAttribute="leading" constant="36" id="WhD-EB-gBY"/>
+                                    <constraint firstItem="2gJ-9j-KJf" firstAttribute="leading" secondItem="EtH-o3-9Ck" secondAttribute="leading" constant="36" id="Xcv-Nj-7xs"/>
+                                    <constraint firstAttribute="trailing" secondItem="AjT-xg-EWq" secondAttribute="trailing" constant="36" id="Xe5-TA-opD"/>
+                                    <constraint firstItem="fiK-1G-Cix" firstAttribute="leading" secondItem="EtH-o3-9Ck" secondAttribute="leading" id="YdA-wR-GgO"/>
+                                    <constraint firstItem="HVR-QA-1Uh" firstAttribute="top" secondItem="FGJ-R4-mXG" secondAttribute="bottom" constant="8" symbolic="YES" id="YfI-sp-cDD"/>
+                                    <constraint firstItem="CF1-72-cEN" firstAttribute="leading" secondItem="EtH-o3-9Ck" secondAttribute="leading" constant="36" id="Zmh-Jt-ZzO"/>
+                                    <constraint firstItem="AjT-xg-EWq" firstAttribute="top" secondItem="CF1-72-cEN" secondAttribute="bottom" constant="8" symbolic="YES" id="db1-Bg-Ljs"/>
+                                    <constraint firstAttribute="trailing" secondItem="CF1-72-cEN" secondAttribute="trailing" constant="36" id="glw-dj-m5B"/>
+                                    <constraint firstAttribute="trailing" secondItem="2gJ-9j-KJf" secondAttribute="trailing" constant="36" id="hQE-nV-O8x"/>
+                                    <constraint firstItem="Pv9-5A-GCH" firstAttribute="leading" secondItem="EtH-o3-9Ck" secondAttribute="leading" constant="36" id="j3a-Og-5WX"/>
+                                    <constraint firstItem="CF1-72-cEN" firstAttribute="top" secondItem="HVR-QA-1Uh" secondAttribute="bottom" constant="8" symbolic="YES" id="jDg-JI-dwP"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q1f-Dd-l5L" secondAttribute="trailing" constant="36" id="qif-s4-J0P"/>
+                                    <constraint firstItem="2gJ-9j-KJf" firstAttribute="top" secondItem="WVp-dX-9sM" secondAttribute="bottom" constant="8" symbolic="YES" id="qlm-NM-mMw"/>
+                                    <constraint firstAttribute="bottom" secondItem="AjT-xg-EWq" secondAttribute="bottom" constant="8" id="qvQ-37-Bv6"/>
+                                    <constraint firstItem="HVR-QA-1Uh" firstAttribute="leading" secondItem="EtH-o3-9Ck" secondAttribute="leading" constant="36" id="tWc-Ar-JHY"/>
+                                    <constraint firstAttribute="trailing" secondItem="HVR-QA-1Uh" secondAttribute="trailing" constant="36" id="uA0-CM-x5G"/>
+                                    <constraint firstItem="Q1f-Dd-l5L" firstAttribute="top" secondItem="2gJ-9j-KJf" secondAttribute="bottom" constant="8" symbolic="YES" id="uuL-Yr-GfX"/>
+                                    <constraint firstAttribute="trailing" secondItem="fiK-1G-Cix" secondAttribute="trailing" id="yzG-Bt-3S9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FCe-kp-IIx"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vxy-1i-6Xe" firstAttribute="top" secondItem="NIv-R3-WB1" secondAttribute="bottom" constant="8" symbolic="YES" id="0wt-Fb-qV2"/>
+                            <constraint firstItem="wvG-WD-p9E" firstAttribute="top" secondItem="EtH-o3-9Ck" secondAttribute="bottom" constant="92" id="2aX-z5-laS"/>
+                            <constraint firstItem="NIv-R3-WB1" firstAttribute="leading" secondItem="FCe-kp-IIx" secondAttribute="leading" constant="56" id="7si-gs-1IK"/>
+                            <constraint firstItem="FCe-kp-IIx" firstAttribute="trailing" secondItem="NIv-R3-WB1" secondAttribute="trailing" constant="56" id="8DP-2R-hps"/>
+                            <constraint firstItem="EtH-o3-9Ck" firstAttribute="top" secondItem="vxy-1i-6Xe" secondAttribute="bottom" constant="8" id="FTD-lF-8kC"/>
+                            <constraint firstItem="FCe-kp-IIx" firstAttribute="trailing" secondItem="vxy-1i-6Xe" secondAttribute="trailing" constant="56" id="H01-hE-evJ"/>
+                            <constraint firstItem="wvG-WD-p9E" firstAttribute="leading" secondItem="FCe-kp-IIx" secondAttribute="leading" constant="56" id="Hk2-xm-6GD"/>
+                            <constraint firstItem="W8R-F2-Ctw" firstAttribute="leading" secondItem="FCe-kp-IIx" secondAttribute="leading" constant="20" id="JVA-Ux-NjL"/>
+                            <constraint firstItem="FCe-kp-IIx" firstAttribute="trailing" secondItem="dXV-Ry-TAk" secondAttribute="trailing" constant="20" id="NFA-GK-7ng"/>
+                            <constraint firstItem="dXV-Ry-TAk" firstAttribute="leading" secondItem="FCe-kp-IIx" secondAttribute="leading" constant="20" id="NIA-nd-Gq5"/>
+                            <constraint firstItem="eDf-mF-FrT" firstAttribute="leading" secondItem="FCe-kp-IIx" secondAttribute="leading" constant="20" id="X6w-mG-5HD"/>
+                            <constraint firstItem="eDf-mF-FrT" firstAttribute="top" secondItem="W8R-F2-Ctw" secondAttribute="bottom" constant="7.6666666666666643" id="XMj-t6-zOj"/>
+                            <constraint firstItem="FCe-kp-IIx" firstAttribute="trailing" secondItem="EtH-o3-9Ck" secondAttribute="trailing" constant="20" id="ZAP-Sg-XzV"/>
+                            <constraint firstItem="vxy-1i-6Xe" firstAttribute="leading" secondItem="FCe-kp-IIx" secondAttribute="leading" constant="56" id="aXl-eR-CSt"/>
+                            <constraint firstItem="NIv-R3-WB1" firstAttribute="top" secondItem="eDf-mF-FrT" secondAttribute="bottom" constant="28" id="bMz-4H-Svm"/>
+                            <constraint firstItem="FCe-kp-IIx" firstAttribute="trailing" secondItem="eDf-mF-FrT" secondAttribute="trailing" constant="20" id="l78-3n-Apc"/>
+                            <constraint firstItem="EtH-o3-9Ck" firstAttribute="leading" secondItem="FCe-kp-IIx" secondAttribute="leading" constant="20" id="o7g-ZB-LS1"/>
+                            <constraint firstItem="dXV-Ry-TAk" firstAttribute="top" secondItem="wvG-WD-p9E" secondAttribute="bottom" constant="48" id="sOt-zb-lzr"/>
+                            <constraint firstItem="FCe-kp-IIx" firstAttribute="trailing" secondItem="W8R-F2-Ctw" secondAttribute="trailing" constant="20" id="tUl-C9-T9b"/>
+                            <constraint firstItem="FCe-kp-IIx" firstAttribute="bottom" secondItem="dXV-Ry-TAk" secondAttribute="bottom" constant="20" id="uMq-fn-2ez"/>
+                            <constraint firstItem="W8R-F2-Ctw" firstAttribute="top" secondItem="FCe-kp-IIx" secondAttribute="top" constant="20" id="udn-1z-e2g"/>
+                            <constraint firstItem="FCe-kp-IIx" firstAttribute="trailing" secondItem="wvG-WD-p9E" secondAttribute="trailing" constant="56" id="yok-Ed-g1f"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="oyh-o9-q6u"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xKO-Lj-M7g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2652.1739130434785" y="1451.9021739130435"/>
+        </scene>
         <!--About-->
         <scene sceneID="3K4-gM-m2y">
             <objects>
@@ -167,12 +351,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pC-dB-QdG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This game was made by Eternity Ware Studios, AKA, Job Dyer in 2023." lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pC-dB-QdG">
                                 <rect key="frame" x="56" y="207" width="302" height="134"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="134" id="7gS-on-5hz"/>
                                 </constraints>
-                                <string key="text">This game was made by Eternity Ware Studios, AKA, Job Dyer in 2023. The origonal idea came from Ezra Haren (though who knows how many others also had it. Special thanks to all my testers who helped make this game possible. Special thanks to Trevor Graham for his work on some of the 3d models.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -220,6 +403,17 @@
                                     <segue destination="fUa-bY-8jl" kind="show" id="NFs-HN-tdf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBa-54-Cbm">
+                                <rect key="frame" x="20" y="104" width="374" height="25"/>
+                                <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="13"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Credits">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="7iT-HR-MxQ" kind="show" id="EJG-iq-twW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FGR-Fx-7fb"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -230,7 +424,9 @@
                             <constraint firstItem="aWy-bF-9Mp" firstAttribute="centerX" secondItem="RLI-hF-cTL" secondAttribute="centerX" id="9fZ-qr-Dg9"/>
                             <constraint firstItem="zDX-M5-P0f" firstAttribute="trailing" secondItem="RLI-hF-cTL" secondAttribute="trailing" id="Amr-ZB-SB3"/>
                             <constraint firstItem="FGR-Fx-7fb" firstAttribute="bottom" secondItem="2Qv-Ni-bDF" secondAttribute="bottom" constant="38" id="CpB-bR-KIr"/>
+                            <constraint firstItem="dBa-54-Cbm" firstAttribute="top" secondItem="RLI-hF-cTL" secondAttribute="bottom" constant="42.666666666666664" id="H0l-Kx-omp"/>
                             <constraint firstItem="FGR-Fx-7fb" firstAttribute="trailing" secondItem="2Qv-Ni-bDF" secondAttribute="trailing" constant="20" id="IKH-ic-Kc2"/>
+                            <constraint firstItem="dBa-54-Cbm" firstAttribute="leading" secondItem="RLI-hF-cTL" secondAttribute="leading" id="IUm-jw-Qv5"/>
                             <constraint firstItem="9bX-vQ-d07" firstAttribute="top" secondItem="aWy-bF-9Mp" secondAttribute="bottom" constant="-5" id="IZm-37-jqt"/>
                             <constraint firstItem="FGR-Fx-7fb" firstAttribute="trailing" secondItem="9bX-vQ-d07" secondAttribute="trailing" constant="56" id="JLG-zX-hFu"/>
                             <constraint firstItem="0pC-dB-QdG" firstAttribute="leading" secondItem="FGR-Fx-7fb" secondAttribute="leading" constant="56" id="ONx-Hj-mDT"/>
@@ -240,6 +436,7 @@
                             <constraint firstItem="FGR-Fx-7fb" firstAttribute="trailing" secondItem="zDX-M5-P0f" secondAttribute="trailing" constant="20" id="dQ9-Pq-QuG"/>
                             <constraint firstItem="9bX-vQ-d07" firstAttribute="leading" secondItem="FGR-Fx-7fb" secondAttribute="leading" constant="56" id="e4I-TJ-MzS"/>
                             <constraint firstItem="zDX-M5-P0f" firstAttribute="leading" secondItem="RLI-hF-cTL" secondAttribute="leading" id="jtM-dW-ryn"/>
+                            <constraint firstItem="dBa-54-Cbm" firstAttribute="trailing" secondItem="RLI-hF-cTL" secondAttribute="trailing" id="lG4-s7-03X"/>
                             <constraint firstItem="aWy-bF-9Mp" firstAttribute="centerX" secondItem="2Qv-Ni-bDF" secondAttribute="centerX" id="sED-bs-br9"/>
                             <constraint firstItem="FGR-Fx-7fb" firstAttribute="trailing" secondItem="aWy-bF-9Mp" secondAttribute="trailing" constant="56" id="u50-FY-y5t"/>
                             <constraint firstItem="FGR-Fx-7fb" firstAttribute="trailing" secondItem="0pC-dB-QdG" secondAttribute="trailing" constant="56" id="vZ1-HE-oj3"/>
@@ -852,13 +1049,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inW-HC-IaB">
-                                <rect key="frame" x="50" y="0.0" width="292.66666666666669" height="685"/>
+                                <rect key="frame" x="49.999999999999986" y="0.0" width="254.66666666666663" height="590.33333333333337"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fC-fm-ifS">
-                                        <rect key="frame" x="23.000000000000007" y="22.000000000000007" width="121.66666666666669" height="121.66666666666669"/>
+                                        <rect key="frame" x="23" y="22" width="103" height="103"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAM-M0-2OF">
-                                                <rect key="frame" x="1" y="0.0" width="89.666666666666671" height="119.33333333333333"/>
+                                                <rect key="frame" x="1" y="0.0" width="99.666666666666671" height="100.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="XAM-M0-2OF" secondAttribute="height" multiplier="124:125" id="nOo-OL-Ade"/>
                                                     <constraint firstAttribute="width" secondItem="XAM-M0-2OF" secondAttribute="height" multiplier="128:23" constant="-575.21739130434776" id="wir-JG-gTL"/>
@@ -890,10 +1087,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mud-jv-Lq6">
-                                        <rect key="frame" x="23.000000000000007" y="281.66666666666669" width="121.66666666666669" height="121.66666666666669"/>
+                                        <rect key="frame" x="23" y="243.66666666666663" width="103" height="103"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkq-4Y-ihX">
-                                                <rect key="frame" x="1" y="0.0" width="120.66666666666667" height="123.33333333333333"/>
+                                                <rect key="frame" x="1" y="0.0" width="102" height="104.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pkq-4Y-ihX" secondAttribute="height" multiplier="128:23" constant="-595.47826086956525" id="NFT-Nw-YJ2"/>
                                                     <constraint firstAttribute="width" secondItem="pkq-4Y-ihX" secondAttribute="height" multiplier="42:43" id="TLv-QA-pbD"/>
@@ -925,10 +1122,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQR-Xs-Une">
-                                        <rect key="frame" x="23.000000000000007" y="413.33333333333331" width="121.66666666666669" height="121.99999999999994"/>
+                                        <rect key="frame" x="23" y="356.66666666666669" width="103" height="102.66666666666669"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8se-uF-9i8">
-                                                <rect key="frame" x="1" y="0.0" width="122.66666666666667" height="123"/>
+                                                <rect key="frame" x="1" y="0.0" width="104" height="103.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="8se-uF-9i8" secondAttribute="height" multiplier="1:1" id="Yv6-6f-1os"/>
                                                 </constraints>
@@ -959,10 +1156,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ktf-aw-IvK">
-                                        <rect key="frame" x="150.66666666666666" y="413.33333333333331" width="121.99999999999997" height="121.99999999999994"/>
+                                        <rect key="frame" x="132" y="356.66666666666669" width="102.66666666666669" height="102.66666666666669"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orj-7Z-lqg">
-                                                <rect key="frame" x="1" y="0.0" width="124" height="124"/>
+                                                <rect key="frame" x="1" y="0.0" width="104.66666666666667" height="104.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="orj-7Z-lqg" secondAttribute="height" multiplier="128:23" constant="-594.47826086956525" id="Wcl-Nw-4se"/>
                                                     <constraint firstAttribute="width" secondItem="orj-7Z-lqg" secondAttribute="height" multiplier="1:1" id="fya-ve-RmM"/>
@@ -994,10 +1191,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9B-vH-vRU">
-                                        <rect key="frame" x="23.000000000000007" y="543.33333333333337" width="121.66666666666669" height="121.66666666666663"/>
+                                        <rect key="frame" x="23" y="467.33333333333326" width="103" height="103"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRn-ad-ZZy">
-                                                <rect key="frame" x="0.0" y="0.0" width="122" height="123"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="103.33333333333333" height="104.33333333333333"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="fRn-ad-ZZy" secondAttribute="height" multiplier="122:123" id="a1t-eC-PfY"/>
                                                 </constraints>
@@ -1028,10 +1225,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siP-Xl-pWg">
-                                        <rect key="frame" x="150.66666666666666" y="151.66666666666666" width="121.99999999999997" height="121.99999999999997"/>
+                                        <rect key="frame" x="132" y="133" width="102.66666666666669" height="102.66666666666669"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-Af-RfE">
-                                                <rect key="frame" x="1" y="0.0" width="123" height="124"/>
+                                                <rect key="frame" x="1" y="0.0" width="104" height="104.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="kM5-Af-RfE" secondAttribute="height" multiplier="128:23" constant="-594.47826086956525" id="0Vl-yt-wZG"/>
                                                     <constraint firstAttribute="width" secondItem="kM5-Af-RfE" secondAttribute="height" multiplier="129:130" id="QY8-aJ-Qat"/>
@@ -1063,10 +1260,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCX-EU-DBM">
-                                        <rect key="frame" x="23.000000000000007" y="151.66666666666666" width="121.66666666666669" height="121.99999999999997"/>
+                                        <rect key="frame" x="23" y="133" width="103" height="102.66666666666669"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pA-t0-mRz">
-                                                <rect key="frame" x="1" y="0.0" width="91.666666666666671" height="121"/>
+                                                <rect key="frame" x="1" y="0.0" width="101" height="101.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="2pA-t0-mRz" secondAttribute="height" multiplier="126:127" id="UBO-6S-N93"/>
                                                     <constraint firstAttribute="width" secondItem="2pA-t0-mRz" secondAttribute="height" multiplier="128:23" constant="-580.78260869565213" id="vYY-wV-NWX"/>
@@ -1098,10 +1295,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oB7-2K-hzh">
-                                        <rect key="frame" x="150.66666666666666" y="543.33333333333337" width="121.99999999999997" height="121.66666666666663"/>
+                                        <rect key="frame" x="132" y="467.33333333333326" width="102.66666666666669" height="103"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqC-PH-MuF">
-                                                <rect key="frame" x="0.0" y="0.0" width="123.33333333333333" height="124"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="104.33333333333333" height="105.33333333333333"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="MqC-PH-MuF" secondAttribute="height" multiplier="123:124" id="Onz-Lp-NEk"/>
                                                 </constraints>
@@ -1132,10 +1329,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Owx-MP-aWY">
-                                        <rect key="frame" x="150.66666666666666" y="281.66666666666669" width="121.99999999999997" height="121.66666666666669"/>
+                                        <rect key="frame" x="132" y="243.66666666666663" width="102.66666666666669" height="103"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MwY-HJ-Tdm">
-                                                <rect key="frame" x="1" y="0.0" width="120" height="123.66666666666667"/>
+                                                <rect key="frame" x="1" y="0.0" width="101.33333333333333" height="105"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="MwY-HJ-Tdm" secondAttribute="height" multiplier="128:23" constant="-597.47826086956525" id="Fq4-TV-HeZ"/>
                                                     <constraint firstAttribute="width" secondItem="MwY-HJ-Tdm" secondAttribute="height" multiplier="63:65" id="y05-iB-sG6"/>
@@ -1167,10 +1364,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hvw-P2-LBE">
-                                        <rect key="frame" x="150.66666666666666" y="22.000000000000007" width="121.99999999999997" height="121.66666666666669"/>
+                                        <rect key="frame" x="132" y="22" width="102.66666666666669" height="103"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhg-wV-cW0">
-                                                <rect key="frame" x="-2" y="0.0" width="123.66666666666667" height="123.33333333333333"/>
+                                                <rect key="frame" x="-2" y="0.0" width="104.33333333333333" height="104.66666666666667"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Lhg-wV-cW0" secondAttribute="height" multiplier="67:23" constant="-248.69565217391306" id="Hy3-dZ-3Eg"/>
                                                     <constraint firstAttribute="width" secondItem="Lhg-wV-cW0" secondAttribute="height" multiplier="1:1" id="yBB-3B-PHO"/>
@@ -1266,13 +1463,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back Pack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhs-1V-vMb">
-                                <rect key="frame" x="316.66666666666669" y="333.66666666666669" width="100" height="18"/>
+                                <rect key="frame" x="278.66666666666669" y="286" width="100" height="18"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBrownColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pqb-Mj-nRA">
-                                <rect key="frame" x="20" y="622" width="69" height="28"/>
+                                <rect key="frame" x="20" y="527.33333333333337" width="69" height="28"/>
                                 <fontDescription key="fontDescription" name="GoudyTrajan-Regular" family="Goudy Trajan" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Return">
@@ -1701,8 +1898,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ruM-g3-Qas"/>
+        <segue reference="NFs-HN-tdf"/>
         <segue reference="KGm-Ov-KRg"/>
+        <segue reference="lMt-Fa-gJz"/>
         <segue reference="hoN-rf-ndP"/>
     </inferredMetricsTieBreakers>
     <resources>
